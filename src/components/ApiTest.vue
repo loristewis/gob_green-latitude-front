@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import {getFromApi} from '../helpers';
 
 export default {
   name: 'ApiTest',
@@ -18,9 +18,7 @@ export default {
   },
   async mounted () {
     try {
-      const response = await axios.get('/activities', {
-        baseURL: 'http://localhost:1337/api'
-      })
+      const response = await getFromApi('/activities')
       console.log(response)
 
       this.activities = response.data.data
