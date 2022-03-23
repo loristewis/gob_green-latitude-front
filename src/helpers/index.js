@@ -1,7 +1,13 @@
-import axios from 'axios';
+import axios from 'axios'
+import qs from 'qs'
 
-export const getFromApi = (url) => {
-	return axios.get(url,{
-		baseURL: import.meta.env.VITE_API_URL
-	})
+export const getFromApi = (endpoint, params) => {
+	if (!params.fields) params.fields = '*'
+	if (!params.populate) params.populate = '*'
+
+	const baseUrl = import.meta.env.VITE_API_URL
+	const query = qs.stringify(params)
+	const requestUrl = `${baseUrl}${endpoint}?${query}`
+
+	return axios.get(requestUrl)
 }
