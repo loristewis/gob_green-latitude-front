@@ -1,13 +1,13 @@
 <script setup>
-import ApiTest from './components/ApiTest.vue';
+import SimulationContainer from './components/SimulationContainer.vue'
 </script>
 
 <template>
-  <ApiTest/>
+  <SimulationContainer />
 </template>
 
 <style>
-@import "./assets/base.css";
+@import './assets/base.css';
 
 #app {
   max-width: 1280px;
