@@ -89,15 +89,49 @@ export default {
       }
     },
     calculateScore() {
-      console.log('calculate score')
-      console.log(this.trip.destination)
-      if (this.trip.destination.category === 'cher') {
-        // on multiplie la pollution du transport par deux
-      } else if (this.trip.destination.category === 'loin') {
-        // on multiplie le coût du logement par deux
-      } else if (this.trip.destination.category === 'bof') {
-        // on divise le bien-être des activités par deux
+      let score = {
+        wellness: 2,
+        budget: 10,
+        pollution: 0,
       }
+
+      console.log(this.trip)
+      score.wellness += this.trip.transportation.wellness
+      score.pollution +=
+        this.trip.destination.category === 'loin'
+          ? this.trip.transportation.pollution * 2
+          : this.trip.transportation.pollution
+      score.budget -= this.trip.transportation.budget
+
+      score.wellness += this.trip.accommodation.wellness
+      score.pollution += this.trip.accommodation.pollution
+      score.budget -=
+        this.trip.destination.category === 'cher'
+          ? this.trip.accommodation.budget * 2
+          : this.trip.accommodation.budget
+
+      for (const activity of this.trip.activities) {
+        const wishes = activity.wishes.data.map((el) => el.attributes.title)
+
+        let wellness = activity.wellness
+        if (this.trip.destination.category === 'bof') {
+          wellness = wellness / 2
+        }
+        if (!wishes.includes(this.trip.wish)) {
+          wellness = wellness / 2
+        } else {
+          wellness = wellness * 2
+        }
+
+        score.wellness += wellness
+        score.pollution += activity.pollution
+        score.budget -= activity.budget
+      }
+
+      console.log(this.trip)
+      console.log('calculate score')
+      console.log(score)
+      return score
     },
   },
   async mounted() {
@@ -182,7 +216,9 @@ export default {
     </div>
 
     <div v-if="this.trip.activities.length === 3">
-      <p>Calcul</p>
+      <p>Bien-être : {{ this.calculateScore().wellness }}</p>
+      <p>Budget : {{ this.calculateScore().budget }}</p>
+      <p>Pollution : {{ this.calculateScore().pollution }}</p>
     </div>
   </div>
 </template>
