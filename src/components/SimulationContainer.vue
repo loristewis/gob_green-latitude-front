@@ -1,8 +1,12 @@
 <script>
-import { getFromApi } from '../helpers'
+import { getFromApi, getRandomInt, getRandomScore } from '../helpers'
+import ScoreComponent from './ScoreComponent.vue'
 
 export default {
   name: 'ApiTest',
+  components: {
+    ScoreComponent,
+  },
   data() {
     return {
       wishes: [],
@@ -10,6 +14,11 @@ export default {
       transports: [],
       accommodations: [],
       activities: [],
+      score: {
+        wellness: 2,
+        budget: 10,
+        pollution: 0,
+      },
       trip: {
         wish: null,
         destination: null,
@@ -89,31 +98,46 @@ export default {
       }
     },
     calculateScore() {
-      let score = {
-        wellness: 2,
-        budget: 10,
-        pollution: 0,
-      }
+      this.score.wellness = 2
+      this.score.budget = 10
+      this.score.pollution = 0
 
-      console.log(this.trip)
-      score.wellness += this.trip.transportation.wellness
-      score.pollution +=
+      if (this.trip.transportation) {
+        this.calculateTransportation()
+      }
+      if (this.trip.accommodation) {
+        this.calculateAccomodation()
+      }
+      if (this.trip.activities.length > 0) {
+        this.calculateActivities()
+      }
+    },
+    calculateTransportation() {
+      this.score.wellness += this.trip.transportation.wellness
+      this.score.pollution +=
         this.trip.destination.category === 'loin'
           ? this.trip.transportation.pollution * 2
           : this.trip.transportation.pollution
-      score.budget -= this.trip.transportation.budget
-
-      score.wellness += this.trip.accommodation.wellness
-      score.pollution += this.trip.accommodation.pollution
-      score.budget -=
+      this.score.budget -= this.trip.transportation.budget
+    },
+    calculateAccomodation() {
+      this.score.wellness += this.trip.accommodation.wellness
+      this.score.pollution += this.trip.accommodation.pollution
+      this.score.budget -=
         this.trip.destination.category === 'cher'
           ? this.trip.accommodation.budget * 2
           : this.trip.accommodation.budget
+    },
+    calculateActivities() {
+      console.log(this.trip.activities)
 
       for (const activity of this.trip.activities) {
         const wishes = activity.wishes.data.map((el) => el.attributes.title)
 
         let wellness = activity.wellness
+        if (!wellness) {
+          wellness = getRandomScore()
+        }
         if (this.trip.destination.category === 'bof') {
           wellness = wellness / 2
         }
@@ -123,15 +147,10 @@ export default {
           wellness = wellness * 2
         }
 
-        score.wellness += wellness
-        score.pollution += activity.pollution
-        score.budget -= activity.budget
+        this.score.wellness += wellness
+        this.score.pollution += activity.pollution
+        this.score.budget -= activity.budget
       }
-
-      console.log(this.trip)
-      console.log('calculate score')
-      console.log(score)
-      return score
     },
   },
   async mounted() {
@@ -146,7 +165,7 @@ export default {
       this.wishes = wishes.data.data
       this.destinations = destinations.data.data
 
-      this.trip.wish = this.wishes[0].attributes.title
+      this.trip.wish = this.wishes[getRandomInt(7)].attributes.title
     } catch (error) {
       this.error = error
     }
@@ -155,71 +174,116 @@ export default {
 </script>
 <template>
   <div>
-    <p>Envie : {{ this.trip.wish }}</p>
+    <score-component :score="this.score"> </score-component>
+    <br />
 
-    <div v-if="this.trip.wish">
-      <p>Destination ?</p>
-      <select v-model="this.trip.destination" @change="setDestination">
-        <option disabled value="">Destination</option>
-        <option
-          v-for="el in this.destinations"
-          :value="el.attributes"
-          :key="el.attributes.title"
+    <h3>Envie</h3>
+    <p>{{ this.trip.wish }}</p>
+    <br />
+
+    <div class="grid">
+      <div v-if="this.trip.wish">
+        <h3>Destination</h3>
+        <select v-model="this.trip.destination" @change="setDestination">
+          <option disabled value="">Destination</option>
+          <option
+            v-for="el in this.destinations"
+            :value="el.attributes"
+            :key="el.attributes.title"
+          >
+            {{ el.attributes.title }}
+          </option>
+        </select>
+        <p v-if="this.trip.destination">
+          <span>{{ this.trip.destination.category }}</span>
+        </p>
+      </div>
+      <div v-if="this.trip.destination">
+        <h3>Transport</h3>
+        <select
+          v-model="this.trip.transportation"
+          @change="this.calculateScore"
         >
-          {{ el.attributes.title }}
-        </option>
-      </select>
+          <option disabled value="">Transport</option>
+          <option
+            v-for="el in this.transports"
+            :value="el.attributes"
+            :key="el.attributes.title"
+          >
+            {{ el.attributes.title }}
+          </option>
+        </select>
+        <div v-if="this.trip.transportation">
+          <p>
+            Bien-être :
+            {{
+              this.trip.transportation.wellness > 0
+                ? '+' + this.trip.transportation.wellness
+                : this.trip.transportation.wellness
+            }}
+          </p>
+          <p>Budget : -{{ this.trip.transportation.budget }}</p>
+          <p>Pollution : +{{ this.trip.transportation.pollution }}</p>
+        </div>
+      </div>
+      <div v-if="this.trip.transportation">
+        <h3>Hébergement</h3>
+        <select v-model="this.trip.accommodation" @change="this.calculateScore">
+          <option disabled value="">Hébergement</option>
+          <option
+            v-for="el in this.accommodations"
+            :value="el.attributes"
+            :key="el.attributes.title"
+          >
+            {{ el.attributes.title }}
+          </option>
+        </select>
+        <div v-if="this.trip.accommodation">
+          <p>
+            Bien-être :
+            {{
+              this.trip.accommodation.wellness > 0
+                ? '+' + this.trip.accommodation.wellness
+                : this.trip.accommodation.wellness
+            }}
+          </p>
+          <p>Budget : -{{ this.trip.accommodation.budget }}</p>
+          <p>Pollution : +{{ this.trip.accommodation.pollution }}</p>
+        </div>
+      </div>
     </div>
 
-    <div v-if="this.trip.destination">
-      <p>Transport ?</p>
-      <select v-model="this.trip.transportation">
-        <option disabled value="">Transport</option>
-        <option
-          v-for="el in this.transports"
-          :value="el.attributes"
-          :key="el.attributes.title"
-        >
-          {{ el.attributes.title }}
-        </option>
-      </select>
-    </div>
-
-    <div v-if="this.trip.transportation">
-      <p>Hébergement ?</p>
-      <select v-model="this.trip.accommodation">
-        <option disabled value="">Hébergement</option>
-        <option
-          v-for="el in this.accommodations"
-          :value="el.attributes"
-          :key="el.attributes.title"
-        >
-          {{ el.attributes.title }}
-        </option>
-      </select>
-    </div>
+    <br />
 
     <div v-if="this.trip.accommodation">
-      <p>Activités ?</p>
+      <h3>Activités</h3>
       <div v-for="el in this.activities" :key="el.attributes.id">
         <input
           type="checkbox"
           name="activities"
           v-model="this.trip.activities"
+          @change="this.calculateScore"
           :id="el.attributes.id"
           :value="el.attributes"
         />
         <label :for="el.attributes.id"
-          >{{ ' ' }}{{ el.attributes.title }}</label
-        >
+          >{{ ' ' }}{{ el.attributes.title }}
+          <span style="opacity: 0.4"
+            >(bien-être :
+            {{ el.attributes.wellness ? el.attributes.wellness : '?' }} / budget
+            : {{ el.attributes.budget }} / pollution :
+            {{ el.attributes.pollution }})</span
+          >
+        </label>
       </div>
-    </div>
-
-    <div v-if="this.trip.activities.length === 3">
-      <p>Bien-être : {{ this.calculateScore().wellness }}</p>
-      <p>Budget : {{ this.calculateScore().budget }}</p>
-      <p>Pollution : {{ this.calculateScore().pollution }}</p>
     </div>
   </div>
 </template>
-<style scoped></style>
+
+<style scoped>
+.grid {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+</style>
