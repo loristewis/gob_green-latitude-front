@@ -9,6 +9,7 @@ export default {
   },
   data() {
     return {
+      divider: false,
       wishes: [],
       destinations: [],
       transports: [],
@@ -130,6 +131,8 @@ export default {
     },
     calculateActivities() {
       console.log(this.trip.activities)
+      console.log('divider')
+      console.log(this.divider)
 
       for (const activity of this.trip.activities) {
         const wishes = activity.wishes.data.map((el) => el.attributes.title)
@@ -147,9 +150,13 @@ export default {
           wellness = wellness * 2
         }
 
-        this.score.wellness += wellness
-        this.score.pollution += activity.pollution
-        this.score.budget -= activity.budget
+        this.score.wellness += this.divider ? wellness / 2 : wellness
+        this.score.pollution += this.divider
+          ? activity.pollution / 2
+          : activity.pollution
+        this.score.budget -= this.divider
+          ? activity.budget / 2
+          : activity.budget
       }
     },
   },
@@ -174,6 +181,18 @@ export default {
 </script>
 <template>
   <div>
+    <div>
+      <input
+        type="checkbox"
+        name="activities"
+        v-model="divider"
+        id="diviser"
+        @change="this.calculateScore"
+      />
+      <label for="diviser"> Diviser les activités par deux</label>
+    </div>
+    <br />
+
     <score-component :score="this.score"> </score-component>
     <br />
 
