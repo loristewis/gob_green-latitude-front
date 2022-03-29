@@ -117,6 +117,18 @@ export default {
         this.error = error
       }
     },
+    wording(text) {
+      const match = text.match('::(.*)::')
+      if (match) {
+        console.log('match!')
+        const replacement = this.trip[match[1]]
+          ? this.trip[match[1]].title
+          : '?'
+        text = text.replace(match[0], replacement)
+        console.log(text)
+      }
+      return text
+    },
     calculateScore() {
       this.score.wellness = 2
       this.score.budget = 10
@@ -273,7 +285,7 @@ export default {
             :value="el.attributes"
             :key="el.attributes.title"
           >
-            {{ el.attributes.title }}
+            {{ wording(el.attributes.title) }}
           </option>
         </select>
         <div v-if="this.trip.accommodation">
@@ -305,8 +317,7 @@ export default {
           :value="el.attributes"
         />
         <label :for="el.attributes.id"
-          >{{ ' ' }}{{ el.attributes.title }}
-          <span>{{
+          >{{ ' ' }}{{ wording(el.attributes.title) }} <br /><span>{{
             el.attributes.wishes.data.map((el) => el.attributes.title)
           }}</span>
           <span style="opacity: 0.4"
@@ -323,8 +334,8 @@ export default {
 
 <style scoped>
 .grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-gap: 30px;
-  grid-template-columns: 1fr 1fr 1fr;
 }
 </style>
