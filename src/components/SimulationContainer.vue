@@ -1,5 +1,11 @@
 <script>
-import { getFromApi, getRandomInt, getRandomScore } from '../helpers'
+import {
+  getFromApi,
+  getRandomInt,
+  getRandomScore,
+  getRandomFromArray,
+} from '../helpers'
+import { names } from './../constants/names.js'
 import ScoreComponent from './ScoreComponent.vue'
 
 export default {
@@ -121,11 +127,18 @@ export default {
       const match = text.match('::(.*)::')
       if (match) {
         console.log('match!')
-        const replacement = this.trip[match[1]]
-          ? this.trip[match[1]].title
-          : '?'
+        let replacement = ''
+        if (match[1] === 'name') {
+          this.trip.destination.country
+          replacement = this.trip.destination.country
+            ? getRandomFromArray(names[this.trip.destination.country])
+            : 'name'
+        } else if (match[1] === 'destination') {
+          replacement = this.trip[match[1]].title
+        } else {
+          replacement = '?'
+        }
         text = text.replace(match[0], replacement)
-        console.log(text)
       }
       return text
     },
@@ -162,8 +175,6 @@ export default {
     },
     calculateActivities() {
       console.log(this.trip.activities)
-      console.log('divider')
-      console.log(this.divider)
 
       for (const activity of this.trip.activities) {
         const wishes = activity.wishes.data.map((el) => el.attributes.title)
@@ -260,7 +271,7 @@ export default {
             :value="el.attributes"
             :key="el.attributes.title"
           >
-            {{ el.attributes.title }}
+            {{ wording(el.attributes.title) }}
           </option>
         </select>
         <div v-if="this.trip.transportation">
