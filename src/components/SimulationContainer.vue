@@ -92,8 +92,27 @@ export default {
             },
           },
         })
-        activities.data.data.sort(() => 0.5 - Math.random())
-        return activities.data.data.slice(0, limit)
+
+        const wishActivities = activities.data.data.filter((el) => {
+          const wishes = el.attributes.wishes.data.map(
+            (wish) => wish.attributes.title
+          )
+          return wishes.includes(this.trip.wish)
+        })
+
+        const otherActivities = activities.data.data.filter((el) => {
+          const wishes = el.attributes.wishes.data.map(
+            (wish) => wish.attributes.title
+          )
+          return !wishes.includes(this.trip.wish)
+        })
+
+        let allActivities = [
+          ...wishActivities.slice(0, Math.floor(limit * 0.6)),
+          ...otherActivities,
+        ].slice(0, limit)
+
+        return allActivities.sort(() => 0.5 - Math.random())
       } catch (error) {
         this.error = error
       }
@@ -287,6 +306,9 @@ export default {
         />
         <label :for="el.attributes.id"
           >{{ ' ' }}{{ el.attributes.title }}
+          <span>{{
+            el.attributes.wishes.data.map((el) => el.attributes.title)
+          }}</span>
           <span style="opacity: 0.4"
             >(bien-être :
             {{ el.attributes.wellness ? el.attributes.wellness : '?' }} / budget
