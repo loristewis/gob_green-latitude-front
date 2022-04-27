@@ -129,7 +129,6 @@ export default {
         console.log('match!')
         let replacement = ''
         if (match[1] === 'name') {
-          this.trip.destination.country
           replacement = this.trip.destination.country
             ? getRandomFromArray(names[this.trip.destination.country])
             : 'name'

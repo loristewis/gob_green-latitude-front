@@ -11,4 +11,5 @@ export const names = {
     'Giulia',
   ],
   es: ['Maria', 'Pablo', 'Diego', 'Jesus', 'Pedro'],
+  fr: ['Marie', 'Georges-Alain'],
 }
