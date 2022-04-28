@@ -1,13 +1,14 @@
 <script setup>
-import ApiTest from './components/ApiTest.vue';
+import HomeScreen from './components/HomeScreen.vue'
 </script>
 
 <template>
-  <ApiTest/>
+  <HomeScreen />
 </template>
 
 <style>
-@import "./assets/base.css";
+@import './assets/base.scss';
+@import './assets/fonts/fonts.scss';
 
 #app {
   max-width: 1280px;
@@ -17,16 +18,6 @@ import ApiTest from './components/ApiTest.vue';
   font-weight: normal;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+@media (min-width: 640px) {
 }
 </style>
