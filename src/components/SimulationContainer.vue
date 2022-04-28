@@ -6,12 +6,21 @@ import {
   getRandomFromArray,
 } from '../helpers'
 import { names } from './../constants/names.js'
+
+import { useStore } from './../store/index'
+
 import ScoreComponent from './ScoreComponent.vue'
 
 export default {
   name: 'ApiTest',
   components: {
     ScoreComponent,
+  },
+  setup() {
+    const store = useStore()
+    return {
+      store,
+    }
   },
   data() {
     return {
@@ -37,21 +46,52 @@ export default {
     }
   },
   methods: {
-    async setDestination() {
-      this.transports = await this.getTransports(this.trip.destination.title, 4)
+    async getDestinationOptions(destination) {
+      this.transports = await this.getTransports(destination.title, 4)
       console.log(this.transports)
 
-      this.accommodations = await this.getAccommodations(
-        this.trip.destination.title,
-        10
-      )
+      this.accommodations = await this.getAccommodations(destination.title, 10)
       console.log(this.accommodations)
 
-      this.activities = await this.getActivities(
-        this.trip.destination.title,
-        10
-      )
+      this.activities = await this.getActivities(destination.title, 10)
       console.log(this.activities)
+    },
+    async validateDestination() {
+      if (this.store.trip.destination) {
+        this.getDestinationOptions(this.store.trip.destination).then(
+          this.moveToNextStep
+        )
+      } else {
+        console.log('stp choisis une destination')
+      }
+    },
+    async validateTransportation() {
+      if (this.store.trip.transportation) {
+        this.calculateScore()
+        this.moveToNextStep()
+      } else {
+        console.log('stp choisis un transport')
+      }
+    },
+    async validateAccommodation() {
+      if (this.store.trip.accommodation) {
+        this.calculateScore()
+        this.moveToNextStep()
+      } else {
+        console.log('stp choisis un logement')
+      }
+    },
+    async validateActivities() {
+      if (this.store.activitiesCount === 3) {
+        this.calculateScore()
+        this.moveToNextStep()
+      } else {
+        console.log('stp choisis trois activités')
+      }
+    },
+    moveToNextStep() {
+      console.log('next step')
+      this.store.incrementProgressionIndex()
     },
     async getTransports(destination, limit) {
       try {
@@ -129,11 +169,11 @@ export default {
         console.log('match!')
         let replacement = ''
         if (match[1] === 'name') {
-          replacement = this.trip.destination.country
-            ? getRandomFromArray(names[this.trip.destination.country])
+          replacement = this.store.trip.destination.country
+            ? getRandomFromArray(names[this.store.trip.destination.country])
             : 'name'
         } else if (match[1] === 'destination') {
-          replacement = this.trip[match[1]].title
+          replacement = this.store.trip[match[1]].title
         } else {
           replacement = '?'
         }
@@ -146,46 +186,52 @@ export default {
       this.score.budget = 10
       this.score.pollution = 0
 
-      if (this.trip.transportation) {
+      if (this.store.trip.transportation) {
         this.calculateTransportation()
       }
-      if (this.trip.accommodation) {
+      if (this.store.trip.accommodation) {
         this.calculateAccomodation()
       }
-      if (this.trip.activities.length > 0) {
+      if (this.store.activitiesCount === 3) {
         this.calculateActivities()
       }
     },
     calculateTransportation() {
-      this.score.wellness += this.trip.transportation.wellness
+      const trip = this.store.trip
+
+      this.score.wellness += trip.transportation.wellness
       this.score.pollution +=
-        this.trip.destination.category === 'loin'
-          ? this.trip.transportation.pollution * 2
-          : this.trip.transportation.pollution
-      this.score.budget -= this.trip.transportation.budget
+        trip.destination.category === 'loin'
+          ? trip.transportation.pollution * 2
+          : trip.transportation.pollution
+      this.score.budget -= trip.transportation.budget
     },
     calculateAccomodation() {
-      this.score.wellness += this.trip.accommodation.wellness
-      this.score.pollution += this.trip.accommodation.pollution
+      const trip = this.store.trip
+
+      this.score.wellness += trip.accommodation.wellness
+      this.score.pollution += trip.accommodation.pollution
       this.score.budget -=
-        this.trip.destination.category === 'cher'
-          ? this.trip.accommodation.budget * 2
-          : this.trip.accommodation.budget
+        trip.destination.category === 'cher'
+          ? trip.accommodation.budget * 2
+          : trip.accommodation.budget
     },
     calculateActivities() {
-      console.log(this.trip.activities)
+      const trip = this.store.trip
 
-      for (const activity of this.trip.activities) {
+      console.log(trip.activities)
+
+      for (const activity of trip.activities) {
         const wishes = activity.wishes.data.map((el) => el.attributes.title)
 
         let wellness = activity.wellness
         if (!wellness) {
           wellness = getRandomScore()
         }
-        if (this.trip.destination.category === 'bof') {
+        if (trip.destination.category === 'bof') {
           wellness = wellness / 2
         }
-        if (!wishes.includes(this.trip.wish)) {
+        if (!wishes.includes(trip.wish)) {
           wellness = wellness / 2
         } else {
           wellness = wellness * 2
@@ -228,7 +274,7 @@ export default {
         name="activities"
         v-model="divider"
         id="diviser"
-        @change="this.calculateScore"
+        @change="calculateScore"
       />
       <label for="diviser"> Diviser les activités par deux</label>
     </div>
@@ -241,10 +287,14 @@ export default {
     <p>{{ this.trip.wish }}</p>
     <br />
 
+    <h3>Étape</h3>
+    <p>{{ store.currentStep }}</p>
+    <br />
+
     <div class="grid">
-      <div v-if="this.trip.wish">
+      <div v-if="store.currentStep === 'destination'">
         <h3>Destination</h3>
-        <select v-model="this.trip.destination" @change="setDestination">
+        <select v-model="store.trip.destination">
           <option disabled value="">Destination</option>
           <option
             v-for="el in this.destinations"
@@ -254,16 +304,15 @@ export default {
             {{ el.attributes.title }}
           </option>
         </select>
-        <p v-if="this.trip.destination">
-          <span>{{ this.trip.destination.category }}</span>
+        <p @click="validateDestination">Let's go</p>
+        <p v-if="store.trip.destination">
+          <span>{{ store.trip.destination.category }}</span>
         </p>
       </div>
-      <div v-if="this.trip.destination">
+
+      <div v-if="store.currentStep === 'transportation'">
         <h3>Transport</h3>
-        <select
-          v-model="this.trip.transportation"
-          @change="this.calculateScore"
-        >
+        <select v-model="store.trip.transportation">
           <option disabled value="">Transport</option>
           <option
             v-for="el in this.transports"
@@ -273,22 +322,24 @@ export default {
             {{ wording(el.attributes.title) }}
           </option>
         </select>
-        <div v-if="this.trip.transportation">
+        <p @click="validateTransportation">Let's go</p>
+        <div v-if="store.trip.transportation">
           <p>
             Bien-être :
             {{
-              this.trip.transportation.wellness > 0
-                ? '+' + this.trip.transportation.wellness
-                : this.trip.transportation.wellness
+              store.trip.transportation.wellness > 0
+                ? '+' + store.trip.transportation.wellness
+                : store.trip.transportation.wellness
             }}
           </p>
-          <p>Budget : -{{ this.trip.transportation.budget }}</p>
-          <p>Pollution : +{{ this.trip.transportation.pollution }}</p>
+          <p>Budget : -{{ store.trip.transportation.budget }}</p>
+          <p>Pollution : +{{ store.trip.transportation.pollution }}</p>
         </div>
       </div>
-      <div v-if="this.trip.transportation">
+
+      <div v-if="store.currentStep === 'accommodation'">
         <h3>Hébergement</h3>
-        <select v-model="this.trip.accommodation" @change="this.calculateScore">
+        <select v-model="store.trip.accommodation">
           <option disabled value="">Hébergement</option>
           <option
             v-for="el in this.accommodations"
@@ -298,31 +349,33 @@ export default {
             {{ wording(el.attributes.title) }}
           </option>
         </select>
-        <div v-if="this.trip.accommodation">
+        <p @click="validateAccommodation">Let's go</p>
+        <div v-if="store.trip.accommodation">
           <p>
             Bien-être :
             {{
-              this.trip.accommodation.wellness > 0
-                ? '+' + this.trip.accommodation.wellness
-                : this.trip.accommodation.wellness
+              store.trip.accommodation.wellness > 0
+                ? '+' + store.trip.accommodation.wellness
+                : store.trip.accommodation.wellness
             }}
           </p>
-          <p>Budget : -{{ this.trip.accommodation.budget }}</p>
-          <p>Pollution : +{{ this.trip.accommodation.pollution }}</p>
+          <p>Budget : -{{ store.trip.accommodation.budget }}</p>
+          <p>Pollution : +{{ store.trip.accommodation.pollution }}</p>
         </div>
       </div>
     </div>
 
-    <br />
+    <div v-if="store.currentStep === 'incidents'">
+      <p @click="moveToNextStep">Skip</p>
+    </div>
 
-    <div v-if="this.trip.accommodation">
+    <div v-if="store.currentStep === 'activities'">
       <h3>Activités</h3>
       <div v-for="el in this.activities" :key="el.attributes.id">
         <input
           type="checkbox"
           name="activities"
-          v-model="this.trip.activities"
-          @change="this.calculateScore"
+          v-model="store.trip.activities"
           :id="el.attributes.id"
           :value="el.attributes"
         />
@@ -338,6 +391,7 @@ export default {
           >
         </label>
       </div>
+      <p @click="validateActivities">Let's go</p>
     </div>
   </div>
 </template>
