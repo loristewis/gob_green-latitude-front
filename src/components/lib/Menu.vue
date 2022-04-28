@@ -1,6 +1,6 @@
 <template>
-  <Gauge progress="100" from="left" :image="Smiley" />
-  <Gauge progress="40" from="right" :image="Fire" />
+  <Gauge :progress="100" from="left" :image="Smiley" />
+  <Gauge :progress="40" from="right" :image="Fire" />
 
   <HomeButton />
 

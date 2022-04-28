@@ -29,7 +29,7 @@ export default {
 .button-container {
   height: 64px;
   width: max-content;
-  margin: 16px auto;
+  margin: 16px 0;
   padding: 8px;
   border-radius: 32px;
   color: var(--color-white);

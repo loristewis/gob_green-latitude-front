@@ -1,9 +1,10 @@
-<script setup>
-import HomeScreen from './components/HomeScreen.vue'
-</script>
-
 <template>
-  <HomeScreen />
+  <div id="nav">
+    <router-link to="/">Home</router-link> |
+    <router-link to="/collection">Collection des composants</router-link>
+  </div>
+
+  <router-view />
 </template>
 
 <style>

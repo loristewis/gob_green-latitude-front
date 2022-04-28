@@ -22,7 +22,7 @@ export default {
 <style scoped lang="scss">
 .tag-container {
   width: max-content;
-  margin: 8px auto;
+  margin: 8px 0;
   padding: 4px 12px;
   border-radius: 16px;
   font-weight: var(--font-semibold);
