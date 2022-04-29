@@ -5,16 +5,20 @@ import {
   getRandomScore,
   getRandomFromArray,
 } from '../helpers'
+
 import { names } from './../constants/names.js'
+import { splashScreens } from './../constants/splashScreens.js'
 
 import { useStore } from './../store/index'
 
 import ScoreComponent from './ScoreComponent.vue'
+import SplashScreen from './SplashScreen.vue'
 
 export default {
   name: 'ApiTest',
   components: {
     ScoreComponent,
+    SplashScreen,
   },
   setup() {
     const store = useStore()
@@ -90,8 +94,11 @@ export default {
       }
     },
     moveToNextStep() {
-      console.log('next step')
       this.store.incrementProgressionIndex()
+      this.store.displaySplashScreen()
+    },
+    getSplashScreen() {
+      return splashScreens[this.store.currentStep]
     },
     async getTransports(destination, limit) {
       try {
@@ -291,107 +298,112 @@ export default {
     <p>{{ store.currentStep }}</p>
     <br />
 
-    <div class="grid">
-      <div v-if="store.currentStep === 'destination'">
-        <h3>Destination</h3>
-        <select v-model="store.trip.destination">
-          <option disabled value="">Destination</option>
-          <option
-            v-for="el in this.destinations"
-            :value="el.attributes"
-            :key="el.attributes.title"
-          >
-            {{ el.attributes.title }}
-          </option>
-        </select>
-        <p @click="validateDestination">Let's go</p>
-        <p v-if="store.trip.destination">
-          <span>{{ store.trip.destination.category }}</span>
-        </p>
-      </div>
-
-      <div v-if="store.currentStep === 'transportation'">
-        <h3>Transport</h3>
-        <select v-model="store.trip.transportation">
-          <option disabled value="">Transport</option>
-          <option
-            v-for="el in this.transports"
-            :value="el.attributes"
-            :key="el.attributes.title"
-          >
-            {{ wording(el.attributes.title) }}
-          </option>
-        </select>
-        <p @click="validateTransportation">Let's go</p>
-        <div v-if="store.trip.transportation">
-          <p>
-            Bien-être :
-            {{
-              store.trip.transportation.wellness > 0
-                ? '+' + store.trip.transportation.wellness
-                : store.trip.transportation.wellness
-            }}
+    <div v-if="store.splash && getSplashScreen()">
+      <splash-screen :infos="getSplashScreen()"></splash-screen>
+    </div>
+    <div v-else>
+      <div class="grid">
+        <div v-if="store.currentStep === 'destination'">
+          <h3>Destination</h3>
+          <select v-model="store.trip.destination">
+            <option disabled value="">Destination</option>
+            <option
+              v-for="el in this.destinations"
+              :value="el.attributes"
+              :key="el.attributes.title"
+            >
+              {{ el.attributes.title }}
+            </option>
+          </select>
+          <p @click="validateDestination">Let's go</p>
+          <p v-if="store.trip.destination">
+            <span>{{ store.trip.destination.category }}</span>
           </p>
-          <p>Budget : -{{ store.trip.transportation.budget }}</p>
-          <p>Pollution : +{{ store.trip.transportation.pollution }}</p>
+        </div>
+
+        <div v-if="store.currentStep === 'transportation'">
+          <h3>Transport</h3>
+          <select v-model="store.trip.transportation">
+            <option disabled value="">Transport</option>
+            <option
+              v-for="el in this.transports"
+              :value="el.attributes"
+              :key="el.attributes.title"
+            >
+              {{ wording(el.attributes.title) }}
+            </option>
+          </select>
+          <p @click="validateTransportation">Let's go</p>
+          <div v-if="store.trip.transportation">
+            <p>
+              Bien-être :
+              {{
+                store.trip.transportation.wellness > 0
+                  ? '+' + store.trip.transportation.wellness
+                  : store.trip.transportation.wellness
+              }}
+            </p>
+            <p>Budget : -{{ store.trip.transportation.budget }}</p>
+            <p>Pollution : +{{ store.trip.transportation.pollution }}</p>
+          </div>
+        </div>
+
+        <div v-if="store.currentStep === 'accommodation'">
+          <h3>Hébergement</h3>
+          <select v-model="store.trip.accommodation">
+            <option disabled value="">Hébergement</option>
+            <option
+              v-for="el in this.accommodations"
+              :value="el.attributes"
+              :key="el.attributes.title"
+            >
+              {{ wording(el.attributes.title) }}
+            </option>
+          </select>
+          <p @click="validateAccommodation">Let's go</p>
+          <div v-if="store.trip.accommodation">
+            <p>
+              Bien-être :
+              {{
+                store.trip.accommodation.wellness > 0
+                  ? '+' + store.trip.accommodation.wellness
+                  : store.trip.accommodation.wellness
+              }}
+            </p>
+            <p>Budget : -{{ store.trip.accommodation.budget }}</p>
+            <p>Pollution : +{{ store.trip.accommodation.pollution }}</p>
+          </div>
         </div>
       </div>
 
-      <div v-if="store.currentStep === 'accommodation'">
-        <h3>Hébergement</h3>
-        <select v-model="store.trip.accommodation">
-          <option disabled value="">Hébergement</option>
-          <option
-            v-for="el in this.accommodations"
+      <div v-if="store.currentStep === 'incidents'">
+        <p @click="moveToNextStep">Skip</p>
+      </div>
+
+      <div v-if="store.currentStep === 'activities'">
+        <h3>Activités</h3>
+        <div v-for="el in this.activities" :key="el.attributes.id">
+          <input
+            type="checkbox"
+            name="activities"
+            v-model="store.trip.activities"
+            :id="el.attributes.id"
             :value="el.attributes"
-            :key="el.attributes.title"
-          >
-            {{ wording(el.attributes.title) }}
-          </option>
-        </select>
-        <p @click="validateAccommodation">Let's go</p>
-        <div v-if="store.trip.accommodation">
-          <p>
-            Bien-être :
-            {{
-              store.trip.accommodation.wellness > 0
-                ? '+' + store.trip.accommodation.wellness
-                : store.trip.accommodation.wellness
-            }}
-          </p>
-          <p>Budget : -{{ store.trip.accommodation.budget }}</p>
-          <p>Pollution : +{{ store.trip.accommodation.pollution }}</p>
+          />
+          <label :for="el.attributes.id"
+            >{{ ' ' }}{{ wording(el.attributes.title) }} <br /><span>{{
+              el.attributes.wishes.data.map((el) => el.attributes.title)
+            }}</span>
+            <span style="opacity: 0.4"
+              >(bien-être :
+              {{ el.attributes.wellness ? el.attributes.wellness : '?' }} /
+              budget : {{ el.attributes.budget }} / pollution :
+              {{ el.attributes.pollution }})</span
+            >
+          </label>
         </div>
+        <p @click="validateActivities">Let's go</p>
       </div>
-    </div>
-
-    <div v-if="store.currentStep === 'incidents'">
-      <p @click="moveToNextStep">Skip</p>
-    </div>
-
-    <div v-if="store.currentStep === 'activities'">
-      <h3>Activités</h3>
-      <div v-for="el in this.activities" :key="el.attributes.id">
-        <input
-          type="checkbox"
-          name="activities"
-          v-model="store.trip.activities"
-          :id="el.attributes.id"
-          :value="el.attributes"
-        />
-        <label :for="el.attributes.id"
-          >{{ ' ' }}{{ wording(el.attributes.title) }} <br /><span>{{
-            el.attributes.wishes.data.map((el) => el.attributes.title)
-          }}</span>
-          <span style="opacity: 0.4"
-            >(bien-être :
-            {{ el.attributes.wellness ? el.attributes.wellness : '?' }} / budget
-            : {{ el.attributes.budget }} / pollution :
-            {{ el.attributes.pollution }})</span
-          >
-        </label>
-      </div>
-      <p @click="validateActivities">Let's go</p>
     </div>
   </div>
 </template>

@@ -12,6 +12,7 @@ export const useStore = defineStore('main', {
         'activities',
         'postcard',
       ],
+      splash: false,
       progressionIndex: 1,
       score: {
         wellness: 2,
@@ -35,6 +36,10 @@ export const useStore = defineStore('main', {
   actions: {
     incrementProgressionIndex() {
       this.progressionIndex++
+    },
+    displaySplashScreen() {
+      this.splash = true
+      setTimeout(() => (this.splash = false), 1000)
     },
   },
 })
