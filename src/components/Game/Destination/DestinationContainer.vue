@@ -1,8 +1,13 @@
 <script>
 import { useStore } from './../../../store/index'
 
+import DestinationCard from './DestinationCard.vue'
+
 export default {
   name: 'DestinationContainer',
+  components: {
+    DestinationCard,
+  },
   props: ['elements'],
   setup() {
     const store = useStore()
@@ -32,10 +37,18 @@ export default {
       {{ el.attributes.title }}
     </option>
   </select>
+
   <p @click="emitDestinationChoice">Let's go</p>
+
   <p v-if="store.trip.destination">
     <span>{{ store.trip.destination.category }}</span>
   </p>
+
+  <destination-card
+    v-for="el in elements"
+    :destination="el.attributes"
+    :key="el.id"
+  ></destination-card>
 </template>
 
 <style></style>
