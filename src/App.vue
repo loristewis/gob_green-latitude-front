@@ -1,9 +1,9 @@
 <script setup>
-import SimulationContainer from './components/SimulationContainer.vue'
+import MainContainer from './components/MainContainer.vue'
 </script>
 
 <template>
-  <SimulationContainer />
+  <main-container />
 </template>
 
 <style>
