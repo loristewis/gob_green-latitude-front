@@ -1,9 +1,14 @@
 <script>
 import { useStore } from './../../../store/index'
 
+import ActivityCard from './ActivityCard.vue'
+
 export default {
   name: 'ActivitiesContainer',
   props: ['elements'],
+  components: {
+    ActivityCard,
+  },
   setup() {
     const store = useStore()
     return {
@@ -33,17 +38,8 @@ export default {
       :id="el.attributes.id"
       :value="el.attributes"
     />
-    <label :for="el.attributes.id"
-      >{{ ' ' }}{{ store.wording(el.attributes.title) }} <br /><span>{{
-        el.attributes.wishes.data.map((el) => el.attributes.title)
-      }}</span>
-      <span style="opacity: 0.4"
-        >(bien-être :
-        {{ el.attributes.wellness ? el.attributes.wellness : '?' }} / budget :
-        {{ el.attributes.budget }} / pollution :
-        {{ el.attributes.pollution }})</span
-      >
-    </label>
+
+    <activity-card :activity="el.attributes"></activity-card>
   </div>
   <p @click="validateActivities">Let's go</p>
 </template>

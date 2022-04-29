@@ -1,9 +1,14 @@
 <script>
 import { useStore } from './../../../store/index'
 
+import TransportationCard from './TransportationCard.vue'
+
 export default {
   name: 'TransportationContainer',
   props: ['elements'],
+  components: {
+    TransportationCard,
+  },
   setup() {
     const store = useStore()
     return {
@@ -48,6 +53,14 @@ export default {
     <p>Budget : -{{ store.trip.transportation.budget }}</p>
     <p>Pollution : +{{ store.trip.transportation.pollution }}</p>
   </div>
+
+  <hr />
+
+  <transportation-card
+    v-for="el in elements"
+    :transportation="el.attributes"
+    :key="el.id"
+  ></transportation-card>
 </template>
 
 <style></style>

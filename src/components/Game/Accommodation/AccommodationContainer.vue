@@ -1,9 +1,14 @@
 <script>
 import { useStore } from './../../../store/index'
 
+import AccommodationCard from './AccommodationCard.vue'
+
 export default {
   name: 'AccommodationContainer',
   props: ['elements'],
+  components: {
+    AccommodationCard,
+  },
   setup() {
     const store = useStore()
     return {
@@ -48,6 +53,14 @@ export default {
     <p>Budget : -{{ store.trip.accommodation.budget }}</p>
     <p>Pollution : +{{ store.trip.accommodation.pollution }}</p>
   </div>
+
+  <hr />
+
+  <accommodation-card
+    v-for="el in elements"
+    :accommodation="el.attributes"
+    :key="el.id"
+  ></accommodation-card>
 </template>
 
 <style></style>

@@ -44,6 +44,8 @@ export default {
     <span>{{ store.trip.destination.category }}</span>
   </p>
 
+  <hr />
+
   <destination-card
     v-for="el in elements"
     :destination="el.attributes"
