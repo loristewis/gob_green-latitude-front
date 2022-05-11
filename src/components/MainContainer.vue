@@ -1,7 +1,7 @@
 <script>
 import { getFromApi, getRandomInt } from '../helpers'
 
-import { splashScreens } from './../constants/splashScreens.js'
+import { texts } from './../constants/texts.js'
 
 import { useStore } from './../store/index'
 
@@ -45,8 +45,8 @@ export default {
     }
   },
   methods: {
-    getSplashScreen() {
-      return splashScreens[this.store.currentStep]
+    getSplashScreenText() {
+      return texts.splash[this.store.currentStep]
     },
     async validateDestination() {
       if (this.store.trip.destination) {
@@ -188,8 +188,8 @@ export default {
     <p>{{ store.currentStep }}</p>
     <br />
 
-    <div v-if="store.splash && getSplashScreen()">
-      <splash-screen :infos="getSplashScreen()"></splash-screen>
+    <div v-if="store.splash && getSplashScreenText()">
+      <splash-screen :tagline="getSplashScreenText()"></splash-screen>
     </div>
     <div v-else>
       <component

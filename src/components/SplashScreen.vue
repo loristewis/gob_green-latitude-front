@@ -1,13 +1,15 @@
 <script>
+// ici importer l'asset selon nomenclature
+
 export default {
   name: 'SplashScreen',
-  props: ['infos'],
+  props: ['tagline'],
 }
 </script>
 
 <template>
   <h3>Splash screen</h3>
-  <p>{{ infos.text }}</p>
+  <p>{{ tagline }}</p>
 </template>
 
 <style></style>
