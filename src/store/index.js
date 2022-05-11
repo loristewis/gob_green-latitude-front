@@ -7,16 +7,19 @@ export const useStore = defineStore('main', {
   state: () => {
     return {
       steps: [
+        'animation-intro',
         'prescription',
         'destination',
         'transportation',
         'accommodation',
+        'animation-travel',
         'incidents',
         'activities',
+        'animation-end',
         'postcard',
       ],
       splash: false,
-      progressionIndex: 1,
+      progressionIndex: 0,
       score: {
         wellness: 2,
         budget: 10,
@@ -34,6 +37,8 @@ export const useStore = defineStore('main', {
   },
   getters: {
     currentStep: (state) => state.steps[state.progressionIndex],
+    currentComponent: (state) =>
+      state.steps[state.progressionIndex].split('-')[0] + '-container',
     activitiesCount: (state) => state.trip.activities.length,
   },
   actions: {

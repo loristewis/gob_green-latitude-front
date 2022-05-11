@@ -8,6 +8,8 @@ import { useStore } from './../store/index'
 import ScoreComponent from './ScoreComponent.vue'
 import SplashScreen from './SplashScreen.vue'
 
+import AnimationContainer from './Game/AnimationContainer.vue'
+import PrescriptionContainer from './Game/PrescriptionContainer.vue'
 import DestinationContainer from './Game/Destination/DestinationContainer.vue'
 import TransportationContainer from './Game/Transportation/TransportationContainer.vue'
 import AccommodationContainer from './Game/Accommodation/AccommodationContainer.vue'
@@ -19,6 +21,8 @@ export default {
   components: {
     ScoreComponent,
     SplashScreen,
+    AnimationContainer,
+    PrescriptionContainer,
     DestinationContainer,
     TransportationContainer,
     AccommodationContainer,
@@ -193,7 +197,7 @@ export default {
     </div>
     <div v-else>
       <component
-        :is="store.currentStep + '-container'"
+        :is="store.currentComponent"
         :elements="this.elements[store.currentStep]"
         @validate-destination="validateDestination"
       ></component>
