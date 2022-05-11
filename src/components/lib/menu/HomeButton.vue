@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss">
 .home-button-container {
   display: flex;
   justify-content: center;

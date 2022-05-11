@@ -25,7 +25,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .button-container {
   height: 64px;
   width: max-content;

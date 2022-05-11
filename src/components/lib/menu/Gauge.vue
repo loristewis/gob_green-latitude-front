@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .gauge-container {
   display: flex;
   width: 184px;

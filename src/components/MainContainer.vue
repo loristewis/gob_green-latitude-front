@@ -1,3 +1,42 @@
+<template>
+  <div>
+    <div>
+      <input
+        type="checkbox"
+        name="activities"
+        v-model="divider"
+        id="diviser"
+        @change="store.calculateScore"
+      />
+      <label for="diviser"> Diviser les activités par deux</label>
+    </div>
+    <br />
+
+    <ScoreComponent :score="store.score" />
+    <br />
+
+    <h3>Envie</h3>
+    <p>{{ store.trip.wish }}</p>
+    <br />
+
+    <h3>Étape</h3>
+    <p>{{ store.currentStep }}</p>
+    <br />
+
+    <div v-if="store.splash && getSplashScreen()">
+      <SplashScreen :infos="getSplashScreen()" />
+    </div>
+
+    <div v-else>
+      <component
+        :is="store.currentStep + '-container'"
+        :elements="this.elements[store.currentStep]"
+        @validate-destination="validateDestination"
+      />
+    </div>
+  </div>
+</template>
+
 <script>
 import { getFromApi, getRandomInt } from '../helpers'
 
@@ -163,45 +202,8 @@ export default {
   },
 }
 </script>
-<template>
-  <div>
-    <div>
-      <input
-        type="checkbox"
-        name="activities"
-        v-model="divider"
-        id="diviser"
-        @change="store.calculateScore"
-      />
-      <label for="diviser"> Diviser les activités par deux</label>
-    </div>
-    <br />
 
-    <score-component :score="store.score"> </score-component>
-    <br />
-
-    <h3>Envie</h3>
-    <p>{{ store.trip.wish }}</p>
-    <br />
-
-    <h3>Étape</h3>
-    <p>{{ store.currentStep }}</p>
-    <br />
-
-    <div v-if="store.splash && getSplashScreen()">
-      <splash-screen :infos="getSplashScreen()"></splash-screen>
-    </div>
-    <div v-else>
-      <component
-        :is="store.currentStep + '-container'"
-        :elements="this.elements[store.currentStep]"
-        @validate-destination="validateDestination"
-      ></component>
-    </div>
-  </div>
-</template>
-
-<style scoped>
+<style lang="scss" scoped>
 .grid {
   display: flex;
   flex-wrap: wrap;

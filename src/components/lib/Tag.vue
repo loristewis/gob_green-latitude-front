@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .tag-container {
   width: max-content;
   margin: 8px 0;

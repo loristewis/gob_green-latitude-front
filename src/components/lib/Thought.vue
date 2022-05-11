@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .thought-container {
   width: max-content;
   padding: 12px 16px;
