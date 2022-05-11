@@ -1,6 +1,6 @@
 <template>
   <div class="budget-container">
-    <div class="content">13</div>
+    <div class="content"><slot /></div>
 
     <div class="star">
       <div>

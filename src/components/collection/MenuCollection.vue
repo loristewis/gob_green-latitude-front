@@ -10,7 +10,7 @@
   <HomeButton />
 
   <Title>Budget</Title>
-  <Budget />
+  <Budget>13</Budget>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <div class="tag-container" :class="color">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
