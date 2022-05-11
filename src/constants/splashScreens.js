@@ -1,18 +1,23 @@
+import AccommodationIcon from './../assets/splash/accommodation.png'
+import ActivitiesIcon from './../assets/splash/activities.png'
+import DestinationIcon from './../assets/splash/destination.png'
+import TransportationIcon from './../assets/splash/transportation.png'
+
 export const splashScreens = {
   destination: {
-    text: 'Choisis ta destination !',
-    asset: '',
+    tagline: 'Choisis ta destination !',
+    image: DestinationIcon,
   },
   transportation: {
-    text: 'Achète ton billet !',
-    asset: '',
+    tagline: 'Achète ton billet !',
+    image: TransportationIcon,
   },
   accommodation: {
-    text: 'Réserve ton logement !',
-    asset: '',
+    tagline: 'Réserve ton logement !',
+    image: AccommodationIcon,
   },
   activities: {
-    text: 'Organise tes activités !',
-    asset: '',
+    tagline: 'Organise tes activités !',
+    image: ActivitiesIcon,
   },
 }

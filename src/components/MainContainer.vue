@@ -12,7 +12,7 @@
     </div>
     <br />
 
-    <ScoreComponent :score="store.score" />
+    <score-component :score="store.score"> </score-component>
     <br />
 
     <h3>Envie</h3>
@@ -24,15 +24,14 @@
     <br />
 
     <div v-if="store.splash && getSplashScreen()">
-      <SplashScreen :infos="getSplashScreen()" />
+      <splash-screen :infos="getSplashScreen()"></splash-screen>
     </div>
-
     <div v-else>
       <component
-        :is="store.currentStep + '-container'"
+        :is="store.currentComponent"
         :elements="this.elements[store.currentStep]"
         @validate-destination="validateDestination"
-      />
+      ></component>
     </div>
   </div>
 </template>
@@ -47,6 +46,8 @@ import { useStore } from './../store/index'
 import ScoreComponent from './ScoreComponent.vue'
 import SplashScreen from './SplashScreen.vue'
 
+import AnimationContainer from './Game/AnimationContainer.vue'
+import PrescriptionContainer from './Game/PrescriptionContainer.vue'
 import DestinationContainer from './Game/Destination/DestinationContainer.vue'
 import TransportationContainer from './Game/Transportation/TransportationContainer.vue'
 import AccommodationContainer from './Game/Accommodation/AccommodationContainer.vue'
@@ -58,6 +59,8 @@ export default {
   components: {
     ScoreComponent,
     SplashScreen,
+    AnimationContainer,
+    PrescriptionContainer,
     DestinationContainer,
     TransportationContainer,
     AccommodationContainer,

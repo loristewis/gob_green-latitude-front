@@ -1,7 +1,7 @@
 <template>
   <h3>Splash screen</h3>
-
-  <p>{{ infos.text }}</p>
+  <p>{{ infos.tagline }}</p>
+  <img :src="infos.image" />
 </template>
 
 <script>
@@ -10,3 +10,5 @@ export default {
   props: ['infos'],
 }
 </script>
+
+<style></style>
