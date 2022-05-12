@@ -12,7 +12,7 @@ export default {
       type: String,
       required: true,
       validator(value) {
-        return ['red', 'green', 'purple', 'blue'].includes(value)
+        return ['red', 'blue'].includes(value)
       },
     },
   },

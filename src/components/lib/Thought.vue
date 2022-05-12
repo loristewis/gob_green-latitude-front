@@ -1,21 +1,24 @@
 <template>
   <div class="thought-container">
-    <slot />
+    <BaseCard>
+      <slot />
+    </BaseCard>
   </div>
 </template>
 
 <script>
+import BaseCard from './cards/BaseCard.vue'
+
 export default {
   name: 'Thought',
+  components: {
+    BaseCard,
+  },
 }
 </script>
 
 <style lang="scss">
 .thought-container {
   width: max-content;
-  padding: 12px 16px;
-  background-color: var(--color-white);
-  box-shadow: 0 3px 0 #f1e4d1;
-  border-radius: 25px;
 }
 </style>

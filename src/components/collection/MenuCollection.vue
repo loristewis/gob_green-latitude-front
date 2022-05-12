@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Title from '../lib/Title.vue'
-import Menu from '../lib/Menu.vue'
+import { Title, Menu } from '../lib'
+
 import Gauge from '../lib/menu/Gauge.vue'
 import HomeButton from '../lib/menu/HomeButton.vue'
 import Budget from '../lib/menu/Budget.vue'
