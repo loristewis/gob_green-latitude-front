@@ -9,6 +9,11 @@ export default {
   components: {
     AccommodationCard,
   },
+  data() {
+    return {
+      selected: null,
+    }
+  },
   setup() {
     const store = useStore()
     return {
@@ -16,13 +21,21 @@ export default {
     }
   },
   methods: {
+    selectElement(element) {
+      console.log('select!')
+      console.log(element)
+      this.selected = element
+    },
     validateAccommodation() {
-      if (this.store.trip.accommodation) {
-        this.store.calculateScore()
-        this.store.moveToNextStep()
-      } else {
+      if (!this.selected) {
         console.log('stp choisis un hébergement')
+        return
       }
+
+      this.store.trip.accommodation = this.selected.attributes
+      console.log(this.store.trip.accommodation)
+      this.store.calculateScore()
+      this.store.moveToNextStep()
     },
   },
 }
@@ -30,37 +43,16 @@ export default {
 
 <template>
   <h3>Hébergement</h3>
-  <select v-model="store.trip.accommodation">
-    <option disabled value="">Hébergement</option>
-    <option
-      v-for="el in elements"
-      :value="el.attributes"
-      :key="el.attributes.title"
-    >
-      {{ store.wording(el.attributes.title) }}
-    </option>
-  </select>
-  <p @click="validateAccommodation">Let's go</p>
-  <div v-if="store.trip.accommodation">
-    <p>
-      Bien-être :
-      {{
-        store.trip.accommodation.wellness > 0
-          ? '+' + store.trip.accommodation.wellness
-          : store.trip.accommodation.wellness
-      }}
-    </p>
-    <p>Budget : -{{ store.trip.accommodation.budget }}</p>
-    <p>Pollution : +{{ store.trip.accommodation.pollution }}</p>
-  </div>
-
-  <hr />
 
   <accommodation-card
     v-for="el in elements"
+    @click="selectElement(el)"
+    :selected="el === this.selected"
     :accommodation="el.attributes"
     :key="el.id"
   ></accommodation-card>
+
+  <p @click="validateAccommodation">Let's go</p>
 </template>
 
 <style></style>

@@ -5,10 +5,15 @@ import DestinationCard from './DestinationCard.vue'
 
 export default {
   name: 'DestinationContainer',
+  props: ['elements'],
   components: {
     DestinationCard,
   },
-  props: ['elements'],
+  data() {
+    return {
+      selected: null,
+    }
+  },
   setup() {
     const store = useStore()
     return {
@@ -16,10 +21,19 @@ export default {
     }
   },
   methods: {
+    selectElement(element) {
+      console.log('select!')
+      console.log(element)
+      this.selected = element
+    },
     emitDestinationChoice() {
-      if (this.store.trip.destination) {
-        this.$emit('validate-destination')
+      if (!this.selected) {
+        console.log('stp choisis une destination')
+        return
       }
+
+      this.store.trip.destination = this.selected.attributes
+      this.$emit('validate-destination')
     },
   },
 }
@@ -27,30 +41,16 @@ export default {
 
 <template>
   <h3>Destination</h3>
-  <select v-model="store.trip.destination">
-    <option disabled value="">Destination</option>
-    <option
-      v-for="el in elements"
-      :value="el.attributes"
-      :key="el.attributes.title"
-    >
-      {{ el.attributes.title }}
-    </option>
-  </select>
-
-  <p @click="emitDestinationChoice">Let's go</p>
-
-  <p v-if="store.trip.destination">
-    <span>{{ store.trip.destination.category }}</span>
-  </p>
-
-  <hr />
 
   <destination-card
     v-for="el in elements"
+    @click="selectElement(el)"
+    :selected="el === this.selected"
     :destination="el.attributes"
     :key="el.id"
   ></destination-card>
+
+  <p @click="emitDestinationChoice">Let's go</p>
 </template>
 
 <style></style>

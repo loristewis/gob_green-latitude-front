@@ -27,12 +27,15 @@ export default {
       this.selected = element
     },
     validateTransportation() {
-      if (this.store.trip.transportation) {
-        this.store.calculateScore()
-        this.store.moveToNextStep()
-      } else {
+      if (!this.selected) {
         console.log('stp choisis un transport')
+        return
       }
+
+      this.store.trip.transportation = this.selected.attributes
+      console.log(this.store.trip.transportation)
+      this.store.calculateScore()
+      this.store.moveToNextStep()
     },
   },
 }
@@ -40,31 +43,6 @@ export default {
 
 <template>
   <h3>Transport</h3>
-  <select v-model="store.trip.transportation">
-    <option disabled value="">Transport</option>
-    <option
-      v-for="el in elements"
-      :value="el.attributes"
-      :key="el.attributes.title"
-    >
-      {{ store.wording(el.attributes.title) }}
-    </option>
-  </select>
-  <p @click="validateTransportation">Let's go</p>
-  <div v-if="store.trip.transportation">
-    <p>
-      Bien-être :
-      {{
-        store.trip.transportation.wellness > 0
-          ? '+' + store.trip.transportation.wellness
-          : store.trip.transportation.wellness
-      }}
-    </p>
-    <p>Budget : -{{ store.trip.transportation.budget }}</p>
-    <p>Pollution : +{{ store.trip.transportation.pollution }}</p>
-  </div>
-
-  <hr />
 
   <transportation-card
     v-for="el in elements"
@@ -73,6 +51,8 @@ export default {
     :transportation="el.attributes"
     :key="el.id"
   ></transportation-card>
+
+  <p @click="validateTransportation">Let's go</p>
 </template>
 
 <style></style>
