@@ -2,10 +2,11 @@
 
 @font-face {
   font-family: 'floyd';
-  src: url('floyd-webfont.woff2') format('woff2'),
-  url('floyd-webfont.woff') format('woff');
+  src: url('FloydAccentedV2Regular.woff2') format('woff2'),
+  url('FloydAccentedV2Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
