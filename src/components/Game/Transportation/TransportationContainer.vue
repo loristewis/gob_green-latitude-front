@@ -9,6 +9,11 @@ export default {
   components: {
     TransportationCard,
   },
+  data() {
+    return {
+      selected: null,
+    }
+  },
   setup() {
     const store = useStore()
     return {
@@ -16,6 +21,11 @@ export default {
     }
   },
   methods: {
+    selectElement(element) {
+      console.log('select!')
+      console.log(element)
+      this.selected = element
+    },
     validateTransportation() {
       if (this.store.trip.transportation) {
         this.store.calculateScore()
@@ -58,6 +68,8 @@ export default {
 
   <transportation-card
     v-for="el in elements"
+    @click="selectElement(el)"
+    :selected="el === this.selected"
     :transportation="el.attributes"
     :key="el.id"
   ></transportation-card>
