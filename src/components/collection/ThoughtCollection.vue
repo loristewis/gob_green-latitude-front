@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import Title from '../lib/Title.vue'
-import Thought from '../lib/Thought.vue'
+import { Title, Thought } from '../lib'
 
 export default {
   name: 'ThoughtCollection',
@@ -19,6 +18,7 @@ export default {
 <style scoped>
 div.background-container {
   background-color: #8a95b4;
+  margin: 0 0 20px 0;
   padding: 20px;
 }
 </style>

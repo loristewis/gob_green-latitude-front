@@ -6,8 +6,7 @@
 </template>
 
 <script>
-import Title from '../lib/Title.vue'
-import Button from '../lib/Button.vue'
+import { Title, Button } from '../lib'
 
 export default {
   name: 'ButtonCollection',

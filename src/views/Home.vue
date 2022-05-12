@@ -6,7 +6,7 @@
 
 <script>
 import MainContainer from './../components/MainContainer.vue'
-import Title from './../components/lib/Title.vue'
+import { Title } from './../components/lib'
 
 export default {
   name: 'HomeScreen',

@@ -8,13 +8,10 @@
 </template>
 
 <script>
-import Title from '../lib/Title.vue'
-import Tag from '../lib/Tag.vue'
+import { Title, Tag } from '../lib'
 
 export default {
   name: 'TagCollection',
   components: { Title, Tag },
 }
 </script>
-
-<style scoped></style>

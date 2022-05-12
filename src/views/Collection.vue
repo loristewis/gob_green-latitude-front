@@ -19,13 +19,14 @@
 </template>
 
 <script>
-import Title from './../components/lib/Title.vue'
+import { Title } from './../components/lib'
 
 import TextsCollection from '../components/collection/TextsCollection.vue'
 import MenuCollection from './../components/collection/MenuCollection.vue'
 import ThoughtCollection from '../components/collection/ThoughtCollection.vue'
 import TagCollection from '../components/collection/TagCollection.vue'
 import ButtonCollection from '../components/collection/ButtonCollection.vue'
+import CardCollection from '../components/collection/CardCollection.vue'
 
 export default {
   name: 'Components',
@@ -36,6 +37,7 @@ export default {
     ThoughtCollection,
     TagCollection,
     ButtonCollection,
+    CardCollection,
   },
   data() {
     return {
@@ -64,6 +66,11 @@ export default {
           id: 'button',
           title: 'Boutons',
           component: ButtonCollection,
+        },
+        {
+          id: 'card',
+          title: 'Cards',
+          component: CardCollection,
         },
       ],
     }

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import Title from './../lib/Title.vue'
+import { Title } from '../lib/'
 
 export default {
   name: 'TextsCollection',
