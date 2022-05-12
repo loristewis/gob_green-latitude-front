@@ -12,6 +12,10 @@ export const getFromApi = (endpoint, params) => {
   return axios.get(requestUrl)
 }
 
+export const shuffleArray = (array) => {
+  return array.sort(() => Math.random() - 0.5)
+}
+
 export const getRandomFromArray = (array) => {
   return array[Math.floor(Math.random() * array.length)]
 }

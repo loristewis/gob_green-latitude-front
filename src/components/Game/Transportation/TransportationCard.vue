@@ -3,7 +3,7 @@ import { useStore } from './../../../store/index'
 
 export default {
   name: 'TransportationCard',
-  props: ['transportation', 'selected'],
+  props: ['transportation', 'tag', 'selected'],
   setup() {
     const store = useStore()
     const wording = store.wording
@@ -18,6 +18,7 @@ export default {
   <div>
     <p>{{ wording(transportation.title) }}</p>
     <p>{{ transportation.description }}</p>
+    <p v-if="tag">{{ tag }}</p>
     <p v-if="transportation.thoughts">({{ transportation.thoughts }})</p>
     <p>Budget : {{ transportation.budget }}</p>
     <div v-if="selected">
