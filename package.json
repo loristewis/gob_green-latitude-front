@@ -10,9 +10,10 @@
   "dependencies": {
     "@heroicons/vue": "^1.0.6",
     "axios": "^0.26.0",
-    "qs": "^6.10.3",
-    "vue": "^3.2.31",
     "pinia": "^2.0.13",
+    "qs": "^6.10.3",
+    "swiper": "^8.1.4",
+    "vue": "^3.2.31",
     "vue-router": "4"
   },
   "devDependencies": {

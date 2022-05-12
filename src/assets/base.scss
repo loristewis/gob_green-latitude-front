@@ -49,6 +49,13 @@
 
   --font-bold: 800;
   --font-semibold: 600;
+
+  /* SWIPER - CUSTOM STYLES */
+  --swiper-pagination-color: var(--color-rose);
+  --swiper-pagination-bullet-inactive-color: var(--color-beige-dark);
+  --swiper-pagination-bullet-inactive-opacity: 1;
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-size-active: 10px;
 }
 
 *,
