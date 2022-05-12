@@ -72,6 +72,7 @@ export default {
       padding: 8px 12px;
       border-radius: 12px;
       box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
 
       &.red {
         color: var(--color-red);
