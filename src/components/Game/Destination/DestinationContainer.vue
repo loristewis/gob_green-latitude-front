@@ -1,12 +1,14 @@
 <script>
 import { useStore } from './../../../store/index'
 
+import Button from './../../lib/Button.vue'
 import DestinationSwiper from './DestinationSwiper.vue'
 
 export default {
   name: 'DestinationContainer',
   props: ['elements'],
   components: {
+    Button,
     DestinationSwiper,
   },
   data() {
@@ -40,7 +42,7 @@ export default {
 
   <DestinationSwiper :destinations="elements"></DestinationSwiper>
 
-  <p @click="emitDestinationChoice">Let's go</p>
+  <Button @click="emitDestinationChoice">Let's go</Button>
 </template>
 
 <style></style>

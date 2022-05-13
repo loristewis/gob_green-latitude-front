@@ -1,12 +1,14 @@
 <script>
 import { useStore } from './../../../store/index'
 
+import Button from './../../lib/Button.vue'
 import AccommodationCard from './AccommodationCard.vue'
 
 export default {
   name: 'AccommodationContainer',
   props: ['elements'],
   components: {
+    Button,
     AccommodationCard,
   },
   data() {
@@ -52,7 +54,7 @@ export default {
     :key="el.id"
   ></accommodation-card>
 
-  <p @click="validateAccommodation">Let's go</p>
+  <Button @click="validateAccommodation">Let's go</Button>
 </template>
 
 <style></style>

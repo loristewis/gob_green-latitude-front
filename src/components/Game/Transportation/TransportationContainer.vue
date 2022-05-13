@@ -4,12 +4,14 @@ import { useStore } from './../../../store/index'
 import { shuffleArray, getRandomInt } from './../../../helpers'
 import { transportTags } from './../../../constants/transportTags.js'
 
+import Button from './../../lib/Button.vue'
 import TransportationCard from './TransportationCard.vue'
 
 export default {
   name: 'TransportationContainer',
   props: ['elements'],
   components: {
+    Button,
     TransportationCard,
   },
   data() {
@@ -66,7 +68,7 @@ export default {
     :key="el.id"
   ></transportation-card>
 
-  <p @click="validateTransportation">Let's go</p>
+  <Button @click="validateTransportation">Let's go</Button>
 </template>
 
 <style></style>

@@ -1,12 +1,14 @@
 <script>
 import { useStore } from './../../../store/index'
 
+import Button from './../../lib/Button.vue'
 import ActivityCard from './ActivityCard.vue'
 
 export default {
   name: 'ActivitiesContainer',
   props: ['elements'],
   components: {
+    Button,
     ActivityCard,
   },
   setup() {
@@ -41,7 +43,7 @@ export default {
 
     <activity-card :activity="el.attributes"></activity-card>
   </div>
-  <p @click="validateActivities">Let's go</p>
+  <Button @click="validateActivities">Let's go</Button>
 </template>
 
 <style></style>
