@@ -4,14 +4,12 @@ import { useStore } from './../../../store/index'
 import { shuffleArray, getRandomInt } from './../../../helpers'
 import { transportTags } from './../../../constants/transportTags.js'
 
-import Button from './../../lib/Button.vue'
 import TransportationCard from './TransportationCard.vue'
 
 export default {
   name: 'TransportationContainer',
   props: ['elements'],
   components: {
-    Button,
     TransportationCard,
   },
   data() {
@@ -37,17 +35,11 @@ export default {
   },
   methods: {
     selectElement(element) {
-      console.log('select!')
-      console.log(element)
-      this.selected = element
+      this.store.selected = element.attributes
     },
     validateTransportation() {
-      if (!this.selected) {
-        console.log('stp choisis un transport')
-        return
-      }
-
-      this.store.trip.transportation = this.selected.attributes
+      this.store.trip.transportation = this.store.selected
+      this.store.selected = null
       console.log(this.store.trip.transportation)
       this.store.calculateScore()
       this.store.moveToNextStep()
@@ -59,16 +51,14 @@ export default {
 <template>
   <h3>Transport</h3>
 
-  <transportation-card
+  <TransportationCard
     v-for="(el, i) in elements"
+    @validate-transportation="validateTransportation"
     @click="selectElement(el)"
-    :tag="this.displayTags.includes(i) ? this.tags[i] : null"
-    :selected="el === this.selected"
-    :transportation="el.attributes"
     :key="el.id"
-  ></transportation-card>
-
-  <Button @click="validateTransportation">Let's go</Button>
+    :transport="el.attributes"
+    :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
+  />
 </template>
 
 <style></style>
