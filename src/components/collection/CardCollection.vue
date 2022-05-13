@@ -9,6 +9,15 @@
     <BaseCard :accent="false"> Test </BaseCard>
   </div>
 
+  <Title>TransportCard</Title>
+  <div class="background-container">
+    <TransportCard
+      title="Chill-en-Île"
+      tag-color="red"
+      description="Partez à la mer sans investir dans de la crème solaire !"
+    />
+  </div>
+
   <Title>DestinationCard</Title>
   <div class="background-container">
     <DestinationCard
@@ -32,11 +41,23 @@
 </template>
 
 <script>
-import { Title, BaseCard, DestinationCard, DestinationSwiper } from '../lib'
+import {
+  Title,
+  BaseCard,
+  DestinationCard,
+  DestinationSwiper,
+  TransportCard,
+} from '../lib'
 
 export default {
   name: 'CardCollection',
-  components: { DestinationCard, Title, BaseCard, DestinationSwiper },
+  components: {
+    DestinationCard,
+    Title,
+    BaseCard,
+    DestinationSwiper,
+    TransportCard,
+  },
 }
 </script>
 
