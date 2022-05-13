@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { getFromApi, getRandomInt } from '../helpers'
+import { getFromApi, getRandomInt, shuffleArray } from '../helpers'
 
 import { splashScreens } from './../constants/splashScreens.js'
 
@@ -200,7 +200,7 @@ export default {
       console.log(destinations.data.data)
 
       this.wishes = wishes.data.data
-      this.elements.destination = destinations.data.data
+      this.elements.destination = shuffleArray(destinations.data.data)
 
       this.store.trip.wish = this.wishes[getRandomInt(7)].attributes.title
     } catch (error) {
