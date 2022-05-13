@@ -38,9 +38,11 @@ export default {
   font-size: 20px;
   background-color: var(--color-rose);
   transform: rotate(-6.63deg);
+  cursor: pointer;
 
   &.disabled {
     opacity: 0.4;
+    cursor: default;
   }
 
   > div {
