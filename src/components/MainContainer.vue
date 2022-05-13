@@ -27,6 +27,7 @@
       <splash-screen :infos="getSplashScreen()"></splash-screen>
     </div>
     <div v-else>
+      <Thought v-if="store.activeThought">{{ store.activeThought }}</Thought>
       <component
         :is="store.currentComponent"
         :elements="this.elements[store.currentStep]"
@@ -46,6 +47,8 @@ import { useStore } from './../store/index'
 import ScoreComponent from './ScoreComponent.vue'
 import SplashScreen from './SplashScreen.vue'
 
+import Thought from './lib/Thought.vue'
+
 import AnimationContainer from './Game/AnimationContainer.vue'
 import PrescriptionContainer from './Game/PrescriptionContainer.vue'
 import DestinationContainer from './Game/Destination/DestinationContainer.vue'
@@ -59,6 +62,7 @@ export default {
   components: {
     ScoreComponent,
     SplashScreen,
+    Thought,
     AnimationContainer,
     PrescriptionContainer,
     DestinationContainer,
