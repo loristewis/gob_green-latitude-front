@@ -6,7 +6,12 @@ import DestinationSwiper from './DestinationSwiper.vue'
 
 export default {
   name: 'DestinationContainer',
-  props: ['elements'],
+  props: {
+    elements: {
+      type: Array,
+      required: true,
+    },
+  },
   components: {
     Button,
     DestinationSwiper,
