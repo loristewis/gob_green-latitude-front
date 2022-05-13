@@ -5,6 +5,7 @@ import Title from './Title.vue'
 
 import BaseCard from './cards/BaseCard.vue'
 import DestinationCard from './cards/DestinationCard.vue'
+import TransportCard from './cards/TransportCard.vue'
 
 import DestinationSwiper from './cards/DestinationSwiper.vue'
 
@@ -18,5 +19,6 @@ export {
   BaseCard,
   DestinationCard,
   DestinationSwiper,
+  TransportCard,
   Menu,
 }
