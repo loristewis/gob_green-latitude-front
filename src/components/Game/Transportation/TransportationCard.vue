@@ -1,6 +1,6 @@
 <template>
   <CardContainer
-    :class="transport === store.selected ? 'selected' : ''"
+    :class="isSelected(transport) ? 'selected' : ''"
     class="transport-card-container"
   >
     <div>
@@ -25,14 +25,14 @@
       </div>
 
       <transition>
-        <div v-if="transport === store.selected" class="transport-card-body">
+        <div v-if="isSelected(transport)" class="transport-card-body">
           <div
             @click="selectOption(i)"
             class="transport-card-option"
             v-for="(option, i) in sortOptions(transport.options.data)"
             :key="i"
           >
-            <p v-if="this.selectedOption === i">sélectionné!</p>
+            <p v-if="this.selectedOptionIndex === i">sélectionné!</p>
             <Tag>{{ option.attributes.tagline }}</Tag>
             <p>{{ option.attributes.title }}</p>
             <p>{{ option.attributes.description }}</p>
@@ -84,7 +84,7 @@ export default {
   },
   data() {
     return {
-      selectedOption: 1,
+      selectedOptionIndex: 1,
     }
   },
   setup() {
@@ -94,6 +94,13 @@ export default {
     }
   },
   methods: {
+    isSelected(transport) {
+      if (this.store.selected) {
+        return transport.title === this.store.selected.title
+      } else {
+        return false
+      }
+    },
     sortOptions(array) {
       const sorted = array.sort((a, b) => {
         return a.attributes.budget - b.attributes.budget
@@ -101,11 +108,18 @@ export default {
       return sorted
     },
     selectOption(index) {
-      this.selectedOption = index
+      this.selectedOptionIndex = index
     },
     validateOption() {
       const sortedOptions = this.sortOptions(this.transport.options.data)
-      this.store.selected = sortedOptions[this.selectedOption].attributes
+      const selectedOption = sortedOptions[this.selectedOptionIndex].attributes
+
+      let transportation = { ...this.store.selected }
+      transportation.budget += selectedOption.budget
+      transportation.wellness += selectedOption.wellness
+      transportation.pollution += selectedOption.budget
+      this.store.selected = transportation
+
       this.$emit('validate-transportation')
     },
   },
