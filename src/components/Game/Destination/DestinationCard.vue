@@ -1,19 +1,17 @@
 <template>
-  <div class="destination-card-container">
-    <CardContainer>
-      <img class="image" src="https://picsum.photos/200/250" alt="" />
+  <CardContainer class="destination-card-container">
+    <img class="image" src="https://picsum.photos/200/250" alt="" />
 
-      <div class="name-container">
-        <div class="name">
-          <span :class="titleColor">{{ title }}</span>
-        </div>
+    <div class="name-container">
+      <div class="name">
+        <span :class="titleColor">{{ title }}</span>
       </div>
+    </div>
 
-      <p>
-        {{ description }}
-      </p>
-    </CardContainer>
-  </div>
+    <p>
+      {{ description }}
+    </p>
+  </CardContainer>
 </template>
 
 <script>
@@ -21,9 +19,7 @@ import CardContainer from './../../lib/cards/sub-components/CardContainer.vue'
 
 export default {
   name: 'DestinationCard',
-  components: {
-    CardContainer,
-  },
+  components: { CardContainer },
   props: {
     title: {
       type: String,
@@ -39,6 +35,13 @@ export default {
     description: {
       type: String,
       required: true,
+    },
+    image: {
+      type: String,
+      default: 'https://picsum.photos/200/250',
+    },
+    sticker: {
+      type: String,
     },
   },
 }

@@ -1,3 +1,24 @@
+<template>
+  <div class="destination-swiper-container">
+    <Swiper
+      :modules="modules"
+      :slides-per-view="1"
+      :space-between="24"
+      :pagination="{ clickable: true }"
+      @swiper="onSwiper"
+      @slideChange="onSlideChange"
+    >
+      <SwiperSlide v-for="destination in destinations" :key="destination.id">
+        <DestinationCard
+          title-color="blue"
+          :title="destination.attributes.title"
+          :description="destination.attributes.description"
+        />
+      </SwiperSlide>
+    </Swiper>
+  </div>
+</template>
+
 <script>
 import { useStore } from './../../../store/index'
 
@@ -11,11 +32,16 @@ import DestinationCard from './DestinationCard.vue'
 
 export default {
   name: 'DestinationSwiper',
-  props: ['destinations'],
   components: {
     Swiper,
     SwiperSlide,
     DestinationCard,
+  },
+  props: {
+    destinations: {
+      type: Array,
+      required: true,
+    },
   },
   setup(props) {
     const store = useStore()
@@ -40,27 +66,6 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div class="destination-swiper-container">
-    <Swiper
-      :modules="modules"
-      :slides-per-view="1"
-      :space-between="24"
-      :pagination="{ clickable: true }"
-      @swiper="onSwiper"
-      @slideChange="onSlideChange"
-    >
-      <SwiperSlide v-for="destination in destinations" :key="destination.id">
-        <DestinationCard
-          title-color="blue"
-          :title="destination.attributes.title"
-          :description="destination.attributes.description"
-        />
-      </SwiperSlide>
-    </Swiper>
-  </div>
-</template>
 
 <style lang="scss">
 .destination-swiper-container {
