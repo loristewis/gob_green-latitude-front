@@ -1,13 +1,13 @@
 <script>
 import { useStore } from './../../../store/index'
 
-import DestinationCard from './DestinationCard.vue'
+import DestinationSwiper from './DestinationSwiper.vue'
 
 export default {
   name: 'DestinationContainer',
   props: ['elements'],
   components: {
-    DestinationCard,
+    DestinationSwiper,
   },
   data() {
     return {
@@ -21,18 +21,14 @@ export default {
     }
   },
   methods: {
-    selectElement(element) {
-      console.log('select!')
-      console.log(element)
-      this.selected = element
-    },
     emitDestinationChoice() {
-      if (!this.selected) {
+      if (!this.store.selected) {
         console.log('stp choisis une destination')
         return
       }
 
-      this.store.trip.destination = this.selected.attributes
+      this.store.trip.destination = this.store.selected
+      this.store.selected = null
       this.$emit('validate-destination')
     },
   },
@@ -42,13 +38,7 @@ export default {
 <template>
   <h3>Destination</h3>
 
-  <destination-card
-    v-for="el in elements"
-    @click="selectElement(el)"
-    :selected="el === this.selected"
-    :destination="el.attributes"
-    :key="el.id"
-  ></destination-card>
+  <DestinationSwiper :destinations="elements"></DestinationSwiper>
 
   <p @click="emitDestinationChoice">Let's go</p>
 </template>

@@ -1,0 +1,99 @@
+<script>
+import { useStore } from './../../../store/index'
+
+import { Pagination, A11y } from 'swiper'
+import { Swiper, SwiperSlide } from 'swiper/vue'
+
+import 'swiper/scss'
+import 'swiper/scss/pagination'
+
+import DestinationCard from './DestinationCard.vue'
+
+export default {
+  name: 'DestinationSwiper',
+  props: ['destinations'],
+  components: {
+    Swiper,
+    SwiperSlide,
+    DestinationCard,
+  },
+  setup(props) {
+    const store = useStore()
+    const onSwiper = (swiper) => {
+      console.log('swiper')
+      console.log(swiper)
+    }
+    const onSlideChange = (e) => {
+      console.log('slide change')
+      store.selected = props.destinations[e.realIndex].attributes
+      console.log('active: ', store.selected)
+    }
+    return {
+      store,
+      onSwiper,
+      onSlideChange,
+      modules: [Pagination, A11y],
+    }
+  },
+  updated() {
+    this.store.selected = this.destinations[0].attributes
+  },
+}
+</script>
+
+<template>
+  <div class="destination-swiper-container">
+    <Swiper
+      :modules="modules"
+      :slides-per-view="1"
+      :space-between="24"
+      :pagination="{ clickable: true }"
+      @swiper="onSwiper"
+      @slideChange="onSlideChange"
+    >
+      <SwiperSlide v-for="destination in destinations" :key="destination.id">
+        <DestinationCard
+          title-color="blue"
+          :title="destination.attributes.title"
+          :description="destination.attributes.description"
+        />
+      </SwiperSlide>
+    </Swiper>
+  </div>
+</template>
+
+<style lang="scss">
+.destination-swiper-container {
+  .swiper {
+    width: 272px;
+    padding-bottom: 48px;
+    overflow: visible;
+
+    .swiper-slide {
+      transition: transform 1s;
+      transform: scale(0.9);
+
+      &-prev {
+        transform: scale(0.9) translateX(24px);
+      }
+
+      &-next {
+        transform: scale(0.9) translateX(-24px);
+      }
+
+      &-active {
+        transform: scale(1);
+      }
+    }
+
+    .swiper-pagination-bullet {
+      transition: all 0.5s;
+
+      &-active {
+        width: var(--swiper-pagination-bullet-size-active);
+        height: var(--swiper-pagination-bullet-size-active);
+      }
+    }
+  }
+}
+</style>

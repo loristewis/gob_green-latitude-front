@@ -20,6 +20,7 @@ export const useStore = defineStore('main', {
       ],
       splash: false,
       progressionIndex: 0,
+      selected: null,
       score: {
         wellness: 2,
         budget: 10,
