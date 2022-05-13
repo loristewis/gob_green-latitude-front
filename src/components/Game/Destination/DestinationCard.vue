@@ -1,6 +1,13 @@
 <template>
   <CardContainer class="destination-card-container">
-    <img class="image" src="https://picsum.photos/200/250" alt="" />
+    <div class="image" :style="{ backgroundImage: `url(${image})` }" />
+
+    <div
+      :class="`sticker sticker-${category}`"
+      :style="{
+        backgroundImage: `url(/src/assets/destinations/${category}.png)`,
+      }"
+    />
 
     <div class="name-container">
       <div class="name">
@@ -16,6 +23,8 @@
 
 <script>
 import CardContainer from './../../lib/cards/sub-components/CardContainer.vue'
+import Bof from '../../../assets/destinations/bof.png'
+import Loin from '../../../assets/destinations/loin.png'
 
 export default {
   name: 'DestinationCard',
@@ -36,13 +45,20 @@ export default {
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
     image: {
       type: String,
-      default: 'https://picsum.photos/200/250',
+      required: true,
     },
-    sticker: {
-      type: String,
-    },
+  },
+  data() {
+    return {
+      Bof,
+      Loin,
+    }
   },
 }
 </script>
@@ -50,8 +66,41 @@ export default {
 <style lang="scss">
 .destination-card-container {
   .image {
+    //width: 100%;
     width: 100%;
+    height: 376px;
     border-radius: 24px 24px 0 0;
+    background: no-repeat center;
+    background-size: cover;
+  }
+
+  .sticker {
+    position: absolute;
+    background: no-repeat center;
+    background-size: contain;
+    top: 24px;
+    right: -16px;
+
+    &-loin {
+      //top: -8px;
+      //left: -8px;
+      width: 143px;
+      height: 72px;
+    }
+
+    &-bof {
+      //top: 96px;
+      //right: -16px;
+      width: 95px;
+      height: 95px;
+    }
+
+    &-cher {
+      //top: -8px;
+      //left: -8px;
+      width: 143px;
+      height: 72px;
+    }
   }
 
   .name-container {

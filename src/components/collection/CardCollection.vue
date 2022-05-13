@@ -870,7 +870,11 @@ export default {
               ],
             },
             image: {
-              data: null,
+              data: {
+                attributes: {
+                  url: 'https://res.cloudinary.com/dsrkrdtuz/image/upload/v1652450014/Rectangle_5_2f6b4b9db2.jpg',
+                },
+              },
             },
             transports: {
               data: [
@@ -1995,7 +1999,11 @@ export default {
               ],
             },
             image: {
-              data: null,
+              data: {
+                attributes: {
+                  url: 'https://res.cloudinary.com/dsrkrdtuz/image/upload/v1652450014/Rectangle_5_2f6b4b9db2.jpg',
+                },
+              },
             },
             transports: {
               data: [
@@ -3166,7 +3174,11 @@ export default {
               ],
             },
             image: {
-              data: null,
+              data: {
+                attributes: {
+                  url: 'https://res.cloudinary.com/dsrkrdtuz/image/upload/v1652450014/Rectangle_5_2f6b4b9db2.jpg',
+                },
+              },
             },
             transports: {
               data: [

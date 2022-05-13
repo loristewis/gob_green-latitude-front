@@ -13,6 +13,12 @@
           title-color="blue"
           :title="destination.attributes.title"
           :description="destination.attributes.description"
+          :category="destination.attributes.category"
+          :image="
+            (destination.attributes.image.data &&
+              destination.attributes.image.data.attributes.url) ||
+            'https://picsum.photos/200/200'
+          "
         />
       </SwiperSlide>
     </Swiper>
