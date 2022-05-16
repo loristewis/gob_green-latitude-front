@@ -9,9 +9,9 @@
     <BaseCard :accent="false"> Test </BaseCard>
   </div>
 
-  <Title>TransportCard</Title>
+  <Title>TransportationCard</Title>
   <div class="background-container">
-    <TransportCard
+    <TransportationCard
       title="Chill-en-Île"
       tag-color="red"
       description="Partez à la mer sans investir dans de la crème solaire !"
@@ -41,10 +41,11 @@
 </template>
 
 <script>
-import { Title, BaseCard, TransportCard } from '../lib'
+import { Title, BaseCard } from '../lib'
 
 import DestinationCard from '../Game/Destination/DestinationCard.vue'
 import DestinationSwiper from '../Game/Destination/DestinationSwiper.vue'
+import TransportationCard from '../Game/Transportation/TransportationCard.vue'
 
 export default {
   name: 'CardCollection',
@@ -53,7 +54,7 @@ export default {
     Title,
     BaseCard,
     DestinationSwiper,
-    TransportCard,
+    TransportationCard,
   },
   data() {
     return {
@@ -3502,7 +3503,7 @@ div.background-container {
   width: 350px;
   margin: 0 20px 20px 0;
   padding: 20px;
-  background-color: var(--color-beige-light);
+  background-color: var(--color-beige-cool);
   overflow: hidden;
 }
 </style>

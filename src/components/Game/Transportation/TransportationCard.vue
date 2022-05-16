@@ -66,6 +66,12 @@ export default {
     transport: {
       type: Object,
       required: true,
+      default: () => {
+        return {
+          title: 'Brian Air',
+          description: 'Description',
+        }
+      },
     },
     tagColor: {
       type: String,
@@ -128,6 +134,12 @@ export default {
 
 <style lang="scss">
 .transport-card-container {
+  margin: 0 24px;
+
+  + .transport-card-container {
+    margin-top: 16px;
+  }
+
   .transport-card-button {
     display: flex;
     align-items: center;
@@ -148,7 +160,7 @@ export default {
       height: 64px;
       width: 8px;
       border-radius: 16px 0 0 16px;
-      background-color: var(--color-beige-light);
+      background-color: var(--color-beige-cool);
     }
   }
 
