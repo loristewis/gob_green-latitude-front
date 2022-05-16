@@ -3,8 +3,6 @@
 
   <Title tag="h2">Titre niveau 2</Title>
   <Title tag="h3">Titre niveau 3</Title>
-  <Title tag="h4">Titre niveau 4</Title>
-  <Title tag="h5">Titre niveau 5</Title>
 
   <Title tag="h1">Paragraphe</Title>
   <p>
@@ -13,14 +11,19 @@
     Alias consectetur cum delectus dignissimos doloremque est officiis
     perspiciatis repellendus ut.
   </p>
+
+  <Title tag="h1">Checklist</Title>
+  <ChecklistElement>Priority boarding</ChecklistElement>
+  <ChecklistElement>Extra bagage</ChecklistElement>
+  <ChecklistElement>Siège XXL</ChecklistElement>
 </template>
 
 <script>
-import { Title } from '../lib/'
+import { Title, ChecklistElement } from '../lib/'
 
 export default {
   name: 'TextsCollection',
-  components: { Title },
+  components: { Title, ChecklistElement },
 }
 </script>
 
