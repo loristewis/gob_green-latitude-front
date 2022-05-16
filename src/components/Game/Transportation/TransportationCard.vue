@@ -140,6 +140,7 @@ export default {
     display: flex;
     align-items: center;
     overflow: hidden;
+    cursor: pointer;
 
     .image {
       width: 136px;
@@ -161,8 +162,12 @@ export default {
   }
 
   &.selected {
-    .transport-card-button .image {
-      border-radius: 24px 0 0 0;
+    .transport-card-button {
+      cursor: default;
+
+      .image {
+        border-radius: 24px 0 0 0;
+      }
     }
   }
 

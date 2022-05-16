@@ -49,6 +49,12 @@ export default {
 
 <style lang="scss">
 .transport-option-container {
+  cursor: pointer;
+
+  &.selected {
+    cursor: default;
+  }
+
   + .transport-option-container {
     margin-top: 24px;
   }
