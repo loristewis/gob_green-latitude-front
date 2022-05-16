@@ -25,7 +25,7 @@ export default {
   <video
     id="animation-container"
     @ended="store.moveToNextStep"
-    width="500"
+    width="300"
     controls
     muted
   >
