@@ -2,6 +2,7 @@
   <div class="gauge-container" :class="`from-${from}`">
     <div class="gauge">
       <div class="progress-base"></div>
+
       <div class="progress" :style="progressStyle"></div>
     </div>
 

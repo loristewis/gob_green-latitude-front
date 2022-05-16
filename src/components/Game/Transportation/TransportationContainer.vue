@@ -60,7 +60,6 @@ export default {
     :key="el.id"
     :transport="el.attributes"
     :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
+    tag-color="green"
   />
 </template>
-
-<style></style>

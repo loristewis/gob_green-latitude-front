@@ -133,8 +133,24 @@ export default {
               },
             },
           },
+          populate: {
+            options: {
+              fields: [
+                'title',
+                'description',
+                'tagline',
+                'budget',
+                'wellness',
+                'pollution',
+              ],
+              populate: '*',
+            },
+            events: '*',
+          },
         })
+
         transports.data.data.sort(() => 0.5 - Math.random())
+
         return transports.data.data.slice(0, limit)
       } catch (error) {
         this.error = error

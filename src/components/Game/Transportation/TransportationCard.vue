@@ -12,7 +12,7 @@
             {{ store.wording(transport.title) }}
           </Title>
 
-          <Tag color="blue" tag="h2">
+          <Tag v-if="sticker" tag="h2" :color="tagColor">
             {{ sticker }}
           </Tag>
 
@@ -74,7 +74,7 @@ export default {
       type: String,
       required: true,
       validator(value) {
-        return ['red', 'blue'].includes(value)
+        return ['red', 'green', 'purple', 'blue'].includes(value)
       },
     },
     image: {
@@ -134,11 +134,7 @@ export default {
 
 <style lang="scss">
 .transport-card-container {
-  margin: 0 24px;
-
-  + .transport-card-container {
-    margin-top: 16px;
-  }
+  margin: 0 24px 16px;
 
   .transport-card-button {
     display: flex;
