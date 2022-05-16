@@ -1,4 +1,5 @@
 import Button from './Button.vue'
+import RadioButton from './RadioButton.vue'
 import Tag from './Tag.vue'
 import Thought from './Thought.vue'
 import Title from './Title.vue'
@@ -11,6 +12,7 @@ import Menu from './menu/Menu.vue'
 
 export {
   Button,
+  RadioButton,
   Tag,
   Thought,
   Title,
