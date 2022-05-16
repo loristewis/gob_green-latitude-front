@@ -54,6 +54,9 @@ export default {
     const onSwiper = (swiper) => {
       console.log('swiper')
       console.log(swiper)
+      if (props.destinations.length > 0) {
+        store.selected = props.destinations[swiper.realIndex].attributes
+      }
     }
     const onSlideChange = (e) => {
       console.log('slide change')
