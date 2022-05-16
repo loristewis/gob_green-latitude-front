@@ -1,5 +1,13 @@
 <template>
-  <div class="radio-button" :class="selected ? 'selected' : ''"></div>
+  <div class="radio-button-container">
+    <div class="radio-container">
+      <div class="radio" :class="{ selected: selected }" />
+    </div>
+
+    <div class="content">
+      <slot />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -15,22 +23,39 @@ export default {
 </script>
 
 <style lang="scss">
-.radio-button {
-  height: 18px;
-  width: 18px;
-  border-radius: 18px;
-  border: 2px solid var(--color-blue-gray);
+.radio-button-container {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
 
-  &.selected {
-    &::before {
-      content: '';
-      display: block;
-      height: 10px;
-      width: 10px;
-      border-radius: 10px;
+  .radio-container,
+  .content {
+    height: 24px;
+  }
+
+  .option-radio {
+    height: 16px;
+    width: 16px;
+    padding: 2px;
+    border-radius: 100%;
+    border: 2px solid var(--color-blue-gray);
+    background-clip: content-box;
+
+    &.selected {
       background-color: var(--color-blue-gray);
-      top: 2px;
-      left: 2px;
+    }
+  }
+
+  .radio {
+    height: 16px;
+    width: 16px;
+    padding: 2px;
+    border-radius: 100%;
+    border: 2px solid var(--color-blue-gray);
+
+    &.selected {
+      background-clip: content-box;
+      background-color: var(--color-blue-gray);
     }
   }
 }

@@ -1,17 +1,17 @@
 <template>
-  <div class="transport-card-option" @click="$emit('select-option')">
+  <div
+    class="transport-option-container"
+    :class="{ selected: selected }"
+    @click="$emit('select-option')"
+  >
     <div>
       <Tag v-if="option.attributes.tagline" color="green" class="option-tag">
         {{ option.attributes.tagline }}
       </Tag>
 
-      <div class="option-name">
-        <div class="option-radio-container">
-          <div class="option-radio" :class="{ selected: selected }" />
-        </div>
-
+      <RadioButton class="option-name" :selected="selected">
         <Title tag="h3">{{ option.attributes.title }}</Title>
-      </div>
+      </RadioButton>
 
       <div class="option-description">
         <div v-if="option.attributes.perks.length">
@@ -29,11 +29,11 @@
 </template>
 
 <script>
-import { Title, Tag, ChecklistElement } from './../../lib'
+import { Title, Tag, ChecklistElement, RadioButton } from './../../lib'
 
 export default {
   name: 'TransportationOption',
-  components: { Title, Tag, ChecklistElement },
+  components: { RadioButton, Title, Tag, ChecklistElement },
   props: {
     option: {
       type: Object,
@@ -48,8 +48,8 @@ export default {
 </script>
 
 <style lang="scss">
-.transport-card-option {
-  + .transport-card-option {
+.transport-option-container {
+  + .transport-option-container {
     margin-top: 24px;
   }
 
@@ -58,30 +58,8 @@ export default {
   }
 
   .option-name {
-    display: flex;
-    align-items: center;
-    column-gap: 4px;
-
     .title-container {
       padding-bottom: 0;
-    }
-
-    .option-radio-container,
-    .title-container {
-      height: 24px;
-    }
-
-    .option-radio {
-      height: 16px;
-      width: 16px;
-      padding: 2px;
-      border-radius: 100%;
-      border: 2px solid var(--color-blue-gray);
-      background-clip: content-box;
-
-      &.selected {
-        background-color: var(--color-blue-gray);
-      }
     }
   }
 
