@@ -26,17 +26,13 @@
 
       <transition>
         <div v-if="isSelected(transport)" class="transport-card-body">
-          <div
-            @click="selectOption(i)"
-            class="transport-card-option"
+          <TransportationOption
+            @select-option="selectOption(i)"
             v-for="(option, i) in sortOptions(transport.options.data)"
+            :option="option"
+            :selected="this.selectedOptionIndex === i"
             :key="i"
-          >
-            <p v-if="this.selectedOptionIndex === i">sélectionné!</p>
-            <Tag>{{ option.attributes.tagline }}</Tag>
-            <p>{{ option.attributes.title }}</p>
-            <p>{{ option.attributes.description }}</p>
-          </div>
+          />
           <Button @click="validateOption" class="reservation-button"
             >On réserve !</Button
           >
@@ -49,6 +45,7 @@
 <script>
 import { useStore } from './../../../store/index'
 
+import TransportationOption from './TransportationOption.vue'
 import CardContainer from './../../lib/cards/sub-components/CardContainer.vue'
 import Title from './../../lib/Title.vue'
 import Tag from './../../lib/Tag.vue'
@@ -57,6 +54,7 @@ import Button from './../../lib/Button.vue'
 export default {
   name: 'TransportationCard',
   components: {
+    TransportationOption,
     CardContainer,
     Title,
     Tag,
@@ -90,7 +88,7 @@ export default {
   },
   data() {
     return {
-      selectedOptionIndex: 1,
+      selectedOptionIndex: 0,
     }
   },
   setup() {
@@ -98,6 +96,9 @@ export default {
     return {
       store,
     }
+  },
+  mounted() {
+    this.selectedOptionIndex = this.transport.options.data.length - 1
   },
   methods: {
     isSelected(transport) {
