@@ -41,6 +41,7 @@ export const useStore = defineStore('main', {
     currentComponent: (state) =>
       state.steps[state.progressionIndex].split('-')[0] + '-container',
     activitiesCount: (state) => state.trip.activities.length,
+    activeThought: (state) => (state.selected ? state.selected.thoughts : null),
   },
   actions: {
     incrementProgressionIndex() {
