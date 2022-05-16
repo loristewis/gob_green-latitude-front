@@ -145,7 +145,13 @@ export default {
               ],
               populate: '*',
             },
-            events: '*',
+            events: {
+              populate: {
+                choices: {
+                  populate: '*',
+                },
+              },
+            },
           },
         })
 
@@ -163,6 +169,15 @@ export default {
             destinations: {
               title: {
                 $eq: destination,
+              },
+            },
+          },
+          populate: {
+            events: {
+              populate: {
+                choices: {
+                  populate: '*',
+                },
               },
             },
           },
@@ -216,7 +231,17 @@ export default {
       const wishes = await getFromApi('/wishes', {})
       console.log(wishes.data.data)
 
-      const destinations = await getFromApi('/destinations', {})
+      const destinations = await getFromApi('/destinations', {
+        populate: {
+          events: {
+            populate: {
+              choices: {
+                populate: '*',
+              },
+            },
+          },
+        },
+      })
       console.log(destinations.data.data)
 
       this.wishes = wishes.data.data
