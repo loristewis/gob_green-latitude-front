@@ -13,14 +13,19 @@
     Alias consectetur cum delectus dignissimos doloremque est officiis
     perspiciatis repellendus ut.
   </p>
+
+  <Title tag="h1">Checklist</Title>
+  <ChecklistElement>Priority boarding</ChecklistElement>
+  <ChecklistElement>Extra bagage</ChecklistElement>
+  <ChecklistElement>Siège XXL</ChecklistElement>
 </template>
 
 <script>
-import { Title } from '../lib/'
+import { Title, ChecklistElement } from '../lib/'
 
 export default {
   name: 'TextsCollection',
-  components: { Title },
+  components: { Title, ChecklistElement },
 }
 </script>
 
