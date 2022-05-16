@@ -1,11 +1,11 @@
 <template>
-  <Gauge :progress="100" from="left" :image="Smiley" />
+  <Gauge :value="score.wellness" from="left" :image="Smiley" />
 
-  <Gauge :progress="40" from="right" :image="Fire" />
+  <Gauge :value="score.pollution" from="right" :image="Fire" />
 
   <HomeButton />
 
-  <Budget>13</Budget>
+  <Budget>{{ score.budget }}</Budget>
 </template>
 
 <script>
@@ -21,6 +21,19 @@ export default {
     HomeButton,
     Budget,
     Gauge,
+  },
+  props: {
+    score: {
+      type: Object,
+      default: () => {
+        return {
+          budget: 13,
+          wellness: 6,
+          pollution: 0,
+        }
+      },
+      required: true,
+    },
   },
   data() {
     return {

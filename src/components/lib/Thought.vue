@@ -20,5 +20,7 @@ export default {
 <style lang="scss">
 .thought-container {
   width: max-content;
+  max-width: 90%;
+  margin: 0 auto;
 }
 </style>

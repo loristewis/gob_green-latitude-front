@@ -3,8 +3,8 @@
   <Menu />
 
   <Title>Jauges</Title>
-  <Gauge :progress="100" from="left" :image="Smiley" />
-  <Gauge :progress="40" from="right" :image="Fire" />
+  <Gauge :value="10" from="left" :image="Smiley" />
+  <Gauge :value="4" from="right" :image="Fire" />
 
   <Title>Bouton vers l'accueil</Title>
   <HomeButton />

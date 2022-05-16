@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="main-container">
     <div>
       <input
         type="checkbox"
@@ -13,6 +13,7 @@
     <br />
 
     <score-component :score="store.score"> </score-component>
+    <Menu :score="store.score" />
     <br />
 
     <h3>Envie</h3>
@@ -48,6 +49,7 @@ import ScoreComponent from './ScoreComponent.vue'
 import SplashScreen from './SplashScreen.vue'
 
 import Thought from './lib/Thought.vue'
+import Menu from './lib/menu/Menu.vue'
 
 import AnimationContainer from './Game/AnimationContainer.vue'
 import PrescriptionContainer from './Game/PrescriptionContainer.vue'
@@ -63,6 +65,7 @@ export default {
     ScoreComponent,
     SplashScreen,
     Thought,
+    Menu,
     AnimationContainer,
     PrescriptionContainer,
     DestinationContainer,
@@ -211,6 +214,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+#main-container {
+  max-width: 375px;
+  overflow-x: hidden;
+  background-color: var(--color-beige-cool);
+}
+
 .grid {
   display: flex;
   flex-wrap: wrap;
