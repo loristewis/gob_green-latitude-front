@@ -12,7 +12,7 @@
             {{ store.wording(transport.title) }}
           </Title>
 
-          <Tag tag="h2">
+          <Tag color="blue" tag="h2">
             {{ sticker }}
           </Tag>
 
@@ -24,20 +24,19 @@
         <div class="punch" />
       </div>
 
-      <transition>
-        <div v-if="isSelected(transport)" class="transport-card-body">
-          <TransportationOption
-            @select-option="selectOption(i)"
-            v-for="(option, i) in sortOptions(transport.options.data)"
-            :option="option"
-            :selected="this.selectedOptionIndex === i"
-            :key="i"
-          />
-          <Button @click="validateOption" class="reservation-button"
-            >On réserve !</Button
-          >
-        </div>
-      </transition>
+      <div v-if="isSelected(transport)" class="transport-card-body">
+        <TransportationOption
+          @select-option="selectOption(i)"
+          v-for="(option, i) in sortOptions(transport.options.data)"
+          :option="option"
+          :selected="this.selectedOptionIndex === i"
+          :key="i"
+        />
+
+        <Button @click="validateOption" class="reservation-button">
+          On réserve !
+        </Button>
+      </div>
     </div>
   </CardContainer>
 </template>
