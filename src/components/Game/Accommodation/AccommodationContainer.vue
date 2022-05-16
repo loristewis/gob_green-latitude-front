@@ -35,7 +35,10 @@ export default {
       }
 
       this.store.trip.accommodation = this.selected.attributes
+      this.selected = null
+
       console.log(this.store.trip.accommodation)
+      this.store.collectPotentialIncidents(this.store.trip.accommodation)
       this.store.calculateScore()
       this.store.moveToNextStep()
     },

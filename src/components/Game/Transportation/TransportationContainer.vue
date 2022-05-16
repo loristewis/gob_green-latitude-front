@@ -40,7 +40,9 @@ export default {
     validateTransportation() {
       this.store.trip.transportation = this.store.selected
       this.store.selected = null
+
       console.log(this.store.trip.transportation)
+      this.store.collectPotentialIncidents(this.store.trip.transportation)
       this.store.calculateScore()
       this.store.moveToNextStep()
     },

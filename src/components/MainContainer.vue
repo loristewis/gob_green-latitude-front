@@ -99,6 +99,7 @@ export default {
     },
     async validateDestination() {
       if (this.store.trip.destination) {
+        this.store.collectPotentialIncidents(this.store.trip.destination)
         this.getDestinationOptions(this.store.trip.destination).then(
           this.store.moveToNextStep
         )

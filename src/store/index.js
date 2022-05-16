@@ -19,7 +19,7 @@ export const useStore = defineStore('main', {
         'postcard',
       ],
       splash: false,
-      progressionIndex: 0,
+      progressionIndex: 2,
       selected: null,
       score: {
         wellness: 2,
@@ -54,6 +54,16 @@ export const useStore = defineStore('main', {
     moveToNextStep() {
       this.incrementProgressionIndex()
       this.displaySplashScreen()
+    },
+    collectPotentialIncidents(element) {
+      const incidents = element.events.data
+      for (const incident of incidents) {
+        if (!this.trip.incidents.includes(incident)) {
+          this.trip.incidents.push(incident)
+          console.log('nouvelle péripétie!')
+          console.log(this.trip.incidents)
+        }
+      }
     },
     calculateScore() {
       this.score.wellness = 2

@@ -1,5 +1,6 @@
 <script>
 import { useStore } from './../../../store/index'
+import { getRandomFromArray } from './../../../helpers'
 
 export default {
   name: 'IncidentsContainer',
@@ -9,6 +10,10 @@ export default {
     return {
       store,
     }
+  },
+  mounted() {
+    console.log(this.store.trip.incidents)
+    console.log(getRandomFromArray(this.store.trip.incidents))
   },
 }
 </script>
