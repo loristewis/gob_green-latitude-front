@@ -5,9 +5,8 @@
   <Button :is-disabled="true">On réserve !</Button>
 
   <Title>Radio</Title>
-  <RadioButton :selected="false" />
-  <RadioButton :selected="true" />
-
+  <RadioButton>Texte</RadioButton>
+  <RadioButton :selected="true">Texte</RadioButton>
 </template>
 
 <script>
