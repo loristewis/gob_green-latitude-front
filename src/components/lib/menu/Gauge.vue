@@ -17,7 +17,7 @@ export default {
       type: String,
       required: true,
     },
-    progress: {
+    value: {
       type: Number,
       required: true,
     },
@@ -42,7 +42,8 @@ export default {
     },
     progressStyle() {
       return {
-        width: `${(this.progress + 50) / 100}%`,
+        // width: `${(this.value + 50) / 100}%`,
+        width: `${this.value * 10}%`,
       }
     },
   },
