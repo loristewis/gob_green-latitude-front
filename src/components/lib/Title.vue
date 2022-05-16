@@ -46,4 +46,18 @@ export default {
     color: var(--color-text-dark-1);
   }
 }
+
+h1.title-container {
+  font-size: 28px;
+}
+
+h2.title-container {
+  font-size: 22px;
+}
+
+h3.title-container {
+  font-family: var(--font-text);
+  font-size: 16px;
+  font-weight: bold;
+}
 </style>
