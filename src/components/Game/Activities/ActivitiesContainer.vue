@@ -42,7 +42,7 @@ export default {
 
     <activity-card :activity="el.attributes"></activity-card>
   </div>
-  <Button @click="validateActivities">Let's go</Button>
+  <Button @click="validateActivities">C'est décidé !</Button>
 </template>
 
 <style></style>

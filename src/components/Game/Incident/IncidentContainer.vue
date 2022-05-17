@@ -56,7 +56,7 @@ export default {
   <div v-else>
     <Title tag="h2">{{ incident.outcome.title }}</Title>
     <p>{{ incident.outcome.description }}</p>
-    <Button @click="store.moveToNextStep">Continuer</Button>
+    <Button @click="store.finishStep">Continuer</Button>
   </div>
 </template>
 

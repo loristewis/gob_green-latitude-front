@@ -47,7 +47,7 @@ export default {
 
   <DestinationSwiper :destinations="elements"></DestinationSwiper>
 
-  <Button @click="emitDestinationChoice">Let's go</Button>
+  <Button @click="emitDestinationChoice">Allons-y !</Button>
 </template>
 
 <style></style>
