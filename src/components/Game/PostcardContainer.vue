@@ -1,3 +1,7 @@
-<template>
-    Postcard!
-</template>
+<template>Postcard!</template>
+
+<script>
+export default {
+  name: 'PostcardContainer',
+}
+</script>
