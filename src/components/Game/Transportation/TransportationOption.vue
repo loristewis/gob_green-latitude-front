@@ -11,6 +11,7 @@
 
       <RadioButton class="option-name" :selected="selected">
         <Title tag="h3">{{ option.attributes.title }}</Title>
+        <Price :value="budget" />
       </RadioButton>
 
       <div class="option-description">
@@ -32,14 +33,18 @@
 </template>
 
 <script>
-import { Title, Tag, ChecklistElement, RadioButton } from './../../lib'
+import { Title, Tag, ChecklistElement, Price, RadioButton } from './../../lib'
 
 export default {
   name: 'TransportationOption',
-  components: { RadioButton, Title, Tag, ChecklistElement },
+  components: { Title, Tag, ChecklistElement, Price, RadioButton },
   props: {
     option: {
       type: Object,
+      required: true,
+    },
+    budget: {
+      type: Number,
       required: true,
     },
     selected: {
@@ -74,6 +79,10 @@ export default {
 
   .option-description {
     padding-left: 20px;
+  }
+
+  .title-container + .price-indicator {
+    margin-left: 8px;
   }
 }
 </style>

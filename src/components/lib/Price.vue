@@ -14,7 +14,7 @@ export default {
   props: {
     value: {
       type: Number,
-      default: 2,
+      required: true,
     },
   },
   data() {
@@ -33,6 +33,7 @@ export default {
     transform: rotate(12deg);
     height: 26px;
     width: 26px;
+    margin-top: -8px;
 
     & + .coin {
       margin-left: -12px;

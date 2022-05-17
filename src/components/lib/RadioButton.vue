@@ -33,7 +33,11 @@ export default {
     height: 24px;
   }
 
-  .option-radio {
+  .content {
+    display: flex;
+  }
+
+.option-radio {
     height: 16px;
     width: 16px;
     padding: 2px;

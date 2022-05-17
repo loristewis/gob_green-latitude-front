@@ -29,6 +29,7 @@
           @select-option="selectOption(i)"
           v-for="(option, i) in sortOptions(transport.options.data)"
           :option="option"
+          :budget="transport.budget + option.attributes.budget"
           :selected="this.selectedOptionIndex === i"
           :key="i"
         />
