@@ -20,8 +20,7 @@ export default {
   methods: {
     validateActivities() {
       if (this.store.activitiesCount === 3) {
-        this.store.calculateScore()
-        this.store.moveToNextStep()
+        this.store.finishStep()
       } else {
         console.log('stp choisis trois activités')
       }

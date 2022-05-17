@@ -39,8 +39,7 @@ export default {
 
       console.log(this.store.trip.accommodation)
       this.store.collectPotentialIncidents(this.store.trip.accommodation)
-      this.store.calculateScore()
-      this.store.moveToNextStep()
+      this.store.finishStep()
     },
   },
 }

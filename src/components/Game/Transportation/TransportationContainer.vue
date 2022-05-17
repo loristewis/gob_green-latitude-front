@@ -43,8 +43,7 @@ export default {
 
       console.log(this.store.trip.transportation)
       this.store.collectPotentialIncidents(this.store.trip.transportation)
-      this.store.calculateScore()
-      this.store.moveToNextStep()
+      this.store.finishStep()
     },
   },
 }

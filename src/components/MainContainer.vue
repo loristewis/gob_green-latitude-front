@@ -56,7 +56,7 @@ import PrescriptionContainer from './Game/PrescriptionContainer.vue'
 import DestinationContainer from './Game/Destination/DestinationContainer.vue'
 import TransportationContainer from './Game/Transportation/TransportationContainer.vue'
 import AccommodationContainer from './Game/Accommodation/AccommodationContainer.vue'
-import IncidentsContainer from './Game/Incidents/IncidentsContainer.vue'
+import IncidentContainer from './Game/Incident/IncidentContainer.vue'
 import ActivitiesContainer from './Game/Activities/ActivitiesContainer.vue'
 
 export default {
@@ -71,7 +71,7 @@ export default {
     DestinationContainer,
     TransportationContainer,
     AccommodationContainer,
-    IncidentsContainer,
+    IncidentContainer,
     ActivitiesContainer,
   },
   setup() {

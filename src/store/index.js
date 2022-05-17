@@ -13,25 +13,29 @@ export const useStore = defineStore('main', {
         'transportation',
         'accommodation',
         'animation-travel',
-        'incidents',
+        'incident',
         'activities',
         'animation-end',
         'postcard',
       ],
       splash: false,
-      progressionIndex: 2,
+      progressionIndex: 0,
       selected: null,
       score: {
         wellness: 2,
         budget: 10,
         pollution: 0,
       },
+      incidents: [],
       trip: {
         wish: null,
         destination: null,
         transportation: null,
         accommodation: null,
-        incidents: [],
+        incident: {
+          event: null,
+          outcome: null,
+        },
         activities: [],
       },
     }
@@ -55,13 +59,17 @@ export const useStore = defineStore('main', {
       this.incrementProgressionIndex()
       this.displaySplashScreen()
     },
+    finishStep() {
+      this.calculateScore()
+      setTimeout(() => this.moveToNextStep(), 1000)
+    },
     collectPotentialIncidents(element) {
       const incidents = element.events.data
       for (const incident of incidents) {
-        if (!this.trip.incidents.includes(incident)) {
-          this.trip.incidents.push(incident)
+        if (!this.incidents.includes(incident)) {
+          this.incidents.push(incident)
           console.log('nouvelle péripétie!')
-          console.log(this.trip.incidents)
+          console.log(this.incidents)
         }
       }
     },
@@ -76,9 +84,15 @@ export const useStore = defineStore('main', {
       if (this.trip.accommodation) {
         this.calculateAccomodation()
       }
+      if (this.trip.incident.outcome) {
+        console.log('on ajoute la péripétie au score!')
+        this.calculateIncident()
+      }
       if (this.activitiesCount === 3) {
         this.calculateActivities()
       }
+      console.log('nouveau score!')
+      console.log(this.score)
     },
     calculateTransportation() {
       this.score.wellness += this.trip.transportation.wellness
@@ -95,6 +109,11 @@ export const useStore = defineStore('main', {
         this.trip.destination.category === 'cher'
           ? this.trip.accommodation.budget * 2
           : this.trip.accommodation.budget
+    },
+    calculateIncident() {
+      this.score.wellness += this.trip.incident.outcome.wellness
+      this.score.pollution += this.trip.incident.outcome.pollution
+      this.score.budget -= this.trip.incident.outcome.budget
     },
     calculateActivities() {
       for (const activity of this.trip.activities) {
