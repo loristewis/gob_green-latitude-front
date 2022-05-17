@@ -6,6 +6,7 @@ import ActivitiesContainer from './Activities/ActivitiesContainer.vue'
 
 import AnimationContainer from './AnimationContainer.vue'
 import PrescriptionContainer from './PrescriptionContainer.vue'
+import DefeatContainer from './DefeatContainer.vue'
 
 export {
   DestinationContainer,
@@ -15,4 +16,5 @@ export {
   ActivitiesContainer,
   AnimationContainer,
   PrescriptionContainer,
+  DefeatContainer
 }

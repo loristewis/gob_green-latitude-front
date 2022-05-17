@@ -12,6 +12,10 @@
     </div>
     <br />
 
+    <div v-if="store.defeat">
+      <DefeatContainer :infos="getDefeatInfos()" />
+    </div>
+
     <div v-if="store.splash && getSplashScreen()">
       <SplashScreen :infos="getSplashScreen()" />
     </div>
@@ -41,7 +45,7 @@
 <script>
 import { getFromApi, getRandomInt, shuffleArray } from '../helpers'
 
-import { splashScreens } from '../constants'
+import { splashScreens, defeatPopup } from '../constants'
 
 import { useStore } from './../store'
 
@@ -58,6 +62,7 @@ import {
   AccommodationContainer,
   IncidentContainer,
   ActivitiesContainer,
+  DefeatContainer,
 } from './Game'
 
 export default {
@@ -74,6 +79,7 @@ export default {
     AccommodationContainer,
     IncidentContainer,
     ActivitiesContainer,
+    DefeatContainer,
   },
   setup() {
     const store = useStore()
@@ -97,6 +103,9 @@ export default {
   methods: {
     getSplashScreen() {
       return splashScreens[this.store.currentStep]
+    },
+    getDefeatInfos() {
+      return defeatPopup[this.store.defeat]
     },
     async validateDestination() {
       if (this.store.trip.destination) {

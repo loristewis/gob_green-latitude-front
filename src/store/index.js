@@ -27,6 +27,7 @@ export const useStore = defineStore('main', {
         pollution: scoreConstants.pollution.initial,
       },
       incidents: [],
+      defeat: null,
       trip: {
         wish: null,
         destination: null,
@@ -55,13 +56,18 @@ export const useStore = defineStore('main', {
       this.splash = true
       setTimeout(() => (this.splash = false), 1000)
     },
+    moveToStep(step) {
+      this.progressionIndex = this.steps.indexOf(step)
+    },
     moveToNextStep() {
       this.incrementProgressionIndex()
       this.displaySplashScreen()
     },
     finishStep() {
       this.calculateScore()
-      setTimeout(() => this.moveToNextStep(), 1000)
+      if (!this.defeat) {
+        setTimeout(() => this.moveToNextStep(), 1000)
+      }
     },
     collectPotentialIncidents(element) {
       const incidents = element.events.data
@@ -71,6 +77,40 @@ export const useStore = defineStore('main', {
           console.log('nouvelle péripétie!')
           console.log(this.incidents)
         }
+      }
+    },
+    checkDefeat() {
+      let defeats = []
+
+      if (this.score.wellness <= scoreConstants.wellness.limit) {
+        defeats.push({
+          type: 'wellness',
+          score: Math.abs(scoreConstants.wellness.limit - this.score.wellness),
+        })
+      }
+
+      if (this.score.budget <= scoreConstants.budget.limit) {
+        defeats.push({
+          type: 'budget',
+          score: Math.abs(scoreConstants.budget.limit - this.score.budget),
+        })
+      }
+
+      if (this.score.pollution >= scoreConstants.pollution.limit) {
+        defeats.push({
+          type: 'pollution',
+          score: Math.abs(
+            scoreConstants.pollution.limit - this.score.pollution
+          ),
+        })
+      }
+
+      if (defeats.length > 1) {
+        defeats.sort((a, b) => {
+          return b.score - a.score
+        })
+        console.log(defeats)
+        this.defeat = defeats[0].type
       }
     },
     calculateScore() {
@@ -85,14 +125,13 @@ export const useStore = defineStore('main', {
         this.calculateAccomodation()
       }
       if (this.trip.incident.outcome) {
-        console.log('on ajoute la péripétie au score!')
         this.calculateIncident()
       }
       if (this.activitiesCount === 3) {
         this.calculateActivities()
       }
-      console.log('nouveau score!')
-      console.log(this.score)
+
+      this.checkDefeat()
     },
     calculateTransportation() {
       this.score.wellness += this.trip.transportation.wellness
