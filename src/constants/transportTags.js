@@ -3,9 +3,8 @@ export const transportTags = [
   'Inoubliable',
   'Mémorable',
   'Pas le pire !',
-  'Un peu moins de CO₂ !',
-  'Préféré des familles',
-  'Franchement pas mal',
+  'Moins de CO₂ !',
+  'Pas mal',
   'À ne pas rater !',
-  "Moins polluant que d'autres",
+  "Moins polluant !",
 ]

@@ -4,17 +4,17 @@
     class="transport-card-container"
   >
     <div>
-      <div class="transport-card-button">
+      <Sticker class="transport-card-sticker" v-if="sticker">
+        {{ sticker }}
+      </Sticker>
+
+      <div class="transport-card-head">
         <img class="image" :src="image" alt="" />
 
         <div class="details">
           <Title tag="h2">
             {{ store.wording(transport.title) }}
           </Title>
-
-          <Tag v-if="sticker" tag="h2" :color="tagColor">
-            {{ sticker }}
-          </Tag>
 
           <p>
             {{ transport.description }}
@@ -46,10 +46,7 @@
 import { useStore } from './../../../store/index'
 
 import TransportationOption from './TransportationOption.vue'
-import CardContainer from './../../lib/cards/sub-components/CardContainer.vue'
-import Title from './../../lib/Title.vue'
-import Tag from './../../lib/Tag.vue'
-import Button from './../../lib/Button.vue'
+import { CardContainer, Title, Tag, Sticker, Button } from './../../lib'
 
 export default {
   name: 'TransportationCard',
@@ -58,6 +55,7 @@ export default {
     CardContainer,
     Title,
     Tag,
+    Sticker,
     Button,
   },
   props: {
@@ -137,7 +135,7 @@ export default {
 .transport-card-container {
   margin: 0 24px 16px;
 
-  .transport-card-button {
+  .transport-card-head {
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -162,8 +160,17 @@ export default {
     }
   }
 
+  .transport-card-sticker {
+    position: absolute;
+    top: 16px;
+    left: -12px;
+    max-width: 140px;
+    z-index: 1;
+    transform: rotate(-6deg);
+  }
+
   &.selected {
-    .transport-card-button {
+    .transport-card-head {
       cursor: default;
 
       .image {

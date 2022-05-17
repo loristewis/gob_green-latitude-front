@@ -25,7 +25,6 @@ export default {
 
 <style lang="scss">
 .text-sticker {
-  transform: rotate(-3deg);
   text-transform: uppercase;
   font-family: var(--font-tag);
 
