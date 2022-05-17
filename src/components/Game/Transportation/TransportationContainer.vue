@@ -2,7 +2,7 @@
 import { useStore } from './../../../store/index'
 
 import { shuffleArray, getRandomInt } from './../../../helpers'
-import { transportTags } from './../../../constants/transportTags.js'
+import { transportTags } from '../../../constants'
 
 import TransportationCard from './TransportationCard.vue'
 

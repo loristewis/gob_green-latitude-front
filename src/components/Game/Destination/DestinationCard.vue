@@ -27,7 +27,7 @@ import Bof from '../../../assets/destinations/bof.png'
 import Loin from '../../../assets/destinations/loin.png'
 
 import { getRandomFromArray } from './../../../helpers'
-import { colorCombos } from './../../../constants/colorCombos'
+import { colorCombos } from '../../../constants'
 
 export default {
   name: 'DestinationCard',

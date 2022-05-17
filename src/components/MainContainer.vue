@@ -41,7 +41,7 @@
 <script>
 import { getFromApi, getRandomInt, shuffleArray } from '../helpers'
 
-import { splashScreens } from './../constants/splashScreens.js'
+import { splashScreens } from '../constants'
 
 import { useStore } from './../store/index'
 

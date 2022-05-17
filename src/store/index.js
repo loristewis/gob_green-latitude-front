@@ -1,8 +1,7 @@
 import { defineStore } from 'pinia'
 
 import { getRandomScore, getRandomFromArray } from '../helpers'
-import { scoreConstants } from './../constants/score.js'
-import { names } from './../constants/names.js'
+import { scoreConstants, names } from './../constants'
 
 export const useStore = defineStore('main', {
   state: () => {

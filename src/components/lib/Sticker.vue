@@ -8,7 +8,7 @@
 
 <script>
 import { getRandomFromArray } from '../../helpers'
-import { colorCombos } from './../../constants/colorCombos'
+import { colorCombos } from '../../constants'
 
 export default {
   name: 'Sticker',
