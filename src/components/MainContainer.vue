@@ -267,9 +267,10 @@ export default {
 
 <style lang="scss" scoped>
 #main-container {
+  margin: auto;
   max-width: 375px;
   overflow-x: hidden;
-  background-color: var(--color-beige-cool);
+  background-color: var(--color-background);
 }
 
 .grid {
