@@ -122,7 +122,7 @@ export default {
       let transportation = { ...this.store.selected }
       transportation.budget += selectedOption.budget
       transportation.wellness += selectedOption.wellness
-      transportation.pollution += selectedOption.budget
+      transportation.pollution += selectedOption.pollution
       this.store.selected = transportation
 
       this.$emit('validate-transportation')
