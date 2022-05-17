@@ -82,6 +82,7 @@ export default {
     .progress {
       height: 16px;
       background-color: var(--color-green-light);
+      transition: width 0.6s;
     }
   }
 
