@@ -183,6 +183,7 @@ export default {
             },
           },
           populate: {
+            image: '*',
             events: {
               populate: {
                 choices: {
@@ -243,6 +244,7 @@ export default {
 
       const destinations = await getFromApi('/destinations', {
         populate: {
+          image: '*',
           events: {
             populate: {
               choices: {

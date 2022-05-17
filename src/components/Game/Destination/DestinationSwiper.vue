@@ -13,12 +13,7 @@
           :title="destination.attributes.title"
           :description="destination.attributes.description"
           :category="destination.attributes.category"
-          :image="
-            (destination.attributes.image &&
-              destination.attributes.image.data &&
-              destination.attributes.image.data.attributes.url) ||
-            'https://picsum.photos/200/200'
-          "
+          :image="getImage(destination)"
         />
       </SwiperSlide>
     </Swiper>
@@ -36,6 +31,8 @@ import 'swiper/scss/pagination'
 
 import DestinationCard from './DestinationCard.vue'
 
+import { getImage } from '../../../helpers'
+
 export default {
   name: 'DestinationSwiper',
   components: {
@@ -48,6 +45,11 @@ export default {
       type: Array,
       required: true,
     },
+  },
+  data() {
+    return {
+      getImage,
+    }
   },
   setup(props) {
     const store = useStore()
