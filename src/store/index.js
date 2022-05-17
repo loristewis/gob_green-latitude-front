@@ -113,6 +113,9 @@ export const useStore = defineStore('main', {
         this.defeat = defeats[0].type
       }
     },
+    cleanDefeat() {
+      this.defeat = null
+    },
     calculateScore() {
       this.score.wellness = scoreConstants.wellness.initial
       this.score.budget = scoreConstants.budget.initial
