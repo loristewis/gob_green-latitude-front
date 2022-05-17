@@ -24,8 +24,6 @@ export default {
   },
   methods: {
     selectElement(element) {
-      console.log('select!')
-      console.log(element)
       this.selected = element
     },
     validateAccommodation() {
@@ -46,8 +44,6 @@ export default {
 </script>
 
 <template>
-  <h3>Hébergement</h3>
-
   <accommodation-card
     v-for="el in elements"
     @click="selectElement(el)"
@@ -56,7 +52,7 @@ export default {
     :key="el.id"
   ></accommodation-card>
 
-  <Button @click="validateAccommodation">Let's go</Button>
+  <Button main @click="validateAccommodation">Let's go</Button>
 </template>
 
 <style></style>

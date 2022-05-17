@@ -6,7 +6,7 @@
       :style="{ height: (value > 0 ? 28 + 4 * value : 0) + 'px' }"
       class="coins-container"
     >
-      <div class="coin" v-for="index in value" :key="index">
+      <div class="coin" v-for="index in loopValue" :key="index">
         <img :src="Coin" />
       </div>
     </div>
@@ -26,6 +26,7 @@ export default {
   },
   data() {
     return {
+      loopValue: Math.max(this.value, 0),
       Coin,
     }
   },

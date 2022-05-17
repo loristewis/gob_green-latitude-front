@@ -1,8 +1,7 @@
 <template>
-  <div class="button-container" :class="{ disabled: isDisabled }">
+  <div class="button-container" :class="{ disabled: isDisabled, 'bottom-right': main }">
     <div>
       <p><slot /></p>
-
       <ChevronRightIcon class="hero-icon" />
     </div>
   </div>
@@ -18,6 +17,10 @@ export default {
   },
   props: {
     isDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    main: {
       type: Boolean,
       default: false,
     },
@@ -39,6 +42,13 @@ export default {
   background-color: var(--color-rose);
   transform: rotate(-6.63deg);
   cursor: pointer;
+
+  &.bottom-right {
+    position: absolute;
+    bottom: 24px;
+    right: -16px;
+    margin: 0;
+  }
 
   &.disabled {
     opacity: 0.4;

@@ -80,6 +80,7 @@ export default {
   &.from-left {
     .gauge {
       left: 26px;
+      padding-left: 0;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
     }
@@ -94,6 +95,7 @@ export default {
 
     .gauge {
       right: 26px;
+      padding-right: 0;
       justify-content: right;
       flex-direction: row-reverse;
       border-top-right-radius: 0;

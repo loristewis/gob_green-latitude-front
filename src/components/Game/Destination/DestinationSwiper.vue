@@ -52,8 +52,6 @@ export default {
   setup(props) {
     const store = useStore()
     const onSwiper = (swiper) => {
-      console.log('swiper')
-      console.log(swiper)
       if (props.destinations.length > 0) {
         store.selected = props.destinations[swiper.realIndex].attributes
       }

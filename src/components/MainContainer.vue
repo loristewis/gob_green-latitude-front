@@ -1,6 +1,6 @@
 <template>
   <div id="main-container">
-    <div>
+    <!-- <div>
       <input
         type="checkbox"
         name="activities"
@@ -10,28 +10,17 @@
       />
       <label for="diviser"> Diviser les activités par deux</label>
     </div>
-    <br />
-
-    <div v-if="store.defeat">
-      <DefeatContainer :infos="getDefeatInfos()" />
-    </div>
+    <br /> -->
 
     <div v-if="store.splash && getSplashScreen()">
       <SplashScreen :infos="getSplashScreen()" />
     </div>
 
-    <div v-else>
-      <score-component :score="store.score"> </score-component>
+    <div v-else id="game-container">
+      <div v-if="store.defeat != null">
+        <DefeatContainer :infos="getDefeatInfos()" />
+      </div>
       <Menu :score="store.score" />
-      <br />
-
-      <h3>Envie</h3>
-      <p>{{ store.trip.wish }}</p>
-      <br />
-
-      <h3>Étape</h3>
-      <p>{{ store.currentStep }}</p>
-      <br />
       <Thought v-if="store.activeThought">{{ store.activeThought }}</Thought>
       <component
         :is="store.currentComponent"
@@ -49,7 +38,6 @@ import { splashScreens, defeatPopup } from '../constants'
 
 import { useStore } from './../store'
 
-import ScoreComponent from './ScoreComponent.vue'
 import SplashScreen from './SplashScreen.vue'
 
 import { Thought, Menu } from './lib'
@@ -63,12 +51,12 @@ import {
   IncidentContainer,
   ActivitiesContainer,
   DefeatContainer,
+  PostcardContainer
 } from './Game'
 
 export default {
   name: 'MainContainer',
   components: {
-    ScoreComponent,
     SplashScreen,
     Thought,
     Menu,
@@ -80,6 +68,7 @@ export default {
     IncidentContainer,
     ActivitiesContainer,
     DefeatContainer,
+    PostcardContainer
   },
   setup() {
     const store = useStore()
@@ -269,8 +258,14 @@ export default {
 #main-container {
   margin: auto;
   max-width: 375px;
+  min-height: 800px;
   overflow-x: hidden;
   background-color: var(--color-background);
+  display: flex;
+
+  > div {
+    width: 100%;
+  }
 }
 
 .grid {

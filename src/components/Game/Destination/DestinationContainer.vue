@@ -43,11 +43,8 @@ export default {
 </script>
 
 <template>
-  <h3>Destination</h3>
-
   <DestinationSwiper :destinations="elements"></DestinationSwiper>
-
-  <Button @click="emitDestinationChoice">Allons-y !</Button>
+  <Button main @click="emitDestinationChoice">Allons-y !</Button>
 </template>
 
 <style></style>

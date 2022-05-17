@@ -50,8 +50,6 @@ export default {
 </script>
 
 <template>
-  <h3>Transport</h3>
-
   <TransportationCard
     v-for="(el, i) in elements"
     @validate-transportation="validateTransportation"

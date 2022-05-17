@@ -30,7 +30,6 @@ export default {
 </script>
 
 <template>
-  <h3>Activités</h3>
   <div v-for="el in elements" :key="el.attributes.id">
     <input
       type="checkbox"
@@ -42,7 +41,7 @@ export default {
 
     <activity-card :activity="el.attributes"></activity-card>
   </div>
-  <Button @click="validateActivities">C'est décidé !</Button>
+  <Button main @click="validateActivities">C'est décidé !</Button>
 </template>
 
 <style></style>

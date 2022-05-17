@@ -30,7 +30,6 @@ export default {
       const outcome = dice > choice.risk ? goodOutcome : badOutcome
       this.store.trip.incident.outcome = outcome
 
-      console.log(outcome)
       return outcome
     },
   },
@@ -38,8 +37,6 @@ export default {
 </script>
 
 <template>
-  <h3>Incident</h3>
-
   <div v-if="!incident.outcome">
     <div>
       <Title tag="h2">{{ incident.event.title }}</Title>
@@ -56,7 +53,7 @@ export default {
   <div v-else>
     <Title tag="h2">{{ incident.outcome.title }}</Title>
     <p>{{ incident.outcome.description }}</p>
-    <Button @click="store.finishStep">Continuer</Button>
+    <Button main @click="store.finishStep">Continuer</Button>
   </div>
 </template>
 

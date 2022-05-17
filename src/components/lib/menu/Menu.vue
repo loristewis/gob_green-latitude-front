@@ -59,7 +59,7 @@ export default {
 
 <style lang="scss">
 #menu-container {
-  margin: 0 20px;
+  margin: 24px 20px;
   height: 110px;
 
   #menu-home-button {
@@ -71,14 +71,14 @@ export default {
   #menu-budget {
     position: absolute;
     right: 16px;
-    bottom: 0;
+    bottom: 12px;
   }
 
   #menu-gauges-container {
     top: 26px;
 
     #pollution-gauge {
-      top: -8px;
+      top: -4px;
       left: 32px;
     }
   }

@@ -22,5 +22,10 @@ export default {
   width: max-content;
   max-width: 90%;
   margin: 0 auto;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.9;
 }
 </style>
