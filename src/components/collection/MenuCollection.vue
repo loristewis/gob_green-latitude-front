@@ -10,7 +10,11 @@
   <HomeButton />
 
   <Title>Budget</Title>
-  <Budget>13</Budget>
+  <div class="demo-budget-container">
+    <Budget class="demo-budget" :value="10"></Budget>
+    <Budget class="demo-budget" :value="6"></Budget>
+    <Budget class="demo-budget" :value="2"></Budget>
+  </div>
 </template>
 
 <script>
@@ -34,3 +38,12 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.demo-budget-container {
+  background-color: var(--color-beige-cool);
+  padding: 40px;
+  display: flex;
+  gap: 30px;
+}
+</style>
