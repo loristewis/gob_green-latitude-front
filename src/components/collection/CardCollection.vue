@@ -30,7 +30,6 @@
   <div class="background-container">
     <DestinationCard
       title="Bigorneau-sur-mer"
-      title-color="blue"
       description="Partez à la mer sans investir dans de la crème solaire !"
     />
   </div>

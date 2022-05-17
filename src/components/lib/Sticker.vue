@@ -1,12 +1,25 @@
 <template>
   <div class="text-sticker">
-    <span><slot /></span>
+    <span :style="{ color, backgroundColor }"
+      ><slot
+    /></span>
   </div>
 </template>
 
 <script>
+import { getRandomFromArray } from '../../helpers'
+import { colorCombos } from './../../constants/colorCombos'
+
 export default {
   name: 'Sticker',
+  data() {
+    const combo = getRandomFromArray(colorCombos)
+
+    return {
+      color: `var(--color-${combo.text})`,
+      backgroundColor: `var(--color-${combo.background})`,
+    }
+  },
 }
 </script>
 
@@ -21,8 +34,6 @@ export default {
     border-radius: 12px;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
-    color: var(--color-red);
-    background-color: var(--color-rose-cool);
   }
 }
 </style>

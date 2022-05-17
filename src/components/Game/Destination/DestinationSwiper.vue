@@ -10,7 +10,6 @@
     >
       <SwiperSlide v-for="destination in destinations" :key="destination.id">
         <DestinationCard
-          title-color="blue"
           :title="destination.attributes.title"
           :description="destination.attributes.description"
           :category="destination.attributes.category"

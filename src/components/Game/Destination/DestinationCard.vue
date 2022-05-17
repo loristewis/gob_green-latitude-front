@@ -11,7 +11,7 @@
 
     <div class="name-container">
       <div class="name">
-        <span :class="titleColor">{{ title }}</span>
+        <span :style="{ color, backgroundColor }">{{ title }}</span>
       </div>
     </div>
 
@@ -26,6 +26,9 @@ import CardContainer from './../../lib/cards/sub-components/CardContainer.vue'
 import Bof from '../../../assets/destinations/bof.png'
 import Loin from '../../../assets/destinations/loin.png'
 
+import { getRandomFromArray } from './../../../helpers'
+import { colorCombos } from './../../../constants/colorCombos'
+
 export default {
   name: 'DestinationCard',
   components: { CardContainer },
@@ -33,13 +36,6 @@ export default {
     title: {
       type: String,
       required: true,
-    },
-    titleColor: {
-      type: String,
-      required: true,
-      validator(value) {
-        return ['red', 'blue'].includes(value)
-      },
     },
     description: {
       type: String,
@@ -55,9 +51,13 @@ export default {
     },
   },
   data() {
+    const combo = getRandomFromArray(colorCombos)
+
     return {
       Bof,
       Loin,
+      color: `var(--color-${combo.text})`,
+      backgroundColor: `var(--color-${combo.background})`,
     }
   },
 }
@@ -123,16 +123,6 @@ export default {
       border-radius: 12px;
       box-decoration-break: clone;
       -webkit-box-decoration-break: clone;
-
-      &.red {
-        color: var(--color-red);
-        background-color: var(--color-rose-cool);
-      }
-
-      &.blue {
-        color: var(--color-rose-cool);
-        background-color: var(--color-blue-dark);
-      }
     }
   }
 
