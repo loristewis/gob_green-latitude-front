@@ -27,3 +27,21 @@ export const getRandomInt = (max) => {
 export const getRandomScore = () => {
   return Math.random() < 0.5 ? -1 : 1
 }
+
+export const getImage = (data) => {
+  console.log(data)
+  // console.log(data.attributes.title || data.title)
+
+  let image = 'https://picsum.photos/200/200'
+
+  if (data.attributes && data.attributes.image && data.attributes.image.data) {
+    image = data.attributes.image.data.attributes.url
+  }
+
+  if (data.image && data.image.data) {
+    image = data.image.data.attributes.url
+  }
+
+  console.log(image)
+  return image
+}

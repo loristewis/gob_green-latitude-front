@@ -1,6 +1,6 @@
 <template>
   <CardContainer
-    :class="isSelected(transport) ? 'selected' : ''"
+    :class="{ selected: isSelected(transport) }"
     class="transport-card-container"
   >
     <div>

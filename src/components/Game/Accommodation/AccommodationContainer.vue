@@ -1,8 +1,28 @@
+<template>
+  <h3>Hébergement</h3>
+
+  <AccommodationCard
+    v-for="el in elements"
+    :key="el.id"
+    @click="selectElement(el)"
+    :selected="el === this.selected"
+    :title="el.attributes.title"
+    :description="el.attributes.description"
+    :thoughts="el.attributes.thoughts"
+    :budget="el.attributes.budget"
+    :image="getImage(el)"
+  />
+
+  <Button @click="validateAccommodation">Let's go</Button>
+</template>
+
 <script>
 import { useStore } from './../../../store/index'
 
 import Button from './../../lib/Button.vue'
 import AccommodationCard from './AccommodationCard.vue'
+
+import { getImage } from '../../../helpers'
 
 export default {
   name: 'AccommodationContainer',
@@ -14,6 +34,7 @@ export default {
   data() {
     return {
       selected: null,
+      getImage,
     }
   },
   setup() {
@@ -42,17 +63,3 @@ export default {
   },
 }
 </script>
-
-<template>
-  <accommodation-card
-    v-for="el in elements"
-    @click="selectElement(el)"
-    :selected="el === this.selected"
-    :accommodation="el.attributes"
-    :key="el.id"
-  ></accommodation-card>
-
-  <Button main @click="validateAccommodation">Let's go</Button>
-</template>
-
-<style></style>
