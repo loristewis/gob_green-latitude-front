@@ -1,7 +1,7 @@
 <script>
 import { useStore } from './../../../store/index'
 
-import Button from './../../lib/Button.vue'
+import { Button } from './../../lib'
 import DestinationSwiper from './DestinationSwiper.vue'
 
 export default {

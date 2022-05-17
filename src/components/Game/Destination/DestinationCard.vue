@@ -22,12 +22,13 @@
 </template>
 
 <script>
-import CardContainer from './../../lib/cards/sub-components/CardContainer.vue'
+import { getRandomFromArray } from '../../../helpers'
+import { colorCombos } from '../../../constants'
+
+import { CardContainer } from './../../lib'
+
 import Bof from '../../../assets/destinations/bof.png'
 import Loin from '../../../assets/destinations/loin.png'
-
-import { getRandomFromArray } from './../../../helpers'
-import { colorCombos } from '../../../constants'
 
 export default {
   name: 'DestinationCard',
