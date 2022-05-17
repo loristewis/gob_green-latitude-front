@@ -2,7 +2,7 @@
   <BaseCard>
     <Sticker>{{ infos.title }}</Sticker>
     <p>{{ infos.description }}</p>
-    <img :src="infos.image" />
+    <img :src="infos.image" alt="" />
     <Button @click="finishGame">Voir le bilan de fin</Button>
   </BaseCard>
 </template>

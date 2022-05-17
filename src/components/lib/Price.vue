@@ -1,7 +1,7 @@
 <template>
   <div class="price-indicator">
     <div class="coin" v-for="index in value" :key="index">
-      <img :src="Coin" />
+      <img :src="Coin" alt="" />
     </div>
   </div>
 </template>

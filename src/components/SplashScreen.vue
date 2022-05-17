@@ -6,7 +6,7 @@
     }"
   >
     <div class="splash-screen-content">
-      <img :src="infos.image" />
+      <img :src="infos.image" alt="" />
       <BaseCard class="splash-screen-tagline">
         <Title>{{ infos.tagline }}</Title>
       </BaseCard>
