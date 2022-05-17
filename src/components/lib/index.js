@@ -1,6 +1,7 @@
 import Button from './Button.vue'
 import RadioButton from './RadioButton.vue'
 import Tag from './Tag.vue'
+import Sticker from './Sticker.vue'
 import Thought from './Thought.vue'
 import Title from './Title.vue'
 import ChecklistElement from './ChecklistElement.vue'
@@ -16,6 +17,7 @@ export {
   Button,
   RadioButton,
   Tag,
+  Sticker,
   Thought,
   Title,
   ChecklistElement,

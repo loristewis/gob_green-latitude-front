@@ -5,13 +5,18 @@
   <Tag color="green">Pensez à la planète !</Tag>
   <Tag color="purple">Voyagez en toute sérénité</Tag>
   <Tag color="blue">Voyagez en toute sérénité</Tag>
+
+  <Title>Stickers</Title>
+
+  <Sticker>Inoubliable</Sticker>
+  <Sticker>Le moins cher</Sticker>
 </template>
 
 <script>
-import { Title, Tag } from '../lib'
+import { Title, Tag, Sticker } from '../lib'
 
 export default {
   name: 'TagCollection',
-  components: { Title, Tag },
+  components: { Title, Tag, Sticker },
 }
 </script>
