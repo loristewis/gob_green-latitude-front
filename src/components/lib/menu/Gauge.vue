@@ -1,8 +1,6 @@
 <template>
   <div class="gauge-container" :class="`from-${from}`">
     <div class="gauge">
-      <div class="progress-base"></div>
-
       <div class="progress" :style="progressStyle"></div>
     </div>
 
@@ -55,7 +53,6 @@ export default {
 .gauge-container {
   display: flex;
   width: 184px;
-  margin: 24px;
 
   img {
     width: 40px;
@@ -73,12 +70,6 @@ export default {
     background-color: var(--color-beige-light);
     border-radius: 12px;
 
-    .progress-base {
-      height: 16px;
-      width: 12px;
-      background-color: var(--color-green-light);
-    }
-
     .progress {
       height: 16px;
       background-color: var(--color-green-light);
@@ -88,7 +79,9 @@ export default {
 
   &.from-left {
     .gauge {
-      left: 16px;
+      left: 26px;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
     }
 
     .progress {
@@ -100,9 +93,11 @@ export default {
     justify-content: right;
 
     .gauge {
-      right: 16px;
+      right: 26px;
       justify-content: right;
       flex-direction: row-reverse;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
 
     .progress {

@@ -1,11 +1,24 @@
 <template>
-  <Gauge :value="score.wellness" from="left" :image="Smiley" />
+  <div id="menu-container">
+    <HomeButton id="menu-home-button" />
 
-  <Gauge :value="score.pollution" from="right" :image="Fire" />
+    <div id="menu-gauges-container">
+      <Gauge
+        id="wellness-gauge"
+        :value="score.wellness"
+        from="left"
+        :image="Smiley"
+      />
+      <Gauge
+        id="pollution-gauge"
+        :value="score.pollution"
+        from="right"
+        :image="Fire"
+      />
+    </div>
 
-  <HomeButton />
-
-  <Budget>{{ score.budget }}</Budget>
+    <Budget :value="score.budget" id="menu-budget" />
+  </div>
 </template>
 
 <script>
@@ -43,3 +56,31 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+#menu-container {
+  margin: 0 20px;
+  height: 110px;
+
+  #menu-home-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  #menu-budget {
+    position: absolute;
+    right: 16px;
+    bottom: 0;
+  }
+
+  #menu-gauges-container {
+    top: 26px;
+
+    #pollution-gauge {
+      top: -8px;
+      left: 32px;
+    }
+  }
+}
+</style>
