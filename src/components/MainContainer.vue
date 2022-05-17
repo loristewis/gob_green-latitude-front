@@ -43,21 +43,22 @@ import { getFromApi, getRandomInt, shuffleArray } from '../helpers'
 
 import { splashScreens } from '../constants'
 
-import { useStore } from './../store/index'
+import { useStore } from './../store'
 
 import ScoreComponent from './ScoreComponent.vue'
 import SplashScreen from './SplashScreen.vue'
 
-import Thought from './lib/Thought.vue'
-import Menu from './lib/menu/Menu.vue'
+import { Thought, Menu } from './lib'
 
-import AnimationContainer from './Game/AnimationContainer.vue'
-import PrescriptionContainer from './Game/PrescriptionContainer.vue'
-import DestinationContainer from './Game/Destination/DestinationContainer.vue'
-import TransportationContainer from './Game/Transportation/TransportationContainer.vue'
-import AccommodationContainer from './Game/Accommodation/AccommodationContainer.vue'
-import IncidentContainer from './Game/Incident/IncidentContainer.vue'
-import ActivitiesContainer from './Game/Activities/ActivitiesContainer.vue'
+import {
+  AnimationContainer,
+  PrescriptionContainer,
+  DestinationContainer,
+  TransportationContainer,
+  AccommodationContainer,
+  IncidentContainer,
+  ActivitiesContainer,
+} from './Game'
 
 export default {
   name: 'MainContainer',
