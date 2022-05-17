@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
 import { getRandomScore, getRandomFromArray } from '../helpers'
+import { scoreConstants } from './../constants/score.js'
 import { names } from './../constants/names.js'
 
 export const useStore = defineStore('main', {
@@ -22,9 +23,9 @@ export const useStore = defineStore('main', {
       progressionIndex: 0,
       selected: null,
       score: {
-        wellness: 2,
-        budget: 10,
-        pollution: 0,
+        wellness: scoreConstants.wellness.initial,
+        budget: scoreConstants.budget.initial,
+        pollution: scoreConstants.pollution.initial,
       },
       incidents: [],
       trip: {
@@ -74,9 +75,9 @@ export const useStore = defineStore('main', {
       }
     },
     calculateScore() {
-      this.score.wellness = 2
-      this.score.budget = 10
-      this.score.pollution = 0
+      this.score.wellness = scoreConstants.wellness.initial
+      this.score.budget = scoreConstants.budget.initial
+      this.score.pollution = scoreConstants.pollution.initial
 
       if (this.trip.transportation) {
         this.calculateTransportation()
