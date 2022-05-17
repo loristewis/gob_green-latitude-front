@@ -15,7 +15,10 @@
 
       <div class="option-description">
         <div v-if="option.attributes.perks.length">
-          <ChecklistElement v-for="item in option.attributes.perks">
+          <ChecklistElement
+            v-for="(item, i) in option.attributes.perks"
+            :key="i"
+          >
             {{ item.content }}
           </ChecklistElement>
         </div>
