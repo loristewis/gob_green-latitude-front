@@ -49,6 +49,7 @@ export default {
 
 h1.title-container {
   font-size: 28px;
+  font-weight: 600;
 }
 
 h2.title-container {

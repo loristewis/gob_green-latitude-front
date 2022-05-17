@@ -115,11 +115,11 @@ export default {
 <style lang="scss">
 .collection-container {
   .component-container {
-    h1 {
+    & > h1 {
       margin: 24px auto 8px;
     }
 
-    h1:not(:first-of-type) {
+    & > h1:not(:first-of-type) {
       margin-top: 48px;
       padding-top: 16px;
       border-top: 1px solid black;

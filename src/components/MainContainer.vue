@@ -12,22 +12,22 @@
     </div>
     <br />
 
-    <score-component :score="store.score"> </score-component>
-    <Menu :score="store.score" />
-    <br />
-
-    <h3>Envie</h3>
-    <p>{{ store.trip.wish }}</p>
-    <br />
-
-    <h3>Étape</h3>
-    <p>{{ store.currentStep }}</p>
-    <br />
-
     <div v-if="store.splash && getSplashScreen()">
-      <splash-screen :infos="getSplashScreen()"></splash-screen>
+      <SplashScreen :infos="getSplashScreen()" />
     </div>
+
     <div v-else>
+      <score-component :score="store.score"> </score-component>
+      <Menu :score="store.score" />
+      <br />
+
+      <h3>Envie</h3>
+      <p>{{ store.trip.wish }}</p>
+      <br />
+
+      <h3>Étape</h3>
+      <p>{{ store.currentStep }}</p>
+      <br />
       <Thought v-if="store.activeThought">{{ store.activeThought }}</Thought>
       <component
         :is="store.currentComponent"
