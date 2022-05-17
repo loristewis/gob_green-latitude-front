@@ -27,6 +27,7 @@ import ThoughtCollection from '../components/collection/ThoughtCollection.vue'
 import TagCollection from '../components/collection/TagCollection.vue'
 import ButtonCollection from '../components/collection/ButtonCollection.vue'
 import CardCollection from '../components/collection/CardCollection.vue'
+import OthersCollection from '../components/collection/OthersCollection.vue'
 
 export default {
   name: 'Components',
@@ -38,6 +39,7 @@ export default {
     TagCollection,
     ButtonCollection,
     CardCollection,
+    OthersCollection,
   },
   data() {
     return {
@@ -71,6 +73,11 @@ export default {
           id: 'card',
           title: 'Cards',
           component: CardCollection,
+        },
+        {
+          id: 'others',
+          title: 'Divers',
+          component: OthersCollection,
         },
       ],
     }
