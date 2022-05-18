@@ -1,9 +1,8 @@
 <template>
-  <h3>Hébergement</h3>
-
-  <AccommodationCardStack :elements="elements" />
-
-  <Button main @click="validateAccommodation">Let's go</Button>
+  <AccommodationCardStack
+    @swipe-right="validateAccommodation"
+    :elements="elements"
+  />
 </template>
 
 <script>
@@ -32,13 +31,13 @@ export default {
   },
   methods: {
     validateAccommodation() {
-      if (!this.selected) {
+      if (!this.store.selected) {
         console.log('stp choisis un hébergement')
         return
       }
 
-      this.store.trip.accommodation = this.selected.attributes
-      this.selected = null
+      this.store.trip.accommodation = this.store.selected.attributes
+      this.store.selected = null
 
       console.log(this.store.trip.accommodation)
       this.store.collectPotentialIncidents(this.store.trip.accommodation)

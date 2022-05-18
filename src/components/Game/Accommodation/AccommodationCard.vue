@@ -5,9 +5,8 @@
     <div class="infos">
       <Price v-if="budget" :value="budget" />
 
-      <!--    <p>{{ wording(accommodation.title) }}</p>-->
       <Title tag="h2" class="title">
-        {{ title }}
+        {{ wording(title) }}
       </Title>
 
       <p v-if="description">{{ description }}</p>
@@ -38,9 +37,6 @@ export default {
     description: {
       type: String,
     },
-    thoughts: {
-      type: String,
-    },
     budget: {
       type: Number,
     },
@@ -69,8 +65,8 @@ export default {
   }
 
   .image {
-    height: 240px;
-    width: 240px;
+    height: 220px;
+    width: 220px;
     max-width: 100%;
     background: no-repeat center;
     background-size: contain;
