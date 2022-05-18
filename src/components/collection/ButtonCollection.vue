@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { Title, Button, RadioButton } from '../lib'
+import { Title, Button, RadioButton } from '@/components/lib'
 
 export default {
   name: 'ButtonCollection',

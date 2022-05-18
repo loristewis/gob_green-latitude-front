@@ -9,7 +9,7 @@
 
 <script>
 import { useStore } from './../../store'
-import { BaseCard, Sticker, Button } from './../lib'
+import { BaseCard, Sticker, Button } from '@/components/lib'
 
 export default {
   name: 'DefeatContainer',

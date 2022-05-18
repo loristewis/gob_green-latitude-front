@@ -1,7 +1,7 @@
 <script>
 import { useStore } from './../../../store/index'
 
-import { Button } from './../../lib'
+import { Button } from '@/components/lib'
 import ActivityCard from './ActivityCard.vue'
 
 export default {

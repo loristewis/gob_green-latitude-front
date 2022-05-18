@@ -46,7 +46,7 @@
 import { useStore } from './../../../store/index'
 
 import TransportationOption from './TransportationOption.vue'
-import { CardContainer, Title, Tag, Sticker, Button } from './../../lib'
+import { CardContainer, Title, Tag, Sticker, Button } from '@/components/lib'
 
 export default {
   name: 'TransportationCard',

@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import { useStore } from './../../../store/index'
+import { useStore } from '@/store/index'
+import { getImage } from '@/helpers'
 
 import { Pagination, A11y } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/vue'
@@ -30,8 +31,6 @@ import 'swiper/scss'
 import 'swiper/scss/pagination'
 
 import DestinationCard from './DestinationCard.vue'
-
-import { getImage } from '../../../helpers'
 
 export default {
   name: 'DestinationSwiper',

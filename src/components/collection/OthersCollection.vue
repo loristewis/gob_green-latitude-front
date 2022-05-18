@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import { Title, Price } from './../lib/'
+import { Title, Price } from '@/components/lib'
 import SplashScreen from './../SplashScreen.vue'
 
 import { splashScreens } from '../../constants'

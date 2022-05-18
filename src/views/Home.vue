@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import MainContainer from './../components/MainContainer.vue'
-import { Title } from './../components/lib'
+import MainContainer from '@/components/MainContainer.vue'
+import { Title } from '@/components/lib'
 
 export default {
   name: 'HomeScreen',

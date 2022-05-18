@@ -22,10 +22,9 @@
 </template>
 
 <script>
-import { getRandomFromArray } from '../../../helpers'
-import { colorCombos } from '../../../constants'
-
-import { CardContainer } from './../../lib'
+import { getRandomFromArray } from '@/helpers'
+import { colorCombos } from '@/constants'
+import { CardContainer } from '@/components/lib'
 
 import Bof from '../../../assets/destinations/bof.png'
 import Loin from '../../../assets/destinations/loin.png'

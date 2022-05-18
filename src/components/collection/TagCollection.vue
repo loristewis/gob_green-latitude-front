@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { Title, Tag, Sticker } from '../lib'
+import { Title, Tag, Sticker } from '@/components/lib'
 
 export default {
   name: 'TagCollection',

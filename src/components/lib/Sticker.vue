@@ -1,14 +1,12 @@
 <template>
   <div class="text-sticker">
-    <span :style="{ color, backgroundColor }"
-      ><slot
-    /></span>
+    <span :style="{ color, backgroundColor }"><slot /></span>
   </div>
 </template>
 
 <script>
-import { getRandomFromArray } from '../../helpers'
-import { colorCombos } from '../../constants'
+import { getRandomFromArray } from '@/helpers'
+import { colorCombos } from '@/constants'
 
 export default {
   name: 'Sticker',

@@ -1,8 +1,8 @@
 <script>
-import { useStore } from '../../../store/index'
-import { getRandomFromArray, getRandomInt } from '../../../helpers'
+import { useStore } from '@/store/index'
+import { getRandomFromArray, getRandomInt } from '@/helpers'
+import { Title, Button } from '@/components/lib'
 
-import { Title, Button } from '../../lib'
 import IncidentChoice from './IncidentChoice.vue'
 
 export default {

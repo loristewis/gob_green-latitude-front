@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { BaseCard, Title } from './lib'
+import { BaseCard, Title } from '@/components/lib'
 
 import Pattern from './../assets/splash/pattern-tile.jpg'
 

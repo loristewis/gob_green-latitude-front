@@ -50,9 +50,11 @@
 </template>
 
 <script>
-import { Swipeable } from './../../lib'
+import { Swipeable } from '@/components/lib'
+import { getImage } from '@/helpers'
+
 import AccommodationCard from './AccommodationCard.vue'
-import { getImage } from '../../../helpers'
+
 import { TrashIcon, CheckIcon } from '@heroicons/vue/solid'
 
 export default {

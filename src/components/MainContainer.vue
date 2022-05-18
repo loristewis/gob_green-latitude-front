@@ -32,15 +32,12 @@
 </template>
 
 <script>
-import { getFromApi, getRandomInt, shuffleArray } from '../helpers'
-
-import { splashScreens, defeatPopup } from '../constants'
-
-import { useStore } from './../store'
+import { getFromApi, getRandomInt, shuffleArray } from '@/helpers'
+import { splashScreens, defeatPopup } from '@/constants'
+import { useStore } from '@/store'
+import { Thought, Menu } from '@/components/lib'
 
 import SplashScreen from './SplashScreen.vue'
-
-import { Thought, Menu } from './lib'
 
 import {
   AnimationContainer,
@@ -51,7 +48,7 @@ import {
   IncidentContainer,
   ActivitiesContainer,
   DefeatContainer,
-  PostcardContainer
+  PostcardContainer,
 } from './Game'
 
 export default {
@@ -68,7 +65,7 @@ export default {
     IncidentContainer,
     ActivitiesContainer,
     DefeatContainer,
-    PostcardContainer
+    PostcardContainer,
   },
   setup() {
     const store = useStore()

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { Title, ChecklistElement } from '../lib/'
+import { Title, ChecklistElement } from '@/components/lib'
 
 export default {
   name: 'TextsCollection',

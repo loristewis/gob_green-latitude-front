@@ -8,7 +8,7 @@
 
 <script>
 import { useStore } from './../../../store/index'
-import { Button } from './../../lib'
+import { Button } from '@/components/lib'
 
 import AccommodationCardStack from './AccommodationCardStack.vue'
 

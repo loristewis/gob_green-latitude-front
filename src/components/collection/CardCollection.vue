@@ -51,7 +51,8 @@
 </template>
 
 <script>
-import { Title, BaseCard } from '../lib'
+import { Title, BaseCard } from '@/components/lib'
+import { getImage } from '@/helpers'
 
 import DestinationCard from '../Game/Destination/DestinationCard.vue'
 import DestinationSwiper from '../Game/Destination/DestinationSwiper.vue'
@@ -60,7 +61,6 @@ import AccommodationCard from '../Game/Accommodation/AccommodationCard.vue'
 import AccommodationCardStack from '../Game/Accommodation/AccommodationCardStack.vue'
 
 import { destinations, accommodations } from './placeholderData'
-import { getImage } from '../../helpers'
 
 export default {
   name: 'CardCollection',

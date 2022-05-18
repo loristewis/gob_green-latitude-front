@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import { Title, Menu } from '../lib'
+import { Title, Menu } from '@/components/lib'
 
-import Gauge from '../lib/menu/Gauge.vue'
-import HomeButton from '../lib/menu/HomeButton.vue'
-import Budget from '../lib/menu/Budget.vue'
+import Gauge from '@/components/lib/menu/Gauge.vue'
+import HomeButton from '@/components/lib/menu/HomeButton.vue'
+import Budget from '@/components/lib/menu/Budget.vue'
 
 import Smiley from '../../assets/smiley.svg'
 import Fire from '../../assets/fire.svg'

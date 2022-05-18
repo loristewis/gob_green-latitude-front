@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { CardContainer, Title, Price } from './../../lib'
+import { CardContainer, Title, Price } from '@/components/lib'
 import { useStore } from './../../../store/index'
 
 export default {

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { Title } from './../components/lib'
+import { Title } from '@/components/lib'
 
 import TextsCollection from '../components/collection/TextsCollection.vue'
 import MenuCollection from './../components/collection/MenuCollection.vue'

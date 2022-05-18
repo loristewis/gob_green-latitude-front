@@ -33,7 +33,13 @@
 </template>
 
 <script>
-import { Title, Tag, ChecklistElement, Price, RadioButton } from './../../lib'
+import {
+  Title,
+  Tag,
+  ChecklistElement,
+  Price,
+  RadioButton,
+} from '@/components/lib'
 
 export default {
   name: 'TransportationOption',

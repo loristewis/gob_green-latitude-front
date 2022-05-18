@@ -1,8 +1,7 @@
 <script>
-import { useStore } from './../../../store/index'
-
-import { shuffleArray, getRandomInt } from './../../../helpers'
-import { transportTags } from '../../../constants'
+import { useStore } from '@/store/index'
+import { shuffleArray, getRandomInt } from '@/helpers'
+import { transportTags } from '@/constants'
 
 import TransportationCard from './TransportationCard.vue'
 

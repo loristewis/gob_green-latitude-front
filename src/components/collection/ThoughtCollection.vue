@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { Title, Thought } from '../lib'
+import { Title, Thought } from '@/components/lib'
 
 export default {
   name: 'ThoughtCollection',
