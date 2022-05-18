@@ -264,7 +264,8 @@ export default {
   height: 100%;
   width: 100vw;
   background-color: var(--color-background);
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   > div {
     width: 100%;
