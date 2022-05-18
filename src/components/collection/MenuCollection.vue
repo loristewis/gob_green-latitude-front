@@ -6,9 +6,6 @@
   <Gauge :value="10" from="left" :image="Smiley" />
   <Gauge :value="4" from="right" :image="Fire" />
 
-  <Title>Bouton vers l'accueil</Title>
-  <HomeButton />
-
   <Title>Budget</Title>
   <div class="demo-budget-container">
     <Budget class="demo-budget" :value="10"></Budget>
@@ -21,7 +18,6 @@
 import { Title, Menu } from '@/components/lib'
 
 import Gauge from '@/components/lib/menu/Gauge.vue'
-import HomeButton from '@/components/lib/menu/HomeButton.vue'
 import Budget from '@/components/lib/menu/Budget.vue'
 
 import Smiley from '../../assets/smiley.svg'
@@ -29,7 +25,7 @@ import Fire from '../../assets/fire.svg'
 
 export default {
   name: 'MenuCollection',
-  components: { Title, Menu, Gauge, HomeButton, Budget },
+  components: { Title, Menu, Gauge, Budget },
   data() {
     return {
       Smiley,

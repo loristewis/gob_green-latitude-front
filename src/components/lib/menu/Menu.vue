@@ -1,7 +1,5 @@
 <template>
   <div id="menu-container">
-    <HomeButton id="menu-home-button" />
-
     <div id="menu-gauges-container">
       <Gauge
         id="wellness-gauge"
@@ -9,6 +7,7 @@
         from="left"
         :image="Smiley"
       />
+
       <Gauge
         id="pollution-gauge"
         :value="score.pollution"
@@ -18,11 +17,16 @@
     </div>
 
     <Budget :value="score.budget" id="menu-budget" />
+    <div class="home-button-container">
+      <IconButton :icon="HomeIcon" background-color="#cebea8" size="40" />
+    </div>
   </div>
 </template>
 
 <script>
-import HomeButton from './HomeButton.vue'
+import { IconButton } from '@/components/lib'
+import { HomeIcon } from '@heroicons/vue/solid'
+
 import Budget from './Budget.vue'
 import Gauge from './Gauge.vue'
 import Smiley from '../../../assets/smiley.svg'
@@ -31,7 +35,7 @@ import Fire from '../../../assets/fire.svg'
 export default {
   name: 'Menu',
   components: {
-    HomeButton,
+    IconButton,
     Budget,
     Gauge,
   },
@@ -52,6 +56,7 @@ export default {
     return {
       Smiley,
       Fire,
+      HomeIcon,
     }
   },
 }
@@ -81,6 +86,11 @@ export default {
       top: -4px;
       left: 32px;
     }
+  }
+
+  .home-button-container {
+    display: flex;
+    justify-content: end;
   }
 }
 </style>

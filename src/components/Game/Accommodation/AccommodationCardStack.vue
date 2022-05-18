@@ -38,19 +38,15 @@
     </div>
 
     <div class="accommodation-buttons">
-      <div id="no" class="icon" :style="trashIconStyle">
-        <TrashIcon />
-      </div>
+      <IconButton :icon="TrashIcon" :style="trashIconStyle" />
 
-      <div id="yes" class="icon" :style="checkIconStyle">
-        <CheckIcon />
-      </div>
+      <IconButton :icon="CheckIcon" :style="checkIconStyle" />
     </div>
   </div>
 </template>
 
 <script>
-import { Swipeable } from '@/components/lib'
+import { Swipeable, IconButton } from '@/components/lib'
 import { getImage } from '@/helpers'
 
 import AccommodationCard from './AccommodationCard.vue'
@@ -61,9 +57,8 @@ export default {
   name: 'AccommodationCardStack',
   components: {
     Swipeable,
+    IconButton,
     AccommodationCard,
-    TrashIcon,
-    CheckIcon,
   },
   props: {
     elements: {
@@ -75,6 +70,8 @@ export default {
     return {
       getImage,
       selected: null,
+      TrashIcon,
+      CheckIcon,
       trashIconStyle: {},
       checkIconStyle: {},
     }
@@ -136,17 +133,6 @@ export default {
     display: flex;
     justify-content: center;
     gap: 24px;
-
-    .icon {
-      display: block;
-      height: 48px;
-      width: 48px;
-      border-radius: 50%;
-      padding: 12px;
-      background-color: var(--color-beige-dark);
-      color: var(--color-white);
-      transition: background-color 0.2s;
-    }
   }
 }
 </style>
