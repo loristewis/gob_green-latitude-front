@@ -1,14 +1,14 @@
 <template>
-  <MainContainer></MainContainer>
+  <GameContainer />
 </template>
 
 <script>
-import MainContainer from '@/components/MainContainer.vue'
+import GameContainer from '@/components/GameContainer.vue'
 
 export default {
   name: 'Game',
   components: {
-    MainContainer,
+    GameContainer,
   },
 }
 </script>
