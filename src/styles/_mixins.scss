@@ -1,0 +1,13 @@
+/**
+* par défaut : petits écrans
+* screen-xs : entre 340px et 639px
+* screen-sm : à partir de 640px (tablettes/desktop)
+*/
+
+@mixin screen-xs {
+  @media (min-width: 340px) { @content; }
+}
+
+@mixin screen-sm {
+  @media (min-width: 640px) { @content; }
+}
