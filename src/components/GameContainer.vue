@@ -55,7 +55,7 @@ import {
 } from '@/components/Game'
 
 export default {
-  name: 'MainContainer',
+  name: 'GameContainer',
   components: {
     SplashScreen,
     Thought,
