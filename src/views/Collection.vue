@@ -116,6 +116,8 @@ export default {
 
 <style lang="scss">
 .collection-container {
+  padding: 24px 32px;
+
   .component-container {
     & > h1 {
       margin: 24px auto 8px;
