@@ -1,18 +1,50 @@
+<template>
+  <div class="incident-container">
+    <div v-if="!incident.outcome">
+      <IncidentCard
+        :title="incident.situation.title"
+        :description="incident.situation.description"
+      />
+
+      <IncidentChoiceCard
+        v-for="choice in incident.situation.choices"
+        :key="choice.id"
+        :choice="choice"
+        @select="getOutcome(choice)"
+      />
+    </div>
+
+    <div v-else>
+      <Title tag="h2">{{ incident.outcome.title }}</Title>
+      <p>{{ incident.outcome.description }}</p>
+      <Button main @click="store.finishStep">Continuer</Button>
+    </div>
+  </div>
+</template>
+
 <script>
 import { useStore } from '@/store/index'
 import { getRandomFromArray, getRandomInt } from '@/helpers'
 import { Title, Button } from '@/components/lib'
 
-import IncidentChoice from './IncidentChoice.vue'
+import IncidentCard from '@/components/Game/Incident/IncidentCard.vue'
+import IncidentChoiceCard from '@/components/Game/Incident/IncidentChoiceCard.vue'
 
 export default {
   name: 'IncidentContainer',
   props: ['elements'],
-  components: { Title, Button, IncidentChoice },
+  components: {
+    Title,
+    Button,
+    IncidentCard,
+    IncidentChoiceCard,
+  },
   setup() {
     const store = useStore()
 
-    store.trip.incident.situation = getRandomFromArray(store.incidents).attributes
+    store.trip.incident.situation = getRandomFromArray(
+      store.incidents
+    ).attributes
 
     const incident = store.trip.incident
 
@@ -36,25 +68,8 @@ export default {
 }
 </script>
 
-<template>
-  <div v-if="!incident.outcome">
-    <div>
-      <Title tag="h2">{{ incident.situation.title }}</Title>
-      <p>{{ incident.situation.description }}</p>
-    </div>
-    <IncidentChoice
-      @select="getOutcome(choice)"
-      :choice="choice"
-      v-for="(choice, i) in incident.situation.choices"
-      :key="i"
-    />
-  </div>
-
-  <div v-else>
-    <Title tag="h2">{{ incident.outcome.title }}</Title>
-    <p>{{ incident.outcome.description }}</p>
-    <Button main @click="store.finishStep">Continuer</Button>
-  </div>
-</template>
-
-<style></style>
+<style lang="scss">
+.incident-container {
+  padding: 0 32px;
+}
+</style>
