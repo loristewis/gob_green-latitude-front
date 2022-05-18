@@ -1,5 +1,5 @@
 <script>
-import { useStore } from './../../store/index'
+import { useStore } from '@/store'
 import { ChevronRightIcon } from '@heroicons/vue/solid'
 
 import Intro from '@/assets/animation/intro.mp4'
@@ -27,7 +27,15 @@ export default {
     }
   },
   mounted() {
-    this.$refs.video.play()
+    // dév
+    this.store.moveToNextStep()
+
+    // // si on rejoue
+    // if (this.store.skipIntro) {
+    //   this.store.moveToNextStep()
+    // } else {
+    //   this.$refs.video.play()
+    // }
   },
 }
 </script>
