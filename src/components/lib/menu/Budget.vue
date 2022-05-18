@@ -66,7 +66,8 @@ export default {
   .content {
     position: relative;
     left: 12px;
-    top: 24px;
+    //top: 24px;
+    bottom: 0;
     height: 32px;
     width: 60px;
     border-radius: 16px;
