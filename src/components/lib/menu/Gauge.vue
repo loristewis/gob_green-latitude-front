@@ -29,16 +29,6 @@ export default {
     },
   },
   computed: {
-    containerStyle() {
-      return {
-        justifyContent: this.from,
-      }
-    },
-    gaugeStyle() {
-      return {
-        justifyContent: this.from,
-      }
-    },
     progressStyle() {
       return {
         // width: `${(this.value + 50) / 100}%`,

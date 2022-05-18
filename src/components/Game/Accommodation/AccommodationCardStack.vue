@@ -17,8 +17,6 @@
         :key="el.id"
         :swipe-y="false"
         v-on:swipe="onSwipe"
-        v-on:start="onStart"
-        v-on:move="onMove"
         v-on:end="onEnd"
         v-on:swiping-right="onSwipingRight"
         v-on:swiping-left="onSwipingLeft"

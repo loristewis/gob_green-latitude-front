@@ -8,14 +8,14 @@
       v-if="value > 0"
     >
       <div class="coin" v-for="index in value" :key="index">
-        <img :src="Coin" />
+        <img :src="Coin" alt="" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Coin from './../../../assets/coin.svg'
+import Coin from '@/assets/coin.svg'
 
 export default {
   name: 'Budget',
