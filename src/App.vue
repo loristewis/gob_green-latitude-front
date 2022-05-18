@@ -3,7 +3,8 @@
 </template>
 
 <style>
-@import './assets/base.scss';
+@import './styles/base.scss';
+@import './styles/_variables.scss';
 @import './assets/fonts/fonts.scss';
 
 #app {
