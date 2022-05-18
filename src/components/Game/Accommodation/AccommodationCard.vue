@@ -1,19 +1,16 @@
 <template>
-  <CardContainer
-    class="accommodation-card-container"
-    :class="{ selected: selected }"
-  >
+  <CardContainer class="accommodation-card-container">
     <div class="image" :style="{ backgroundImage: `url(${image})` }" />
 
     <div class="infos">
-      <Price :value="budget" />
+      <Price v-if="budget" :value="budget" />
 
       <!--    <p>{{ wording(accommodation.title) }}</p>-->
       <Title tag="h2" class="title">
         {{ title }}
       </Title>
 
-      <p>{{ description }}</p>
+      <p v-if="description">{{ description }}</p>
     </div>
   </CardContainer>
 </template>
@@ -30,29 +27,22 @@ export default {
     Price,
   },
   props: {
+    image: {
+      type: String,
+      required: true,
+    },
     title: {
       type: String,
       required: true,
     },
     description: {
       type: String,
-      required: true,
     },
     thoughts: {
       type: String,
-      required: true,
     },
     budget: {
       type: Number,
-      required: true,
-    },
-    image: {
-      type: String,
-      required: true,
-    },
-    selected: {
-      type: Boolean,
-      default: false,
     },
   },
   setup() {
@@ -69,8 +59,10 @@ export default {
 <style lang="scss">
 .accommodation-card-container {
   max-width: 288px;
+  height: 448px;
   margin: auto;
   padding: 24px;
+  overflow: scroll;
 
   &.selected {
     background-color: #8a95b4;
@@ -85,7 +77,7 @@ export default {
   }
 
   .infos {
-    margin: 8px 0;
+    margin-top: 16px;
 
     .title {
       margin: 16px 0 8px;

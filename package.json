@@ -11,6 +11,7 @@
     "@headlessui/vue": "^1.6.1",
     "@heroicons/vue": "^1.0.6",
     "axios": "^0.26.0",
+    "interactjs": "^1.10.11",
     "pinia": "^2.0.13",
     "qs": "^6.10.3",
     "swiper": "^8.1.4",

@@ -12,6 +12,7 @@ import CardContainer from './cards/sub-components/CardContainer.vue'
 
 import Menu from './menu/Menu.vue'
 
+import Swipeable from './Swipeable.vue'
 
 export {
   Button,
@@ -25,4 +26,5 @@ export {
   BaseCard,
   CardContainer,
   Menu,
+  Swipeable,
 }

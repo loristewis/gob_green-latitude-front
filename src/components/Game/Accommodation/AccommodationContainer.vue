@@ -1,41 +1,28 @@
 <template>
   <h3>Hébergement</h3>
 
-  <AccommodationCard
-    v-for="el in elements"
-    :key="el.id"
-    @click="selectElement(el)"
-    :selected="el === this.selected"
-    :title="el.attributes.title"
-    :description="el.attributes.description"
-    :thoughts="el.attributes.thoughts"
-    :budget="el.attributes.budget"
-    :image="getImage(el)"
-  />
+  <AccommodationCardStack :elements="elements" />
 
-  <Button @click="validateAccommodation">Let's go</Button>
+  <Button main @click="validateAccommodation">Let's go</Button>
 </template>
 
 <script>
 import { useStore } from './../../../store/index'
+import { Button } from './../../lib'
 
-import Button from './../../lib/Button.vue'
-import AccommodationCard from './AccommodationCard.vue'
-
-import { getImage } from '../../../helpers'
+import AccommodationCardStack from './AccommodationCardStack.vue'
 
 export default {
   name: 'AccommodationContainer',
-  props: ['elements'],
+  props: {
+    elements: {
+      type: Array,
+      required: true,
+    },
+  },
   components: {
     Button,
-    AccommodationCard,
-  },
-  data() {
-    return {
-      selected: null,
-      getImage,
-    }
+    AccommodationCardStack,
   },
   setup() {
     const store = useStore()
@@ -44,9 +31,6 @@ export default {
     }
   },
   methods: {
-    selectElement(element) {
-      this.selected = element
-    },
     validateAccommodation() {
       if (!this.selected) {
         console.log('stp choisis un hébergement')
