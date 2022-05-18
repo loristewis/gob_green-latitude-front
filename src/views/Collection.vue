@@ -1,5 +1,7 @@
 <template>
   <div class="collection-container">
+    <router-link to="/">&lt; Retour au jeu</router-link>
+
     <Title tag="h1">Collection des composants</Title>
 
     <div class="nav-collection">
@@ -30,7 +32,7 @@ import CardCollection from '../components/collection/CardCollection.vue'
 import OthersCollection from '../components/collection/OthersCollection.vue'
 
 export default {
-  name: 'Components',
+  name: 'Collection',
   components: {
     Title,
     TextsCollection,
