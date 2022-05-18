@@ -29,19 +29,9 @@ export const getRandomScore = () => {
 }
 
 export const getImage = (data) => {
-  console.log(data)
-  // console.log(data.attributes.title || data.title)
-
   let image = 'https://picsum.photos/200/200'
-
-  if (data.attributes && data.attributes.image && data.attributes.image.data) {
+  if (data.attributes && data.attributes.image && data.attributes.image.data)
     image = data.attributes.image.data.attributes.url
-  }
-
-  if (data.image && data.image.data) {
-    image = data.image.data.attributes.url
-  }
-
-  console.log(image)
+  if (data.image && data.image.data) image = data.image.data.attributes.url
   return image
 }
