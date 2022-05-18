@@ -29,16 +29,6 @@ export default {
     },
   },
   computed: {
-    containerStyle() {
-      return {
-        justifyContent: this.from,
-      }
-    },
-    gaugeStyle() {
-      return {
-        justifyContent: this.from,
-      }
-    },
     progressStyle() {
       return {
         // width: `${(this.value + 50) / 100}%`,
@@ -52,7 +42,11 @@ export default {
 <style lang="scss">
 .gauge-container {
   display: flex;
-  width: 184px;
+  width: calc(100% - 32px);
+
+  &:last-of-type {
+    margin-bottom: 8px;
+  }
 
   img {
     width: 40px;
@@ -64,7 +58,7 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     display: flex;
-    width: 160px;
+    width: calc(100% - 24px);
     height: 24px;
     padding: 4px;
     background-color: var(--color-beige-light);

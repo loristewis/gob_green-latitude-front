@@ -1,4 +1,5 @@
 import Button from './Button.vue'
+import IconButton from './IconButton.vue'
 import RadioButton from './RadioButton.vue'
 import Tag from './Tag.vue'
 import Sticker from './Sticker.vue'
@@ -16,6 +17,7 @@ import Swipeable from './Swipeable.vue'
 
 export {
   Button,
+  IconButton,
   RadioButton,
   Tag,
   Sticker,

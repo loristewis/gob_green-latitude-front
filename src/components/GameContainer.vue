@@ -1,5 +1,5 @@
 <template>
-  <div id="main-container">
+  <div id="game-container">
     <!-- <div>
       <input
         type="checkbox"
@@ -16,17 +16,20 @@
       <SplashScreen :infos="getSplashScreen()" />
     </div>
 
-    <div v-else id="game-container">
+    <div v-else>
       <div v-if="store.defeat != null">
         <DefeatContainer :infos="getDefeatInfos()" />
       </div>
+
       <Menu :score="store.score" />
+
       <Thought v-if="store.activeThought">{{ store.activeThought }}</Thought>
+
       <component
         :is="store.currentComponent"
         :elements="this.elements[store.currentStep]"
         @validate-destination="validateDestination"
-      ></component>
+      />
     </div>
   </div>
 </template>
@@ -49,7 +52,7 @@ import {
   ActivitiesContainer,
   DefeatContainer,
   PostcardContainer,
-} from './Game'
+} from '@/components/Game'
 
 export default {
   name: 'MainContainer',
@@ -254,16 +257,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#main-container {
-  margin: auto;
-  max-width: 375px;
-  min-height: 800px;
-  overflow-x: hidden;
-  background-color: var(--color-background);
+#game-container {
+  //position: fixed;
   display: flex;
+  margin: auto;
+  height: 100%;
+  width: 100vw;
+  background-color: var(--color-background);
+  overflow-x: hidden;
+  overflow-y: scroll;
 
   > div {
     width: 100%;
+  }
+
+  @include screen-sm {
+    border: 1px solid #8a95b4;
+    max-width: 375px;
+    max-height: 800px;
   }
 }
 

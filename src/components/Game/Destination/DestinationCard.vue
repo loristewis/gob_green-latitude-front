@@ -65,8 +65,9 @@ export default {
 
 <style lang="scss">
 .destination-card-container {
+  max-height: 100%;
+
   .image {
-    //width: 100%;
     width: 100%;
     height: 376px;
     border-radius: 24px 24px 0 0;

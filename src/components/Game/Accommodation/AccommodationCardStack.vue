@@ -25,19 +25,14 @@
     </div>
 
     <div class="accommodation-buttons">
-      <div @click="onTrashClick" id="no" class="icon" :style="trashIconStyle">
-        <TrashIcon />
-      </div>
-
-      <div @click="onCheckClick" id="yes" class="icon" :style="checkIconStyle">
-        <CheckIcon />
-      </div>
+      <IconButton @click="onTrashClick" :icon="TrashIcon" :style="trashIconStyle" />
+      <IconButton @click="onCheckClick" :icon="CheckIcon" :style="checkIconStyle" />
     </div>
   </div>
 </template>
 
 <script>
-import { Swipeable, Tag } from '@/components/lib'
+import { Swipeable, IconButton } from '@/components/lib'
 import { getImage } from '@/helpers'
 import { useStore } from '@/store'
 
@@ -50,11 +45,9 @@ export default {
   name: 'AccommodationCardStack',
   components: {
     Swipeable,
-    Tag,
+    IconButton,
     AccommodationCard,
     AccommodationGauge,
-    TrashIcon,
-    CheckIcon,
   },
   props: {
     elements: {
@@ -72,6 +65,8 @@ export default {
     return {
       total: this.elements.length,
       getImage,
+      TrashIcon,
+      CheckIcon,
       trashIconStyle: {},
       checkIconStyle: {},
     }
@@ -158,17 +153,6 @@ export default {
     display: flex;
     justify-content: center;
     gap: 24px;
-
-    .icon {
-      display: block;
-      height: 48px;
-      width: 48px;
-      border-radius: 50%;
-      padding: 12px;
-      background-color: var(--color-beige-dark);
-      color: var(--color-white);
-      transition: background-color 0.2s, transform 0.2s;
-    }
   }
 }
 </style>
