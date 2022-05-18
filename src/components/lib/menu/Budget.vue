@@ -1,5 +1,5 @@
 <template>
-  <div class="budget-container">
+  <div class="budget-container" :style="coinsHeight">
     <div class="content">{{ value }}</div>
 
     <div
@@ -30,17 +30,20 @@ export default {
       Coin,
     }
   },
+  computed: {
+    coinsHeight() {
+      return { height: (this.value > 0 ? 28 + 4 * this.value : 0) + 'px' }
+    },
+  },
 }
 </script>
 
 <style lang="scss">
 .budget-container {
-  position: relative;
-
   .coins-container {
     position: absolute;
-    left: -12px;
-    bottom: -14px;
+    left: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
     width: 32px;
@@ -62,6 +65,8 @@ export default {
 
   .content {
     position: relative;
+    left: 12px;
+    top: 24px;
     height: 32px;
     width: 60px;
     border-radius: 16px;

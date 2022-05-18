@@ -9,13 +9,7 @@
 @import './assets/fonts/fonts.scss';
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-
   font-weight: normal;
-}
-
-@media (min-width: 640px) {
+  height: 100%;
 }
 </style>

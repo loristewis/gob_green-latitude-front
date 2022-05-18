@@ -16,9 +16,12 @@
       />
     </div>
 
-    <Budget :value="score.budget" id="menu-budget" />
     <div class="home-button-container">
       <IconButton :icon="HomeIcon" background-color="#cebea8" size="40" />
+    </div>
+
+    <div class="menu-budget-container">
+      <Budget :value="score.budget" id="menu-budget" />
     </div>
   </div>
 </template>
@@ -64,33 +67,38 @@ export default {
 
 <style lang="scss">
 #menu-container {
-  margin: 24px 20px;
+  display: grid;
+  grid-template-columns: 1fr 72px;
+  grid-gap: 8px 16px;
   height: 110px;
+  margin: 16px 12px;
 
-  #menu-home-button {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  #menu-budget {
-    position: absolute;
-    right: 16px;
-    bottom: 12px;
+  @include screen-xs {
+    margin: 24px 20px;
   }
 
   #menu-gauges-container {
-    top: 26px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    grid-row-start: 1;
+    grid-row-end: 3;
 
     #pollution-gauge {
-      top: -4px;
-      left: 32px;
+      margin-left: auto;
+      //top: -4px;
+      //left: 32px;
     }
   }
 
   .home-button-container {
     display: flex;
     justify-content: end;
+  }
+
+  .menu-budget-container {
+    //display: flex;
+    //justify-content: end;
   }
 }
 </style>
