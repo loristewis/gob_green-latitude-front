@@ -8,7 +8,8 @@
         class="swipeable-card"
         v-for="el in elements"
         :key="el.id"
-        :swipe-y="false"
+        :allow-swipe-y="false"
+        :allow-swipe-left="elements.length !== 1"
         v-on:swiping-right="onSwipingRight"
         v-on:swiping-left="onSwipingLeft"
         v-on:swipe-right="onSwipeRight"
@@ -25,8 +26,19 @@
     </div>
 
     <div class="accommodation-buttons">
-      <IconButton @click="onTrashClick" :icon="TrashIcon" :style="trashIconStyle" />
-      <IconButton @click="onCheckClick" :icon="CheckIcon" :style="checkIconStyle" />
+      <IconButton
+        @click="onTrashClick"
+        :icon="TrashIcon"
+        :style="trashIconStyle"
+        class="trash"
+        :class="{ disabled: this.elements.length === 1 }"
+      />
+      <IconButton
+        @click="onCheckClick"
+        :icon="CheckIcon"
+        :style="checkIconStyle"
+        class="check"
+      />
     </div>
   </div>
 </template>
@@ -76,7 +88,7 @@ export default {
   },
   methods: {
     onSwipingLeft() {
-      this.trashIconStyle = {
+      this.trashIconStyle = this.elements.length !== 1 && {
         backgroundColor: 'var(--color-red)',
         transform: 'scale(1.2)',
       }
@@ -100,14 +112,16 @@ export default {
       this.$emit('swipe-right')
     },
     onTrashClick() {
-      const activeCard = this.$refs.swipeable[this.elements.length - 1]
-      activeCard.isDragging = false
-      activeCard.onThresholdReached("swipe-left")
+      if (this.elements.length !== 1) {
+        const activeCard = this.$refs.swipeable[this.elements.length - 1]
+        activeCard.isDragging = false
+        activeCard.onThresholdReached('swipe-left')
+      }
     },
     onCheckClick() {
       const activeCard = this.$refs.swipeable[this.elements.length - 1]
       activeCard.isDragging = false
-      activeCard.onThresholdReached("swipe-right")
+      activeCard.onThresholdReached('swipe-right')
     },
     onEnd() {
       setTimeout(() => {
@@ -132,10 +146,8 @@ export default {
     .swipeable-card {
       position: absolute;
       height: 100%;
-      //height: 400px;
-      //width: 250px;
 
-      &:first-child::before {
+      &:nth-child(2)::before {
         content: '';
         display: block;
         position: absolute;
@@ -145,6 +157,13 @@ export default {
         background: var(--color-beige-light);
         transform: rotate(-5deg);
         border-radius: 24px;
+        transition: transform 0.1s;
+      }
+
+      &:active {
+        &:nth-child(2)::before {
+          transform: rotate(0deg);
+        }
       }
     }
   }
@@ -153,6 +172,28 @@ export default {
     display: flex;
     justify-content: center;
     gap: 24px;
+
+    .icon-button-container {
+      &.trash:not(.disabled) {
+        &:hover {
+          background-color: var(--color-red) !important;
+        }
+
+        &:active {
+          transform: scale(1.2);
+        }
+      }
+
+      &.check {
+        &:hover {
+          background-color: var(--color-green-light) !important;
+        }
+
+        &:active {
+          transform: scale(1.2);
+        }
+      }
+    }
   }
 }
 </style>

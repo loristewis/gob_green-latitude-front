@@ -59,12 +59,17 @@ export default {
       default: 70,
       required: false,
     },
-    swipeX: {
+    allowSwipeX: {
       type: Boolean,
       default: true,
       required: false,
     },
-    swipeY: {
+    allowSwipeY: {
+      type: Boolean,
+      default: true,
+      required: false,
+    },
+    allowSwipeLeft: {
       type: Boolean,
       default: true,
       required: false,
@@ -114,12 +119,13 @@ export default {
         const { x, y } = this.interactPosition
         const { thresholdX, thresholdY } = this.$props
         this.isDragging = false
-        if (x > thresholdX && this.swipeX) this.onThresholdReached(SWIPE_RIGHT)
-        else if (x < -thresholdX && this.swipeX)
+        if (x > thresholdX && this.allowSwipeX)
+          this.onThresholdReached(SWIPE_RIGHT)
+        else if (x < -thresholdX && this.allowSwipeX && this.allowSwipeLeft)
           this.onThresholdReached(SWIPE_LEFT)
-        else if (y < -thresholdY && this.swipeY)
+        else if (y < -thresholdY && this.allowSwipeY)
           this.onThresholdReached(SWIPE_TOP)
-        else if (y > thresholdY && this.swipeY)
+        else if (y > thresholdY && this.allowSwipeY)
           this.onThresholdReached(SWIPE_BOTTOM)
         else this.setPosition({ x: 0, y: 0, rotation: 0 })
       },
