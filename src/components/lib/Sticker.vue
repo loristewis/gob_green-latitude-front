@@ -1,5 +1,5 @@
 <template>
-  <div class="text-sticker">
+  <div class="sticker-container">
     <span :style="{ color, backgroundColor }"><slot /></span>
   </div>
 </template>
@@ -10,8 +10,15 @@ import { colorCombos } from '@/constants'
 
 export default {
   name: 'Sticker',
+  props: {
+    colorCombo: {
+      type: Object,
+    },
+  },
   data() {
-    const combo = getRandomFromArray(colorCombos)
+    const combo = !!this.colorCombo
+      ? this.colorCombo
+      : getRandomFromArray(colorCombos)
 
     return {
       color: `var(--color-${combo.text})`,
@@ -22,7 +29,8 @@ export default {
 </script>
 
 <style lang="scss">
-.text-sticker {
+.sticker-container {
+  padding: 4px 0;
   text-transform: uppercase;
   font-family: var(--font-tag);
 
