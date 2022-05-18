@@ -1,8 +1,17 @@
 <template>
-  <div class="button-container" :class="{ disabled: isDisabled, 'bottom-right': main }">
+  <div
+    class="button-container"
+    :class="{
+      disabled: isDisabled,
+      'bottom-right': main,
+      chevron: chevron,
+      tight: tight,
+    }"
+  >
     <div>
       <p><slot /></p>
-      <ChevronRightIcon class="hero-icon" />
+
+      <ChevronRightIcon v-if="chevron" class="hero-icon" />
     </div>
   </div>
 </template>
@@ -23,6 +32,14 @@ export default {
     main: {
       type: Boolean,
       default: false,
+    },
+    tight: {
+      type: Boolean,
+      default: false,
+    },
+    chevron: {
+      type: Boolean,
+      default: true,
     },
   },
 }
@@ -57,8 +74,7 @@ export default {
 
   > div {
     height: 48px;
-    padding-left: 16px;
-    padding-right: 8px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -66,7 +82,24 @@ export default {
     border: 2px solid var(--color-white);
 
     p {
-      margin: auto 8px;
+      margin: 0 8px;
+    }
+  }
+
+  &.chevron > div {
+    padding-right: 8px;
+  }
+
+  &.tight {
+    height: 48px;
+
+    > div {
+      padding: 0 12px;
+      height: 32px;
+
+      p {
+        margin: 0;
+      }
     }
   }
 }
