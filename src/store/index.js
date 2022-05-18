@@ -1,51 +1,18 @@
 import { defineStore } from 'pinia'
 
 import { getRandomScore, getRandomFromArray } from '@/helpers'
-import { scoreConstants, names } from '@/constants'
+import { scoreConstants, initialState, names } from '@/constants'
 
 export const useStore = defineStore('main', {
   state: () => {
-    return {
-      steps: [
-        'animation-intro',
-        'prescription',
-        'destination',
-        'transportation',
-        'accommodation',
-        'animation-travel',
-        'incident',
-        'activities',
-        'animation-end',
-        'postcard',
-      ],
-      splash: false,
-      progressionIndex: 0,
-      selected: null,
-      score: {
-        wellness: scoreConstants.wellness.initial,
-        budget: scoreConstants.budget.initial,
-        pollution: scoreConstants.pollution.initial,
-      },
-      incidents: [],
-      defeat: null,
-      trip: {
-        wish: null,
-        destination: null,
-        transportation: null,
-        accommodation: null,
-        incident: {
-          situation: null,
-          outcome: null,
-        },
-        activities: [],
-      },
-    }
+    return { ...initialState }
   },
   getters: {
     currentStep: (state) => state.steps[state.progressionIndex],
     currentComponent: (state) =>
       state.steps[state.progressionIndex].split('-')[0] + '-container',
-    currentAnimation: (state) => state.steps[state.progressionIndex].split('-')[1],
+    currentAnimation: (state) =>
+      state.steps[state.progressionIndex].split('-')[1],
     activitiesCount: (state) => state.trip.activities.length,
     activeThought: (state) => (state.selected ? state.selected.thoughts : null),
   },
