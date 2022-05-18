@@ -45,6 +45,7 @@ export const useStore = defineStore('main', {
     currentStep: (state) => state.steps[state.progressionIndex],
     currentComponent: (state) =>
       state.steps[state.progressionIndex].split('-')[0] + '-container',
+    currentAnimation: (state) => state.steps[state.progressionIndex].split('-')[1],
     activitiesCount: (state) => state.trip.activities.length,
     activeThought: (state) => (state.selected ? state.selected.thoughts : null),
   },
@@ -70,6 +71,7 @@ export const useStore = defineStore('main', {
       }
     },
     collectPotentialIncidents(element) {
+      console.log(element)
       const incidents = element.incidents.data
       for (const incident of incidents) {
         if (!this.incidents.includes(incident)) {
