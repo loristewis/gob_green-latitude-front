@@ -12,7 +12,7 @@ export default {
   setup() {
     const store = useStore()
 
-    store.trip.incident.event = getRandomFromArray(store.incidents).attributes
+    store.trip.incident.situation = getRandomFromArray(store.incidents).attributes
 
     const incident = store.trip.incident
 
@@ -39,13 +39,13 @@ export default {
 <template>
   <div v-if="!incident.outcome">
     <div>
-      <Title tag="h2">{{ incident.event.title }}</Title>
-      <p>{{ incident.event.description }}</p>
+      <Title tag="h2">{{ incident.situation.title }}</Title>
+      <p>{{ incident.situation.description }}</p>
     </div>
     <IncidentChoice
       @select="getOutcome(choice)"
       :choice="choice"
-      v-for="(choice, i) in incident.event.choices"
+      v-for="(choice, i) in incident.situation.choices"
       :key="i"
     />
   </div>

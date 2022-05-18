@@ -34,7 +34,7 @@ export const useStore = defineStore('main', {
         transportation: null,
         accommodation: null,
         incident: {
-          event: null,
+          situation: null,
           outcome: null,
         },
         activities: [],
@@ -70,7 +70,7 @@ export const useStore = defineStore('main', {
       }
     },
     collectPotentialIncidents(element) {
-      const incidents = element.events.data
+      const incidents = element.incidents.data
       for (const incident of incidents) {
         if (!this.incidents.includes(incident)) {
           this.incidents.push(incident)
