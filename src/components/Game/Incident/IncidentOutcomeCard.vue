@@ -5,11 +5,15 @@
     class="incident-outcome-card-container"
   >
     <div class="scores">
-      <div v-if="budget !== 0">{{ budget }}</div>
+      <ScoreEvolution v-if="budget !== 0" name="budget" :value="budget" />
 
-      <div v-if="pollution !== 0">{{ pollution }}</div>
+      <ScoreEvolution
+        v-if="pollution !== 0"
+        name="pollution"
+        :value="pollution"
+      />
 
-      <div v-if="wellness !== 0">{{ wellness }}</div>
+      <ScoreEvolution v-if="wellness !== 0" name="wellness" :value="wellness" />
     </div>
 
     <img :src="Star" alt="" class="star" />
@@ -18,12 +22,13 @@
 
 <script>
 import { Title, BaseCard, Sticker } from '@/components/lib'
+import ScoreEvolution from '@/components/lib/scores/ScoreEvolution.vue'
 
 import Star from './../../../assets/star.svg'
 
 export default {
   name: 'IncidentOutcomeCard',
-  components: { Title, BaseCard, Sticker },
+  components: { Title, BaseCard, Sticker, ScoreEvolution },
   props: {
     title: {
       type: String,
@@ -63,12 +68,6 @@ export default {
     display: flex;
     justify-content: space-around;
     margin-top: 24px;
-
-    > div {
-      height: 24px;
-      width: 24px;
-      background-color: var(--color-yellow);
-    }
   }
 
   .star {
