@@ -4,6 +4,7 @@
     :description="description"
     class="incident-card-container"
   >
+    <img :src="Star" alt="" class="star" />
 
     <Sticker
       :color-combo="{
@@ -20,6 +21,8 @@
 <script>
 import { Title, BaseCard, Sticker } from '@/components/lib'
 
+import Star from './../../../assets/star.svg'
+
 export default {
   name: 'IncidentCard',
   components: { BaseCard, Title, Sticker },
@@ -32,6 +35,11 @@ export default {
       type: String,
       required: true,
     },
+  },
+  data() {
+    return {
+      Star,
+    }
   },
 }
 </script>
@@ -49,13 +57,8 @@ export default {
 
   .star {
     position: absolute;
-    top: -104px;
-    right: 48px;
-
-    // à remplacer par l'étoile et supprimer les 3 lignes ci-dessous
-    height: 104px;
-    width: 120px;
-    background-color: var(--color-yellow);
+    top: -112px;
+    right: 72px;
   }
 }
 </style>
