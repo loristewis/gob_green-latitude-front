@@ -17,8 +17,8 @@
 <script>
 import { Title, Menu } from '@/components/lib'
 
-import Gauge from '@/components/lib/menu/Gauge.vue'
-import Budget from '@/components/lib/menu/Budget.vue'
+import Gauge from '@/components/lib/scores/Gauge.vue'
+import Budget from '@/components/lib/scores/Budget.vue'
 
 import Smiley from '../../assets/smiley.svg'
 import Fire from '../../assets/fire.svg'

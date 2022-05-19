@@ -12,7 +12,7 @@
         id="pollution-gauge"
         :value="score.pollution"
         from="right"
-        :image="Fire"
+        :image="CloudyEarth"
       />
     </div>
 
@@ -27,13 +27,15 @@
 </template>
 
 <script>
-import { IconButton } from '@/components/lib'
+import IconButton from '@/components/lib/IconButton.vue'
+import Budget from '@/components/lib/scores/Budget.vue'
+import Gauge from '@/components/lib/scores/Gauge.vue'
+
 import { HomeIcon } from '@heroicons/vue/solid'
 
-import Budget from './Budget.vue'
-import Gauge from './Gauge.vue'
-import Smiley from '../../../assets/smiley.svg'
-import Fire from '../../../assets/fire.svg'
+import Smiley from '../../assets/smiley.svg'
+import Fire from '../../assets/fire.svg'
+import CloudyEarth from '../../assets/cloudy-earth.svg'
 
 export default {
   name: 'Menu',
@@ -59,6 +61,7 @@ export default {
     return {
       Smiley,
       Fire,
+      CloudyEarth,
       HomeIcon,
     }
   },
