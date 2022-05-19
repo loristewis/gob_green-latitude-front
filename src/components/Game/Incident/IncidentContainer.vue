@@ -15,9 +15,15 @@
     </div>
 
     <div v-else>
-      <Title tag="h2">{{ incident.outcome.title }}</Title>
-      <p>{{ incident.outcome.description }}</p>
-      <Button main @click="store.finishStep">Continuer</Button>
+      <IncidentOutcomeCard
+        :title="incident.outcome.title"
+        :description="incident.outcome.description"
+        :budget="incident.outcome.budget"
+        :pollution="incident.outcome.pollution"
+        :wellness="incident.outcome.wellness"
+      />
+
+      <Button @click="store.finishStep">Continuer</Button>
     </div>
   </div>
 </template>
@@ -29,6 +35,7 @@ import { Title, Button } from '@/components/lib'
 
 import IncidentCard from '@/components/Game/Incident/IncidentCard.vue'
 import IncidentChoiceCard from '@/components/Game/Incident/IncidentChoiceCard.vue'
+import IncidentOutcomeCard from '@/components/Game/Incident/IncidentOutcomeCard.vue'
 
 export default {
   name: 'IncidentContainer',
@@ -38,6 +45,7 @@ export default {
     Button,
     IncidentCard,
     IncidentChoiceCard,
+    IncidentOutcomeCard,
   },
   setup() {
     const store = useStore()
