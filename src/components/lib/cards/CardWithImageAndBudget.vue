@@ -1,5 +1,5 @@
 <template>
-  <CardContainer class="accommodation-card-container">
+  <CardContainer class="card-with-image-and-budget-container">
     <div class="image" :style="{ backgroundImage: `url(${image})` }" />
 
     <div class="infos">
@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import { CardContainer, Title, Price } from '@/components/lib'
-import { useStore } from './../../../store/index'
+import { CardContainer, Price, Title } from '@/components/lib'
+import { useStore } from '@/store/index.js'
 
 export default {
-  name: 'AccommodationCard',
+  name: 'CardWithImageAndBudget',
   components: {
     CardContainer,
     Title,
@@ -53,16 +53,10 @@ export default {
 </script>
 
 <style lang="scss">
-.accommodation-card-container {
+.card-with-image-and-budget-container {
   max-width: 288px;
-  height: 448px;
   margin: auto;
   padding: 24px;
-  overflow: scroll;
-
-  &.selected {
-    background-color: #8a95b4;
-  }
 
   .image {
     height: 220px;

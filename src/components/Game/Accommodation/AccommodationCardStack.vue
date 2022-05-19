@@ -4,8 +4,8 @@
 
     <div class="accommodation-cards">
       <Swipeable
-        ref="swipeable"
         class="swipeable-card"
+        ref="swipeable"
         v-for="el in elements"
         :key="el.id"
         :allow-swipe-y="false"
@@ -16,7 +16,8 @@
         v-on:swipe-left="onSwipeLeft"
         v-on:end="onEnd"
       >
-        <AccommodationCard
+        <CardWithImageAndBudget
+          class="accommodation-card-container"
           :title="el.attributes.title"
           :description="el.attributes.description"
           :budget="el.attributes.budget"
@@ -44,11 +45,10 @@
 </template>
 
 <script>
-import { Swipeable, IconButton } from '@/components/lib'
+import { Swipeable, IconButton, CardWithImageAndBudget } from '@/components/lib'
 import { getImage } from '@/helpers'
 import { useStore } from '@/store'
 
-import AccommodationCard from './AccommodationCard.vue'
 import AccommodationGauge from './AccommodationGauge.vue'
 
 import { TrashIcon, CheckIcon } from '@heroicons/vue/solid'
@@ -58,7 +58,7 @@ export default {
   components: {
     Swipeable,
     IconButton,
-    AccommodationCard,
+    CardWithImageAndBudget,
     AccommodationGauge,
   },
   props: {
@@ -166,6 +166,13 @@ export default {
           transform: rotate(0deg);
         }
       }
+    }
+
+    .accommodation-card-container {
+      height: 448px;
+      max-width: 288px;
+      margin: auto;
+      overflow: scroll;
     }
   }
 

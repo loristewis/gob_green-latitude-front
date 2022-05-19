@@ -22,7 +22,7 @@ import { ArrowNarrowDownIcon } from '@heroicons/vue/solid'
 import { ArrowNarrowUpIcon } from '@heroicons/vue/solid'
 
 export default {
-  name: 'ScoreEvolution',
+  name: 'ScoreEvolutionItem',
   components: {
     ArrowNarrowDownIcon,
     ArrowNarrowUpIcon,

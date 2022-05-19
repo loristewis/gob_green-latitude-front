@@ -14,23 +14,34 @@
   </div>
 
   <Title>ScoreEvolution</Title>
-  <div class="demo-budget-container">
+  <div class="demo-container">
+    <Title tag="h2">ScoreEvolutionGroup</Title>
+
+    <ScoreEvolutionGroup budget="10" pollution="10" wellness="10" />
+    <br />
+    <hr />
+    <ScoreEvolutionGroup budget="-10" pollution="-10" wellness="-10" />
+  </div>
+
+  <div class="demo-container">
+    <Title tag="h2">ScoreEvolutionItem</Title>
+
+    <Title tag="h3">Budget</Title>
     <div>
-      <Title tag="h2">Budget</Title>
-      <ScoreEvolution name="budget" :value="10" />
-      <ScoreEvolution name="budget" :value="-10" />
+      <ScoreEvolutionItem name="budget" :value="10" />
+      <ScoreEvolutionItem name="budget" :value="-10" />
     </div>
 
+    <Title tag="h3">Pollution</Title>
     <div>
-      <Title tag="h2">Pollution</Title>
-      <ScoreEvolution name="pollution" :value="10" />
-      <ScoreEvolution name="pollution" :value="-10" />
+      <ScoreEvolutionItem name="pollution" :value="10" />
+      <ScoreEvolutionItem name="pollution" :value="-10" />
     </div>
 
+    <Title tag="h3">Wellness</Title>
     <div>
-      <Title tag="h2">Wellness</Title>
-      <ScoreEvolution name="wellness" :value="10" />
-      <ScoreEvolution name="wellness" :value="-10" />
+      <ScoreEvolutionItem name="wellness" :value="10" />
+      <ScoreEvolutionItem name="wellness" :value="-10" />
     </div>
   </div>
 </template>
@@ -40,14 +51,22 @@ import { Title, Menu } from '@/components/lib'
 
 import Gauge from '@/components/lib/scores/Gauge.vue'
 import Budget from '@/components/lib/scores/Budget.vue'
-import ScoreEvolution from '@/components/lib/scores/ScoreEvolution.vue'
+import ScoreEvolutionGroup from '@/components/lib/scores/ScoreEvolutionGroup.vue'
+import ScoreEvolutionItem from '@/components/lib/scores/ScoreEvolutionItem.vue'
 
 import Smiley from '../../assets/smiley.svg'
 import Fire from '../../assets/fire.svg'
 
 export default {
   name: 'ScoresCollection',
-  components: { ScoreEvolution, Title, Menu, Gauge, Budget },
+  components: {
+    ScoreEvolutionItem,
+    ScoreEvolutionGroup,
+    Title,
+    Menu,
+    Gauge,
+    Budget,
+  },
   data() {
     return {
       Smiley,
@@ -57,11 +76,14 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.demo-budget-container {
+<style lang="scss">
+.demo-container {
   background-color: var(--color-beige-cool);
+  margin-top: 16px;
   padding: 40px;
-  display: flex;
-  gap: 30px;
+
+  > h3 {
+    margin: 24px 0 16px;
+  }
 }
 </style>

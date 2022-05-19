@@ -4,31 +4,20 @@
     :description="description"
     class="incident-outcome-card-container"
   >
-    <div class="scores">
-      <ScoreEvolution v-if="budget !== 0" name="budget" :value="budget" />
-
-      <ScoreEvolution
-        v-if="pollution !== 0"
-        name="pollution"
-        :value="pollution"
-      />
-
-      <ScoreEvolution v-if="wellness !== 0" name="wellness" :value="wellness" />
-    </div>
+    <ScoreEvolutionGroup v-bind="$props" />
 
     <img :src="Star" alt="" class="star" />
   </BaseCard>
 </template>
 
 <script>
-import { Title, BaseCard, Sticker } from '@/components/lib'
-import ScoreEvolution from '@/components/lib/scores/ScoreEvolution.vue'
+import { Title, BaseCard, Sticker, ScoreEvolutionGroup } from '@/components/lib'
 
 import Star from './../../../assets/star.svg'
 
 export default {
   name: 'IncidentOutcomeCard',
-  components: { Title, BaseCard, Sticker, ScoreEvolution },
+  components: { Title, BaseCard, Sticker, ScoreEvolutionGroup },
   props: {
     title: {
       type: String,

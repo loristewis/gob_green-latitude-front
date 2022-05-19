@@ -1,5 +1,6 @@
 <template>
-  <DestinationSwiper :destinations="elements"></DestinationSwiper>
+  <DestinationSwiper :destinations="elements" />
+
   <Button main @click="emitDestinationChoice">Allons-y !</Button>
 </template>
 

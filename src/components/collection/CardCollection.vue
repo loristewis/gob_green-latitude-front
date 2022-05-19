@@ -14,18 +14,6 @@
     <AccommodationCardStack :elements="accommodations" />
   </div>
 
-  <div class="background-container">
-    <AccommodationCard
-      :title="accommodation.attributes.title"
-      :description="accommodation.attributes.description"
-      :thoughts="accommodation.attributes.thoughts"
-      :budget="accommodation.attributes.budget"
-      :image="getImage(accommodation)"
-      tag-color="red"
-      description="Partez à la mer sans investir dans de la crème solaire !"
-    />
-  </div>
-
   <!--  <Title>Transport</Title>
   <div class="background-container">
     <TransportationCard
@@ -57,7 +45,6 @@ import { getImage } from '@/helpers'
 import DestinationCard from '../Game/Destination/DestinationCard.vue'
 import DestinationSwiper from '../Game/Destination/DestinationSwiper.vue'
 import TransportationCard from '../Game/Transportation/TransportationCard.vue'
-import AccommodationCard from '../Game/Accommodation/AccommodationCard.vue'
 import AccommodationCardStack from '../Game/Accommodation/AccommodationCardStack.vue'
 
 import { destinations, accommodations } from './placeholderData'
@@ -70,7 +57,6 @@ export default {
     BaseCard,
     DestinationSwiper,
     TransportationCard,
-    AccommodationCard,
     AccommodationCardStack,
   },
   data() {
