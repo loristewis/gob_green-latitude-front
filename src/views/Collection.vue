@@ -24,7 +24,7 @@
 import { Title } from '@/components/lib'
 
 import TextsCollection from '../components/collection/TextsCollection.vue'
-import MenuCollection from './../components/collection/MenuCollection.vue'
+import ScoresCollection from './../components/collection/ScoresCollection.vue'
 import ThoughtCollection from '../components/collection/ThoughtCollection.vue'
 import TagCollection from '../components/collection/TagCollection.vue'
 import ButtonCollection from '../components/collection/ButtonCollection.vue'
@@ -36,7 +36,7 @@ export default {
   components: {
     Title,
     TextsCollection,
-    MenuCollection,
+    ScoresCollection,
     ThoughtCollection,
     TagCollection,
     ButtonCollection,
@@ -52,9 +52,9 @@ export default {
           component: TextsCollection,
         },
         {
-          id: 'menu',
-          title: 'Menu',
-          component: MenuCollection,
+          id: 'scores',
+          title: 'Menu / scores',
+          component: ScoresCollection,
         },
         {
           id: 'thought',
