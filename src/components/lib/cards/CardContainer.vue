@@ -1,5 +1,5 @@
 <template>
-  <div :class="['card-container', accent && 'accent']">
+  <div class="card-container" :class="{ accent: accent }">
     <slot />
   </div>
 </template>

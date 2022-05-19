@@ -2,11 +2,11 @@
   <Title>BaseCard</Title>
 
   <div class="background-container">
-    <BaseCard>Test</BaseCard>
+    <BaseCard title="Titre de la card">Test</BaseCard>
   </div>
 
   <div class="background-container">
-    <BaseCard :accent="false"> Test </BaseCard>
+    <BaseCard title="Titre de la card" :accent="false"> Test </BaseCard>
   </div>
 
   <Title>Accommodation</Title>

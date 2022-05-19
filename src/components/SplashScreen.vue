@@ -7,15 +7,16 @@
   >
     <div class="splash-screen-content">
       <img :src="infos.image" alt="" />
-      <BaseCard class="splash-screen-tagline">
+
+      <CardContainer class="splash-screen-tagline">
         <Title>{{ infos.tagline }}</Title>
-      </BaseCard>
+      </CardContainer>
     </div>
   </div>
 </template>
 
 <script>
-import { BaseCard, Title } from '@/components/lib'
+import { CardContainer, Title } from '@/components/lib'
 
 import Pattern from './../assets/splash/pattern-tile.jpg'
 
@@ -23,7 +24,7 @@ export default {
   name: 'SplashScreen',
   props: ['infos'],
   components: {
-    BaseCard,
+    CardContainer,
     Title,
   },
   data() {
@@ -47,8 +48,8 @@ export default {
   .splash-screen-content {
     .splash-screen-tagline {
       width: 90%;
-      margin: 0 auto;
-      margin-top: -24px;
+      margin: -24px auto 0;
+      padding: 12px 16px;
     }
 
     img {

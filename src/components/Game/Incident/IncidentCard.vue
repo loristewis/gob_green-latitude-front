@@ -1,14 +1,9 @@
 <template>
-  <CardContainer class="incident-card-container">
-    <Title tag="h2" class="name">
-      {{ title }}
-    </Title>
-
-    <p>
-      {{ description }}
-    </p>
-
-    <div class="star">STAR</div>
+  <BaseCard
+    :title="title"
+    :description="description"
+    class="incident-card-container"
+  >
 
     <Sticker
       :color-combo="{
@@ -19,15 +14,15 @@
     >
       AAAAAAHH
     </Sticker>
-  </CardContainer>
+  </BaseCard>
 </template>
 
 <script>
-import { Title, CardContainer, Sticker } from '@/components/lib'
+import { Title, BaseCard, Sticker } from '@/components/lib'
 
 export default {
   name: 'IncidentCard',
-  components: { Title, CardContainer, Sticker },
+  components: { BaseCard, Title, Sticker },
   props: {
     title: {
       type: String,
@@ -43,13 +38,8 @@ export default {
 
 <style lang="scss">
 .incident-card-container {
-  padding: 32px;
   margin-top: 128px;
   margin-bottom: 32px;
-
-  .name {
-    margin-bottom: 8px;
-  }
 
   .sticker {
     position: absolute;

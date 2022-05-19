@@ -1,19 +1,19 @@
 <template>
-  <BaseCard>
+  <CardContainer>
     <Sticker>{{ infos.title }}</Sticker>
     <p>{{ infos.description }}</p>
     <img :src="infos.image" alt="" />
     <Button @click="finishGame">Voir le bilan de fin</Button>
-  </BaseCard>
+  </CardContainer>
 </template>
 
 <script>
 import { useStore } from './../../store'
-import { BaseCard, Sticker, Button } from '@/components/lib'
+import { CardContainer, Sticker, Button } from '@/components/lib'
 
 export default {
   name: 'DefeatContainer',
-  components: { BaseCard, Sticker, Button },
+  components: { CardContainer, Sticker, Button },
   props: {
     infos: {
       type: Object,
