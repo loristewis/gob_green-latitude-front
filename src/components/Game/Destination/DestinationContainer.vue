@@ -1,3 +1,8 @@
+<template>
+  <DestinationSwiper :destinations="elements"></DestinationSwiper>
+  <Button main @click="emitDestinationChoice">Allons-y !</Button>
+</template>
+
 <script>
 import { useStore } from './../../../store/index'
 
@@ -41,10 +46,3 @@ export default {
   },
 }
 </script>
-
-<template>
-  <DestinationSwiper :destinations="elements"></DestinationSwiper>
-  <Button main @click="emitDestinationChoice">Allons-y !</Button>
-</template>
-
-<style></style>

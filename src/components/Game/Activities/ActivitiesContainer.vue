@@ -1,3 +1,20 @@
+<template>
+  <div class="activities-container">
+    <div v-for="el in elements" :key="el.attributes.id">
+      <input
+        type="checkbox"
+        name="activities"
+        v-model="store.trip.activities"
+        :id="el.attributes.id"
+        :value="el.attributes"
+      />
+
+      <activity-card :activity="el.attributes"></activity-card>
+    </div>
+    <Button main @click="validateActivities">C'est décidé !</Button>
+  </div>
+</template>
+
 <script>
 import { useStore } from './../../../store/index'
 
@@ -28,20 +45,5 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div v-for="el in elements" :key="el.attributes.id">
-    <input
-      type="checkbox"
-      name="activities"
-      v-model="store.trip.activities"
-      :id="el.attributes.id"
-      :value="el.attributes"
-    />
-
-    <activity-card :activity="el.attributes"></activity-card>
-  </div>
-  <Button main @click="validateActivities">C'est décidé !</Button>
-</template>
 
 <style></style>

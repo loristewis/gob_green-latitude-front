@@ -1,3 +1,19 @@
+<template>
+  <div id="animation-container">
+    <div
+      v-if="store.currentAnimation === 'intro'"
+      @click="store.moveToNextStep"
+      id="animation-skip"
+    >
+      <p>Passer l'introduction</p>
+      <ChevronRightIcon class="hero-icon" />
+    </div>
+    <video ref="video" id="animation-video" @ended="store.moveToNextStep" muted>
+      <source :src="animation[store.currentAnimation]" type="video/mp4" />
+    </video>
+  </div>
+</template>
+
 <script>
 import { useStore } from '@/store'
 import { ChevronRightIcon } from '@heroicons/vue/solid'
@@ -39,22 +55,6 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div id="animation-container">
-    <div
-      v-if="store.currentAnimation === 'intro'"
-      @click="store.moveToNextStep"
-      id="animation-skip"
-    >
-      <p>Passer l'introduction</p>
-      <ChevronRightIcon class="hero-icon" />
-    </div>
-    <video ref="video" id="animation-video" @ended="store.moveToNextStep" muted>
-      <source :src="animation[store.currentAnimation]" type="video/mp4" />
-    </video>
-  </div>
-</template>
 
 <style lang="scss">
 #animation-container {

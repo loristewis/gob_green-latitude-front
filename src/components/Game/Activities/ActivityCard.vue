@@ -1,10 +1,3 @@
-<script>
-export default {
-  name: 'ActivityCard',
-  props: ['activity'],
-}
-</script>
-
 <template>
   <p>{{ activity.title }}</p>
   <p>{{ activity.description }}</p>
@@ -17,5 +10,12 @@ export default {
     >
   </p>
 </template>
+
+<script>
+export default {
+  name: 'ActivityCard',
+  props: ['activity'],
+}
+</script>
 
 <style></style>

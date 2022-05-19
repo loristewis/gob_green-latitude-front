@@ -1,3 +1,15 @@
+<template>
+  <TransportationCard
+    v-for="(el, i) in elements"
+    @validate-transportation="validateTransportation"
+    @click="selectElement(el)"
+    :key="el.id"
+    :transport="el.attributes"
+    :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
+    tag-color="green"
+  />
+</template>
+
 <script>
 import { useStore } from '@/store/index'
 import { shuffleArray, getRandomInt } from '@/helpers'
@@ -47,15 +59,3 @@ export default {
   },
 }
 </script>
-
-<template>
-  <TransportationCard
-    v-for="(el, i) in elements"
-    @validate-transportation="validateTransportation"
-    @click="selectElement(el)"
-    :key="el.id"
-    :transport="el.attributes"
-    :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
-    tag-color="green"
-  />
-</template>
