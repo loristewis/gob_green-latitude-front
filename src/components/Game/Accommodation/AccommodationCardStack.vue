@@ -146,6 +146,7 @@ export default {
     .swipeable-card {
       position: absolute;
       height: 100%;
+      user-select: none;
 
       &:nth-child(2)::before {
         content: '';
