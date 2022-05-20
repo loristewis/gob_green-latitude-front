@@ -38,3 +38,11 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.activity-card-container {
+  .infos {
+    min-height: 144px;
+  }
+}
+</style>
