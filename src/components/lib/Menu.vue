@@ -3,16 +3,16 @@
     <div id="menu-gauges-container">
       <Gauge
         id="wellness-gauge"
+        name="wellness"
         :value="score.wellness"
         from="left"
-        :image="Smiley"
       />
 
       <Gauge
         id="pollution-gauge"
+        name="pollution"
         :value="score.pollution"
         from="right"
-        :image="CloudyEarth"
       />
     </div>
 
@@ -32,10 +32,6 @@ import Budget from '@/components/lib/scores/Budget.vue'
 import Gauge from '@/components/lib/scores/Gauge.vue'
 
 import { HomeIcon } from '@heroicons/vue/solid'
-
-import Smiley from '../../assets/smiley.svg'
-import Fire from '../../assets/fire.svg'
-import CloudyEarth from '../../assets/cloudy-earth.svg'
 
 export default {
   name: 'Menu',
@@ -59,9 +55,6 @@ export default {
   },
   data() {
     return {
-      Smiley,
-      Fire,
-      CloudyEarth,
       HomeIcon,
     }
   },

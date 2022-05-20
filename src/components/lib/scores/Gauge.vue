@@ -4,17 +4,24 @@
       <div class="progress" :style="progressStyle"></div>
     </div>
 
-    <img :src="image" alt="" />
+    <img :src="icon" alt="" />
   </div>
 </template>
 
 <script>
+import { scores } from '@/constants'
+
+import Smiley from '@/assets/smiley.svg'
+import Fire from '@/assets/fire.svg'
+import CloudyEarth from '@/assets/cloudy-earth.svg'
+
 export default {
   name: 'Gauge',
   props: {
-    image: {
+    name: {
       type: String,
       required: true,
+      validator: (name) => scores.includes(name),
     },
     value: {
       type: Number,
@@ -28,12 +35,28 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      Smiley,
+      Fire,
+      CloudyEarth,
+    }
+  },
   computed: {
+    icon() {
+      if (this.name === 'pollution') return CloudyEarth
+      if (this.name === 'wellness') return Smiley
+    },
     progressStyle() {
       return {
         // width: `${(this.value + 50) / 100}%`,
         width: `${this.value * 10}%`,
+        backgroundColor: this.color,
       }
+    },
+    color() {
+      if (this.name === 'pollution') return 'var(--color-green-light)'
+      if (this.name === 'wellness') return 'var(--color-green-light)'
     },
   },
 }
@@ -66,7 +89,6 @@ export default {
 
     .progress {
       height: 16px;
-      background-color: var(--color-green-light);
       transition: width 0.6s;
     }
   }

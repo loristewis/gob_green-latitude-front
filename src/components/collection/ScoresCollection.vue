@@ -3,8 +3,19 @@
   <Menu />
 
   <Title>Jauges</Title>
-  <Gauge :value="10" from="left" :image="Smiley" />
-  <Gauge :value="4" from="right" :image="Fire" />
+  <Gauge name="wellness" :value="1" from="left" />
+  <Gauge name="wellness" :value="3" from="left" />
+  <Gauge name="wellness" :value="5" from="left" />
+  <Gauge name="wellness" :value="8" from="left" />
+  <Gauge name="wellness" :value="10" from="left" />
+
+  <br />
+
+  <Gauge name="pollution" :value="1" from="right" />
+  <Gauge name="pollution" :value="3" from="right" />
+  <Gauge name="pollution" :value="5" from="right" />
+  <Gauge name="pollution" :value="8" from="right" />
+  <Gauge name="pollution" :value="10" from="right" />
 
   <Title>Budget</Title>
   <div class="demo-budget-container">
