@@ -13,6 +13,8 @@
 </template>
 
 <script>
+import { scores } from '@/constants'
+
 import Smiley from '@/assets/smiley.svg'
 import Fire from '@/assets/fire.svg'
 import CloudyEarth from '@/assets/cloudy-earth.svg'
@@ -31,7 +33,7 @@ export default {
     name: {
       type: String,
       required: true,
-      validator: (name) => ['budget', 'pollution', 'wellness'].includes(name),
+      validator: (name) => scores.includes(name),
     },
     value: {
       type: Number,

@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { titleTags } from './constants'
+import { titleTags } from '@/constants'
 
 export default {
   name: 'Title',
