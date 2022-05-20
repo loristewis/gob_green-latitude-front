@@ -59,9 +59,8 @@ export default {
   padding: 24px;
 
   .image {
-    height: 220px;
-    width: 220px;
-    max-width: 100%;
+    height: 160px;
+    width: 100%;
     background: no-repeat center;
     background-size: contain;
   }
