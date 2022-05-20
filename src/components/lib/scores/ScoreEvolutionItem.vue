@@ -5,9 +5,9 @@
     </div>
 
     <div class="arrow" :class="color">
-      <ArrowNarrowDownIcon v-if="value < 0" class="hero-icon" />
+      <ArrowNarrowDownIcon v-if="value < 0" class="hero-icon down" />
 
-      <ArrowNarrowUpIcon v-else class="hero-icon" />
+      <ArrowNarrowUpIcon v-else class="hero-icon up" />
     </div>
   </div>
 </template>
@@ -86,11 +86,18 @@ export default {
     height: 24px;
     width: 24px;
     border-radius: 50%;
-    transform: rotate(10deg);
 
     .hero-icon {
       height: 20px;
       width: 20px;
+    }
+
+    &.up {
+      transform: rotate(10deg);
+    }
+
+    &.down {
+      transform: rotate(-10deg);
     }
 
     &.good {
