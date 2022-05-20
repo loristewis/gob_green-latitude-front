@@ -66,13 +66,14 @@ export default {
 .score-evolution-container {
   display: flex;
   align-items: center;
+
   .icon {
-    height: 40px;
-    width: 40px;
+    height: 32px;
+    width: 32px;
 
     img {
       height: 100%;
-      width: 40px;
+      width: 32px;
     }
   }
 
@@ -80,14 +81,14 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 32px;
-    width: 32px;
+    height: 24px;
+    width: 24px;
     border-radius: 50%;
     transform: rotate(10deg);
 
     .hero-icon {
-      height: 24px;
-      width: 24px;
+      height: 20px;
+      width: 20px;
     }
 
     &.good {
