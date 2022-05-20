@@ -10,6 +10,7 @@
   "dependencies": {
     "@headlessui/vue": "^1.6.1",
     "@heroicons/vue": "^1.0.6",
+    "animate.css": "^4.1.1",
     "axios": "^0.26.0",
     "interactjs": "^1.10.11",
     "pinia": "^2.0.13",

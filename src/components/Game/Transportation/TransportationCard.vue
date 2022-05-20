@@ -24,20 +24,27 @@
         <div class="punch" />
       </div>
 
-      <div v-if="isSelected(transport)" class="transport-card-body">
-        <TransportationOption
-          @select-option="selectOption(i)"
-          v-for="(option, i) in sortOptions(transport.options.data)"
-          :option="option"
-          :budget="transport.budget + option.attributes.budget"
-          :selected="this.selectedOptionIndex === i"
-          :key="i"
-        />
+      <transition
+        enter-active-class="animated slideInDown"
+        leave-active-class="animated slideInUp"
+      >
+        <!--        name="custom-classes-transition"-->
+        <!--        name="unfold"-->
+        <div v-if="isSelected(transport)" class="transport-card-body">
+          <TransportationOption
+            @select-option="selectOption(i)"
+            v-for="(option, i) in sortOptions(transport.options.data)"
+            :option="option"
+            :budget="transport.budget + option.attributes.budget"
+            :selected="this.selectedOptionIndex === i"
+            :key="i"
+          />
 
-        <Button @click="validateOption" class="reservation-button">
-          On réserve !
-        </Button>
-      </div>
+          <Button @click="validateOption" class="reservation-button">
+            On réserve !
+          </Button>
+        </div>
+      </transition>
     </div>
   </CardContainer>
 </template>
@@ -47,6 +54,8 @@ import { useStore } from './../../../store/index'
 
 import TransportationOption from './TransportationOption.vue'
 import { CardContainer, Title, Tag, Sticker, Button } from '@/components/lib'
+
+import 'animate.css'
 
 export default {
   name: 'TransportationCard',
@@ -190,5 +199,14 @@ export default {
       right: -16px;
     }
   }
+
+  //.unfold-enter-active,
+  //.unfold-leave-active {
+  //  transition: all 0.5s;
+  //}
+  //.unfold-enter, .unfold-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  //  display: none;
+  //  height: 0;
+  //}
 }
 </style>
