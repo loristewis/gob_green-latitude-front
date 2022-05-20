@@ -5,6 +5,7 @@
       :slides-per-view="1"
       :space-between="24"
       :pagination="{ clickable: true }"
+      v-bind="$attrs"
     >
       <!--      @swiper="onSwiper"-->
       <!--      @slideChange="onSlideChange"-->
