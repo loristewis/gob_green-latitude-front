@@ -198,6 +198,7 @@ export default {
               },
             },
           },
+          populate: '*',
         })
 
         const wishActivities = activities.data.data.filter((el) => {

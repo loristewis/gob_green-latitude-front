@@ -6,16 +6,16 @@
   >
     <div class="backdrop" />
 
-    <CardContainer class="activities-modal-card-container">
-      <Title tag="h2" class="name"> Titre </Title>
+    <CardContainer v-if="outcome" class="activities-modal-card-container">
+      <Title tag="h2" class="name">{{ outcome.title }}</Title>
 
-      <p>Description</p>
+      <p>{{ outcome.description }}</p>
 
       <ScoreEvolutionGroup
         v-bind="$props"
-        :budget="1"
-        :pollution="1"
-        :wellness="1"
+        :budget="outcome.budget"
+        :pollution="outcome.pollution"
+        :wellness="outcome.wellness"
       />
     </CardContainer>
   </div>
@@ -32,6 +32,10 @@ export default {
       type: Boolean,
       required: true,
       default: false,
+    },
+    outcome: {
+      type: Object,
+      required: true,
     },
   },
 }

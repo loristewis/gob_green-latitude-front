@@ -4,12 +4,12 @@
       <div v-for="index in 3" :key="index">
         <!-- p à remplacer par l'image -->
         <p
-          v-if="store.trip.activities[index-1]"
+          v-if="store.trip.activities[index - 1]"
           :src="EmptySlot"
           alt=""
           class="slot"
         >
-          {{ store.trip.activities[index-1].title }}
+          {{ store.trip.activities[index - 1].title }}
         </p>
         <img v-else :src="EmptySlot" alt="" class="slot" />
       </div>
@@ -17,17 +17,19 @@
 
     <ActivitiesSwiper :activities="elements" />
 
-    <Button @click="setIsOpen(true)">C'est décidé !</Button>
+    <Button @click="selectActivity">C'est décidé !</Button>
   </div>
 
   <ActivitiesModalContainer
     @validate-activity="validateActivity"
     :open="isOpen"
+    :outcome="outcome"
   />
 </template>
 
 <script>
 import { useStore } from './../../../store/index'
+import { getRandomInt } from '@/helpers'
 
 import { Button, Title, CardContainer } from '@/components/lib'
 import ActivityCard from '@/components/Game/Activities/ActivityCard.vue'
@@ -51,6 +53,7 @@ export default {
     return {
       EmptySlot,
       isOpen: false,
+      outcome: null,
     }
   },
   setup() {
@@ -63,9 +66,32 @@ export default {
     setIsOpen(value) {
       this.isOpen = value
     },
+    selectActivity() {
+      let activity = { ...this.store.selected }
+
+      let outcome
+      if (activity.outcomes.length > 1) {
+        const goodOutcome = activity.outcomes[0]
+        const badOutcome = activity.outcomes[1]
+
+        const dice = getRandomInt(11)
+        outcome = dice > activity.risk ? goodOutcome : badOutcome
+      } else {
+        outcome = activity.outcomes[0]
+      }
+
+      activity.budget += outcome.budget
+      activity.wellness += outcome.wellness
+      activity.pollution += outcome.pollution
+      this.store.selected = activity
+
+      this.outcome = outcome
+      this.setIsOpen(true)
+    },
     validateActivity() {
       this.store.trip.activities.push(this.store.selected)
-      this.setIsOpen(!this.isOpen)
+      this.setIsOpen(false)
+      this.outcome = null
       this.store.selected = null
 
       console.log(this.store.trip.activities)
