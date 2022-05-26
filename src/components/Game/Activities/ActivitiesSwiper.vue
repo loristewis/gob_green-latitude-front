@@ -1,6 +1,6 @@
 <template>
   <div class="activities-swiper-container">
-    <Carousel>
+    <Carousel @swiper="onSwiper" @slideChange="onSlideChange">
       <SwiperSlide v-for="activity in activities" :key="activity.id">
         <CardWithImageAndBudget
           class="activity-card-container"
@@ -17,9 +17,11 @@
 </template>
 
 <script>
+import { useStore } from '@/store'
+import { getImage } from '@/helpers'
+
 import { Carousel, CardWithImageAndBudget } from '@/components/lib'
 import { SwiperSlide } from 'swiper/vue'
-import { getImage } from '@/helpers/index.js'
 
 export default {
   name: 'ActivitiesSwiper',
@@ -38,6 +40,27 @@ export default {
     return {
       getImage,
     }
+  },
+  setup(props) {
+    const store = useStore()
+    const onSwiper = (swiper) => {
+      if (props.activities.length > 0) {
+        store.selected = props.activities[swiper.realIndex].attributes
+      }
+    }
+    const onSlideChange = (e) => {
+      console.log('slide change')
+      store.selected = props.activities[e.realIndex].attributes
+      console.log('active: ', store.selected)
+    }
+    return {
+      store,
+      onSwiper,
+      onSlideChange,
+    }
+  },
+  updated() {
+    this.store.selected = this.activities[0].attributes
   },
 }
 </script>

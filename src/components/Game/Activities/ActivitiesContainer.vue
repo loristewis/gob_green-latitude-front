@@ -1,50 +1,29 @@
 <template>
   <div class="activities-container">
     <CardContainer class="activities-slots-container" :accent="false">
-      <img :src="EmptySlot" alt="" class="slot" />
-      <img :src="EmptySlot" alt="" class="slot" />
-      <img :src="EmptySlot" alt="" class="slot" />
+      <div v-for="index in 3" :key="index">
+        <!-- p à remplacer par l'image -->
+        <p
+          v-if="store.trip.activities[index-1]"
+          :src="EmptySlot"
+          alt=""
+          class="slot"
+        >
+          {{ store.trip.activities[index-1].title }}
+        </p>
+        <img v-else :src="EmptySlot" alt="" class="slot" />
+      </div>
     </CardContainer>
 
     <ActivitiesSwiper :activities="elements" />
 
-    <!--        <div v-for="el in elements" :key="el.attributes.id">
-          <input
-            type="checkbox"
-            name="activities"
-            v-model="store.trip.activities"
-            :id="el.attributes.id"
-            :value="el.attributes"
-          />
-
-          <activity-card :activity="el.attributes"></activity-card>
-        </div>-->
-
-    <!--    <Button main @click="validateActivities">C'est décidé !</Button>-->
     <Button @click="setIsOpen(true)">C'est décidé !</Button>
   </div>
 
-  <ActivitiesModalContainer :open="isOpen" />
-  <!--  <div
-    class="activities-modal-container"
-    :class="{ hidden: !isOpen }"
-    @click="validateActivity"
-  >
-    <div class="backdrop" />
-
-    <CardContainer class="activities-modal-card-container">
-      <Title tag="h2" class="name">Titre</Title>
-
-      <p>Description</p>
-
-      <ScoreEvolutionGroup
-        v-bind="$props"
-        budget="1"
-        pollution="1"
-        wellness="1"
-      />
-    </CardContainer>
-  </div>-->
+  <ActivitiesModalContainer
+    @validate-activity="validateActivity"
+    :open="isOpen"
+  />
 </template>
 
 <script>
@@ -81,19 +60,19 @@ export default {
     }
   },
   methods: {
-    validateActivities() {
-      if (this.store.activitiesCount === 3) {
-        this.store.finishStep()
-      } else {
-        console.log('stp choisis trois activités')
-      }
-    },
     setIsOpen(value) {
       this.isOpen = value
     },
     validateActivity() {
-      // this.setIsOpen(true)
+      this.store.trip.activities.push(this.store.selected)
       this.setIsOpen(!this.isOpen)
+      this.store.selected = null
+
+      console.log(this.store.trip.activities)
+
+      if (this.store.activitiesCount === 3) {
+        this.store.finishStep()
+      }
     },
   },
 }

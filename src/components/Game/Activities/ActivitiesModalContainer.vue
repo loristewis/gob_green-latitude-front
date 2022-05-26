@@ -2,7 +2,7 @@
   <div
     class="activities-modal-container"
     :class="{ hidden: !open }"
-    @click="validateActivity"
+    @click="$emit('validate-activity')"
   >
     <div class="backdrop" />
 
@@ -32,16 +32,6 @@ export default {
       type: Boolean,
       required: true,
       default: false,
-    },
-  },
-  data() {
-    return {
-      isOpen: this.open,
-    }
-  },
-  methods: {
-    validateActivity() {
-      this.isOpen = false
     },
   },
 }
