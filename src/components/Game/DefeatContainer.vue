@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     finishGame() {
-      this.store.cleanDefeat()
       this.store.moveToStep('animation-end')
     },
   },
