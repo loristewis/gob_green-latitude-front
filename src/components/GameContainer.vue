@@ -29,6 +29,7 @@
         :is="store.currentComponent"
         :elements="this.elements[store.currentStep]"
         @validate-destination="validateDestination"
+        @new-game="getWish"
       />
     </div>
   </div>
@@ -90,6 +91,9 @@ export default {
     }
   },
   methods: {
+    getWish() {
+      this.store.trip.wish = this.wishes[getRandomInt(7)].attributes.title
+    },
     getSplashScreen() {
       return splashScreens[this.store.currentStep]
     },
@@ -249,7 +253,7 @@ export default {
       this.wishes = wishes.data.data
       this.elements.destination = shuffleArray(destinations.data.data)
 
-      this.store.trip.wish = this.wishes[getRandomInt(7)].attributes.title
+      this.getWish()
     } catch (error) {
       this.error = error
     }

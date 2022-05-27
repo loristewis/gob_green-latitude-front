@@ -19,5 +19,13 @@ export default {
       store,
     }
   },
+  methods: {
+    newGame() {
+      console.log('nouvelle partie !')
+      this.store.skipIntro = true
+      this.store.resetState()
+      this.$emit('new-game')
+    },
+  },
 }
 </script>

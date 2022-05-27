@@ -37,6 +37,28 @@ export const useStore = defineStore('main', {
         setTimeout(() => this.moveToNextStep(), 1000)
       }
     },
+    resetState() {
+      this.progressionIndex = 0
+      this.selected = null
+      this.incidents = []
+      this.defeat = null
+      this.resetScore()
+      this.resetTrip()
+    },
+    resetScore() {
+      this.score.wellness = scoreConstants.wellness.initial
+      this.score.budget = scoreConstants.budget.initial
+      this.score.pollution = scoreConstants.pollution.initial
+    },
+    resetTrip() {
+      this.trip.wish = null
+      this.trip.destination = null
+      this.trip.transportation = null
+      this.trip.accommodation = null
+      this.trip.incident.situation = null
+      this.trip.incident.outcome = null
+      this.trip.activities = []
+    },
     collectPotentialIncidents(element) {
       console.log(element)
       const incidents = element.incidents.data
@@ -86,9 +108,7 @@ export const useStore = defineStore('main', {
       this.defeat = null
     },
     calculateScore() {
-      this.score.wellness = scoreConstants.wellness.initial
-      this.score.budget = scoreConstants.budget.initial
-      this.score.pollution = scoreConstants.pollution.initial
+      this.resetScore()
 
       if (this.trip.transportation) {
         this.calculateTransportation()
