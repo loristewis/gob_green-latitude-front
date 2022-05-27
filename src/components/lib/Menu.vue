@@ -1,5 +1,5 @@
 <template>
-  <div id="menu-container">
+  <div id="menu-container" :style="{ height: displayScore ? '110px' : '50px' }">
     <ScoreContainer v-if="displayScore" :score="score" />
     <div class="home-button-container">
       <IconButton :icon="HomeIcon" background-color="#cebea8" size="40" />
@@ -9,6 +9,7 @@
 
 <script>
 import ScoreContainer from '@/components/lib/scores/ScoreContainer.vue'
+import { IconButton } from '@/components/lib'
 
 import { HomeIcon } from '@heroicons/vue/solid'
 
@@ -16,6 +17,7 @@ export default {
   name: 'Menu',
   components: {
     ScoreContainer,
+    IconButton,
   },
   props: {
     score: {
@@ -47,7 +49,6 @@ export default {
   display: grid;
   grid-template-columns: 1fr 72px;
   grid-gap: 8px 16px;
-  height: 110px;
   margin: 16px 12px;
 
   @include screen-xs {
@@ -57,6 +58,8 @@ export default {
   .home-button-container {
     display: flex;
     justify-content: end;
+    grid-row: 1 / 2;
+    grid-column: 2 / 2;
   }
 }
 </style>

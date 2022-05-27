@@ -3,7 +3,7 @@
     <div class="content">{{ value }}</div>
 
     <div
-      :style="{ height: (value > 0 ? 28 + 4 * value : 0) + 'px' }"
+      :style="coinsHeight"
       class="coins-container"
       :class="whiteBackground ? 'white-background' : ''"
       v-if="value > 0"
@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     coinsHeight() {
-      return { height: (this.value > 0 ? 28 + 4 * this.value : 0) + 'px' }
+      return { height: this.value > 0 ? 28 + 4 * this.value + 'px' : 'auto' }
     },
   },
 }
@@ -46,10 +46,13 @@ export default {
 
 <style lang="scss">
 .budget-container {
+  display: flex;
+  align-items: flex-end;
+
   .coins-container {
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -12px;
     display: flex;
     flex-direction: column;
     width: 32px;

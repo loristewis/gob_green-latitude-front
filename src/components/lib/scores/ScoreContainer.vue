@@ -1,6 +1,6 @@
 <template>
   <div id="score-container" :class="small ? 'small' : ''">
-    <div id="menu-gauges-container">
+    <div id="score-gauges-container">
       <Gauge
         id="wellness-gauge"
         name="wellness"
@@ -17,8 +17,12 @@
       />
     </div>
 
-    <div id="menu-budget-container">
-      <Budget :whiteBackground="small" :value="score.budget" id="menu-budget" />
+    <div id="score-budget-container">
+      <Budget
+        :whiteBackground="small"
+        :value="score.budget"
+        id="score-budget"
+      />
     </div>
   </div>
 </template>
@@ -57,7 +61,9 @@ export default {
 
 <style lang="scss">
 #score-container {
-  #menu-gauges-container {
+  display: contents;
+
+  #score-gauges-container {
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -71,21 +77,19 @@ export default {
     }
   }
 
-  #menu-budget-container {
-    //display: flex;
-    //justify-content: end;
+  #score-budget-container {
+    top: -12px;
   }
 
   &.small {
     display: grid;
-    // grid-gap: 8px;
     grid-template-columns: repeat(5, 1fr);
 
-    #menu-budget-container {
-      transform: scale(0.8);
+    #score-budget-container {
+      transform: scale(0.75);
     }
 
-    #menu-gauges-container {
+    #score-gauges-container {
       display: contents;
 
       > div {
