@@ -15,7 +15,7 @@
       </div>
     </CardContainer>
 
-    <ActivitiesSwiper :activities="elements" />
+    <ActivitiesSwiper :activities="availableActivities" />
 
     <Button @click="selectActivity">C'est décidé !</Button>
   </div>
@@ -40,7 +40,12 @@ import EmptySlot from '@/assets/empty-slot.png'
 
 export default {
   name: 'ActivitiesContainer',
-  props: ['elements'],
+  props: {
+    elements: {
+      type: Array,
+      required: true,
+    },
+  },
   components: {
     CardContainer,
     Button,
@@ -54,6 +59,7 @@ export default {
       EmptySlot,
       isOpen: false,
       outcome: null,
+      availableActivities: this.elements,
     }
   },
   setup() {
@@ -90,11 +96,14 @@ export default {
     },
     validateActivity() {
       this.store.trip.activities.push(this.store.selected)
+
+      const selectedIndex = this.availableActivities.findIndex(el => el.attributes.createdAt === this.store.selected.createdAt)
+
       this.setIsOpen(false)
       this.outcome = null
-      this.store.selected = null
+      this.store.selected = this.availableActivities[selectedIndex + 1].attributes
 
-      console.log(this.store.trip.activities)
+      this.availableActivities.splice(selectedIndex, 1)
 
       if (this.store.activitiesCount === 3) {
         this.store.finishStep()
