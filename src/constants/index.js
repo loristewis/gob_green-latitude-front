@@ -7,6 +7,8 @@ import { initialState } from '@/constants/game/initialState'
 
 import { names } from '@/constants/wording/names'
 import { defeatPopup } from '@/constants/wording/defeatPopup'
+import { endScreen } from '@/constants/wording/endScreen'
+import { instagramPost } from '@/constants/wording/instagramPost'
 import { splashScreens } from '@/constants/wording/splashScreens'
 import { transportTags } from '@/constants/wording/transportTags'
 
@@ -18,6 +20,8 @@ export {
   initialState,
   names,
   defeatPopup,
+  endScreen,
+  instagramPost,
   splashScreens,
   transportTags,
 }

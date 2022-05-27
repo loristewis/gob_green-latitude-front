@@ -17,11 +17,14 @@
     </div>
 
     <div v-else>
-      <div v-if="store.defeat != null">
+      <div v-if="store.defeat != null && store.currentStep != 'postcard'">
         <DefeatContainer :infos="getDefeatInfos()" />
       </div>
 
-      <Menu :score="store.score" />
+      <Menu
+        :displayScore="store.currentStep != 'postcard'"
+        :score="store.score"
+      />
 
       <Thought v-if="store.activeThought">{{ store.activeThought }}</Thought>
 

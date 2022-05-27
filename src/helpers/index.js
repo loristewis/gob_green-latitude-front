@@ -16,8 +16,29 @@ export const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5)
 }
 
+export const cleanString = (string) => {
+  let result = string.replace('de le', 'du')
+  result = result.replace(/de ([a, e, i, o, u, y])/, "d'$1")
+  return result
+}
+
 export const getRandomFromArray = (array) => {
   return array[Math.floor(Math.random() * array.length)]
+}
+
+export const getRandomElementsFromArray = (array, number) => {
+  let pool = [...array]
+  if (number > pool.length) {
+    return shuffleArray(pool)
+  } else {
+    let selection = []
+    for (let i = 0; i < number; i++) {
+      const randomIndex = Math.floor(Math.random() * array.length)
+      selection.push(pool[randomIndex])
+      pool.splice(randomIndex, 1)
+    }
+    return selection
+  }
 }
 
 export const getRandomInt = (max) => {

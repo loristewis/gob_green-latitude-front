@@ -7,7 +7,7 @@ import ActivitiesContainer from './Activities/ActivitiesContainer.vue'
 import AnimationContainer from './AnimationContainer.vue'
 import PrescriptionContainer from './PrescriptionContainer.vue'
 import DefeatContainer from './DefeatContainer.vue'
-import PostcardContainer from './PostcardContainer.vue'
+import PostcardContainer from './Postcard/PostcardContainer.vue'
 
 export {
   DestinationContainer,
