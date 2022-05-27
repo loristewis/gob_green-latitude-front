@@ -96,7 +96,7 @@ export const useStore = defineStore('main', {
         })
       }
 
-      if (defeats.length > 1) {
+      if (defeats.length > 0) {
         defeats.sort((a, b) => {
           return b.score - a.score
         })
