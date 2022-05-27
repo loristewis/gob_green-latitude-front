@@ -5,6 +5,7 @@
     <div
       :style="{ height: (value > 0 ? 28 + 4 * value : 0) + 'px' }"
       class="coins-container"
+      :class="whiteBackground ? 'white-background' : ''"
       v-if="value > 0"
     >
       <div class="coin" v-for="index in value" :key="index">
@@ -23,6 +24,11 @@ export default {
     value: {
       type: Number,
       required: true,
+    },
+    whiteBackground: {
+      type: Boolean,
+      default: true,
+      required: false,
     },
   },
   data() {
@@ -50,8 +56,12 @@ export default {
     transform: rotate(180deg);
     height: auto;
     padding-left: 1px;
-    background: var(--color-beige-cool);
     border-radius: 20px;
+    background: var(--color-beige-cool);
+
+    &.white-background {
+      background: var(--color-white);
+    }
 
     .coin {
       height: 26px;

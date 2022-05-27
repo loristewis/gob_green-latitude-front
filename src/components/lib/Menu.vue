@@ -1,44 +1,21 @@
 <template>
   <div id="menu-container">
-    <div id="menu-gauges-container">
-      <Gauge
-        id="wellness-gauge"
-        name="wellness"
-        :value="score.wellness"
-        from="left"
-      />
-
-      <Gauge
-        id="pollution-gauge"
-        name="pollution"
-        :value="score.pollution"
-        from="right"
-      />
-    </div>
-
+    <ScoreContainer v-if="displayScore" :score="score" />
     <div class="home-button-container">
       <IconButton :icon="HomeIcon" background-color="#cebea8" size="40" />
-    </div>
-
-    <div class="menu-budget-container">
-      <Budget :value="score.budget" id="menu-budget" />
     </div>
   </div>
 </template>
 
 <script>
-import IconButton from '@/components/lib/IconButton.vue'
-import Budget from '@/components/lib/scores/Budget.vue'
-import Gauge from '@/components/lib/scores/Gauge.vue'
+import ScoreContainer from '@/components/lib/scores/ScoreContainer.vue'
 
 import { HomeIcon } from '@heroicons/vue/solid'
 
 export default {
   name: 'Menu',
   components: {
-    IconButton,
-    Budget,
-    Gauge,
+    ScoreContainer,
   },
   props: {
     score: {
@@ -51,6 +28,10 @@ export default {
         }
       },
       required: true,
+    },
+    displayScore: {
+      type: Boolean,
+      default: true,
     },
   },
   data() {
@@ -73,28 +54,9 @@ export default {
     margin: 24px 20px;
   }
 
-  #menu-gauges-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    grid-row-start: 1;
-    grid-row-end: 3;
-
-    #pollution-gauge {
-      margin-left: auto;
-      //top: -4px;
-      //left: 32px;
-    }
-  }
-
   .home-button-container {
     display: flex;
     justify-content: end;
-  }
-
-  .menu-budget-container {
-    //display: flex;
-    //justify-content: end;
   }
 }
 </style>

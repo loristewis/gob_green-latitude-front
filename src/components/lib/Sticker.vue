@@ -11,14 +11,13 @@ import { colorCombos } from '@/constants'
 export default {
   name: 'Sticker',
   props: {
-    colorCombo: {
-      type: Object,
+    theme: {
+      type: String,
+      required: false,
     },
   },
   data() {
-    const combo = !!this.colorCombo
-      ? this.colorCombo
-      : getRandomFromArray(colorCombos)
+    const combo = this.theme ? colorCombos.find(el => el.id === this.theme) : getRandomFromArray(colorCombos)
 
     return {
       color: `var(--color-${combo.text})`,

@@ -1,5 +1,5 @@
 <template>
-  <div class="gauge-container" :class="`from-${from}`">
+  <div class="gauge-container" :class="classList">
     <div class="gauge">
       <div class="progress" :style="progressStyle"></div>
     </div>
@@ -34,12 +34,21 @@ export default {
         return ['left', 'right'].includes(value)
       },
     },
+    small: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
+    let classList = ''
+    classList += `from-${this.from}`
+    classList += this.small ? ' small' : ''
+
     return {
       Smiley,
       Fire,
       CloudyEarth,
+      classList,
     }
   },
   computed: {
@@ -120,6 +129,34 @@ export default {
 
     .progress {
       border-radius: 8px 0 0 8px;
+    }
+  }
+
+  &.small {
+    width: 100%;
+    align-items: center;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .gauge {
+      height: 16px;
+
+      .progress {
+        height: 8px;
+      }
+    }
+
+    &.from-left {
+      .gauge {
+        left: 16px;
+      }
     }
   }
 }

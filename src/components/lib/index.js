@@ -13,6 +13,7 @@ import BaseCard from '@/components/lib/cards/BaseCard.vue'
 import CardWithImageAndBudget from '@/components/lib/cards/CardWithImageAndBudget.vue'
 
 import Menu from '@/components/lib/Menu.vue'
+import ScoreContainer from '@/components/lib/scores/ScoreContainer.vue'
 import Budget from '@/components/lib/scores/Budget.vue'
 import Gauge from '@/components/lib/scores/Gauge.vue'
 
@@ -36,6 +37,7 @@ export {
   BaseCard,
   CardWithImageAndBudget,
   Menu,
+  ScoreContainer,
   Budget,
   Gauge,
   Swipeable,
