@@ -70,6 +70,7 @@ export default {
   &.disabled {
     opacity: 0.4;
     cursor: default;
+    pointer-events: none;
   }
 
   > div {

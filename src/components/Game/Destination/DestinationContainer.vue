@@ -1,7 +1,9 @@
 <template>
   <DestinationSwiper :destinations="elements" />
 
-  <Button main @click="emitDestinationChoice">Allons-y !</Button>
+  <Button main :isDisabled="this.buttonDisabled" @click="emitDestinationChoice">
+    Allons-y !
+  </Button>
 </template>
 
 <script>
@@ -24,7 +26,7 @@ export default {
   },
   data() {
     return {
-      selected: null,
+      buttonDisabled: false,
     }
   },
   setup() {
@@ -40,6 +42,7 @@ export default {
         return
       }
 
+      this.buttonDisabled = true
       this.store.trip.destination = this.store.selected
       this.store.selected = null
       this.$emit('validate-destination')
