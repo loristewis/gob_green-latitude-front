@@ -1,5 +1,5 @@
 <template>
-  <div id="game-container">
+  <Container id="game-container">
     <!-- <div>
       <input
         type="checkbox"
@@ -35,14 +35,14 @@
         @new-game="getWish"
       />
     </div>
-  </div>
+  </Container>
 </template>
 
 <script>
 import { getFromApi, getRandomInt, shuffleArray } from '@/helpers'
 import { splashScreens, defeatPopup } from '@/constants'
 import { useStore } from '@/store'
-import { Thought, Menu } from '@/components/lib'
+import { Container, Thought, Menu } from '@/components/lib'
 
 import SplashScreen from './SplashScreen.vue'
 
@@ -62,6 +62,7 @@ export default {
   name: 'GameContainer',
   components: {
     SplashScreen,
+    Container,
     Thought,
     Menu,
     AnimationContainer,
@@ -267,13 +268,6 @@ export default {
 <style lang="scss" scoped>
 #game-container {
   //position: fixed;
-  display: flex;
-  margin: auto;
-  height: 100%;
-  width: 100vw;
-  background-color: var(--color-background);
-  overflow-x: hidden;
-  overflow-y: scroll;
 
   > div {
     width: 100%;

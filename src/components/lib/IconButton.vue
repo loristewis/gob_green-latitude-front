@@ -45,5 +45,6 @@ export default {
   align-items: center;
   border-radius: 50%;
   transition: all 0.2s;
+  cursor: pointer;
 }
 </style>

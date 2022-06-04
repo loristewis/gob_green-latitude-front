@@ -2,12 +2,19 @@
   <div id="menu-container" :style="{ height: displayScore ? '110px' : '50px' }">
     <ScoreContainer v-if="displayScore" :score="score" />
     <div class="home-button-container">
-      <IconButton :icon="HomeIcon" background-color="#cebea8" size="40" />
+      <IconButton
+        @click="router.push('/')"
+        :icon="HomeIcon"
+        background-color="#cebea8"
+        size="40"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import router from '@/router'
+
 import ScoreContainer from '@/components/lib/scores/ScoreContainer.vue'
 import { IconButton } from '@/components/lib'
 
@@ -33,11 +40,12 @@ export default {
     },
     displayScore: {
       type: Boolean,
-      default: true,
+      default: false,
     },
   },
   data() {
     return {
+      router,
       HomeIcon,
     }
   },

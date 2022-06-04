@@ -1,3 +1,4 @@
+import Container from '@/components/lib/Container.vue'
 import Button from '@/components/lib/Button.vue'
 import IconButton from '@/components/lib/IconButton.vue'
 import RadioButton from '@/components/lib/RadioButton.vue'
@@ -24,6 +25,7 @@ import Carousel from '@/components/lib/Carousel.vue'
 import ScoreEvolutionGroup from '@/components/lib/scores/ScoreEvolutionGroup.vue'
 
 export {
+  Container,
   Button,
   IconButton,
   RadioButton,

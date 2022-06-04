@@ -6,6 +6,7 @@
       'bottom-right': main,
       chevron: chevron,
       tight: tight,
+      simple: simple,
     }"
   >
     <div>
@@ -34,6 +35,10 @@ export default {
       default: false,
     },
     tight: {
+      type: Boolean,
+      default: false,
+    },
+    simple: {
       type: Boolean,
       default: false,
     },
@@ -101,6 +106,16 @@ export default {
       p {
         margin: 0;
       }
+    }
+  }
+
+  &.simple {
+    height: auto;
+    padding: 0 16px;
+    border: 2px solid var(--color-white);
+
+    > div {
+      border: 0;
     }
   }
 }
