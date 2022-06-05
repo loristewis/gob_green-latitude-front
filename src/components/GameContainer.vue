@@ -290,6 +290,8 @@ export default {
     top: 20px;
     transform: translateX(-50%);
     width: 100%;
+    pointer-events: none;
+    transition: 0.2s ease-in-out;
   }
 
   @include screen-sm {
@@ -297,10 +299,6 @@ export default {
     max-width: 375px;
     max-height: 800px;
   }
-}
-
-.thought-container {
-  transition: 0.2s ease-in-out;
 }
 
 .fade-leave-active,

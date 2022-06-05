@@ -71,6 +71,8 @@ export const useStore = defineStore('main', {
       }
     },
     checkDefeat() {
+      if (this.dev) return
+
       let defeats = []
 
       if (this.score.wellness <= scoreConstants.wellness.limit) {

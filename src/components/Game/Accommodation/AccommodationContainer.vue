@@ -7,7 +7,6 @@
 
 <script>
 import { useStore } from './../../../store/index'
-import { Button } from '@/components/lib'
 
 import AccommodationCardStack from './AccommodationCardStack.vue'
 
@@ -20,7 +19,6 @@ export default {
     },
   },
   components: {
-    Button,
     AccommodationCardStack,
   },
   setup() {

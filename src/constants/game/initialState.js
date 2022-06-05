@@ -15,6 +15,7 @@ export const initialState = {
   ],
   skipIntro: false,
   splash: false,
+  dev: true,
   progressionIndex: 0,
   selected: null,
   thought: '',

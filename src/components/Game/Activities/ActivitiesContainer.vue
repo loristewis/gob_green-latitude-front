@@ -17,7 +17,7 @@
 
     <ActivitiesSwiper :activities="availableActivities" />
 
-    <Button @click="selectActivity">C'est décidé !</Button>
+    <Button main @click="selectActivity">C'est décidé !</Button>
   </div>
 
   <ActivitiesModalContainer
@@ -121,9 +121,11 @@ export default {
 
 <style lang="scss">
 .activities-container {
+  position: unset;
+
   .activities-slots-container {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-column-gap: 32px;
     margin: 0 24px 24px;
     padding: 20px 24px;
@@ -132,7 +134,9 @@ export default {
     .slot {
       background-color: var(--color-beige-cool);
       border-radius: 4px;
-      width: 33%;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
     }
 
     //@include screen-sm {

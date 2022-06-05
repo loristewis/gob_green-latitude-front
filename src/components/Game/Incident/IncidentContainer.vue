@@ -21,9 +21,8 @@
         :budget="incident.outcome.budget"
         :pollution="incident.outcome.pollution"
         :wellness="incident.outcome.wellness"
+        @next-step="store.moveToNextStep"
       />
-
-      <Button @click="store.finishStep">Continuer</Button>
     </div>
   </div>
 </template>

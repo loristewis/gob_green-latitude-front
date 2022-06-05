@@ -7,17 +7,21 @@
     <ScoreEvolutionGroup v-bind="$props" />
 
     <img :src="Star" alt="" class="star" />
+
+    <Button class="incident-outcome-button" @click="$emit('next-step')">
+      Continuer
+    </Button>
   </BaseCard>
 </template>
 
 <script>
-import { BaseCard, ScoreEvolutionGroup } from '@/components/lib'
+import { BaseCard, Button, ScoreEvolutionGroup } from '@/components/lib'
 
 import Star from '@/assets/star.svg'
 
 export default {
   name: 'IncidentOutcomeCard',
-  components: { BaseCard, ScoreEvolutionGroup },
+  components: { Button, BaseCard, ScoreEvolutionGroup },
   props: {
     title: {
       type: String,
@@ -52,6 +56,7 @@ export default {
 .incident-outcome-card-container {
   margin-top: 128px;
   margin-bottom: 32px;
+  padding-bottom: 112px;
 
   .scores {
     display: flex;
@@ -63,6 +68,12 @@ export default {
     position: absolute;
     top: -88px;
     right: -24px;
+  }
+
+  .incident-outcome-button {
+    position: absolute;
+    bottom: 8px;
+    right: -16px;
   }
 }
 </style>

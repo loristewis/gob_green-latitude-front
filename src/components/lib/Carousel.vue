@@ -16,7 +16,7 @@
 
 <script>
 import { Pagination, A11y } from 'swiper'
-import { Swiper, SwiperSlide } from 'swiper/vue'
+import { Swiper } from 'swiper/vue'
 
 import 'swiper/scss'
 import 'swiper/scss/pagination'
@@ -25,7 +25,6 @@ export default {
   name: 'Carousel',
   components: {
     Swiper,
-    SwiperSlide,
   },
   setup() {
     return {

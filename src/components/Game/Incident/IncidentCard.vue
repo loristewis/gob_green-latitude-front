@@ -6,15 +6,7 @@
   >
     <img :src="Star" alt="" class="star" />
 
-    <Sticker
-      :color-combo="{
-        text: 'yellow',
-        background: 'rose',
-      }"
-      class="sticker"
-    >
-      AAAAAAHH
-    </Sticker>
+    <Sticker theme="rose-yellow" class="sticker"> AAAAAAHH </Sticker>
   </BaseCard>
 </template>
 
