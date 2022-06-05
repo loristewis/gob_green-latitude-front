@@ -6,8 +6,6 @@
   >
     <ScoreEvolutionGroup v-bind="$props" />
 
-    <img :src="Star" alt="" class="star" />
-
     <Button class="incident-outcome-button" @click="$emit('next-step')">
       Continuer
     </Button>

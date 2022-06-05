@@ -36,7 +36,7 @@ export default {
 
 <style lang="scss">
 .carousel-container {
-  height: calc(100vh - 260px);
+  height: calc(100% - 260px);
   display: flex;
   align-items: center;
 

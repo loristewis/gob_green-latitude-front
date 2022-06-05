@@ -139,7 +139,7 @@ export default {
 
 <style lang="scss">
 .accommodation-card-stack-container {
-  height: calc(100vh - 240px);
+  height: calc(100% - 220px);
   display: flex;
   flex-direction: column;
   justify-content: center;

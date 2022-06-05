@@ -51,6 +51,7 @@ export default {
 <style lang="scss">
 .endscreen {
   padding: 0 20px;
+  padding-bottom: 16px;
 
   &-bubble {
     padding: 12px 18px 12px 16px;
