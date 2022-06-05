@@ -11,7 +11,7 @@
       :trip="store.trip"
       :defeat="store.defeat"
     />
-    <Button @click="newGame">Nouvelle partie ?</Button>
+    <Button simple @click="newGame">Nouvelle partie ?</Button>
   </div>
 </template>
 

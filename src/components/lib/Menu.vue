@@ -11,7 +11,7 @@
     </div>
     <BaseCard v-if="modal" class="back-to-home-modal">
       <Title class="modal-title" tag="h2">Retourner à l'accueil ?</Title>
-      <Button simple :chevron="false" @click="quitGame">Valider</Button>
+      <Button simple @click="quitGame">Valider</Button>
       <p @click="closeModal">Continuer la partie</p>
     </BaseCard>
   </div>

@@ -3,7 +3,7 @@
     <Sticker>{{ infos.title }}</Sticker>
     <p>{{ infos.description }}</p>
     <img :src="infos.image" alt="" />
-    <Button @click="finishGame">Voir le bilan de fin</Button>
+    <Button simple @click="finishGame">Voir le bilan de fin</Button>
   </CardContainer>
 </template>
 

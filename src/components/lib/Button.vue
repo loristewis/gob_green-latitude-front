@@ -4,7 +4,7 @@
     :class="{
       disabled: isDisabled,
       'bottom-right': main,
-      chevron: chevron,
+      chevron: simple ? false : chevron,
       tight: tight,
       simple: simple,
       small: small,
@@ -13,7 +13,7 @@
     <div>
       <p><slot /></p>
 
-      <ChevronRightIcon v-if="chevron" class="hero-icon" />
+      <ChevronRightIcon v-if="chevron && !simple" class="hero-icon" />
     </div>
   </div>
 </template>
