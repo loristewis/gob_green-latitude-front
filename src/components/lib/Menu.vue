@@ -3,20 +3,27 @@
     <ScoreContainer v-if="displayScore" :score="score" />
     <div class="home-button-container">
       <IconButton
-        @click="router.push('/')"
+        @click="onClickHomeButton"
         :icon="HomeIcon"
         background-color="#cebea8"
         size="40"
       />
     </div>
+    <BaseCard v-if="modal" class="back-to-home-modal">
+      <Title class="modal-title" tag="h2">Retourner à l'accueil ?</Title>
+      <Button simple :chevron="false" @click="quitGame">Valider</Button>
+      <p @click="closeModal">Continuer la partie</p>
+    </BaseCard>
   </div>
 </template>
 
 <script>
 import router from '@/router'
+import { useRoute } from 'vue-router'
+import { useStore } from '@/store'
 
 import ScoreContainer from '@/components/lib/scores/ScoreContainer.vue'
-import { IconButton } from '@/components/lib'
+import { IconButton, Button, BaseCard, Title } from '@/components/lib'
 
 import { HomeIcon } from '@heroicons/vue/solid'
 
@@ -25,6 +32,9 @@ export default {
   components: {
     ScoreContainer,
     IconButton,
+    Button,
+    BaseCard,
+    Title,
   },
   props: {
     score: {
@@ -47,13 +57,40 @@ export default {
     return {
       router,
       HomeIcon,
+      modal: false,
     }
+  },
+  setup() {
+    const store = useStore()
+    const route = useRoute()
+
+    return {
+      store,
+      route,
+    }
+  },
+  methods: {
+    onClickHomeButton() {
+      if (this.route.name === 'game' && this.store.currentStep != 'postcard') {
+        this.modal = true
+      } else {
+        router.push('/')
+      }
+    },
+    quitGame() {
+      this.store.resetState()
+      router.push('/')
+    },
+    closeModal() {
+      this.modal = false
+    },
   },
 }
 </script>
 
 <style lang="scss">
 #menu-container {
+  position: unset;
   display: grid;
   grid-template-columns: 1fr 72px;
   grid-gap: 8px 16px;
@@ -68,6 +105,24 @@ export default {
     justify-content: end;
     grid-row: 1 / 2;
     grid-column: 2 / 2;
+  }
+}
+
+.back-to-home-modal {
+  text-align: center;
+  position: absolute;
+  width: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+
+  .modal-title {
+    padding-bottom: 16px;
+  }
+
+  p {
+    cursor: pointer;
   }
 }
 </style>

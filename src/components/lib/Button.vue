@@ -7,6 +7,7 @@
       chevron: chevron,
       tight: tight,
       simple: simple,
+      small: small,
     }"
   >
     <div>
@@ -42,6 +43,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    small: {
+      type: Boolean,
+      default: false,
+    },
     chevron: {
       type: Boolean,
       default: true,
@@ -54,7 +59,7 @@ export default {
 .button-container {
   height: 64px;
   width: max-content;
-  margin: 16px 0;
+  margin: 16px auto;
   padding: 8px;
   border-radius: 32px;
   color: var(--color-white);
@@ -110,6 +115,14 @@ export default {
   }
 
   &.simple {
+    transform: rotate(0);
+
+    > div {
+      padding: 0 24px;
+    }
+  }
+
+  &.small {
     height: auto;
     padding: 0 16px;
     border: 2px solid var(--color-white);

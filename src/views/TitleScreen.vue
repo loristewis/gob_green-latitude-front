@@ -8,10 +8,10 @@
     <img id="main-logo" :src="Logo" alt="Green Latitude" />
     <div class="title-screen-buttons">
       <div class="title-screen-buttons--secondary">
-        <Button simple :chevron="false" @click="router.push('/memories')">
+        <Button small :chevron="false" @click="router.push('/memories')">
           Souvenirs
         </Button>
-        <Button simple :chevron="false" @click="router.push('/about')">
+        <Button small :chevron="false" @click="router.push('/about')">
           À propos
         </Button>
       </div>
