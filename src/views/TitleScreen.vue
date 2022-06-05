@@ -15,7 +15,7 @@
           À propos
         </Button>
       </div>
-      <Button class="title-screen-buttons--start" @click="router.push('/game')">
+      <Button class="title-screen-buttons--start" @click="newGame">
         Commencer la partie
       </Button>
     </div>
@@ -24,6 +24,7 @@
 
 <script>
 import router from '@/router'
+import { useStore } from '@/store'
 import { Button } from '@/components/lib'
 
 import Pattern from '@/assets/splash/pattern-tile.jpg'
@@ -40,6 +41,19 @@ export default {
       Pattern,
       Logo,
     }
+  },
+  setup() {
+    const store = useStore()
+
+    return {
+      store,
+    }
+  },
+  methods: {
+    newGame() {
+      this.store.resetState()
+      router.push('/game')
+    },
   },
 }
 </script>
