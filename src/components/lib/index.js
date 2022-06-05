@@ -1,3 +1,4 @@
+import AnimatedBackground from '@/components/lib/AnimatedBackground.vue'
 import Container from '@/components/lib/Container.vue'
 import Button from '@/components/lib/Button.vue'
 import IconButton from '@/components/lib/IconButton.vue'
@@ -25,6 +26,7 @@ import Carousel from '@/components/lib/Carousel.vue'
 import ScoreEvolutionGroup from '@/components/lib/scores/ScoreEvolutionGroup.vue'
 
 export {
+  AnimatedBackground,
   Container,
   Button,
   IconButton,

@@ -22,7 +22,7 @@ export const useStore = defineStore('main', {
     },
     displaySplashScreen() {
       this.splash = true
-      setTimeout(() => (this.splash = false), 1000)
+      setTimeout(() => (this.splash = false), 2000)
     },
     moveToStep(step) {
       this.progressionIndex = this.steps.indexOf(step)

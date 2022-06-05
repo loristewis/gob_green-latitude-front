@@ -1,10 +1,6 @@
 <template>
-  <div
-    class="splash-screen-container"
-    :style="{
-      backgroundImage: `url(${Pattern})`,
-    }"
-  >
+  <div class="splash-screen-container">
+    <AnimatedBackground />
     <div class="splash-screen-content">
       <img :src="infos.image" alt="" />
 
@@ -16,7 +12,7 @@
 </template>
 
 <script>
-import { CardContainer, Title } from '@/components/lib'
+import { AnimatedBackground, CardContainer, Title } from '@/components/lib'
 
 import Pattern from '@/assets/splash/pattern-tile.jpg'
 
@@ -24,6 +20,7 @@ export default {
   name: 'SplashScreen',
   props: ['infos'],
   components: {
+    AnimatedBackground,
     CardContainer,
     Title,
   },
@@ -37,7 +34,6 @@ export default {
 
 <style lang="scss">
 .splash-screen-container {
-  background-size: 160px 160px;
   width: 100%;
   height: 100%;
   display: grid;
