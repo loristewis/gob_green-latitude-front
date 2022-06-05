@@ -26,7 +26,11 @@
         :score="store.score"
       />
 
-      <Thought v-if="store.activeThought">{{ store.activeThought }}</Thought>
+      <transition name="fade" mode="out-in">
+        <div class="thought-container" :key="store.thought">
+          <Thought />
+        </div>
+      </transition>
 
       <component
         :is="store.currentComponent"
@@ -280,11 +284,35 @@ export default {
     }
   }
 
+  .thought-container {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    width: 100%;
+  }
+
   @include screen-sm {
     border: 1px solid #8a95b4;
     max-width: 375px;
     max-height: 800px;
   }
+}
+
+.thought-container {
+  transition: 0.2s ease-in-out;
+}
+
+.fade-leave-active,
+.fade-enter-to {
+  filter: blur(0);
+  opacity: 1;
+}
+
+.fade-enter-active,
+.fade-leave-to {
+  filter: blur(5px);
+  opacity: 0;
 }
 
 .grid {

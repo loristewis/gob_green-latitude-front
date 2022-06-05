@@ -123,6 +123,9 @@ export default {
       transportation.wellness += selectedOption.wellness
       transportation.pollution += selectedOption.pollution
       this.store.selected = transportation
+      this.store.thought = this.store.selected.thoughts
+        ? this.store.selected.thoughts
+        : this.store.thought
 
       this.$emit('validate-transportation')
     },

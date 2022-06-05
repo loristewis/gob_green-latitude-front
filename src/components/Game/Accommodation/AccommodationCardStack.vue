@@ -85,6 +85,9 @@ export default {
   },
   mounted() {
     this.store.selected = this.elements[this.elements.length - 1]
+    this.store.thought = this.store.selected.thoughts
+      ? this.store.selected.thoughts
+      : this.store.thought
   },
   methods: {
     onSwipingLeft() {
@@ -103,6 +106,7 @@ export default {
     },
     onSwipeLeft() {
       this.store.selected = this.elements[this.elements.length - 2]
+      this.store.tought = this.store.selected.thought
 
       setTimeout(() => {
         this.elements.pop()

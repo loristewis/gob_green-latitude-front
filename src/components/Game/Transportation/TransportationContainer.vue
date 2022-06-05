@@ -49,6 +49,9 @@ export default {
   methods: {
     selectElement(element) {
       this.store.selected = element.attributes
+      this.store.thought = this.store.selected.thoughts
+        ? this.store.selected.thoughts
+        : this.store.thought
     },
     validateTransportation() {
       this.store.trip.transportation = this.store.selected

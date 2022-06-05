@@ -17,6 +17,7 @@ export const initialState = {
   splash: false,
   progressionIndex: 0,
   selected: null,
+  thought: '',
   score: {
     wellness: scoreConstants.wellness.initial,
     budget: scoreConstants.budget.initial,

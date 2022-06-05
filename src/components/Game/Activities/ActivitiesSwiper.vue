@@ -46,11 +46,17 @@ export default {
     const onSwiper = (swiper) => {
       if (props.activities.length > 0) {
         store.selected = props.activities[swiper.realIndex].attributes
+        store.thought = store.selected.thoughts
+          ? store.selected.thoughts
+          : store.thought
       }
     }
     const onSlideChange = (e) => {
       console.log('slide change')
       store.selected = props.activities[e.realIndex].attributes
+      store.thought = store.selected.thoughts
+        ? store.selected.thoughts
+        : store.thought
       console.log('active: ', store.selected)
     }
     return {
@@ -61,6 +67,9 @@ export default {
   },
   updated() {
     this.store.selected = this.activities[0].attributes
+    this.store.thought = this.store.selected.thoughts
+      ? this.store.selected.thoughts
+      : this.store.thought
   },
 }
 </script>

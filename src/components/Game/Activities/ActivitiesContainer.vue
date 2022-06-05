@@ -31,8 +31,7 @@
 import { useStore } from './../../../store/index'
 import { getRandomInt } from '@/helpers'
 
-import { Button, Title, CardContainer } from '@/components/lib'
-import ActivityCard from '@/components/Game/Activities/ActivityCard.vue'
+import { Button, CardContainer } from '@/components/lib'
 import ActivitiesSwiper from '@/components/Game/Activities/ActivitiesSwiper.vue'
 import ActivitiesModalContainer from '@/components/Game/Activities/ActivitiesModalContainer.vue'
 
@@ -49,8 +48,6 @@ export default {
   components: {
     CardContainer,
     Button,
-    Title,
-    ActivityCard,
     ActivitiesSwiper,
     ActivitiesModalContainer,
   },
@@ -90,6 +87,9 @@ export default {
       activity.wellness += outcome.wellness
       activity.pollution += outcome.pollution
       this.store.selected = activity
+      this.store.thought = this.store.selected.thoughts
+        ? this.store.selected.thoughts
+        : this.store.thought
 
       this.outcome = outcome
       this.setIsOpen(true)
@@ -97,11 +97,17 @@ export default {
     validateActivity() {
       this.store.trip.activities.push(this.store.selected)
 
-      const selectedIndex = this.availableActivities.findIndex(el => el.attributes.createdAt === this.store.selected.createdAt)
+      const selectedIndex = this.availableActivities.findIndex(
+        (el) => el.attributes.createdAt === this.store.selected.createdAt
+      )
 
       this.setIsOpen(false)
       this.outcome = null
-      this.store.selected = this.availableActivities[selectedIndex + 1].attributes
+      this.store.selected =
+        this.availableActivities[selectedIndex + 1].attributes
+      this.store.thought = this.store.selected.thoughts
+        ? this.store.selected.thoughts
+        : this.store.thought
 
       this.availableActivities.splice(selectedIndex, 1)
 
