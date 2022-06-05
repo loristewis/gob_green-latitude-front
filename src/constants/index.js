@@ -1,3 +1,5 @@
+import { team } from '@/constants/team'
+
 import { colorCombos } from '@/constants/design/colorCombos'
 import { titleTags } from '@/constants/design/titleTags.js'
 import { scores } from '@/constants/design/scores.js'
@@ -13,6 +15,7 @@ import { splashScreens } from '@/constants/wording/splashScreens'
 import { transportTags } from '@/constants/wording/transportTags'
 
 export {
+  team,
   colorCombos,
   titleTags,
   scores,

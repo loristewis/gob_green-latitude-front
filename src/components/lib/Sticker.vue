@@ -1,5 +1,5 @@
 <template>
-  <div class="sticker-container">
+  <div class="sticker-container" :class="{ big: big }">
     <span :style="{ color, backgroundColor }"><slot /></span>
   </div>
 </template>
@@ -15,9 +15,15 @@ export default {
       type: String,
       required: false,
     },
+    big: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
-    const combo = this.theme ? colorCombos.find(el => el.id === this.theme) : getRandomFromArray(colorCombos)
+    const combo = this.theme
+      ? colorCombos.find((el) => el.id === this.theme)
+      : getRandomFromArray(colorCombos)
 
     return {
       color: `var(--color-${combo.text})`,
@@ -38,6 +44,15 @@ export default {
     border-radius: 12px;
     box-decoration-break: clone;
     -webkit-box-decoration-break: clone;
+  }
+
+  &.big {
+    font-size: 20px;
+
+    > span {
+      padding: 12px 16px;
+      border-radius: 16px;
+    }
   }
 }
 </style>
