@@ -1,7 +1,9 @@
 <template>
   <Container class="about-page">
     <Menu />
-    <Sticker big class="about-page-title">Équipage</Sticker>
+    <Sticker theme="green-yellow" big class="about-page-title"
+      >Équipage</Sticker
+    >
     <PresentationCard v-for="(member, i) in team" :key="i" :member="member" />
     <p class="about-page-credits">Projet réalisé à Gobelins<br />BDDI 2022</p>
   </Container>
