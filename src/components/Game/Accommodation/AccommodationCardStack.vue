@@ -135,6 +135,11 @@ export default {
 
 <style lang="scss">
 .accommodation-card-stack-container {
+  height: calc(100vh - 240px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   .accommodation-cards {
     display: flex;
     align-items: center;

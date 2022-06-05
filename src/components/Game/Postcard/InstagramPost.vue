@@ -21,7 +21,11 @@
 </template>
 
 <script>
-import { cleanString, getRandomElementsFromArray, getRandomFromArray } from '@/helpers'
+import {
+  cleanString,
+  getRandomElementsFromArray,
+  getRandomFromArray,
+} from '@/helpers'
 import { instagramPost } from '@/constants'
 
 import { CardContainer, ScoreContainer } from '@/components/lib'
@@ -148,7 +152,7 @@ export default {
       padding: 12px 0;
 
       .hashtag {
-        color: #0085cd;
+        color: var(--color-hashtag);
       }
     }
   }

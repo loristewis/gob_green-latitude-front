@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import { Title, BaseCard, Sticker } from '@/components/lib'
+import { BaseCard, Sticker } from '@/components/lib'
 
-import Star from './../../../assets/star.svg'
+import Star from '@/assets/star.svg'
 
 export default {
   name: 'IncidentCard',
-  components: { BaseCard, Title, Sticker },
+  components: { BaseCard, Sticker },
   props: {
     title: {
       type: String,

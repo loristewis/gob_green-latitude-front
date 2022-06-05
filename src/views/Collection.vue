@@ -5,7 +5,7 @@
     <Title tag="h1">Collection des composants</Title>
 
     <div class="nav-collection">
-      <div v-for="item in componentsList">
+      <div v-for="(item, i) in componentsList" :key="i">
         <router-link
           :to="{ name: 'collection-component', params: { id: item.id } }"
         >
@@ -23,13 +23,13 @@
 <script>
 import { Title } from '@/components/lib'
 
-import TextsCollection from '../components/collection/TextsCollection.vue'
-import ScoresCollection from './../components/collection/ScoresCollection.vue'
-import ThoughtCollection from '../components/collection/ThoughtCollection.vue'
-import TagCollection from '../components/collection/TagCollection.vue'
-import ButtonCollection from '../components/collection/ButtonCollection.vue'
-import CardCollection from '../components/collection/CardCollection.vue'
-import OthersCollection from '../components/collection/OthersCollection.vue'
+import TextsCollection from '@/components/collection/TextsCollection.vue'
+import ScoresCollection from '@/components/collection/ScoresCollection.vue'
+import ThoughtCollection from '@/components/collection/ThoughtCollection.vue'
+import TagCollection from '@/components/collection/TagCollection.vue'
+import ButtonCollection from '@/components/collection/ButtonCollection.vue'
+import CardCollection from '@/components/collection/CardCollection.vue'
+import OthersCollection from '@/components/collection/OthersCollection.vue'
 
 export default {
   name: 'Collection',

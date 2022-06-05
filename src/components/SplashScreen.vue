@@ -18,7 +18,7 @@
 <script>
 import { CardContainer, Title } from '@/components/lib'
 
-import Pattern from './../assets/splash/pattern-tile.jpg'
+import Pattern from '@/assets/splash/pattern-tile.jpg'
 
 export default {
   name: 'SplashScreen',

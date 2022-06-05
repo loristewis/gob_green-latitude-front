@@ -65,8 +65,8 @@ import Budget from '@/components/lib/scores/Budget.vue'
 import ScoreEvolutionGroup from '@/components/lib/scores/ScoreEvolutionGroup.vue'
 import ScoreEvolutionItem from '@/components/lib/scores/ScoreEvolutionItem.vue'
 
-import Smiley from '../../assets/smiley.svg'
-import Fire from '../../assets/fire.svg'
+import Smiley from '@/assets/smiley.svg'
+import Fire from '@/assets/fire.svg'
 
 export default {
   name: 'ScoresCollection',

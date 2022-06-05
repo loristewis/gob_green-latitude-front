@@ -1,7 +1,7 @@
-import AccommodationIcon from './../../assets/splash/accommodation.png'
-import ActivitiesIcon from './../../assets/splash/activities.png'
-import DestinationIcon from './../../assets/splash/destination.png'
-import TransportationIcon from './../../assets/splash/transportation.png'
+import AccommodationIcon from '@/assets/splash/accommodation.png'
+import ActivitiesIcon from '@/assets/splash/activities.png'
+import DestinationIcon from '@/assets/splash/destination.png'
+import TransportationIcon from '@/assets/splash/transportation.png'
 
 export const splashScreens = {
   destination: {

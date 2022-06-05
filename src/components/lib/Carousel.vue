@@ -37,6 +37,10 @@ export default {
 
 <style lang="scss">
 .carousel-container {
+  height: calc(100vh - 260px);
+  display: flex;
+  align-items: center;
+
   .swiper {
     width: 272px;
     padding-bottom: 48px;

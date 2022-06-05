@@ -1,13 +1,15 @@
 <template>
-  <TransportationCard
-    v-for="(el, i) in elements"
-    @validate-transportation="validateTransportation"
-    @click="selectElement(el)"
-    :key="el.id"
-    :transport="el.attributes"
-    :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
-    tag-color="green"
-  />
+  <div class="transport-container">
+    <TransportationCard
+      v-for="(el, i) in elements"
+      @validate-transportation="validateTransportation"
+      @click="selectElement(el)"
+      :key="el.id"
+      :transport="el.attributes"
+      :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
+      tag-color="green"
+    />
+  </div>
 </template>
 
 <script>
@@ -59,3 +61,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.transport-container {
+  padding-bottom: 32px;
+}
+</style>

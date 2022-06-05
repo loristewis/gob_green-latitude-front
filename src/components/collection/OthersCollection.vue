@@ -14,7 +14,7 @@
 import { Title, Price } from '@/components/lib'
 import SplashScreen from './../SplashScreen.vue'
 
-import { splashScreens } from '../../constants'
+import { splashScreens } from '@/constants'
 
 export default {
   name: 'OthersCollection',
