@@ -40,11 +40,6 @@ export default {
 .title-container {
   line-height: 1.2;
   font-family: var(--font-title);
-  color: var(--color-heading);
-
-  &.dark-mode {
-    color: var(--color-text-dark-1);
-  }
 }
 
 h1.title-container {

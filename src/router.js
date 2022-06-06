@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import TitleScreen from './views/TitleScreen.vue'
 import Game from './views/Game.vue'
 import About from './views/About.vue'

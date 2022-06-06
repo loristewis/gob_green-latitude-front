@@ -112,6 +112,7 @@ export default {
       this.availableActivities.splice(selectedIndex, 1)
 
       if (this.store.activitiesCount === 3) {
+        this.store.selected = null
         this.store.finishStep()
       }
     },
