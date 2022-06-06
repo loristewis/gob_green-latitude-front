@@ -87,6 +87,8 @@ export default {
     position: absolute;
     top: 0;
     left: 0;
+    font-size: 0;
+    z-index: 10;
 
     > div {
       height: 100%;
@@ -96,6 +98,7 @@ export default {
       left: 0;
       display: flex;
       align-items: center;
+      font-size: 16px;
     }
   }
 
@@ -106,8 +109,8 @@ export default {
   }
 
   &-card {
-    margin: 0 20px;
-    animation: appear 1s;
+    margin: 0 32px;
+    animation: appear 1s ease-in-out;
   }
 
   &-title {

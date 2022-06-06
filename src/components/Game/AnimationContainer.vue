@@ -61,10 +61,9 @@ export default {
     }
   },
   mounted() {
-    // dév
-    // this.store.moveToNextStep()
+    if (this.store.dev) this.store.moveToNextStep()
 
-    // // si on rejoue
+    // si on rejoue
     if (this.store.skipIntro) {
       this.store.moveToNextStep()
     } else {
@@ -89,6 +88,8 @@ export default {
   position: absolute;
   top: 0;
   transition: 1s;
+  font-size: 0;
+  z-index: 10;
 
   .animation-intro-background {
     height: 100%;
@@ -129,6 +130,7 @@ export default {
     display: flex;
     align-items: center;
     cursor: pointer;
+    font-size: 18px;
   }
 }
 </style>
