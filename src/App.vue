@@ -1,5 +1,9 @@
 <template>
-  <router-view />
+  <router-view v-slot="{ Component }">
+    <transition name="slide-in-out">
+      <component class="slide-in-out" :is="Component" />
+    </transition>
+  </router-view>
 </template>
 
 <style>
@@ -12,5 +16,6 @@
 #app {
   font-weight: normal;
   height: 100%;
+  background-color: var(--color-beige-cool);
 }
 </style>

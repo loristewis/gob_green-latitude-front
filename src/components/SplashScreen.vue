@@ -40,6 +40,8 @@ export default {
   grid-template-columns: 1fr;
   align-items: center;
   text-align: center;
+  overflow: hidden;
+  z-index: 10000;
 
   .splash-screen-content {
     .splash-screen-tagline {

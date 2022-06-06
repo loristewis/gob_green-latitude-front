@@ -12,33 +12,39 @@
     </div>
     <br /> -->
 
-    <div v-if="store.splash && getSplashScreen()">
-      <SplashScreen :infos="getSplashScreen()" />
-    </div>
-
-    <div v-else>
-      <div v-if="store.defeat != null && store.currentStep != 'postcard'">
-        <DefeatContainer :infos="getDefeatInfos()" />
+    <transition name="slide-in-out">
+      <div
+        class="slide-in-out"
+        v-if="store.splash && getSplashScreen()"
+        key="splash"
+      >
+        <SplashScreen :infos="getSplashScreen()" />
       </div>
 
-      <Menu
-        :displayScore="store.currentStep != 'postcard'"
-        :score="store.score"
-      />
-
-      <transition name="fade" mode="out-in">
-        <div class="thought-container" :key="store.thought">
-          <Thought />
+      <div class="slide-in-out" v-else key="game">
+        <div v-if="store.defeat != null && store.currentStep != 'postcard'">
+          <DefeatContainer :infos="getDefeatInfos()" />
         </div>
-      </transition>
 
-      <component
-        :is="store.currentComponent"
-        :elements="this.elements[store.currentStep]"
-        @validate-destination="validateDestination"
-        @new-game="getWish"
-      />
-    </div>
+        <Menu
+          :displayScore="store.currentStep != 'postcard'"
+          :score="store.score"
+        />
+
+        <transition name="fade" mode="out-in">
+          <div class="thought-container" :key="store.thought">
+            <Thought />
+          </div>
+        </transition>
+
+        <component
+          :is="store.currentComponent"
+          :elements="this.elements[store.currentStep]"
+          @validate-destination="validateDestination"
+          @new-game="getWish"
+        />
+      </div>
+    </transition>
   </Container>
 </template>
 
@@ -269,7 +275,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #game-container {
   //position: fixed;
 
@@ -299,18 +305,6 @@ export default {
     max-width: 375px;
     max-height: 800px;
   }
-}
-
-.fade-leave-active,
-.fade-enter-to {
-  filter: blur(0);
-  opacity: 1;
-}
-
-.fade-enter-active,
-.fade-leave-to {
-  filter: blur(5px);
-  opacity: 0;
 }
 
 .grid {

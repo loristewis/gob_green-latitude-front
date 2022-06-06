@@ -30,13 +30,4 @@ export default {
   width: 200%;
   animation: 2.3s linear splash infinite;
 }
-
-@keyframes splash {
-  from {
-    transform: translate(0, 0);
-  }
-  to {
-    transform: translate(-160px, -160px);
-  }
-}
 </style>

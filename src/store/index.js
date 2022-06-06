@@ -21,8 +21,11 @@ export const useStore = defineStore('main', {
       this.progressionIndex++
     },
     displaySplashScreen() {
+      if (this.splashTimeout) clearTimeout(this.splashTimeout)
       this.splash = true
-      setTimeout(() => (this.splash = false), 2000)
+      this.splashTimeout = setTimeout(() => {
+        this.splash = false
+      }, 3000)
     },
     moveToStep(step) {
       this.progressionIndex = this.steps.indexOf(step)
@@ -38,8 +41,10 @@ export const useStore = defineStore('main', {
       }
     },
     resetState() {
+      this.splash = false
       this.progressionIndex = 0
       this.selected = null
+      this.thought = ''
       this.incidents = []
       this.defeat = null
       this.resetScore()
@@ -116,7 +121,7 @@ export const useStore = defineStore('main', {
         this.calculateTransportation()
       }
       if (this.trip.accommodation) {
-        this.calculateAccomodation()
+        this.calculateAccommodation()
       }
       if (this.trip.incident.outcome) {
         this.calculateIncident()
@@ -135,7 +140,7 @@ export const useStore = defineStore('main', {
           : this.trip.transportation.pollution
       this.score.budget -= this.trip.transportation.budget
     },
-    calculateAccomodation() {
+    calculateAccommodation() {
       this.score.wellness += this.trip.accommodation.wellness
       this.score.pollution += this.trip.accommodation.pollution
       this.score.budget -=
