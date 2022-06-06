@@ -1,22 +1,38 @@
 <template>
-  <div id="animation-container">
-    <div
-      v-if="store.currentAnimation === 'intro'"
-      @click="store.moveToNextStep"
-      id="animation-skip"
-    >
-      <p>Passer l'introduction</p>
-      <ChevronRightIcon class="hero-icon" />
+  <transition name="fade">
+    <div id="animation-container">
+      <div
+        v-if="store.currentAnimation === 'intro'"
+        @click="store.moveToNextStep"
+        id="animation-skip"
+      >
+        <p>Passer l'introduction</p>
+        <ChevronRightIcon class="hero-icon" />
+      </div>
+      <div
+        v-if="store.currentAnimation === 'intro'"
+        class="animation-intro-background"
+      >
+        <img :src="Background" />
+      </div>
+      <video
+        ref="video"
+        id="animation-video"
+        @ended="videoEnded"
+        :class="fadeOut ? 'fading' : ''"
+        muted
+      >
+        <source :src="animation[store.currentAnimation]" type="video/mp4" />
+      </video>
     </div>
-    <video ref="video" id="animation-video" @ended="store.moveToNextStep" muted>
-      <source :src="animation[store.currentAnimation]" type="video/mp4" />
-    </video>
-  </div>
+  </transition>
 </template>
 
 <script>
 import { useStore } from '@/store'
 import { ChevronRightIcon } from '@heroicons/vue/solid'
+
+import Background from '@/assets/doctor-bg.png'
 
 import Intro from '@/assets/animation/intro.mp4'
 import Travel from '@/assets/animation/travel.mp4'
@@ -40,18 +56,28 @@ export default {
         travel: Travel,
         end: End,
       },
+      Background,
+      fadeOut: false,
     }
   },
   mounted() {
     // dév
-    this.store.moveToNextStep()
+    // this.store.moveToNextStep()
 
     // // si on rejoue
-    // if (this.store.skipIntro) {
-    //   this.store.moveToNextStep()
-    // } else {
-    //   this.$refs.video.play()
-    // }
+    if (this.store.skipIntro) {
+      this.store.moveToNextStep()
+    } else {
+      this.$refs.video.play()
+    }
+  },
+  methods: {
+    videoEnded() {
+      this.fadeOut = true
+      setTimeout(() => {
+        this.store.moveToNextStep()
+      }, 1000)
+    },
   },
 }
 </script>
@@ -62,6 +88,21 @@ export default {
   height: 100%;
   position: absolute;
   top: 0;
+  transition: 1s;
+
+  .animation-intro-background {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    pointer-events: none;
+
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+  }
 
   #animation-video {
     width: 100%;
@@ -69,6 +110,10 @@ export default {
     object-fit: cover;
     position: absolute;
     top: 0;
+
+    &.fading {
+      animation: fadeout 1s;
+    }
   }
 
   #animation-skip {

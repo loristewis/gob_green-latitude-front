@@ -46,6 +46,37 @@
   }
 }
 
+@keyframes appear {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  20% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  100% {
+    opacity: 0;
+  }
+}
+
 .slide-in-out {
   transition: 0.6s;
 }

@@ -10,7 +10,7 @@ export const colorCombos = [
     background: 'rose-cool',
   },
   {
-    id: 'blue',
+    id: 'blue-pink',
     text: 'rose-cool',
     background: 'blue-dark',
   },

@@ -38,6 +38,7 @@
         </transition>
 
         <component
+          v-if="store.trip.wish"
           :is="store.currentComponent"
           :elements="this.elements[store.currentStep]"
           @validate-destination="validateDestination"
