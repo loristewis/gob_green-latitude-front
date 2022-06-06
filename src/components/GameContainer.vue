@@ -12,7 +12,7 @@
     </div>
     <br /> -->
 
-    <transition name="slide-in-out">
+    <transition name="slide-in-out" mode="in-out">
       <div
         class="slide-in-out"
         v-if="store.splash && getSplashScreen()"
@@ -30,6 +30,8 @@
           :displayScore="store.currentStep != 'postcard'"
           :score="store.score"
         />
+
+        <PrescriptionReminder v-if="store.currentStep != 'postcard'" />
 
         <transition name="fade" mode="out-in">
           <div class="thought-container" :key="store.thought">
@@ -60,6 +62,7 @@ import SplashScreen from './SplashScreen.vue'
 import {
   AnimationContainer,
   PrescriptionContainer,
+  PrescriptionReminder,
   DestinationContainer,
   TransportationContainer,
   AccommodationContainer,
@@ -78,6 +81,7 @@ export default {
     Menu,
     AnimationContainer,
     PrescriptionContainer,
+    PrescriptionReminder,
     DestinationContainer,
     TransportationContainer,
     AccommodationContainer,

@@ -6,6 +6,7 @@ import ActivitiesContainer from './Activities/ActivitiesContainer.vue'
 
 import AnimationContainer from './AnimationContainer.vue'
 import PrescriptionContainer from './PrescriptionContainer.vue'
+import PrescriptionReminder from './PrescriptionReminder.vue'
 import DefeatContainer from './DefeatContainer.vue'
 import PostcardContainer from './Postcard/PostcardContainer.vue'
 
@@ -17,6 +18,7 @@ export {
   ActivitiesContainer,
   AnimationContainer,
   PrescriptionContainer,
+  PrescriptionReminder,
   DefeatContainer,
-  PostcardContainer
+  PostcardContainer,
 }
