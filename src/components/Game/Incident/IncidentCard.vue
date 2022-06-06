@@ -4,9 +4,10 @@
     :description="description"
     class="incident-card-container"
   >
-    <img :src="Star" alt="" class="star" />
-
-    <Sticker theme="rose-yellow" class="sticker"> AAAAAAHH </Sticker>
+    <div class="incident-card-stickers">
+      <Sticker big theme="rose-yellow" class="sticker"> AAAAAHH </Sticker>
+      <img :src="Star" alt="" class="star" />
+    </div>
   </BaseCard>
 </template>
 
@@ -41,16 +42,22 @@ export default {
   margin-top: 128px;
   margin-bottom: 32px;
 
-  .sticker {
+  .incident-card-stickers {
     position: absolute;
-    top: -24px;
-    left: 24px;
-  }
+    top: -80%;
+    display: flex;
+    align-items: flex-end;
 
-  .star {
-    position: absolute;
-    top: -112px;
-    right: 72px;
+    .sticker {
+      z-index: 2;
+      animation: vibrate 0.7s ease-in-out;
+    }
+
+    .star {
+      left: -25%;
+      top: -10px;
+      animation: tada 0.7s ease-in-out;
+    }
   }
 }
 </style>
