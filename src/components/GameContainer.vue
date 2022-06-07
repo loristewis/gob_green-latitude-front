@@ -21,10 +21,13 @@
         <SplashScreen :infos="getSplashScreen()" />
       </div>
 
-      <div class="slide-in-out" v-else key="game">
-        <div v-if="store.defeat != null && store.currentStep != 'postcard'">
-          <DefeatContainer :infos="getDefeatInfos()" />
-        </div>
+      <div
+        class="slide-in-out"
+        :class="defeatModal() ? 'block-scroll' : ''"
+        v-else
+        key="game"
+      >
+        <DefeatContainer v-if="defeatModal()" :infos="getDefeatInfos()" />
 
         <Menu
           :displayScore="store.currentStep != 'postcard'"
@@ -110,6 +113,9 @@ export default {
     }
   },
   methods: {
+    defeatModal() {
+      return this.store.defeat != null && this.store.currentStep != 'postcard'
+    },
     getWish() {
       this.store.trip.wish = this.wishes[getRandomInt(7)].attributes.title
     },
@@ -292,6 +298,10 @@ export default {
       height: 100%;
       position: absolute;
       top: 0;
+
+      &.block-scroll {
+        overflow: hidden;
+      }
     }
   }
 
