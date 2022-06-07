@@ -6,7 +6,11 @@
   >
     <ScoreEvolutionGroup v-bind="$props" />
 
-    <Button class="incident-outcome-button" @click="$emit('next-step')">
+    <Button
+      :isDisabled="this.buttonDisabled"
+      class="incident-outcome-button"
+      @click="acceptOutcome"
+    >
       Continuer
     </Button>
   </BaseCard>
@@ -45,7 +49,16 @@ export default {
   data() {
     return {
       Star,
+      buttonDisabled: false,
     }
+  },
+  methods: {
+    acceptOutcome() {
+      this.buttonDisabled = true
+      setTimeout(() => {
+        this.$emit('next-step')
+      }, 2)
+    },
   },
 }
 </script>

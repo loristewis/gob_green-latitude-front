@@ -17,7 +17,9 @@
 
     <ActivitiesSwiper :activities="availableActivities" />
 
-    <Button main @click="selectActivity">C'est décidé !</Button>
+    <Button main :isDisabled="this.buttonDisabled" @click="selectActivity"
+      >C'est décidé !</Button
+    >
   </div>
 
   <ActivitiesModalContainer
@@ -57,6 +59,7 @@ export default {
       isOpen: false,
       outcome: null,
       availableActivities: this.elements,
+      buttonDisabled: false,
     }
   },
   setup() {
@@ -113,6 +116,7 @@ export default {
 
       if (this.store.activitiesCount === 3) {
         this.store.selected = null
+        this.buttonDisabled = true
         this.store.finishStep()
       }
     },

@@ -37,7 +37,7 @@ export const useStore = defineStore('main', {
     finishStep() {
       this.calculateScore()
       if (!this.defeat) {
-        setTimeout(() => this.moveToNextStep(), 1000)
+        setTimeout(() => this.moveToNextStep(), 2500)
       }
     },
     resetState() {

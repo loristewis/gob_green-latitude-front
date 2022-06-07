@@ -21,7 +21,7 @@
         :budget="incident.outcome.budget"
         :pollution="incident.outcome.pollution"
         :wellness="incident.outcome.wellness"
-        @next-step="store.moveToNextStep"
+        @next-step="store.finishStep"
       />
     </div>
   </div>

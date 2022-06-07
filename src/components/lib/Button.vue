@@ -69,6 +69,7 @@ export default {
   background-color: var(--color-rose);
   transform: rotate(-6.63deg);
   cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
 
   &.bottom-right {
     position: absolute;
@@ -78,9 +79,9 @@ export default {
   }
 
   &.disabled {
-    opacity: 0.4;
-    cursor: default;
+    background-color: var(--color-rose-faded);
     pointer-events: none;
+    cursor: default;
   }
 
   > div {

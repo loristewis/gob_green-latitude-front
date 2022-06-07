@@ -15,7 +15,11 @@
           <p v-html="prescription.wish"></p>
         </div>
         <img class="prescription-stamp" :src="Stamp" />
-        <Button class="prescription-button" @click="store.moveToNextStep">
+        <Button
+          :isDisabled="this.buttonDisabled"
+          class="prescription-button"
+          @click="acceptPrescription"
+        >
           Compris !
         </Button>
       </BaseCard>
@@ -59,6 +63,7 @@ export default {
         environment: '',
         wish: '',
       },
+      buttonDisabled: false,
       Stamp,
       Background,
     }
@@ -75,6 +80,14 @@ export default {
 
     this.icons.environment = gameIcons['mer']
     this.icons.wish = gameIcons[this.store.trip.wish]
+  },
+  methods: {
+    acceptPrescription() {
+      this.buttonDisabled = true
+      setTimeout(() => {
+        this.store.moveToNextStep()
+      }, 2)
+    },
   },
 }
 </script>

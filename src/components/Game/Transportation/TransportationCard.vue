@@ -34,7 +34,11 @@
           :key="i"
         />
 
-        <Button @click="validateOption" class="reservation-button">
+        <Button
+          :isDisabled="this.buttonDisabled"
+          @click="validateOption"
+          class="reservation-button"
+        >
           On réserve !
         </Button>
       </div>
@@ -86,6 +90,7 @@ export default {
   data() {
     return {
       selectedOptionIndex: 0,
+      buttonDisabled: false,
     }
   },
   setup() {
@@ -127,6 +132,7 @@ export default {
         ? this.store.selected.thoughts
         : this.store.thought
 
+      this.buttonDisabled = true
       this.$emit('validate-transportation')
     },
   },
