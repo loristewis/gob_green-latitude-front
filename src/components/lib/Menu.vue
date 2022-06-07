@@ -9,11 +9,16 @@
         size="40"
       />
     </div>
-    <BaseCard v-if="modal" class="back-to-home-modal">
-      <Title class="modal-title" tag="h2">Retourner à l'accueil ?</Title>
-      <Button simple @click="quitGame">Valider</Button>
-      <p @click="closeModal">Continuer la partie</p>
-    </BaseCard>
+    <transition name="opacity">
+      <div v-if="modal" class="back-to-home-modal-container" :key="modal">
+        <div class="modal-backdrop" />
+        <BaseCard class="back-to-home-modal">
+          <Title class="modal-title" tag="h2">Retourner à l'accueil ?</Title>
+          <Button simple @click="quitGame">Valider</Button>
+          <p @click="closeModal">Continuer la partie</p>
+        </BaseCard>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -108,21 +113,43 @@ export default {
   }
 }
 
-.back-to-home-modal {
-  text-align: center;
+.back-to-home-modal-container {
   position: absolute;
-  width: 75%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   z-index: 10;
 
-  .modal-title {
-    padding-bottom: 16px;
+  &.opacity-leave-active  {
+    transition: opacity 0.4s;
   }
 
-  p {
-    cursor: pointer;
+  .modal-backdrop {
+    background-color: var(--color-beige-dark);
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    --opacity: 0.4;
+    animation: fadein 0.4s;
+  }
+
+  .back-to-home-modal {
+    text-align: center;
+    position: absolute;
+    width: 75%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: modal-appear 0.4s;
+
+    .modal-title {
+      padding-bottom: 16px;
+    }
+
+    p {
+      cursor: pointer;
+    }
   }
 }
 </style>

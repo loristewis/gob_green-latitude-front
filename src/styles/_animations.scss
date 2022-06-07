@@ -62,12 +62,28 @@
   }
 }
 
+@keyframes modal-appear {
+  0% {
+    opacity: 0;
+    top: 100%;
+  }
+  20% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 50%;
+  }
+}
+
 @keyframes fadein {
   0% {
     opacity: 0;
   }
   100% {
-    opacity: 1;
+    opacity: var(--opacity, 1);
   }
 }
 
@@ -121,5 +137,19 @@
 .fade-enter-active,
 .fade-leave-to {
   filter: blur(5px);
+  opacity: 0;
+}
+
+.opacity-leave-active {
+  transition: opacity 0.4s;
+}
+
+.opacity-leave-active,
+.opacity-enter-to {
+  opacity: 1;
+}
+
+.opacity-enter-active,
+.opacity-leave-to {
   opacity: 0;
 }
