@@ -3,6 +3,7 @@ import { team } from '@/constants/team'
 import { colorCombos } from '@/constants/design/colorCombos'
 import { titleTags } from '@/constants/design/titleTags'
 import { gameIcons } from '@/constants/design/gameIcons'
+import { gauges } from '@/constants/design/gauges'
 import { scores } from '@/constants/design/scores'
 
 import { scoreConstants } from '@/constants/game/scoreConstants'
@@ -21,6 +22,7 @@ export {
   colorCombos,
   titleTags,
   gameIcons,
+  gauges,
   scores,
   scoreConstants,
   initialState,

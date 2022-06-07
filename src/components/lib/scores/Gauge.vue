@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { scores } from '@/constants'
+import { scores, gauges } from '@/constants'
 
 import Smiley from '@/assets/smiley.svg'
 import Fire from '@/assets/fire.svg'
@@ -42,7 +42,8 @@ export default {
   },
   data() {
     let classList = ''
-    classList += `from-${this.from}`
+    classList += `from-${this.from} `
+    classList += this.name
     classList += this.small ? ' small' : ''
 
     return {
@@ -66,8 +67,13 @@ export default {
   },
   computed: {
     icon() {
-      if (this.name === 'pollution') return CloudyEarth
-      if (this.name === 'wellness') return Smiley
+      if (this.value < 4) {
+        return gauges[this.name][0].icon
+      } else if (this.value < 7) {
+        return gauges[this.name][1].icon
+      } else {
+        return gauges[this.name][2].icon
+      }
     },
     progressStyle() {
       return {
@@ -77,8 +83,14 @@ export default {
       }
     },
     color() {
-      if (this.name === 'pollution') return 'var(--color-green-light)'
-      if (this.name === 'wellness') return 'var(--color-green-light)'
+      console.log(gauges[this.name][0])
+      if (this.value < 4) {
+        return gauges[this.name][0].color
+      } else if (this.value < 7) {
+        return gauges[this.name][1].color
+      } else {
+        return gauges[this.name][2].color
+      }
     },
   },
 }
@@ -93,9 +105,18 @@ export default {
     margin-bottom: 8px;
   }
 
-  img {
-    width: 40px;
-    height: 40px;
+  &.wellness {
+    img {
+      width: 55px;
+      height: 53px;
+    }
+  }
+
+  &.pollution {
+    img {
+      width: 60px;
+      height: 50px;
+    }
   }
 
   .gauge {
@@ -108,12 +129,12 @@ export default {
     padding: 4px;
     background-color: var(--color-beige-light);
     border-radius: 12px;
-    overflow: hidden;
 
     .progress {
+      max-width: 98%;
       height: 16px;
       position: absolute;
-      transition: width 0.2s ease-in-out;
+      transition: width 0.2s ease-in-out, color 0.2s ease-in-out;
 
       &:nth-child(1) {
         background-color: white !important;
@@ -121,7 +142,7 @@ export default {
       }
 
       &-delayed {
-        transition: width 0.6s ease-in-out;
+        transition: width 0.6s ease-in-out, color 0.2s ease-in-out;
         transition-delay: 1s;
       }
     }
