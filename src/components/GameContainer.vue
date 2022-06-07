@@ -1,54 +1,44 @@
 <template>
-  <Container id="game-container">
-    <!-- <div>
-      <input
-        type="checkbox"
-        name="activities"
-        v-model="divider"
-        id="diviser"
-        @change="store.calculateScore"
-      />
-      <label for="diviser"> Diviser les activités par deux</label>
-    </div>
-    <br /> -->
-
-    <transition name="slide-in-out" mode="in-out">
-      <div
-        class="slide-in-out"
-        v-if="store.splash && getSplashScreen()"
-        key="splash"
-      >
-        <SplashScreen :infos="getSplashScreen()" />
-      </div>
-
-      <div class="slide-in-out" v-else key="game">
-        <div v-if="store.defeat != null && store.currentStep != 'postcard'">
-          <DefeatContainer :infos="getDefeatInfos()" />
+  <DesktopContainer>
+    <div class="game-container">
+      <transition name="slide-in-out" mode="in-out">
+        <div
+          class="slide-in-out"
+          v-if="store.splash && getSplashScreen()"
+          key="splash"
+        >
+          <SplashScreen :infos="getSplashScreen()" />
         </div>
 
-        <Menu
-          :displayScore="store.currentStep != 'postcard'"
-          :score="store.score"
-        />
-
-        <PrescriptionReminder v-if="store.currentStep != 'postcard'" />
-
-        <transition name="fade" mode="out-in">
-          <div class="thought-container" :key="store.thought">
-            <Thought />
+        <div class="slide-in-out" v-else key="game">
+          <div v-if="store.defeat != null && store.currentStep != 'postcard'">
+            <DefeatContainer :infos="getDefeatInfos()" />
           </div>
-        </transition>
 
-        <component
-          v-if="store.trip.wish"
-          :is="store.currentComponent"
-          :elements="this.elements[store.currentStep]"
-          @validate-destination="validateDestination"
-          @new-game="getWish"
-        />
-      </div>
-    </transition>
-  </Container>
+          <Menu
+            :displayScore="store.currentStep != 'postcard'"
+            :score="store.score"
+          />
+
+          <transition name="fade" mode="out-in">
+            <div :key="store.thought">
+              <Thought />
+            </div>
+          </transition>
+
+          <component
+            v-if="store.trip.wish"
+            :is="store.currentComponent"
+            :elements="this.elements[store.currentStep]"
+            @validate-destination="validateDestination"
+            @new-game="getWish"
+          />
+
+          <PrescriptionReminder v-if="store.currentStep != 'postcard'" />
+        </div>
+      </transition>
+    </div>
+  </DesktopContainer>
 </template>
 
 <script>
@@ -57,6 +47,7 @@ import { splashScreens, defeatPopup } from '@/constants'
 import { useStore } from '@/store'
 import { Container, Thought, Menu } from '@/components/lib'
 
+import DesktopContainer from './DesktopContainer.vue'
 import SplashScreen from './SplashScreen.vue'
 
 import {
@@ -75,6 +66,7 @@ import {
 export default {
   name: 'GameContainer',
   components: {
+    DesktopContainer,
     SplashScreen,
     Container,
     Thought,
@@ -281,35 +273,72 @@ export default {
 </script>
 
 <style lang="scss">
-#game-container {
-  //position: fixed;
+.game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-beige-cool);
+  flex-shrink: 0;
+  overflow: hidden;
 
   > div {
     width: 100%;
-
-    > div {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      top: 0;
-    }
-  }
-
-  .thought-container {
-    position: absolute;
-    left: 50%;
-    top: 20px;
-    transform: translateX(-50%);
-    width: 100%;
-    pointer-events: none;
-    transition: 0.2s ease-in-out;
+    height: 100%;
   }
 
   @include screen-sm {
-    border: 1px solid #8a95b4;
-    max-width: 375px;
-    max-height: 800px;
+    height: 844px;
+    width: 414px;
+    max-height: 90%;
+    //max-width: 90%;
+    border: 16px solid var(--color-white);
+    border-radius: 24px;
+    //max-width: 375px;
+    //max-height: 800px;
   }
+
+  //> div {
+  //  width: 100%;
+  //
+  //  > div {
+  //    width: 100%;
+  //    height: 100%;
+  //    position: absolute;
+  //    top: 0;
+  //  }
+  //}
+}
+//.generic-container {
+//  display: flex;
+//  margin: auto;
+//  height: 100%;
+//  width: 100vw;
+//  background-color: var(--color-background);
+//  overflow-x: hidden;
+//  overflow-y: scroll;
+//
+//  > div {
+//    width: 100%;
+//  }
+//}
+
+#game-container {
+  //> div {
+  //  width: 100%;
+  //
+  //  > div {
+  //    width: 100%;
+  //    height: 100%;
+  //    position: absolute;
+  //    top: 0;
+  //  }
+  //}
+  //
+  //@include screen-sm {
+  //  border: 1px solid #8a95b4;
+  //  max-width: 375px;
+  //  max-height: 800px;
+  //}
 }
 
 .grid {
