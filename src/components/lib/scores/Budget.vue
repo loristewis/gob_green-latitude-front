@@ -13,25 +13,31 @@
       class="coins-container"
       :class="whiteBackground ? 'white-background' : ''"
     >
-      <div class="coin" v-for="index in currentValue" :key="index">
-        <img :src="Coin" alt="" />
+      <div class="coin empty" v-if="currentValue === 0">
+        <img :src="EmptyCoin" alt="" />
       </div>
-      <div
-        v-if="animation"
-        class="coin difference"
-        v-for="index in difference"
-        :key="index"
-      >
-        <img :src="Coin" alt="" />
-        <img :src="WhiteCoin" alt="" />
+      <div>
+        <div class="coin" v-for="index in currentValue" :key="index">
+          <img :src="Coin" alt="" />
+        </div>
+        <div
+          v-if="animation"
+          class="coin difference"
+          v-for="index in difference"
+          :key="index"
+        >
+          <img :src="Coin" alt="" />
+          <img :src="WhiteCoin" alt="" />
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Coin from '@/assets/coin.svg'
-import WhiteCoin from '@/assets/white-coin.svg'
+import Coin from '@/assets/coins/coin.svg'
+import EmptyCoin from '@/assets/coins/empty-coin.svg'
+import WhiteCoin from '@/assets/coins/white-coin.svg'
 
 export default {
   name: 'Budget',
@@ -49,8 +55,9 @@ export default {
   data() {
     return {
       Coin,
+      EmptyCoin,
       WhiteCoin,
-      currentValue: this.value,
+      currentValue: Math.max(this.value, 0),
       oldValue: 0,
       difference: 0,
       coinsHeight: this.calculateHeight(this.value),
@@ -62,7 +69,7 @@ export default {
       if (this.animateDifference) clearTimeout(this.animateDifference)
 
       this.oldValue = oldVal
-      this.currentValue = newVal
+      this.currentValue = Math.max(newVal)
       this.difference = Math.abs(newVal - oldVal)
 
       this.animation = newVal < oldVal
@@ -80,7 +87,7 @@ export default {
   },
   methods: {
     calculateHeight(value) {
-      return value > 0 ? 28 + 4 * value + 'px' : 'auto'
+      return value > 0 ? 28 + 4 * value + 'px' : 28 + 4 + 'px'
     },
   },
 }
@@ -103,6 +110,10 @@ export default {
     padding-left: 1px;
     border-radius: 20px;
     background: var(--color-beige-cool);
+
+    > div:first-child {
+      position: absolute;
+    }
 
     &.white-background {
       background: var(--color-white);

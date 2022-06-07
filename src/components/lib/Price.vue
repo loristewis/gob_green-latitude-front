@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import Coin from '@/assets/coin.svg'
+import Coin from '@/assets/coins/coin.svg'
 
 export default {
   name: 'Price',
