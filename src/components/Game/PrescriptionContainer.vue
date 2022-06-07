@@ -7,7 +7,7 @@
           Ordonnance
         </Sticker>
         <Title tag="h2" class="prescription-subtitle">Dr Tamalou</Title>
-        <p>{{ prescription.intro }}</p>
+        <p class="prescription-intro">{{ prescription.intro }}</p>
         <div class="prescription-content">
           <img :src="icons.environment" />
           <p v-html="prescription.environment"></p>
@@ -71,7 +71,9 @@ export default {
   mounted() {
     this.prescription.intro = prescriptionText.intro
 
-    this.prescription.environment = prescriptionText.environment.mer
+    this.prescription.environment = getRandomFromArray(
+      prescriptionText.environment.mer
+    )
 
     this.prescription.wish = getRandomFromArray(prescriptionText.wish.intro)
     this.prescription.wish += '<span>'
@@ -134,7 +136,11 @@ export default {
   }
 
   &-subtitle {
-    padding-bottom: 20px;
+    padding-bottom: 12px;
+  }
+
+  &-intro {
+    font-size: 14px;
   }
 
   &-content {
@@ -142,7 +148,11 @@ export default {
     grid-template-columns: auto auto;
     align-items: center;
     grid-gap: 16px;
-    padding: 24px 0;
+    padding: 16px 0;
+
+    img {
+      width: 64px;
+    }
 
     span {
       font-weight: 600;
