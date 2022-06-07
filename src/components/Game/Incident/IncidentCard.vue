@@ -44,7 +44,7 @@ export default {
 
   .incident-card-stickers {
     position: absolute;
-    top: -80%;
+    top: -90%;
     display: flex;
     align-items: flex-end;
 
