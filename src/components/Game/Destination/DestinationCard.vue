@@ -81,6 +81,7 @@ export default {
     background-size: contain;
     top: 24px;
     right: -16px;
+    transform: rotate(12deg);
 
     &-loin {
       //top: -8px;
@@ -89,18 +90,12 @@ export default {
       height: 72px;
     }
 
-    &-bof {
+    &-bof,
+    &-cher {
       //top: 96px;
       //right: -16px;
       width: 95px;
       height: 95px;
-    }
-
-    &-cher {
-      //top: -8px;
-      //left: -8px;
-      width: 143px;
-      height: 72px;
     }
   }
 
