@@ -3,7 +3,13 @@
   <Menu />
 
   <Title>Jauges</Title>
-  <Gauge name="wellness" :value="1" from="left" />
+  <div style="display: flex">
+    <button @click="changeValue(-2)">-2</button>
+    <button @click="changeValue(-1)">-1</button>
+    <button @click="changeValue(1)">+1</button>
+    <button @click="changeValue(2)">+2</button>
+  </div>
+  <Gauge name="wellness" :value="testValue" from="left" />
   <Gauge name="wellness" :value="3" from="left" />
   <Gauge name="wellness" :value="5" from="left" />
   <Gauge name="wellness" :value="8" from="left" />
@@ -82,7 +88,13 @@ export default {
     return {
       Smiley,
       Fire,
+      testValue: 2,
     }
+  },
+  methods: {
+    changeValue(number) {
+      this.testValue += number
+    },
   },
 }
 </script>

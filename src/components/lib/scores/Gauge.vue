@@ -1,7 +1,8 @@
 <template>
   <div class="gauge-container" :class="classList">
     <div class="gauge">
-      <div class="progress" :style="progressStyle"></div>
+      <div ref="behind" class="progress" :style="progressStyle"></div>
+      <div ref="front" class="progress" :style="progressStyle"></div>
     </div>
 
     <img :src="icon" alt="" />
@@ -51,6 +52,18 @@ export default {
       classList,
     }
   },
+  watch: {
+    value: function (newVal, oldVal) {
+      this.$refs.behind.classList.remove('progress-delayed')
+      this.$refs.front.classList.remove('progress-delayed')
+
+      if (newVal > oldVal) {
+        this.$refs.front.classList.add('progress-delayed')
+      } else {
+        this.$refs.behind.classList.add('progress-delayed')
+      }
+    },
+  },
   computed: {
     icon() {
       if (this.name === 'pollution') return CloudyEarth
@@ -95,10 +108,22 @@ export default {
     padding: 4px;
     background-color: var(--color-beige-light);
     border-radius: 12px;
+    overflow: hidden;
 
     .progress {
       height: 16px;
-      transition: width 0.6s;
+      position: absolute;
+      transition: width 0.2s ease-in-out;
+
+      &:nth-child(1) {
+        background-color: white !important;
+        animation: pulsating 0.8s infinite;
+      }
+
+      &-delayed {
+        transition: width 0.6s ease-in-out;
+        transition-delay: 1s;
+      }
     }
   }
 
