@@ -1,24 +1,20 @@
 <template>
   <div class="score-evolution-container">
-    <div class="icon">
+    <div class="icon" :class="name">
       <img :src="icon" alt="" />
     </div>
 
     <div class="arrow" :class="color">
       <ArrowNarrowDownIcon v-if="value < 0" class="hero-icon down" />
-
       <ArrowNarrowUpIcon v-else class="hero-icon up" />
     </div>
   </div>
 </template>
 
 <script>
-import { scores } from '@/constants'
+import { scores, gauges } from '@/constants'
 
-import Smiley from '@/assets/smiley.svg'
-import Fire from '@/assets/fire.svg'
-import CloudyEarth from '@/assets/cloudy-earth.svg'
-import Coin from '@/assets/coin.svg'
+import Coin from '@/assets/coins/coin.svg'
 
 import { ArrowNarrowDownIcon } from '@heroicons/vue/solid'
 import { ArrowNarrowUpIcon } from '@heroicons/vue/solid'
@@ -42,23 +38,25 @@ export default {
   },
   data() {
     return {
-      Smiley,
-      Fire,
-      CloudyEarth,
       Coin,
     }
   },
   computed: {
     icon() {
-      if (this.name === 'budget') return Coin
-      if (this.name === 'pollution') return Fire
-      if (this.name === 'wellness') return Smiley
+      if (this.name === 'budget') {
+        return Coin
+      } else {
+        return this.value < 0
+          ? gauges[this.name][0].icon
+          : gauges[this.name][2].icon
+      }
     },
     color() {
-      if (this.name === 'budget' || this.name === 'wellness')
+      if (this.name === 'budget' || this.name === 'wellness') {
         return this.value < 0 ? 'bad' : 'good'
-
-      if (this.name === 'pollution') return this.value < 0 ? 'good' : 'bad'
+      } else {
+        return this.value < 0 ? 'good' : 'bad'
+      }
     },
   },
 }
@@ -76,6 +74,11 @@ export default {
     img {
       height: 100%;
       width: 32px;
+    }
+
+    &.wellness,
+    &.pollution {
+      transform: scale(1.4);
     }
   }
 

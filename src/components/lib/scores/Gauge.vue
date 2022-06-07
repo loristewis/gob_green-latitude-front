@@ -42,8 +42,7 @@ export default {
   },
   data() {
     let classList = ''
-    classList += `from-${this.from} `
-    classList += this.name
+    classList += `from-${this.from}`
     classList += this.small ? ' small' : ''
 
     return {
@@ -105,18 +104,10 @@ export default {
     margin-bottom: 8px;
   }
 
-  &.wellness {
-    img {
-      width: 55px;
-      height: 53px;
-    }
-  }
-
-  &.pollution {
-    img {
-      width: 60px;
-      height: 50px;
-    }
+  img {
+    width: 60px;
+    height: 50px;
+    transform: scale(0.95);
   }
 
   .gauge {
