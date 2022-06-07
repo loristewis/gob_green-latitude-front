@@ -16,6 +16,5 @@
 #app {
   font-weight: normal;
   height: 100%;
-  background-color: var(--color-beige-cool);
 }
 </style>

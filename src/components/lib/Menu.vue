@@ -99,10 +99,10 @@ export default {
   display: grid;
   grid-template-columns: 1fr 72px;
   grid-gap: 8px 16px;
-  margin: 16px 12px;
+  padding: 16px 12px;
 
   @include screen-xs {
-    margin: 24px 20px;
+    padding: 24px 20px;
   }
 
   .home-button-container {
