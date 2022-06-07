@@ -1,15 +1,29 @@
 <template>
-  <div class="budget-container" :style="coinsHeight">
-    <div class="content">{{ value }}</div>
+  <div
+    class="budget-container"
+    :style="{
+      height:
+        currentValue < 12 ? calculateHeight(12) : calculateHeight(currentValue),
+    }"
+  >
+    <div class="content">{{ currentValue }}</div>
 
     <div
-      :style="coinsHeight"
+      :style="{ height: coinsHeight }"
       class="coins-container"
       :class="whiteBackground ? 'white-background' : ''"
-      v-if="value > 0"
     >
-      <div class="coin" v-for="index in value" :key="index">
+      <div class="coin" v-for="index in currentValue" :key="index">
         <img :src="Coin" alt="" />
+      </div>
+      <div
+        v-if="animation"
+        class="coin difference"
+        v-for="index in difference"
+        :key="index"
+      >
+        <img :src="Coin" alt="" />
+        <img :src="WhiteCoin" alt="" />
       </div>
     </div>
   </div>
@@ -17,6 +31,7 @@
 
 <script>
 import Coin from '@/assets/coin.svg'
+import WhiteCoin from '@/assets/white-coin.svg'
 
 export default {
   name: 'Budget',
@@ -34,11 +49,38 @@ export default {
   data() {
     return {
       Coin,
+      WhiteCoin,
+      currentValue: this.value,
+      oldValue: 0,
+      difference: 0,
+      coinsHeight: this.calculateHeight(this.value),
+      animation: false,
     }
   },
-  computed: {
-    coinsHeight() {
-      return { height: this.value > 0 ? 28 + 4 * this.value + 'px' : 'auto' }
+  watch: {
+    value: function (newVal, oldVal) {
+      if (this.animateDifference) clearTimeout(this.animateDifference)
+
+      this.oldValue = oldVal
+      this.currentValue = newVal
+      this.difference = Math.abs(newVal - oldVal)
+
+      this.animation = newVal < oldVal
+
+      if (this.animation) {
+        this.coinsHeight = this.calculateHeight(this.oldValue)
+        this.animateDifference = setTimeout(() => {
+          this.coinsHeight = this.calculateHeight(this.currentValue)
+          this.animation = false
+        }, 1000)
+      } else {
+        this.coinsHeight = this.calculateHeight(this.currentValue)
+      }
+    },
+  },
+  methods: {
+    calculateHeight(value) {
+      return value > 0 ? 28 + 4 * value + 'px' : 'auto'
     },
   },
 }
@@ -69,9 +111,20 @@ export default {
     .coin {
       height: 26px;
       width: 26px;
+      position: relative;
 
       & + .coin {
         margin-top: -22px;
+      }
+
+      &.difference {
+        > img {
+          position: absolute;
+        }
+
+        img:nth-child(2) {
+          animation: pulsating 0.4s infinite;
+        }
       }
     }
   }
