@@ -1,20 +1,26 @@
 <template>
   <div class="prescription-container">
     <img class="prescription-background" :src="Background" />
+
     <div>
       <BaseCard class="prescription-card">
         <Sticker theme="blue-pink" class="prescription-title" big>
           Ordonnance
         </Sticker>
+
         <Title tag="h2" class="prescription-subtitle">Dr Tamalou</Title>
+
         <p>{{ prescription.intro }}</p>
+
         <div class="prescription-content">
           <img :src="icons.environment" />
           <p v-html="prescription.environment"></p>
           <img :src="icons.wish" />
           <p v-html="prescription.wish"></p>
         </div>
+
         <img class="prescription-stamp" :src="Stamp" />
+
         <Button
           :isDisabled="this.buttonDisabled"
           class="prescription-button"
@@ -95,21 +101,21 @@ export default {
 <style lang="scss">
 .prescription {
   &-container {
+    position: absolute;
     height: 100%;
     width: 100%;
-    position: absolute;
     top: 0;
     left: 0;
     font-size: 0;
     z-index: 10;
 
     > div {
+      display: flex;
+      position: absolute;
       height: 100%;
       width: 100%;
-      position: absolute;
       top: 0;
       left: 0;
-      display: flex;
       align-items: center;
       font-size: 16px;
     }
@@ -139,7 +145,7 @@ export default {
 
   &-content {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 54px auto;
     align-items: center;
     grid-gap: 16px;
     padding: 24px 0;
