@@ -1,6 +1,7 @@
 <template>
   <div id="menu-container" :style="{ height: displayScore ? '110px' : '50px' }">
     <ScoreContainer v-if="displayScore" :score="score" />
+
     <div class="home-button-container">
       <IconButton
         @click="onClickHomeButton"
@@ -9,12 +10,19 @@
         size="40"
       />
     </div>
+
     <transition name="opacity">
-      <div v-if="modal" class="back-to-home-modal-container" :key="modal">
+      <div
+        v-if="modal"
+        class="back-to-home-modal-container"
+        :key="modal"
+        @click="closeModal"
+      >
         <div class="modal-backdrop" />
-        <BaseCard class="back-to-home-modal">
-          <Title class="modal-title" tag="h2">Retourner à l'accueil ?</Title>
+
+        <BaseCard class="back-to-home-modal" title="Retourner à l'accueil ?">
           <Button simple @click="quitGame">Valider</Button>
+
           <p @click="closeModal">Continuer la partie</p>
         </BaseCard>
       </div>
@@ -23,8 +31,8 @@
 </template>
 
 <script>
-import router from '@/router'
 import { useRoute } from 'vue-router'
+import router from '@/router'
 import { useStore } from '@/store'
 
 import ScoreContainer from '@/components/lib/scores/ScoreContainer.vue'
@@ -99,10 +107,11 @@ export default {
   display: grid;
   grid-template-columns: 1fr 72px;
   grid-gap: 8px 16px;
-  padding: 16px 12px;
+  padding: 12px;
+  box-sizing: content-box;
 
   @include screen-xs {
-    padding: 24px 20px;
+    padding: 20px;
   }
 
   .home-button-container {
@@ -151,5 +160,16 @@ export default {
       cursor: pointer;
     }
   }
+}
+
+.back-to-home-modal-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
 }
 </style>

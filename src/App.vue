@@ -1,10 +1,14 @@
 <template>
   <router-view v-slot="{ Component }">
-    <transition name="slide-in-out">
-      <component class="slide-in-out" :is="Component" />
-    </transition>
+    <DesktopContainer>
+      <component :is="Component" />
+    </DesktopContainer>
   </router-view>
 </template>
+
+<script setup>
+import DesktopContainer from '@/components/DesktopContainer.vue'
+</script>
 
 <style>
 @import './styles/base.scss';
@@ -14,7 +18,9 @@
 @import './assets/fonts/fonts.scss';
 
 #app {
+  position: absolute;
   font-weight: normal;
   height: 100%;
+  width: 100%;
 }
 </style>

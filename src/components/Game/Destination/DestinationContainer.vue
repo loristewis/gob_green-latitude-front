@@ -1,15 +1,24 @@
 <template>
-  <DestinationSwiper :destinations="elements" />
+  <GameLayout>
+    <template #default>
+      <DestinationSwiper :destinations="elements" />
 
-  <Button main :isDisabled="this.buttonDisabled" @click="emitDestinationChoice">
-    Allons-y !
-  </Button>
+      <Button
+        main
+        :isDisabled="this.buttonDisabled"
+        @click="emitDestinationChoice"
+      >
+        Allons-y !
+      </Button>
+    </template>
+  </GameLayout>
 </template>
 
 <script>
 import { useStore } from './../../../store/index'
 
 import { Button } from '@/components/lib'
+import GameLayout from '@/components/GameLayout.vue'
 import DestinationSwiper from './DestinationSwiper.vue'
 
 export default {
@@ -22,6 +31,7 @@ export default {
   },
   components: {
     Button,
+    GameLayout,
     DestinationSwiper,
   },
   data() {

@@ -1,14 +1,17 @@
 <template>
-  <AccommodationCardStack
-    @swipe-right="validateAccommodation"
-    :elements="elements"
-  />
+  <GameLayout>
+    <AccommodationCardStack
+      @swipe-right="validateAccommodation"
+      :elements="elements"
+    />
+  </GameLayout>
 </template>
 
 <script>
 import { useStore } from './../../../store/index'
 
 import AccommodationCardStack from './AccommodationCardStack.vue'
+import GameLayout from '@/components/GameLayout.vue'
 
 export default {
   name: 'AccommodationContainer',
@@ -20,6 +23,7 @@ export default {
   },
   components: {
     AccommodationCardStack,
+    GameLayout,
   },
   setup() {
     const store = useStore()

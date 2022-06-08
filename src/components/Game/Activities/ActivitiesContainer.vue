@@ -1,32 +1,34 @@
 <template>
-  <div class="activities-container">
-    <CardContainer class="activities-slots-container" :accent="false">
-      <div v-for="index in 3" :key="index">
-        <!-- p à remplacer par l'image -->
-        <p
-          v-if="store.trip.activities[index - 1]"
-          :src="EmptySlot"
-          alt=""
-          class="slot"
-        >
-          {{ store.trip.activities[index - 1].title }}
-        </p>
-        <img v-else :src="EmptySlot" alt="" class="slot" />
-      </div>
-    </CardContainer>
+  <GameLayout>
+    <div class="activities-container">
+      <CardContainer class="activities-slots-container" :accent="false">
+        <div v-for="index in 3" :key="index">
+          <!-- p à remplacer par l'image -->
+          <p
+            v-if="store.trip.activities[index - 1]"
+            :src="EmptySlot"
+            alt=""
+            class="slot"
+          >
+            {{ store.trip.activities[index - 1].title }}
+          </p>
+          <img v-else :src="EmptySlot" alt="" class="slot" />
+        </div>
+      </CardContainer>
 
-    <ActivitiesSwiper :activities="availableActivities" />
+      <ActivitiesSwiper :activities="availableActivities" />
 
-    <Button main :isDisabled="this.buttonDisabled" @click="selectActivity"
-      >C'est décidé !</Button
-    >
-  </div>
+      <Button main :isDisabled="this.buttonDisabled" @click="selectActivity">
+        C'est décidé !
+      </Button>
+    </div>
 
-  <ActivitiesModalContainer
-    @validate-activity="validateActivity"
-    :open="isOpen"
-    :outcome="outcome"
-  />
+    <ActivitiesModalContainer
+      @validate-activity="validateActivity"
+      :open="isOpen"
+      :outcome="outcome"
+    />
+  </GameLayout>
 </template>
 
 <script>
@@ -36,6 +38,7 @@ import { getRandomInt } from '@/helpers'
 import { Button, CardContainer } from '@/components/lib'
 import ActivitiesSwiper from '@/components/Game/Activities/ActivitiesSwiper.vue'
 import ActivitiesModalContainer from '@/components/Game/Activities/ActivitiesModalContainer.vue'
+import GameLayout from '@/components/GameLayout.vue'
 
 import EmptySlot from '@/assets/empty-slot.png'
 
@@ -52,6 +55,7 @@ export default {
     Button,
     ActivitiesSwiper,
     ActivitiesModalContainer,
+    GameLayout,
   },
   data() {
     return {
@@ -143,11 +147,6 @@ export default {
       width: 100%;
       height: 100%;
     }
-
-    //@include screen-sm {
-    //  padding: 32px 40px;
-    //  grid-column-gap: 40px;
-    //}
   }
 }
 

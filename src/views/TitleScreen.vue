@@ -5,7 +5,8 @@
       backgroundImage: `url(${Pattern})`,
     }"
   >
-    <img id="main-logo" :src="Logo" alt="Green Latitude" />
+    <img class="main-logo" :src="Logo" alt="Green Latitude" />
+
     <div class="title-screen-buttons">
       <div class="title-screen-buttons--secondary">
         <Button small :chevron="false" @click="router.push('/memories')">
@@ -15,9 +16,10 @@
           À propos
         </Button>
       </div>
-      <Button class="title-screen-buttons--start" @click="newGame">
-        Commencer la partie
-      </Button>
+
+      <div class="title-screen-buttons--start">
+        <Button :chevron="false" @click="newGame"> Commencer la partie </Button>
+      </div>
     </div>
   </div>
 </template>
@@ -60,32 +62,44 @@ export default {
 
 <style lang="scss">
 .title-screen-container {
+  display: flex;
+  flex-direction: column;
   background-size: 160px 160px;
   width: 100%;
   height: 100%;
-  padding: 20px;
+  padding: 48px 0;
 
-  #main-logo {
+  .main-logo {
+    flex-grow: 1;
+    flex-shrink: 1;
+    max-height: 100%;
     width: 100%;
-    padding-top: 25vh;
+    max-width: 500px;
+    margin: auto;
+    padding: 0 24px;
   }
 
   .title-screen-buttons {
-    position: absolute;
-    bottom: 48px;
     width: 100%;
 
+    .button-container {
+      margin: 16px 0;
+    }
+
     &--secondary {
-      position: absolute;
-      left: -42px;
-      bottom: 62px;
+      transform: translateX(-24px);
     }
 
     &--start {
-      position: absolute;
-      right: -16px;
-      bottom: 0;
-      margin: 0;
+      transform: translateX(48px);
+
+      .button-container {
+        margin-left: auto;
+
+        > div {
+          padding-right: 48px;
+        }
+      }
     }
   }
 }

@@ -28,12 +28,6 @@ export default {
       store,
     }
   },
-  props: {
-    visible: {
-      type: Boolean,
-      required: true,
-    },
-  },
 }
 </script>
 

@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="desktop-container"
-    :style="{ backgroundImage: `url(${Pattern})` }"
-  >
+  <div class="desktop-container">
     <div v-if="isTablet || isDesktop" class="left">
       <div>
         <img
@@ -29,11 +26,13 @@
           Majou et Elie Nissen
         </p>
       </div>
-
-      <div v-if="isTablet">QR Code</div>
     </div>
 
-    <slot></slot>
+    <transition name="slide-in-out">
+      <div class="phone-container slide-in-out">
+        <slot></slot>
+      </div>
+    </transition>
 
     <div v-if="isDesktop" class="right">
       <div class="qr-code">
@@ -90,7 +89,6 @@ export default {
   gap: 48px;
   height: 100%;
   width: 100%;
-  background: var(--color-teal);
   padding: 0;
 
   @include screen-sm {
@@ -147,6 +145,31 @@ export default {
       width: 192px;
       height: 192px;
     }
+  }
+}
+
+.phone-container {
+  position: relative;
+  width: 100%;
+  height: calc(100% + 1px);
+  background-color: var(--color-beige-cool);
+  flex-shrink: 0;
+  overflow: hidden;
+
+  > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include screen-sm {
+    height: 844px;
+    width: 414px;
+    max-height: 90vh;
+    //max-width: 90%;
+    border: 16px solid var(--color-white);
+    border-radius: 24px;
+    //max-width: 375px;
+    //max-height: 800px;
   }
 }
 </style>

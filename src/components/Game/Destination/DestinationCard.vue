@@ -1,6 +1,12 @@
 <template>
   <CardContainer class="destination-card-container">
-    <div class="image" :style="{ backgroundImage: `url(${image})` }" />
+    <div
+      class="image"
+      :style="{
+        backgroundImage: `url(${image})`,
+        // height: '2OOpx',
+      }"
+    />
 
     <div
       :class="`sticker sticker-${category}`"
@@ -9,15 +15,17 @@
       }"
     />
 
-    <div class="name-container">
-      <div class="name">
-        <span :style="{ color, backgroundColor }">{{ title }}</span>
+    <div class="infos">
+      <div class="name-container">
+        <div class="name">
+          <span :style="{ color, backgroundColor }">{{ title }}</span>
+        </div>
       </div>
-    </div>
 
-    <p>
-      {{ description }}
-    </p>
+      <p>
+        {{ description }}
+      </p>
+    </div>
   </CardContainer>
 </template>
 
@@ -65,11 +73,13 @@ export default {
 
 <style lang="scss">
 .destination-card-container {
-  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   .image {
+    flex-grow: 1;
     width: 100%;
-    height: 376px;
     border-radius: 24px 24px 0 0;
     background: no-repeat center;
     background-size: cover;

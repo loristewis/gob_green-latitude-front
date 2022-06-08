@@ -1,15 +1,19 @@
 <template>
-  <div class="transport-container">
-    <TransportationCard
-      v-for="(el, i) in elements"
-      @validate-transportation="validateTransportation"
-      @click="selectElement(el)"
-      :key="el.id"
-      :transport="el.attributes"
-      :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
-      tag-color="green"
-    />
-  </div>
+  <GameLayout class="transport-container">
+    <template #default>
+      <div class="transport-listing-container">
+        <TransportationCard
+          v-for="(el, i) in elements"
+          @validate-transportation="validateTransportation"
+          @click="selectElement(el)"
+          :key="el.id"
+          :transport="el.attributes"
+          :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
+          tag-color="green"
+        />
+      </div>
+    </template>
+  </GameLayout>
 </template>
 
 <script>
@@ -17,12 +21,14 @@ import { useStore } from '@/store/index'
 import { shuffleArray, getRandomInt } from '@/helpers'
 import { transportTags } from '@/constants'
 
+import GameLayout from '@/components/GameLayout.vue'
 import TransportationCard from './TransportationCard.vue'
 
 export default {
   name: 'TransportationContainer',
   props: ['elements'],
   components: {
+    GameLayout,
     TransportationCard,
   },
   data() {
@@ -67,6 +73,12 @@ export default {
 
 <style lang="scss">
 .transport-container {
-  padding-bottom: 32px;
+  main {
+    overflow: scroll;
+  }
+
+  .transport-listing-container {
+    padding-bottom: 32px;
+  }
 }
 </style>
