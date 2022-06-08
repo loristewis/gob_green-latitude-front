@@ -1,5 +1,6 @@
 <template>
   <div
+    @click="playSound"
     class="button-container"
     :class="{
       disabled: isDisabled,
@@ -11,6 +12,8 @@
     }"
   >
     <div>
+      <img :src="Suitcase" v-if="suitcase" />
+
       <p><slot /></p>
 
       <ChevronRightIcon v-if="chevron && !simple" class="hero-icon" />
@@ -20,11 +23,18 @@
 
 <script>
 import { ChevronRightIcon } from '@heroicons/vue/solid'
+import Validation from '@/assets/audio/validation.mp3'
+import Suitcase from '@/assets/suitcase.svg'
 
 export default {
   name: 'Button',
   components: {
     ChevronRightIcon,
+  },
+  data() {
+    return {
+      Suitcase,
+    }
   },
   props: {
     isDisabled: {
@@ -50,6 +60,18 @@ export default {
     chevron: {
       type: Boolean,
       default: true,
+    },
+    suitcase: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  mounted() {
+    this.sound = new Audio(Validation)
+  },
+  methods: {
+    playSound() {
+      this.sound.play()
     },
   },
 }

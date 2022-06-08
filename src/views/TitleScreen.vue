@@ -12,13 +12,16 @@
         <Button small :chevron="false" @click="router.push('/memories')">
           Souvenirs
         </Button>
+
         <Button small :chevron="false" @click="router.push('/about')">
           À propos
         </Button>
       </div>
 
       <div class="title-screen-buttons--start">
-        <Button :chevron="false" @click="newGame"> Commencer la partie </Button>
+        <Button suitcase :chevron="false" @click="newGame">
+          Commencer la partie
+        </Button>
       </div>
     </div>
   </div>
@@ -97,7 +100,7 @@ export default {
         margin-left: auto;
 
         > div {
-          padding-right: 48px;
+          padding: 0 48px;
         }
       }
     }
