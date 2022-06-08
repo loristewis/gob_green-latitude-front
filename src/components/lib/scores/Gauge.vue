@@ -125,7 +125,7 @@ export default {
       max-width: 98%;
       height: 16px;
       position: absolute;
-      transition: width 0.2s ease-in-out, color 0.2s ease-in-out;
+      transition: width 0.2s ease-in-out, background-color 0.6s ease-in-out;
 
       &:nth-child(1) {
         background-color: white !important;
@@ -133,8 +133,8 @@ export default {
       }
 
       &-delayed {
-        transition: width 0.6s ease-in-out, color 0.2s ease-in-out;
-        transition-delay: 1s;
+        transition: width 1.2s ease-in-out, background-color 0.6s ease-in-out;
+        transition-delay: 0.2s;
       }
     }
   }
