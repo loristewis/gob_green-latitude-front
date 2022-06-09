@@ -1,7 +1,7 @@
 <template>
   <BaseCard
     :title="title"
-    :description="description"
+    :description="wording(description)"
     class="incident-card-container"
   >
     <div class="incident-card-stickers">
@@ -13,6 +13,7 @@
 
 <script>
 import { BaseCard, Sticker } from '@/components/lib'
+import { useStore } from '@/store'
 
 import Star from '@/assets/star.svg'
 
@@ -28,6 +29,14 @@ export default {
       type: String,
       required: true,
     },
+  },
+  setup() {
+    const store = useStore()
+    const wording = store.wording
+
+    return {
+      wording,
+    }
   },
   data() {
     return {
