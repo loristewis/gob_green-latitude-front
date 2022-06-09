@@ -3,13 +3,13 @@
   50%,
   70%,
   90% {
-    transform: scale(1.6) rotate(6deg);
+    transform: rotate(6deg);
   }
 
   40%,
   60%,
   80% {
-    transform: scale(1.6) rotate(-6deg);
+    transform: rotate(-6deg);
   }
 }
 
