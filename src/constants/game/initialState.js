@@ -23,6 +23,7 @@ export const initialState = {
     'animation-end',
     'postcard',
   ],
+  soundon: false,
   audio: {
     click: new Audio(Click),
     defeat: new Audio(Defeat),

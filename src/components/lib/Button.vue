@@ -75,7 +75,7 @@ export default {
   },
   methods: {
     playValidationSound() {
-      this.store.audio.validation.play()
+      if (this.store.soundon) this.store.audio.validation.play()
     },
   },
 }

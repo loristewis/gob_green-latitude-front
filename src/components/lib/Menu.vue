@@ -2,13 +2,24 @@
   <div id="menu-container" :style="{ height: displayScore ? '110px' : '50px' }">
     <ScoreContainer v-if="displayScore" :score="score" />
 
-    <div class="home-button-container">
-      <IconButton
-        @click="onClickHomeButton"
-        :icon="HomeIcon"
-        background-color="#cebea8"
-        size="40"
-      />
+    <div class="buttons-container">
+      <div class="sound-button-container">
+        <IconButton
+          @click="store.toggleSound"
+          :icon="store.soundon ? VolumeOffIcon : VolumeUpIcon"
+          background-color="transparent"
+          icon-color="#cebea8"
+          size="40"
+        />
+      </div>
+      <div class="home-button-container">
+        <IconButton
+          @click="onClickHomeButton"
+          :icon="HomeIcon"
+          background-color="#cebea8"
+          size="40"
+        />
+      </div>
     </div>
 
     <transition name="opacity">
@@ -36,9 +47,9 @@ import router from '@/router'
 import { useStore } from '@/store'
 
 import ScoreContainer from '@/components/lib/scores/ScoreContainer.vue'
-import { IconButton, Button, BaseCard, Title } from '@/components/lib'
+import { IconButton, Button, BaseCard } from '@/components/lib'
 
-import { HomeIcon } from '@heroicons/vue/solid'
+import { HomeIcon, VolumeOffIcon, VolumeUpIcon } from '@heroicons/vue/solid'
 
 export default {
   name: 'Menu',
@@ -47,7 +58,6 @@ export default {
     IconButton,
     Button,
     BaseCard,
-    Title,
   },
   props: {
     score: {
@@ -70,6 +80,8 @@ export default {
     return {
       router,
       HomeIcon,
+      VolumeOffIcon,
+      VolumeUpIcon,
       modal: false,
     }
   },
@@ -114,11 +126,18 @@ export default {
     padding: 20px;
   }
 
-  .home-button-container {
+  .buttons-container {
     display: flex;
     justify-content: end;
     grid-row: 1 / 2;
     grid-column: 2 / 2;
+
+    // to do: fix
+    .sound-button-container {
+      svg {
+        fill: #cebea8;
+      }
+    }
   }
 }
 

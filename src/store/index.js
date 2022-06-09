@@ -17,22 +17,29 @@ export const useStore = defineStore('main', {
     activeThought: (state) => (state.selected ? state.selected.thoughts : null),
   },
   actions: {
+    toggleSound() {
+      console.log('toggle sound')
+      this.soundon = !this.soundon
+      console.log('sound: ', this.soundon)
+    },
     incrementProgressionIndex() {
       this.progressionIndex++
     },
     displaySplashScreen() {
       if (this.splashTimeout) clearTimeout(this.splashTimeout)
       this.splash = true
-      setTimeout(() => {
-        this.audio.splash.play()
-      }, 800)
+      if (this.soundon) {
+        setTimeout(() => {
+          this.audio.splash.play()
+        }, 800)
+      }
       this.splashTimeout = setTimeout(() => {
         this.splash = false
       }, 3000)
     },
     exitSplashScreen() {
       if (this.splashTimeout && this.splash) {
-        this.splash = false
+        this.splash = true
         clearTimeout(this.splashTimeout)
       }
     },

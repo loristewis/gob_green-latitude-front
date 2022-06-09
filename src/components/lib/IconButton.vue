@@ -30,6 +30,7 @@ export default {
     style() {
       return {
         backgroundColor: this.backgroundColor,
+        color: this.iconColor,
         height: `${this.size}px`,
         width: `${this.size}px`,
       }
