@@ -53,6 +53,7 @@ export default {
     }
     const onSlideChange = (e) => {
       console.log('slide change')
+      store.audio.swish.play()
       store.selected = props.activities[e.realIndex].attributes
       store.thought = store.selected.thoughts
         ? store.selected.thoughts

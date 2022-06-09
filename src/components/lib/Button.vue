@@ -1,6 +1,6 @@
 <template>
   <div
-    @click="playSound"
+    @click="playValidationSound"
     class="button-container"
     :class="{
       disabled: isDisabled,
@@ -22,14 +22,21 @@
 </template>
 
 <script>
+import { useStore } from '@/store'
+
 import { ChevronRightIcon } from '@heroicons/vue/solid'
-import Validation from '@/assets/audio/validation.mp3'
 import Suitcase from '@/assets/suitcase.svg'
 
 export default {
   name: 'Button',
   components: {
     ChevronRightIcon,
+  },
+  setup() {
+    const store = useStore()
+    return {
+      store,
+    }
   },
   data() {
     return {
@@ -66,12 +73,9 @@ export default {
       default: false,
     },
   },
-  mounted() {
-    this.sound = new Audio(Validation)
-  },
   methods: {
-    playSound() {
-      this.sound.play()
+    playValidationSound() {
+      this.store.audio.validation.play()
     },
   },
 }

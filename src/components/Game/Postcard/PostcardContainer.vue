@@ -37,6 +37,13 @@ export default {
       bubbleInfos: this.store.defeat ? endScreen.defeat : endScreen.victory,
     }
   },
+  mounted() {
+    if (this.store.defeat) {
+      this.store.audio.defeat.play()
+    } else {
+      this.store.audio.victory.play()
+    }
+  },
   methods: {
     newGame() {
       console.log('nouvelle partie !')

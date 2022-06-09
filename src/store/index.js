@@ -23,6 +23,9 @@ export const useStore = defineStore('main', {
     displaySplashScreen() {
       if (this.splashTimeout) clearTimeout(this.splashTimeout)
       this.splash = true
+      setTimeout(() => {
+        this.audio.splash.play()
+      }, 800)
       this.splashTimeout = setTimeout(() => {
         this.splash = false
       }, 3000)
