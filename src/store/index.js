@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 import { getRandomScore, getRandomFromArray } from '@/helpers'
-import { scoreConstants, initialState, names } from '@/constants'
+import { scoreConstants, initialState, splashScreens, names } from '@/constants'
 
 export const useStore = defineStore('main', {
   state: () => {
@@ -41,7 +41,9 @@ export const useStore = defineStore('main', {
     },
     moveToNextStep() {
       this.incrementProgressionIndex()
-      this.displaySplashScreen()
+      if (splashScreens[this.currentStep]) {
+        this.displaySplashScreen()
+      }
     },
     finishStep() {
       this.calculateScore()
