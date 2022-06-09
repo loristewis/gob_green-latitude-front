@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     calculateHeight(value) {
-      return value > 0 ? 20 + 4 * value + 'px' : 20 + 4 + 'px'
+      return value > 0 ? 28 + 4 * value + 'px' : 28 + 4 + 'px'
     },
   },
 }
