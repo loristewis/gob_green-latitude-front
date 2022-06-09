@@ -53,11 +53,11 @@ export default {
       transform: scale(0.9);
 
       &-prev {
-        transform: scale(0.9) translateX(24px);
+        transform: scale(0.9) translateX(16px);
       }
 
       &-next {
-        transform: scale(0.9) translateX(-24px);
+        transform: scale(0.9) translateX(-16px);
       }
 
       &-active {

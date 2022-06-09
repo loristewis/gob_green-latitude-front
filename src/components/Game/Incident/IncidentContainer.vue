@@ -1,5 +1,5 @@
 <template>
-  <div class="incident-container">
+  <GameLayout class="incident-container">
     <div v-if="!incident.outcome">
       <IncidentCard
         :title="incident.situation.title"
@@ -24,7 +24,7 @@
         @next-step="store.finishStep"
       />
     </div>
-  </div>
+  </GameLayout>
 </template>
 
 <script>
@@ -32,6 +32,7 @@ import { useStore } from '@/store/index'
 import { getRandomFromArray, getRandomInt } from '@/helpers'
 import { Title, Button } from '@/components/lib'
 
+import GameLayout from '@/components/GameLayout.vue'
 import IncidentCard from '@/components/Game/Incident/IncidentCard.vue'
 import IncidentChoiceCard from '@/components/Game/Incident/IncidentChoiceCard.vue'
 import IncidentOutcomeCard from '@/components/Game/Incident/IncidentOutcomeCard.vue'
@@ -40,6 +41,7 @@ export default {
   name: 'IncidentContainer',
   props: ['elements'],
   components: {
+    GameLayout,
     Title,
     Button,
     IncidentCard,
