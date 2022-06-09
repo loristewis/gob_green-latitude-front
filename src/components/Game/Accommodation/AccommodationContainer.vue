@@ -1,9 +1,11 @@
 <template>
   <GameLayout>
-    <AccommodationCardStack
-      @swipe-right="validateAccommodation"
-      :elements="elements"
-    />
+    <template #default>
+      <AccommodationCardStack
+        @swipe-right="validateAccommodation"
+        :elements="elements"
+      />
+    </template>
   </GameLayout>
 </template>
 

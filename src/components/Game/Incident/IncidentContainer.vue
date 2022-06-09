@@ -1,36 +1,41 @@
 <template>
   <GameLayout class="incident-container">
-    <div v-if="!incident.outcome">
-      <IncidentCard
-        :title="incident.situation.title"
-        :description="incident.situation.description"
-      />
+    <template #default>
+      <div v-if="!incident.outcome" class="incident-choice-container">
+        <IncidentCard
+          :title="incident.situation.title"
+          :description="incident.situation.description"
+        />
 
-      <IncidentChoiceCard
-        v-for="choice in incident.situation.choices"
-        :key="choice.id"
-        :choice="choice"
-        @select="getOutcome(choice)"
-      />
-    </div>
+        <IncidentChoiceCard
+          v-for="choice in incident.situation.choices"
+          :key="choice.id"
+          :choice="choice"
+          @select="getOutcome(choice)"
+        />
+      </div>
 
-    <div v-else>
-      <IncidentOutcomeCard
-        :title="incident.outcome.title"
-        :description="incident.outcome.description"
-        :budget="incident.outcome.budget"
-        :pollution="incident.outcome.pollution"
-        :wellness="incident.outcome.wellness"
-        @next-step="store.finishStep"
-      />
-    </div>
+      <div v-else class="incident-outcome-container">
+        <IncidentOutcomeCard
+          :title="incident.outcome.title"
+          :description="incident.outcome.description"
+          :budget="incident.outcome.budget"
+          :pollution="incident.outcome.pollution"
+          :wellness="incident.outcome.wellness"
+          @next-step="store.finishStep"
+        />
+      </div>
+
+      <GradientOverlay v-if="isPhone" />
+    </template>
   </GameLayout>
 </template>
 
 <script>
+import { screenSize } from '@/mixins/index.js'
 import { useStore } from '@/store/index'
 import { getRandomFromArray, getRandomInt } from '@/helpers'
-import { Title, Button } from '@/components/lib'
+import { Title, Button, GradientOverlay } from '@/components/lib'
 
 import GameLayout from '@/components/GameLayout.vue'
 import IncidentCard from '@/components/Game/Incident/IncidentCard.vue'
@@ -40,6 +45,7 @@ import IncidentOutcomeCard from '@/components/Game/Incident/IncidentOutcomeCard.
 export default {
   name: 'IncidentContainer',
   props: ['elements'],
+  mixins: [screenSize],
   components: {
     GameLayout,
     Title,
@@ -47,6 +53,7 @@ export default {
     IncidentCard,
     IncidentChoiceCard,
     IncidentOutcomeCard,
+    GradientOverlay,
   },
   setup() {
     const store = useStore()
@@ -79,6 +86,14 @@ export default {
 
 <style lang="scss">
 .incident-container {
-  padding: 0 32px;
+  main {
+    overflow: scroll;
+  }
+
+  .incident-choice-container,
+  .incident-outcome-container {
+    margin: 0 32px;
+    padding-bottom: 96px;
+  }
 }
 </style>

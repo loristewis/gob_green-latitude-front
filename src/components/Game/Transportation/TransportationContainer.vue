@@ -13,7 +13,7 @@
         />
       </div>
 
-      <div class="gradient-overlay bottom" v-if="isPhone" />
+      <GradientOverlay v-if="isPhone" />
     </template>
   </GameLayout>
 </template>
@@ -23,6 +23,7 @@ import { screenSize } from '@/mixins'
 import { useStore } from '@/store'
 import { shuffleArray, getRandomInt } from '@/helpers'
 import { transportTags } from '@/constants'
+import { GradientOverlay } from '@/components/lib'
 
 import GameLayout from '@/components/GameLayout.vue'
 import TransportationCard from './TransportationCard.vue'
@@ -32,6 +33,7 @@ export default {
   props: ['elements'],
   mixins: [screenSize],
   components: {
+    GradientOverlay,
     GameLayout,
     TransportationCard,
   },
@@ -85,22 +87,6 @@ export default {
 .transport-container {
   main {
     overflow: scroll;
-
-    .gradient-overlay {
-      position: fixed;
-      left: 0;
-      right: 0;
-      height: 96px;
-
-      &.bottom {
-        bottom: 0;
-        background: linear-gradient(
-          to bottom,
-          transparent,
-          var(--color-beige-cool)
-        );
-      }
-    }
   }
 
   .transport-listing-container {

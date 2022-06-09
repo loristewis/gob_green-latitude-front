@@ -24,6 +24,7 @@ import Swipeable from '@/components/lib/Swipeable.vue'
 import Carousel from '@/components/lib/Carousel.vue'
 
 import ScoreEvolutionGroup from '@/components/lib/scores/ScoreEvolutionGroup.vue'
+import GradientOverlay from '@/components/lib/GradientOverlay.vue'
 
 export {
   AnimatedBackground,
@@ -47,4 +48,5 @@ export {
   Swipeable,
   Carousel,
   ScoreEvolutionGroup,
+  GradientOverlay,
 }

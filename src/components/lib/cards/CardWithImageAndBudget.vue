@@ -54,12 +54,16 @@ export default {
 
 <style lang="scss">
 .card-with-image-and-budget-container {
-  max-width: 288px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 288px;
   margin: auto;
   padding: 24px;
 
   .image {
-    height: 160px;
+    flex-grow: 1;
+    max-height: 240px;
     width: 100%;
     background: no-repeat center;
     background-size: contain;
@@ -68,8 +72,13 @@ export default {
   .infos {
     margin-top: 16px;
 
+    .price-indicator {
+      position: absolute;
+      top: -40px;
+    }
+
     .title {
-      margin: 16px 0 8px;
+      margin-bottom: 8px;
     }
   }
 }

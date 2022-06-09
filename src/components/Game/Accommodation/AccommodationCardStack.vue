@@ -139,7 +139,9 @@ export default {
 
 <style lang="scss">
 .accommodation-card-stack-container {
-  height: calc(100% - 220px);
+  --card-stack-margin-bottom: 80px;
+  height: calc(100% - var(--card-stack-margin-bottom));
+  margin-bottom: var(--card-stack-margin-bottom);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,7 +150,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 450px;
+    height: 100%;
     margin-bottom: 16px;
     position: relative;
 
@@ -178,7 +180,7 @@ export default {
     }
 
     .accommodation-card-container {
-      height: 448px;
+      height: 100%;
       max-width: 288px;
       margin: auto;
       overflow: scroll;
