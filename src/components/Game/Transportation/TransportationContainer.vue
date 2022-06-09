@@ -5,7 +5,7 @@
         <TransportationCard
           v-for="(el, i) in elements"
           @validate-transportation="validateTransportation"
-          @click="selectElement(el)"
+          @click="selectElement($event, el)"
           :key="el.id"
           :transport="el.attributes"
           :sticker="this.displayTags.includes(i) ? this.tags[i] : null"
@@ -57,10 +57,12 @@ export default {
     }
   },
   methods: {
-    selectElement(element) {
-      if (this.store.selected === element.attributes) {
-        this.store.selected = null
-        return
+    selectElement(event, element) {
+      if (event.target.closest('.transport-card-head')) {
+        if (this.store.selected === element.attributes) {
+          this.store.selected = null
+          return
+        }
       }
       this.store.selected = element.attributes
       this.store.thought = this.store.selected.thoughts
