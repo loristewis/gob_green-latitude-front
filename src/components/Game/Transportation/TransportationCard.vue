@@ -9,7 +9,12 @@
       </Sticker>
 
       <div class="transport-card-head">
-        <img class="image" :src="image" alt="" />
+        <div
+          class="image-container"
+          :style="{ backgroundColor: transport.color }"
+        >
+          <img class="image" :src="getImage(transport)" alt="" />
+        </div>
 
         <div class="details">
           <Title tag="h2">
@@ -48,6 +53,7 @@
 
 <script>
 import { useStore } from '@/store'
+import { getImage } from '@/helpers'
 
 import TransportationOption from './TransportationOption.vue'
 import { CardContainer, Title, Sticker, Button } from '@/components/lib'
@@ -79,10 +85,6 @@ export default {
         return ['red', 'green', 'purple', 'blue'].includes(value)
       },
     },
-    image: {
-      type: String,
-      default: 'https://picsum.photos/200/200',
-    },
     sticker: {
       type: String,
     },
@@ -93,6 +95,7 @@ export default {
       buttonDisabled: false,
       processedTitle: this.wording(this.transport.title),
       processedDescription: this.wording(this.transport.description),
+      getImage,
     }
   },
   setup() {
@@ -149,14 +152,26 @@ export default {
   margin: 0 24px 16px;
 
   .transport-card-head {
-    display: flex;
+    display: grid;
+    grid-template-columns: minmax(132px, 1fr) 2fr;
     align-items: center;
     overflow: hidden;
     cursor: pointer;
+    min-height: 140px;
 
-    .image {
-      width: 136px;
+    .image-container {
+      height: 100%;
+      background-color: var(--color-rose);
+      transition: border-radius 0.2s;
       border-radius: 24px 0 0 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 12px;
+
+      .image {
+        width: 100%;
+      }
     }
 
     > .details {
@@ -186,7 +201,7 @@ export default {
     .transport-card-head {
       cursor: default;
 
-      .image {
+      .image-container {
         border-radius: 24px 0 0 0;
       }
     }

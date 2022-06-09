@@ -145,6 +145,7 @@ export default {
               ],
               populate: '*',
             },
+            image: '*',
             incidents: {
               populate: {
                 choices: {
