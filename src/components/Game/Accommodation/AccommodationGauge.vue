@@ -7,9 +7,8 @@
         opacity: left < 4 ? 1 : 0,
       }"
     >
-      Il ne reste plus que {{ left }} hébergement{{ left > 1 ? 's' : '' }} !
+      {{ alert }}
     </Tag>
-
     <div class="accommodation-gauge">
       <span
         v-for="(el, i) in total"
@@ -36,6 +35,15 @@ export default {
     total: {
       type: Number,
       required: true,
+    },
+  },
+  computed: {
+    alert() {
+      if (this.left === 1) {
+        return 'Plus trop le choix...'
+      } else {
+        return `Il ne reste plus que ${this.left} hébergements !`
+      }
     },
   },
 }
