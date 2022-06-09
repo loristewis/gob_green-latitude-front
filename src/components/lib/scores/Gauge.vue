@@ -183,6 +183,7 @@ export default {
     }
 
     .gauge {
+      max-width: 95%;
       height: 16px;
 
       .progress {
