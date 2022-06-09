@@ -1,5 +1,5 @@
 <template>
-  <div class="endscreen">
+  <GameLayout class="endscreen">
     <CardContainer class="endscreen-bubble">
       <Sticker class="endscreen-bubble-title" :theme="bubbleInfos.theme">{{
         bubbleInfos.title
@@ -12,7 +12,7 @@
       :defeat="store.defeat"
     />
     <Button simple @click="newGame">Nouvelle partie ?</Button>
-  </div>
+  </GameLayout>
 </template>
 
 <script>
@@ -22,9 +22,17 @@ import { endScreen } from '@/constants'
 import { CardContainer, Button, Sticker } from '@/components/lib'
 import InstagramPost from './InstagramPost.vue'
 
+import GameLayout from '@/components/GameLayout.vue'
+
 export default {
   name: 'PostcardContainer',
-  components: { CardContainer, Button, Sticker, InstagramPost },
+  components: {
+    CardContainer,
+    Button,
+    Sticker,
+    InstagramPost,
+    GameLayout,
+  },
   setup() {
     const store = useStore()
 
@@ -38,10 +46,12 @@ export default {
     }
   },
   mounted() {
-    if (this.store.defeat) {
-      this.store.audio.defeat.play()
-    } else {
-      this.store.audio.victory.play()
+    if (this.store.soundon) {
+      if (this.store.defeat) {
+        this.store.audio.defeat.play()
+      } else {
+        this.store.audio.victory.play()
+      }
     }
   },
   methods: {

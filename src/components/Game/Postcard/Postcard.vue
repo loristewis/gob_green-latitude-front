@@ -1,23 +1,25 @@
 <template>
   <div class="postcard">
     <div class="postcard-grid">
-      <p class="postcard-grid-destination">
-        {{ trip.destination ? trip.destination.title : '' }}
-      </p>
-      <p class="postcard-grid-accommodation">
-        {{ trip.accommodation ? trip.accommodation.title : '' }}
-      </p>
-      <p class="postcard-grid-transportation">
-        {{ trip.transportation ? trip.transportation.title : '' }}
-      </p>
+      <div class="postcard-grid-destination">
+        <img v-if="trip.destination" :src="getImage(trip.destination)" />
+      </div>
+      <div class="postcard-grid-accommodation">
+        <img v-if="trip.accommodation" :src="getImage(trip.accommodation)" />
+      </div>
+      <div class="postcard-grid-transportation">
+        <img v-if="trip.transportation" :src="getImage(trip.transportation)" />
+      </div>
     </div>
     <div class="postcard-destination-title">
-      <h1>{{ trip.destination ? trip.destination.title : '' }}</h1>
+      <img v-if="trip.destination" :src="getImage(trip.destination, title)" />
     </div>
   </div>
 </template>
 
 <script>
+import { getImage } from '@/helpers'
+
 export default {
   name: 'Postcard',
   props: {
@@ -25,6 +27,15 @@ export default {
       type: Object,
       required: true,
     },
+    title: {
+      type: String,
+      required: true,
+    },
+  },
+  data() {
+    return {
+      getImage,
+    }
   },
 }
 </script>
@@ -46,6 +57,7 @@ export default {
   }
 
   &-grid {
+    overflow: hidden;
     height: 100%;
     width: 100%;
     display: grid;
