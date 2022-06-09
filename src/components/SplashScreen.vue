@@ -70,6 +70,13 @@ export default {
         transform: rotate(12deg);
       }
     }
+
+    &.activities {
+      img {
+        width: 200px;
+        top: 24px;
+      }
+    }
   }
 }
 </style>
