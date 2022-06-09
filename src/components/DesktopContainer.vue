@@ -48,35 +48,15 @@
 
 <script>
 import Pattern from '@/assets/pattern-transparent.png'
+import { screenSize } from '@/mixins'
 
 export default {
   name: 'DesktopContainer',
+  mixins: [screenSize],
   data() {
     return {
-      window: {
-        width: 0,
-        height: 0,
-      },
-      isDesktop: false,
-      isTablet: false,
       Pattern,
     }
-  },
-  created() {
-    window.addEventListener('resize', this.handleResize)
-    this.handleResize()
-  },
-  destroyed() {
-    window.removeEventListener('resize', this.handleResize)
-  },
-  methods: {
-    handleResize() {
-      this.window.width = window.innerWidth
-      this.window.height = window.innerHeight
-
-      this.isDesktop = this.window.width >= 1200
-      this.isTablet = this.window.width > 736 && this.window.width < 1200
-    },
   },
 }
 </script>
