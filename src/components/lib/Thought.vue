@@ -4,11 +4,9 @@
     :class="store.activeThought ? '' : 'hidden'"
   >
     <div class="thought">
-      <transition name="fade" mode="out-in">
-        <span :key="store.thought">
-          {{ store.thought }}
-        </span>
-      </transition>
+      <span :key="store.thought">
+        {{ store.thought }}
+      </span>
     </div>
   </CardContainer>
 </template>
@@ -38,7 +36,8 @@ export default {
   top: 20px;
   transform: translateX(-50%);
   pointer-events: none;
-  width: 90%;
+  width: max-content;
+  max-width: 90%;
   margin: 0 auto;
   padding: 12px 16px;
   opacity: 0.9;

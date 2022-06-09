@@ -149,7 +149,7 @@ export default {
 
   &-content {
     display: grid;
-    grid-template-columns: 54px auto;
+    grid-template-columns: 64px auto;
     align-items: center;
     grid-gap: 16px;
     padding: 16px 0;

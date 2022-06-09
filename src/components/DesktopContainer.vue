@@ -11,7 +11,7 @@
       <div class="description">
         <p>
           <strong>Green latitude</strong> est un
-          <strong>jeu mobile narratif satyrique</strong>, qui simule
+          <strong>jeu mobile narratif satirique</strong>, qui simule
           l’organisation d’un voyage, avec pour objectif de maintenir un
           équilibre entre trois jauges : bien être, empreinte écologique et
           budget.
