@@ -6,10 +6,10 @@
       <Price v-if="budget" :value="budget" />
 
       <Title tag="h2" class="title">
-        {{ wording(title) }}
+        {{ processedTitle }}
       </Title>
 
-      <p v-if="description">{{ description }}</p>
+      <p v-if="description">{{ processedDescription }}</p>
     </div>
   </CardContainer>
 </template>
@@ -47,6 +47,12 @@ export default {
 
     return {
       wording,
+    }
+  },
+  data() {
+    return {
+      processedTitle: this.wording(this.title),
+      processedDescription: this.wording(this.description),
     }
   },
 }

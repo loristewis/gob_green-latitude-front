@@ -13,11 +13,11 @@
 
         <div class="details">
           <Title tag="h2">
-            {{ store.wording(transport.title) }}
+            {{ processedTitle }}
           </Title>
 
           <p>
-            {{ transport.description }}
+            {{ processedDescription }}
           </p>
         </div>
 
@@ -91,12 +91,17 @@ export default {
     return {
       selectedOptionIndex: 0,
       buttonDisabled: false,
+      processedTitle: this.wording(this.transport.title),
+      processedDescription: this.wording(this.transport.description),
     }
   },
   setup() {
     const store = useStore()
+    const wording = store.wording
+
     return {
       store,
+      wording,
     }
   },
   mounted() {

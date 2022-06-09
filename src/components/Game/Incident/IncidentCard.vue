@@ -1,7 +1,7 @@
 <template>
   <BaseCard
-    :title="title"
-    :description="wording(description)"
+    :title="processedTitle"
+    :description="processedDescription"
     class="incident-card-container"
   >
     <div class="incident-card-stickers">
@@ -41,6 +41,8 @@ export default {
   data() {
     return {
       Star,
+      processedTitle: this.wording(this.title),
+      processedDescription: this.wording(this.description),
     }
   },
 }
