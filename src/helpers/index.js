@@ -49,10 +49,10 @@ export const getRandomScore = () => {
   return Math.random() < 0.5 ? -1 : 1
 }
 
-export const getImage = (data) => {
+export const getImage = (data, key = 'image') => {
   let image = 'https://picsum.photos/200/200'
-  if (data.attributes && data.attributes.image && data.attributes.image.data)
-    image = data.attributes.image.data.attributes.url
-  if (data.image && data.image.data) image = data.image.data.attributes.url
+  if (data.attributes && data.attributes[key] && data.attributes[key].data)
+    image = data.attributes[key].data.attributes.url
+  if (data[key] && data[key].data) image = data[key].data.attributes.url
   return image
 }
