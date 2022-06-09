@@ -54,6 +54,10 @@ export default {
   },
   methods: {
     selectElement(element) {
+      if (this.store.selected === element.attributes) {
+        this.store.selected = null
+        return
+      }
       this.store.selected = element.attributes
       this.store.thought = this.store.selected.thoughts
         ? this.store.selected.thoughts

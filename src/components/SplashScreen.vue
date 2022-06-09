@@ -2,7 +2,7 @@
   <div class="splash-screen-container" @click="store.exitSplashScreen">
     <AnimatedBackground />
 
-    <div class="splash-screen-content">
+    <div class="splash-screen-content" :class="infos.type">
       <img :src="infos.image" alt="" />
 
       <CardContainer class="splash-screen-tagline">
@@ -60,6 +60,15 @@ export default {
 
     img {
       z-index: 1;
+      width: 240px;
+      top: 8px;
+    }
+
+    &.transportation {
+      img {
+        top: 12px;
+        transform: rotate(12deg);
+      }
     }
   }
 }
