@@ -65,6 +65,14 @@ export default {
       }
     }
 
+    .swiper-pagination {
+      display: none;
+
+      &.swiper-pagination-bullets {
+        display: block;
+      }
+    }
+
     .swiper-pagination-bullet {
       transition: all 0.5s;
 
