@@ -93,7 +93,7 @@ export default {
   .incident-choice-container,
   .incident-outcome-container {
     margin: 0 32px;
-    padding-bottom: 96px;
+    padding-bottom: 104px;
   }
 }
 </style>
