@@ -39,7 +39,7 @@
           @click="validateOption"
           class="reservation-button"
         >
-          On réserve !
+          On réserve !
         </Button>
       </div>
     </div>

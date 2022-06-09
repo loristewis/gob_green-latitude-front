@@ -4,7 +4,7 @@
       <div>
         <img
           src="../assets/logo.svg"
-          alt="Green Latitude - Ça va être le feu !"
+          alt="Green Latitude - Ça va être le feu !"
         />
       </div>
 
@@ -40,7 +40,7 @@
           <img src="" alt="" />
         </div>
 
-        <p>Scannez ce QR code pour pouvoir jouer sur mobile !</p>
+        <p>Scannez ce QR code pour pouvoir jouer sur mobile !</p>
       </div>
     </div>
   </div>

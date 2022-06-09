@@ -1,8 +1,8 @@
 <template>
   <Title>Bouton</Title>
 
-  <Button>On réserve !</Button>
-  <Button :is-disabled="true">On réserve !</Button>
+  <Button>On réserve !</Button>
+  <Button :is-disabled="true">On réserve !</Button>
 
   <Title>Radio</Title>
   <RadioButton>Texte</RadioButton>

@@ -1,12 +1,14 @@
 <template>
   <Container class="memories-container">
     <Menu />
+
     <BaseCard class="memories-card">
-      <Sticker theme="rose-yellow" class="memories-title" big
-        >Souvenirs</Sticker
-      >
+      <Sticker theme="rose-yellow" class="memories-title" big>
+        Souvenirs
+      </Sticker>
+
       <p class="memories-intro">
-        Section en construction... Revenez plus tard !
+        Section en construction... Revenez plus tard !
       </p>
     </BaseCard>
   </Container>

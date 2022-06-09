@@ -24,7 +24,7 @@
           class="prescription-button"
           @click="acceptPrescription"
         >
-          Compris !
+          Compris !
         </Button>
       </BaseCard>
     </div>
