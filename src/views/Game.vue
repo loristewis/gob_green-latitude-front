@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide-in-out" mode="in-out">
+  <transition name="slide-in-out">
     <div
       v-if="store.splash && getSplashScreen()"
       class="slide-in-out"
