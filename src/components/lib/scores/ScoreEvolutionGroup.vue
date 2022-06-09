@@ -1,6 +1,6 @@
 <template>
   <div class="score-evolution-group-container">
-    <ScoreEvolutionItem v-if="budget !== 0" name="budget" :value="budget" />
+    <ScoreEvolutionItem v-if="budget !== 0" name="budget" :value="-budget" />
 
     <ScoreEvolutionItem
       v-if="pollution !== 0"
