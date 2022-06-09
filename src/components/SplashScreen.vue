@@ -1,5 +1,5 @@
 <template>
-  <div class="splash-screen-container">
+  <div class="splash-screen-container" @click="store.exitSplashScreen">
     <AnimatedBackground />
 
     <div class="splash-screen-content">
@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { useStore } from '@/store'
 import { AnimatedBackground, CardContainer, Title } from '@/components/lib'
 
 import Pattern from '@/assets/splash/pattern-tile.jpg'
@@ -24,6 +25,12 @@ export default {
     AnimatedBackground,
     CardContainer,
     Title,
+  },
+  setup() {
+    const store = useStore()
+    return {
+      store,
+    }
   },
   data() {
     return {

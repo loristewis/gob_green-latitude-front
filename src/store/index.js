@@ -27,6 +27,12 @@ export const useStore = defineStore('main', {
         this.splash = false
       }, 3000)
     },
+    exitSplashScreen() {
+      if (this.splashTimeout && this.splash) {
+        this.splash = false
+        clearTimeout(this.splashTimeout)
+      }
+    },
     moveToStep(step) {
       this.progressionIndex = this.steps.indexOf(step)
     },
