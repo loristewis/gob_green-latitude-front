@@ -39,7 +39,7 @@ export const useStore = defineStore('main', {
     },
     exitSplashScreen() {
       if (this.splashTimeout && this.splash) {
-        this.splash = true
+        this.splash = false
         clearTimeout(this.splashTimeout)
       }
     },
