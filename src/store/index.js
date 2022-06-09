@@ -198,7 +198,9 @@ export const useStore = defineStore('main', {
       }
     },
     wording(text) {
+      if (!text) return ''
       const match = text.match('::(.*)::')
+      let newText = text
       if (match) {
         console.log('match!')
         let replacement = ''
@@ -211,9 +213,9 @@ export const useStore = defineStore('main', {
         } else {
           replacement = '?'
         }
-        text = text.replace(match[0], replacement)
+        newText = newText.replace(match[0], replacement)
       }
-      return text
+      return newText
     },
   },
 })
