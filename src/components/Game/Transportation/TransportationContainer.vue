@@ -12,12 +12,15 @@
           tag-color="green"
         />
       </div>
+
+      <div class="gradient-overlay bottom" v-if="isPhone" />
     </template>
   </GameLayout>
 </template>
 
 <script>
-import { useStore } from '@/store/index'
+import { screenSize } from '@/mixins'
+import { useStore } from '@/store'
 import { shuffleArray, getRandomInt } from '@/helpers'
 import { transportTags } from '@/constants'
 
@@ -27,6 +30,7 @@ import TransportationCard from './TransportationCard.vue'
 export default {
   name: 'TransportationContainer',
   props: ['elements'],
+  mixins: [screenSize],
   components: {
     GameLayout,
     TransportationCard,
@@ -79,10 +83,26 @@ export default {
 .transport-container {
   main {
     overflow: scroll;
+
+    .gradient-overlay {
+      position: fixed;
+      left: 0;
+      right: 0;
+      height: 96px;
+
+      &.bottom {
+        bottom: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          var(--color-beige-cool)
+        );
+      }
+    }
   }
 
   .transport-listing-container {
-    padding-bottom: 32px;
+    padding-bottom: 96px;
   }
 }
 </style>
