@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { useStore } from './../../store'
+import { useStore } from '@/store'
 import { CardContainer, Sticker, Button } from '@/components/lib'
 
 export default {

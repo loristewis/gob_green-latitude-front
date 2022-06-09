@@ -47,7 +47,7 @@
 </template>
 
 <script>
-import { useStore } from './../../../store/index'
+import { useStore } from '@/store'
 
 import TransportationOption from './TransportationOption.vue'
 import { CardContainer, Title, Sticker, Button } from '@/components/lib'

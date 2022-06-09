@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import { useStore } from './../../../store/index'
+import { useStore } from '@/store'
 
 import { Button } from '@/components/lib'
 import GameLayout from '@/components/GameLayout.vue'

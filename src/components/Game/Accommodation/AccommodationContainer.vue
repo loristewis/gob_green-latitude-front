@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import { useStore } from './../../../store/index'
+import { useStore } from '@/store'
 
 import AccommodationCardStack from './AccommodationCardStack.vue'
 import GameLayout from '@/components/GameLayout.vue'

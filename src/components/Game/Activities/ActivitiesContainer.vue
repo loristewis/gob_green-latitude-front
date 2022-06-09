@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { useStore } from './../../../store/index'
+import { useStore } from '@/store'
 import { getRandomInt } from '@/helpers'
 
 import { Button, CardContainer } from '@/components/lib'
