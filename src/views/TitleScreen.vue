@@ -12,6 +12,7 @@
         <Button small :chevron="false" @click="router.push('/memories')">
           Souvenirs
         </Button>
+
         <Button small :chevron="false" @click="router.push('/about')">
           À propos
         </Button>

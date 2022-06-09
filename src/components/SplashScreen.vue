@@ -1,6 +1,7 @@
 <template>
   <div class="splash-screen-container">
     <AnimatedBackground />
+
     <div class="splash-screen-content">
       <img :src="infos.image" alt="" />
 
