@@ -48,14 +48,12 @@ export default {
 
 <style lang="scss">
 .incident-card-container {
-  margin-top: 128px;
+  margin-top: 112px;
   margin-bottom: 32px;
 
   .incident-card-stickers {
     position: absolute;
-    top: -90%;
-    display: flex;
-    align-items: flex-end;
+    top: -24px;
 
     .sticker {
       z-index: 2;
@@ -63,8 +61,8 @@ export default {
     }
 
     .star {
-      left: -25%;
-      top: -10px;
+      left: 104px;
+      top: -128px;
       animation: tada 0.7s ease-in-out;
     }
   }

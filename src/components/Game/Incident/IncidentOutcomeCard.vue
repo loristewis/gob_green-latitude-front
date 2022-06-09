@@ -65,8 +65,7 @@ export default {
 
 <style lang="scss">
 .incident-outcome-card-container {
-  margin-top: 128px;
-  margin-bottom: 32px;
+  margin: 32px 0 0;
   padding-bottom: 112px;
 
   .scores {
