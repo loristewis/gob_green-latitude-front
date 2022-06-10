@@ -93,8 +93,14 @@ export default {
     }
 
     this.processedActivity.budget += this.outcome.budget
+      ? this.outcome.budget
+      : 0
     this.processedActivity.wellness += this.outcome.wellness
+      ? this.outcome.wellness
+      : 0
     this.processedActivity.pollution += this.outcome.pollution
+      ? this.outcome.pollution
+      : 0
   },
   methods: {
     selectCard() {
