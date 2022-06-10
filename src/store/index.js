@@ -14,7 +14,16 @@ export const useStore = defineStore('main', {
     currentAnimation: (state) =>
       state.steps[state.progressionIndex].split('-')[1],
     activitiesCount: (state) => state.trip.activities.length,
-    activeThought: (state) => (state.selected ? state.selected.thoughts : null),
+    activeThought: (state) => {
+      if (state.currentStep === 'activities') {
+        for (const activity of state.trip.activities) {
+          if (activity.createdAt === state.selected.createdAt) {
+            return null
+          }
+        }
+      }
+      return state.selected ? state.selected.thoughts : null
+    },
   },
   actions: {
     toggleSound() {
