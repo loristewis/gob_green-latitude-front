@@ -38,7 +38,7 @@ export const getRandomFromArray = (array) => {
 
 export const getRandomElementsFromArray = (array, number) => {
   let pool = [...array]
-  if (number > pool.length) {
+  if (number >= pool.length) {
     return shuffleArray(pool)
   } else {
     let selection = []
