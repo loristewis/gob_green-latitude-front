@@ -39,8 +39,13 @@ export default {
     PrescriptionReminder,
   },
   setup() {
+    const store = useStore()
+
+    if (!!store.dev)
+      console.warn('Green Latitude : Mode développement activé dans le store')
+
     return {
-      store: useStore(),
+      store,
     }
   },
   data() {
