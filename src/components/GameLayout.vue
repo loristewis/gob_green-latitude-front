@@ -7,7 +7,7 @@
     <header>
       <slot name="header">
         <Menu
-          :displayScore="store.currentStep != 'postcard'"
+          :displayScore="store.currentStep !== 'postcard'"
           :score="store.score"
         />
       </slot>
@@ -18,7 +18,7 @@
     </main>
 
     <footer>
-      <PrescriptionReminder v-if="store.currentStep != 'postcard'" />
+      <PrescriptionReminder v-if="store.currentStep !== 'postcard'" />
     </footer>
   </div>
 </template>
@@ -39,9 +39,8 @@ export default {
     PrescriptionReminder,
   },
   setup() {
-    const store = useStore()
     return {
-      store,
+      store: useStore(),
     }
   },
   data() {
