@@ -64,6 +64,12 @@ export default {
       top: 8px;
     }
 
+    &.destination {
+      img {
+        top: 24px;
+      }
+    }
+
     &.transportation {
       img {
         top: 12px;
