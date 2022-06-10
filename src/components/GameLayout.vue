@@ -18,7 +18,9 @@
     </main>
 
     <footer>
-      <PrescriptionReminder v-if="store.currentStep !== 'postcard'" />
+      <slot name="footer">
+        <PrescriptionReminder />
+      </slot>
     </footer>
   </div>
 </template>

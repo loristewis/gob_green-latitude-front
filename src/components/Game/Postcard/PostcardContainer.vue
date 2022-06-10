@@ -1,17 +1,28 @@
 <template>
   <GameLayout class="endscreen">
-    <CardContainer class="endscreen-bubble">
-      <Sticker class="endscreen-bubble-title" :theme="bubbleInfos.theme">{{
-        bubbleInfos.title
-      }}</Sticker>
-      <p>{{ bubbleInfos.description }}</p>
-    </CardContainer>
-    <InstagramPost
-      :score="store.score"
-      :trip="store.trip"
-      :defeat="store.defeat"
-    />
-    <Button simple @click="newGame">Nouvelle partie ?</Button>
+    <template #default>
+      <CardContainer class="endscreen-bubble">
+        <Sticker class="endscreen-bubble-title" :theme="bubbleInfos.theme">
+          {{ bubbleInfos.title }}
+        </Sticker>
+
+        <p>{{ bubbleInfos.description }}</p>
+      </CardContainer>
+
+      <InstagramPost
+        :score="store.score"
+        :trip="store.trip"
+        :defeat="store.defeat"
+      />
+    </template>
+
+    <template #footer>
+      <Button class="endscreen-button" simple @click="newGame">
+        Nouvelle partie ?
+      </Button>
+
+      <GradientOverlay />
+    </template>
   </GameLayout>
 </template>
 
@@ -19,7 +30,12 @@
 import { useStore } from '@/store'
 import { endScreen } from '@/constants'
 
-import { CardContainer, Button, Sticker } from '@/components/lib'
+import {
+  CardContainer,
+  Button,
+  Sticker,
+  GradientOverlay,
+} from '@/components/lib'
 import InstagramPost from './InstagramPost.vue'
 
 import GameLayout from '@/components/GameLayout.vue'
@@ -32,6 +48,7 @@ export default {
     Sticker,
     InstagramPost,
     GameLayout,
+    GradientOverlay,
   },
   setup() {
     const store = useStore()
@@ -67,12 +84,35 @@ export default {
 
 <style lang="scss">
 .endscreen {
-  padding: 0 20px;
-  padding-bottom: 16px;
+  header {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 96px;
+    background: linear-gradient(to top, transparent, var(--color-beige-cool));
+    z-index: 4;
+  }
+
+  main {
+    //height: calc(100% - 90px);
+    height: 100%;
+    padding-top: 80px;
+    padding-bottom: 96px;
+    overflow: scroll;
+  }
+
+  //main {
+  //  overflow: scroll;
+  //}
+  //
+  //&-wrapper {
+  //  padding: 0 24px 16px;
+  //}
 
   &-bubble {
+    margin: 32px 24px 16px;
     padding: 12px 18px 12px 16px;
-    margin-bottom: 16px;
     position: relative;
 
     &-title {
@@ -81,6 +121,14 @@ export default {
       left: -12px;
       transform: rotate(-3deg);
     }
+  }
+
+  &-button {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
   }
 }
 </style>

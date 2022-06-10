@@ -125,6 +125,8 @@ export default {
 
 <style lang="scss">
 .instagram-post {
+  margin: 16px 24px 16px;
+
   .account {
     font-weight: bold;
   }

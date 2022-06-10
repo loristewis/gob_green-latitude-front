@@ -1,5 +1,5 @@
 <template>
-  <div id="menu-container" :style="{ height: displayScore ? '110px' : '50px' }">
+  <div id="menu-container">
     <ScoreContainer v-if="displayScore" :score="score" />
 
     <div class="buttons-container">
@@ -102,6 +102,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 72px;
   grid-gap: 8px 16px;
+  height: 110px;
   padding: 12px;
   box-sizing: content-box;
 
