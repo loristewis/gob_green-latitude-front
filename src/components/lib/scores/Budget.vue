@@ -17,11 +17,7 @@
         <img :src="EmptyCoin" alt="" />
       </div>
       <div v-else>
-        <div
-          class="coin"
-          v-for="index in Math.max(currentValue, 0)"
-          :key="index"
-        >
+        <div class="coin" v-for="index in currentValue" :key="index">
           <img :src="Coin" alt="" />
         </div>
         <div
