@@ -20,6 +20,7 @@ export default {
 .card-container {
   background-color: var(--color-white);
   border-radius: 24px;
+  user-select: none;
 
   &.accent {
     box-shadow: 0 3px 0 #f1e4d1;

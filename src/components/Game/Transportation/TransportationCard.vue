@@ -29,24 +29,26 @@
         <div class="punch" />
       </div>
 
-      <div v-if="isSelected(transport)" class="transport-card-body">
-        <TransportationOption
-          @select-option="selectOption(i)"
-          v-for="(option, i) in sortOptions(transport.options.data)"
-          :option="option"
-          :budget="transport.budget + option.attributes.budget"
-          :selected="this.selectedOptionIndex === i"
-          :key="i"
-        />
+      <Transition name="slide-up">
+        <div v-if="isSelected(transport)" class="transport-card-body">
+          <TransportationOption
+            @select-option="selectOption(i)"
+            v-for="(option, i) in sortOptions(transport.options.data)"
+            :option="option"
+            :budget="transport.budget + option.attributes.budget"
+            :selected="this.selectedOptionIndex === i"
+            :key="i"
+          />
 
-        <Button
-          :isDisabled="this.buttonDisabled"
-          @click="validateOption"
-          class="reservation-button"
-        >
-          On réserve !
-        </Button>
-      </div>
+          <Button
+            :isDisabled="this.buttonDisabled"
+            @click="validateOption"
+            class="reservation-button"
+          >
+            On réserve !
+          </Button>
+        </div>
+      </Transition>
     </div>
   </CardContainer>
 </template>
@@ -148,6 +150,17 @@ export default {
 </script>
 
 <style lang="scss">
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-in-out;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
 .transport-card-container {
   margin: 0 24px 16px;
 
@@ -158,27 +171,34 @@ export default {
     overflow: hidden;
     cursor: pointer;
     min-height: 140px;
+    z-index: 1;
 
-    .image-container {
-      height: 100%;
-      background-color: var(--color-rose);
-      transition: border-radius 0.2s;
-      border-radius: 24px 0 0 24px;
+    .image-container,
+    .details {
       display: flex;
       flex-direction: column;
+      height: 100%;
+      background-color: var(--color-white);
+      transition: border-radius 0.2s;
+    }
+
+    .image-container {
       justify-content: flex-end;
       padding: 0 12px;
+      border-radius: 24px 0 0 24px;
 
       .image {
         width: 100%;
       }
     }
 
-    > .details {
+    .details {
+      justify-content: center;
       padding: 16px;
+      border-radius: 0 24px 24px 0;
     }
 
-    > .punch {
+    .punch {
       position: absolute;
       right: 0;
       height: 64px;
@@ -211,6 +231,7 @@ export default {
     border-top: 2px dashed var(--color-beige-light);
     padding: 24px 16px 112px;
     overflow: visible;
+    z-index: 0;
 
     .reservation-button {
       position: absolute;
