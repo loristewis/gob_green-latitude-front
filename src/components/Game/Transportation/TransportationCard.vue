@@ -4,14 +4,18 @@
     class="transport-card-container"
   >
     <div>
-      <Sticker class="transport-card-sticker" v-if="sticker">
+      <Sticker
+        :theme="stickerTheme"
+        class="transport-card-sticker"
+        v-if="sticker"
+      >
         {{ sticker }}
       </Sticker>
 
       <div class="transport-card-head">
         <div
           class="image-container"
-          :style="{ backgroundColor: transport.color }"
+          :style="{ backgroundColor: transportColor }"
         >
           <img class="image" :src="getImage(transport)" alt="" />
         </div>
@@ -55,7 +59,8 @@
 
 <script>
 import { useStore } from '@/store'
-import { getImage } from '@/helpers'
+import { getImage, shuffleArray } from '@/helpers'
+import { colorCombos } from '@/constants'
 
 import TransportationOption from './TransportationOption.vue'
 import { CardContainer, Title, Sticker, Button } from '@/components/lib'
@@ -89,6 +94,18 @@ export default {
     },
     sticker: {
       type: String,
+    },
+  },
+  computed: {
+    transportColor() {
+      return `var(--color-${this.transport.color})`
+    },
+    stickerTheme() {
+      const combos = shuffleArray([...colorCombos])
+      const selectedCombo = combos.find(
+        (el) => el.background != this.transport.color
+      )
+      return selectedCombo.id
     },
   },
   data() {

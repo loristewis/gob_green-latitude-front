@@ -9,7 +9,7 @@
       </div>
       <div
         class="postcard-grid-transportation"
-        :style="{ backgroundColor: trip.transportation.color }"
+        :style="{ backgroundColor: transportColor }"
       >
         <img v-if="trip.transportation" :src="getImage(trip.transportation)" />
       </div>
@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import { getImage, getRandomColor } from '@/helpers'
+import { colors } from '@/constants'
+import { getImage, shuffleArray } from '@/helpers'
 
 export default {
   name: 'Postcard',
@@ -46,8 +47,21 @@ export default {
     return {
       getImage,
       titleFile: 'image_' + this.result,
-      randomColor: getRandomColor('postcard'),
     }
+  },
+  computed: {
+    transportColor() {
+      return `var(--color-${this.trip.transportation.color})`
+    },
+    randomColor() {
+      const postcardColors = shuffleArray([...colors.postcard])
+      console.log(postcardColors)
+      const selectedColor = postcardColors.find(
+        (el) => el != this.trip.transportation.color
+      )
+      console.log(selectedColor)
+      return `var(--color-${selectedColor})`
+    },
   },
 }
 </script>
