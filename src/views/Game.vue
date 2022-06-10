@@ -17,10 +17,6 @@
         @new-game="getWish"
       />
 
-      <div v-if="store.defeat != null && store.currentStep != 'postcard'">
-        <DefeatContainer v-if="defeatModal()" :infos="getDefeatInfos()" />
-      </div>
-
       <transition name="fade" mode="out-in">
         <Thought :key="store.thought" />
       </transition>
@@ -30,7 +26,7 @@
 
 <script>
 import { getFromApi, getRandomInt, shuffleArray } from '@/helpers'
-import { splashScreens, defeatPopup } from '@/constants'
+import { splashScreens } from '@/constants'
 import { useStore } from '@/store'
 
 import { Container, Thought } from '@/components/lib'
@@ -45,7 +41,6 @@ import {
   AccommodationContainer,
   IncidentContainer,
   ActivitiesContainer,
-  DefeatContainer,
   PostcardContainer,
 } from '@/components/Game'
 
@@ -62,7 +57,6 @@ export default {
     AccommodationContainer,
     IncidentContainer,
     ActivitiesContainer,
-    DefeatContainer,
     PostcardContainer,
   },
   setup() {
@@ -93,9 +87,6 @@ export default {
     },
     getSplashScreen() {
       return splashScreens[this.store.currentStep]
-    },
-    getDefeatInfos() {
-      return defeatPopup[this.store.defeat]
     },
     async validateDestination() {
       if (this.store.trip.destination) {
@@ -237,6 +228,8 @@ export default {
       const destinations = await getFromApi('/destinations', {
         populate: {
           image: '*',
+          image_defeat: '*',
+          image_victory: '*',
           incidents: {
             populate: {
               choices: {

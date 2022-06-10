@@ -1,5 +1,9 @@
 <template>
   <div class="game-layout-container">
+    <transition name="opacity">
+      <ModalContainer v-if="store.modal" :key="modal"></ModalContainer>
+    </transition>
+
     <header>
       <slot name="header">
         <Menu
@@ -21,19 +25,28 @@
 
 <script>
 import { useStore } from '@/store'
+import { modals } from '@/constants'
 import { Menu } from '@/components/lib'
+
 import PrescriptionReminder from '@/components/Game/PrescriptionReminder.vue'
+import ModalContainer from '@/components/Game/Modals/ModalContainer.vue'
 
 export default {
   name: 'GameLayout',
   components: {
     Menu,
+    ModalContainer,
     PrescriptionReminder,
   },
   setup() {
     const store = useStore()
     return {
       store,
+    }
+  },
+  data() {
+    return {
+      modals,
     }
   },
 }

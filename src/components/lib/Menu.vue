@@ -21,23 +21,6 @@
         />
       </div>
     </div>
-
-    <transition name="opacity">
-      <div
-        v-if="modal"
-        class="back-to-home-modal-container"
-        :key="modal"
-        @click="closeModal"
-      >
-        <div class="modal-backdrop" />
-
-        <BaseCard class="back-to-home-modal" title="Retourner à l'accueil ?">
-          <Button simple @click="quitGame">Valider</Button>
-
-          <p @click="closeModal">Continuer la partie</p>
-        </BaseCard>
-      </div>
-    </transition>
   </div>
 </template>
 
@@ -47,7 +30,7 @@ import router from '@/router'
 import { useStore } from '@/store'
 
 import ScoreContainer from '@/components/lib/scores/ScoreContainer.vue'
-import { IconButton, Button, BaseCard } from '@/components/lib'
+import { IconButton } from '@/components/lib'
 
 import { HomeIcon, VolumeOffIcon, VolumeUpIcon } from '@heroicons/vue/solid'
 
@@ -56,8 +39,6 @@ export default {
   components: {
     ScoreContainer,
     IconButton,
-    Button,
-    BaseCard,
   },
   props: {
     score: {
@@ -96,8 +77,9 @@ export default {
   },
   methods: {
     onClickHomeButton() {
+      console.log('backtohome')
       if (this.route.name === 'game' && this.store.currentStep != 'postcard') {
-        this.modal = true
+        this.store.modal = 'home'
       } else {
         router.push('/')
       }
@@ -179,16 +161,5 @@ export default {
       cursor: pointer;
     }
   }
-}
-
-.back-to-home-modal-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
 }
 </style>

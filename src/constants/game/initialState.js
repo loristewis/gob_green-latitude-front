@@ -24,6 +24,7 @@ export const initialState = {
     'postcard',
   ],
   soundon: false,
+  modal: null,
   audio: {
     click: new Audio(Click),
     defeat: new Audio(Defeat),

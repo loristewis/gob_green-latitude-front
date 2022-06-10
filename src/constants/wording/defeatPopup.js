@@ -1,5 +1,5 @@
 import PollutionBad from '@/assets/gauges/pollution/bad.svg'
-import WellnessBad from '@/assets/gauges/pollution/bad.svg'
+import WellnessBad from '@/assets/gauges/wellness/bad.svg'
 import EmptyCoin from '@/assets/coins/empty-coin.svg'
 
 export const defeatPopup = {

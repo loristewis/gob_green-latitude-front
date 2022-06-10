@@ -8,6 +8,7 @@ import { scores } from '@/constants/design/scores'
 
 import { scoreConstants } from '@/constants/game/scoreConstants'
 import { initialState } from '@/constants/game/initialState'
+import { modals } from '@/constants/game/modals'
 
 import { names } from '@/constants/wording/names'
 import { prescriptionText } from '@/constants/wording/prescriptionText'
@@ -26,6 +27,7 @@ export {
   scores,
   scoreConstants,
   initialState,
+  modals,
   names,
   prescriptionText,
   defeatPopup,
