@@ -36,7 +36,7 @@ export const useStore = defineStore('main', {
     },
     displaySplashScreen() {
       if (this.splashTimeout) clearTimeout(this.splashTimeout)
-      this.splash = false
+      this.splash = true
       if (this.soundon) {
         setTimeout(() => {
           this.audio.splash.play()
@@ -111,7 +111,7 @@ export const useStore = defineStore('main', {
       }
     },
     checkDefeat() {
-      if (this.dev) return
+      // if (this.dev) return
 
       let defeats = []
 
