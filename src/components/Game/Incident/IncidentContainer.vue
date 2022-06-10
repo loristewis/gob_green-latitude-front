@@ -22,7 +22,6 @@
           :budget="incident.outcome.budget"
           :pollution="incident.outcome.pollution"
           :wellness="incident.outcome.wellness"
-          @next-step="store.finishStep"
         />
       </div>
 
@@ -78,7 +77,7 @@ export default {
       const outcome = dice > choice.risk ? goodOutcome : badOutcome
       this.store.trip.incident.outcome = outcome
 
-      return outcome
+      this.store.finishStep({ next: false })
     },
   },
 }

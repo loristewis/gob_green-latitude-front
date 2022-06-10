@@ -61,14 +61,13 @@ export const useStore = defineStore('main', {
         this.displaySplashScreen()
       }
     },
-    finishStep() {
+    finishStep({ next: next } = { next: true }) {
       console.log('finishStep')
       this.calculateScore()
       if (!this.defeat) {
-        if (this.currentStep === 'activities') {
-          return
+        if (next) {
+          setTimeout(() => this.moveToNextStep(), 2500)
         }
-        setTimeout(() => this.moveToNextStep(), 2500)
       } else {
         setTimeout(() => {
           this.modal = 'defeat'

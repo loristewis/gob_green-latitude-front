@@ -52,6 +52,7 @@ export default {
     const wording = store.wording
 
     return {
+      store,
       wording,
     }
   },
@@ -66,9 +67,7 @@ export default {
   methods: {
     acceptOutcome() {
       this.buttonDisabled = true
-      setTimeout(() => {
-        this.$emit('next-step')
-      }, 2)
+      this.store.moveToNextStep()
     },
   },
 }

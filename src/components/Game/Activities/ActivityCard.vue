@@ -107,7 +107,7 @@ export default {
       this.store.trip.activities.push(this.processedActivity)
 
       this.flipped = true
-      this.store.finishStep()
+      this.store.finishStep({ next: false })
 
       this.$emit('activity-selected')
     },
