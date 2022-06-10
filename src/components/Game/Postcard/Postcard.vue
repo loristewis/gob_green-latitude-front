@@ -1,5 +1,5 @@
 <template>
-  <div class="postcard">
+  <div class="postcard" :class="result">
     <div class="postcard-grid">
       <div class="postcard-grid-destination">
         <img v-if="trip.destination" :src="getImage(trip.destination)" />
@@ -12,7 +12,10 @@
       </div>
     </div>
     <div class="postcard-destination-title">
-      <img v-if="trip.destination" :src="getImage(trip.destination, title)" />
+      <img
+        v-if="trip.destination"
+        :src="getImage(trip.destination, titleFile)"
+      />
     </div>
   </div>
 </template>
@@ -27,7 +30,7 @@ export default {
       type: Object,
       required: true,
     },
-    title: {
+    result: {
       type: String,
       required: true,
     },
@@ -35,6 +38,7 @@ export default {
   data() {
     return {
       getImage,
+      titleFile: 'image_' + this.result,
     }
   },
 }
@@ -46,6 +50,10 @@ export default {
   aspect-ratio: 7 / 5;
   display: grid;
 
+  &.defeat {
+    filter: grayscale(0.6);
+  }
+
   > div {
     grid-area: 1 / -1;
   }
@@ -54,6 +62,11 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    img {
+      width: 100%;
+      padding: 42px;
+    }
   }
 
   &-grid {
@@ -64,9 +77,19 @@ export default {
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(2, 1fr);
 
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+
     &-destination {
       grid-column: 1 / 4;
       grid-row: 1 / 3;
+
+      img {
+        object-fit: cover;
+      }
     }
 
     &-accommodation {
@@ -75,6 +98,11 @@ export default {
 
     &-transportation {
       grid-column: 4 / 6;
+
+      img {
+        object-fit: contain;
+        padding: 20px;
+      }
     }
   }
 }

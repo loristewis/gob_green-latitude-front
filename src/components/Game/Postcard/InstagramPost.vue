@@ -4,7 +4,7 @@
       <img :src="GreenLatitude" />
       <p class="account">{{ account }}</p>
     </div>
-    <Postcard :trip="trip" :title="defeat ? 'image_defeat' : 'image_victory'" />
+    <Postcard :trip="trip" :result="defeat ? 'defeat' : 'victory'" />
     <div class="post-content">
       <p class="post-caption">
         <span class="account">{{ account }}</span>
