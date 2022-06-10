@@ -46,7 +46,7 @@ export default {
     return {
       getImage,
       titleFile: 'image_' + this.result,
-      randomColor: getRandomColor(),
+      randomColor: getRandomColor('postcard'),
     }
   },
 }
@@ -54,13 +54,9 @@ export default {
 
 <style lang="scss">
 .postcard {
-  background: burlywood;
+  background: var(--color-beige-cool);
   aspect-ratio: 7 / 5;
   display: grid;
-
-  &.defeat {
-    filter: grayscale(0.6);
-  }
 
   > div {
     grid-area: 1 / -1;
@@ -73,7 +69,17 @@ export default {
 
     img {
       width: 100%;
-      padding: 42px;
+      padding: 12px;
+    }
+  }
+
+  &.defeat {
+    filter: grayscale(0.6);
+
+    &-destination-title {
+      img {
+        padding: 42px;
+      }
     }
   }
 

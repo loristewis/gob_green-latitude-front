@@ -59,6 +59,6 @@ export const getImage = (data, key = 'image') => {
   return image
 }
 
-export const getRandomColor = () => {
-  return 'var(--color-' + getRandomFromArray(colors) + ')'
+export const getRandomColor = (category = 'all') => {
+  return 'var(--color-' + getRandomFromArray(colors[category]) + ')'
 }
