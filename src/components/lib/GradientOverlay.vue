@@ -17,5 +17,6 @@ export default {
   height: 96px;
   bottom: 0;
   background: linear-gradient(to bottom, transparent, var(--color-beige-cool));
+  z-index: 4;
 }
 </style>
