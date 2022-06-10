@@ -11,6 +11,7 @@ export default {
 <style scoped>
 .gradient-overlay {
   position: fixed;
+  pointer-events: none;
   left: 0;
   right: 0;
   height: 96px;
