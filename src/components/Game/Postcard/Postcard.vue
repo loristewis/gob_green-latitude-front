@@ -7,9 +7,16 @@
       <div class="postcard-grid-accommodation">
         <img v-if="trip.accommodation" :src="getImage(trip.accommodation)" />
       </div>
-      <div class="postcard-grid-transportation">
+      <div
+        class="postcard-grid-transportation"
+        :style="{ backgroundColor: trip.transportation.color }"
+      >
         <img v-if="trip.transportation" :src="getImage(trip.transportation)" />
       </div>
+      <div
+        class="postcard-grid-blank allo"
+        :style="{ backgroundColor: randomColor }"
+      ></div>
     </div>
     <div class="postcard-destination-title">
       <img
@@ -21,7 +28,7 @@
 </template>
 
 <script>
-import { getImage } from '@/helpers'
+import { getImage, getRandomColor } from '@/helpers'
 
 export default {
   name: 'Postcard',
@@ -39,6 +46,7 @@ export default {
     return {
       getImage,
       titleFile: 'image_' + this.result,
+      randomColor: getRandomColor(),
     }
   },
 }

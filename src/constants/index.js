@@ -1,5 +1,6 @@
 import { team } from '@/constants/team'
 
+import { colors } from '@/constants/design/colors'
 import { colorCombos } from '@/constants/design/colorCombos'
 import { titleTags } from '@/constants/design/titleTags'
 import { gameIcons } from '@/constants/design/gameIcons'
@@ -20,6 +21,7 @@ import { transportTags } from '@/constants/wording/transportTags'
 
 export {
   team,
+  colors,
   colorCombos,
   titleTags,
   gameIcons,

@@ -1,6 +1,8 @@
 import axios from 'axios'
 import qs from 'qs'
 
+import { colors } from '@/constants'
+
 export const getFromApi = (endpoint, params) => {
   if (!params.fields) params.fields = '*'
   if (!params.populate) params.populate = '*'
@@ -55,4 +57,8 @@ export const getImage = (data, key = 'image') => {
     image = data.attributes[key].data.attributes.url
   if (data[key] && data[key].data) image = data[key].data.attributes.url
   return image
+}
+
+export const getRandomColor = () => {
+  return 'var(--color-' + getRandomFromArray(colors) + ')'
 }
