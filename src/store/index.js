@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import { getRandomScore, getRandomFromArray } from '@/helpers'
+import { getRandomScore, getRandomFromArray, cleanString } from '@/helpers'
 import { scoreConstants, initialState, splashScreens, names } from '@/constants'
 
 export const useStore = defineStore('main', {
@@ -27,7 +27,7 @@ export const useStore = defineStore('main', {
     },
     displaySplashScreen() {
       if (this.splashTimeout) clearTimeout(this.splashTimeout)
-      this.splash = true
+      this.splash = false
       if (this.soundon) {
         setTimeout(() => {
           this.audio.splash.play()
@@ -53,8 +53,12 @@ export const useStore = defineStore('main', {
       }
     },
     finishStep() {
+      console.log('finishStep')
       this.calculateScore()
       if (!this.defeat) {
+        if (this.currentStep === 'activities') {
+          return
+        }
         setTimeout(() => this.moveToNextStep(), 2500)
       } else {
         setTimeout(() => {
@@ -139,6 +143,8 @@ export const useStore = defineStore('main', {
     calculateScore() {
       this.resetScore()
 
+      console.log('calculateScore')
+
       if (this.trip.transportation) {
         this.calculateTransportation()
       }
@@ -148,7 +154,7 @@ export const useStore = defineStore('main', {
       if (this.trip.incident.outcome) {
         this.calculateIncident()
       }
-      if (this.activitiesCount === 3) {
+      if (this.activitiesCount > 0) {
         this.calculateActivities()
       }
 
@@ -176,7 +182,12 @@ export const useStore = defineStore('main', {
       this.score.budget -= this.trip.incident.outcome.budget
     },
     calculateActivities() {
+      console.log('calculateActivities')
+      console.log(this.trip.activities)
+
       for (const activity of this.trip.activities) {
+        console.log(activity)
+
         const wishes = activity.wishes.data.map((el) => el.attributes.title)
 
         let wellness = activity.wellness
@@ -219,7 +230,7 @@ export const useStore = defineStore('main', {
         }
         newText = newText.replace(match[0], replacement)
       }
-      return newText
+      return cleanString(newText)
     },
   },
 })
