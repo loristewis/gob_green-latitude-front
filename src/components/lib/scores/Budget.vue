@@ -16,7 +16,7 @@
       <div class="coin empty" v-if="currentValue === 0">
         <img :src="EmptyCoin" alt="" />
       </div>
-      <div v-else>
+      <div>
         <div class="coin" v-for="index in currentValue" :key="index">
           <img :src="Coin" alt="" />
         </div>
