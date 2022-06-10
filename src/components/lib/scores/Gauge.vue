@@ -188,6 +188,7 @@ export default {
 
       .progress {
         height: 8px;
+        max-width: 95%;
       }
     }
 
