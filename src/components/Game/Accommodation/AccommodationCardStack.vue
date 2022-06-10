@@ -150,6 +150,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transition: opacity 0.4s;
 
   &.disabled {
     opacity: 0.6;
