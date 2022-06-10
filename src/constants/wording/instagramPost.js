@@ -24,10 +24,10 @@ export const instagramPost = {
         'besttrip',
         'wahou',
         'sunkissed',
-        'mercureretrograde',
+        'blessed',
       ],
       loin: ['decouverte', 'faraway', 'tourdumonde', 'depaysement'],
-      bof: ['chilling', 'break', 'nosregionsontdutalent', 'voyagerlocal'],
+      bof: ['chilling', 'nosregionsontdutalent', 'voyagerlocal'],
       cher: [
         'viedereve',
         'cocktailz',
