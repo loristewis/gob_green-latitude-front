@@ -1,5 +1,7 @@
 <template>
   <div class="carousel-container">
+    <slot v-if="$slots.carouselHeader" name="carouselHeader" />
+
     <Swiper
       :modules="modules"
       :slides-per-view="1"
@@ -7,8 +9,6 @@
       :pagination="{ clickable: true }"
       v-bind="$attrs"
     >
-      <!--      @swiper="onSwiper"-->
-      <!--      @slideChange="onSlideChange"-->
       <slot />
     </Swiper>
   </div>
@@ -38,7 +38,9 @@ export default {
 .carousel-container {
   height: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   .swiper {
     --carousel-margin-bottom: 96px;

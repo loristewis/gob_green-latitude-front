@@ -1,34 +1,34 @@
 <template>
   <GameLayout>
-    <div class="activities-container">
-      <CardContainer class="activities-slots-container" :accent="false">
-        <div v-for="index in 3" :key="index">
-          <!-- p à remplacer par l'image -->
-          <p
-            v-if="store.trip.activities[index - 1]"
-            :src="EmptySlot"
-            alt=""
-            class="slot"
-          >
-            {{ store.trip.activities[index - 1].title }}
-          </p>
-          <img v-else :src="EmptySlot" alt="" class="slot" />
-        </div>
-      </CardContainer>
+    <template #default>
+      <!--              <CardContainer class="activities-slots-container" :accent="false">
+                <div v-for="index in 3" :key="index">
+                  &lt;!&ndash; p à remplacer par l'image &ndash;&gt;
+                  <p
+                    v-if="store.trip.activities[index - 1]"
+                    :src="EmptySlot"
+                    alt=""
+                    class="slot"
+                  >
+                    {{ store.trip.activities[index - 1].title }}
+                  </p>
+                  <img v-else :src="EmptySlot" alt="" class="slot" />
+                </div>
+              </CardContainer>-->
 
       <ActivitiesSwiper :activities="availableActivities" />
 
       <Button main :isDisabled="this.buttonDisabled" @click="selectActivity">
-        C'est décidé !
+        C'est décidé !
       </Button>
-    </div>
-
-    <ActivitiesModalContainer
-      @validate-activity="validateActivity"
-      :open="isOpen"
-      :outcome="outcome"
-    />
+    </template>
   </GameLayout>
+
+  <ActivitiesModalContainer
+    @validate-activity="validateActivity"
+    :open="isOpen"
+    :outcome="outcome"
+  />
 </template>
 
 <script>
@@ -63,7 +63,7 @@ export default {
       isOpen: false,
       outcome: null,
       availableActivities: this.elements,
-      buttonDisabled: false,
+      buttonDisabled: true,
     }
   },
   setup() {
@@ -120,7 +120,7 @@ export default {
 
       if (this.store.activitiesCount === 3) {
         this.store.selected = null
-        this.buttonDisabled = true
+        this.buttonDisabled = false
         this.store.finishStep()
       }
     },
@@ -129,27 +129,6 @@ export default {
 </script>
 
 <style lang="scss">
-.activities-container {
-  position: unset;
-
-  .activities-slots-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 32px;
-    margin: 0 24px 24px;
-    padding: 20px 24px;
-    background-color: var(--color-beige-dark);
-
-    .slot {
-      background-color: var(--color-beige-cool);
-      border-radius: 4px;
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-    }
-  }
-}
-
 .activities-modal-container {
   display: flex;
   align-items: center;

@@ -11,6 +11,10 @@
 
       <p v-if="description">{{ processedDescription }}</p>
     </div>
+
+    <div class="card-footer">
+      <slot name="cardFooter" />
+    </div>
   </CardContainer>
 </template>
 
@@ -64,6 +68,7 @@ export default {
   flex-direction: column;
   height: 100%;
   width: 288px;
+  max-width: 100%;
   margin: auto;
   padding: 24px;
 

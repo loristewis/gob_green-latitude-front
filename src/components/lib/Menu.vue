@@ -12,6 +12,7 @@
           size="40"
         />
       </div>
+
       <div class="home-button-container">
         <IconButton
           @click="onClickHomeButton"

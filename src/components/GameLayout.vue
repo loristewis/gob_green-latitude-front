@@ -3,7 +3,7 @@
     <header>
       <slot name="header">
         <Menu
-          :displayScore="store.currentStep != 'postcard'"
+          :displayScore="store.currentStep !== 'postcard'"
           :score="store.score"
         />
       </slot>
@@ -14,14 +14,14 @@
     </main>
 
     <footer>
-      <PrescriptionReminder v-if="store.currentStep != 'postcard'" />
+      <PrescriptionReminder v-if="store.currentStep !== 'postcard'" />
     </footer>
   </div>
 </template>
 
 <script>
 import { useStore } from '@/store'
-import { Menu } from '@/components/lib'
+import Menu from '@/components/lib/Menu.vue'
 import PrescriptionReminder from '@/components/Game/PrescriptionReminder.vue'
 
 export default {
@@ -31,9 +31,8 @@ export default {
     PrescriptionReminder,
   },
   setup() {
-    const store = useStore()
     return {
-      store,
+      store: useStore(),
     }
   },
 }
