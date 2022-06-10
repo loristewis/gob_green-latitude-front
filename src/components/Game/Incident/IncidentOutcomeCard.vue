@@ -1,7 +1,7 @@
 <template>
   <BaseCard
-    :title="title"
-    :description="description"
+    :title="processedTitle"
+    :description="processedDescription"
     class="incident-outcome-card-container"
   >
     <ScoreEvolutionGroup v-bind="$props" />
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import { useStore } from '@/store'
 import { BaseCard, Button, ScoreEvolutionGroup } from '@/components/lib'
 
 import Star from '@/assets/star.svg'
@@ -46,10 +47,20 @@ export default {
       required: true,
     },
   },
+  setup() {
+    const store = useStore()
+    const wording = store.wording
+
+    return {
+      wording,
+    }
+  },
   data() {
     return {
       Star,
       buttonDisabled: false,
+      processedTitle: this.wording(this.title),
+      processedDescription: this.wording(this.description),
     }
   },
   methods: {
