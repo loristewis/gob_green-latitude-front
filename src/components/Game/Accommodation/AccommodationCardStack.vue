@@ -1,5 +1,8 @@
 <template>
-  <div class="accommodation-card-stack-container">
+  <div
+    class="accommodation-card-stack-container"
+    :class="accommodationSelected ? 'disabled' : ''"
+  >
     <AccommodationGauge :total="this.total" :left="elements.length" />
 
     <div class="accommodation-cards">
@@ -75,6 +78,7 @@ export default {
   },
   data() {
     return {
+      accommodationSelected: false,
       total: this.elements.length,
       getImage,
       TrashIcon,
@@ -113,6 +117,7 @@ export default {
       }, 300)
     },
     onSwipeRight() {
+      this.accommodationSelected = true
       this.$emit('swipe-right')
     },
     onTrashClick() {
@@ -145,6 +150,11 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  &.disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 
   .accommodation-cards {
     display: flex;
