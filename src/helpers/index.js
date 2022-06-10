@@ -43,7 +43,7 @@ export const getRandomElementsFromArray = (array, number) => {
   } else {
     let selection = []
     for (let i = 0; i < number; i++) {
-      const randomIndex = Math.floor(Math.random() * array.length)
+      const randomIndex = Math.floor(Math.random() * pool.length)
       selection.push(pool[randomIndex])
       pool.splice(randomIndex, 1)
     }
