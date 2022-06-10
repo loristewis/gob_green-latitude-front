@@ -69,7 +69,7 @@ export default {
       let hashtags = []
       let hashtagsPool = []
 
-      hashtags.push(this.formatDestination(destination.title), 'hashtag')
+      hashtags.push(this.formatDestination(destination.title, 'hashtag'))
 
       if (this.defeat != null) {
         hashtagsPool = [
