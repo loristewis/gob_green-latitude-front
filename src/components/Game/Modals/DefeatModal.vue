@@ -52,13 +52,8 @@ export default {
 
 <style lang="scss">
 .defeat-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 80%;
   text-align: center;
-  animation: modal-appear 0.4s;
 
   &-text {
     text-align: left;

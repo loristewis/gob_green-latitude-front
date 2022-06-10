@@ -71,5 +71,9 @@ export default {
     inset: 0;
     opacity: 0.4;
   }
+
+  .modal-card-container {
+    animation: appear 0.6s ease-in-out;
+  }
 }
 </style>

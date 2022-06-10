@@ -81,6 +81,7 @@ export const useStore = defineStore('main', {
       this.thought = ''
       this.incidents = []
       this.defeat = null
+      this.modal = null
       this.resetScore()
       this.resetTrip()
     },

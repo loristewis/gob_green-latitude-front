@@ -64,7 +64,6 @@ export default {
       HomeIcon,
       VolumeOffIcon,
       VolumeUpIcon,
-      modal: false,
     }
   },
   setup() {
@@ -84,13 +83,6 @@ export default {
       } else {
         router.push('/')
       }
-    },
-    quitGame() {
-      this.store.resetState()
-      router.push('/')
-    },
-    closeModal() {
-      this.modal = false
     },
   },
 }
@@ -121,46 +113,6 @@ export default {
       svg {
         fill: #cebea8;
       }
-    }
-  }
-}
-
-.back-to-home-modal-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
-
-  &.opacity-leave-active  {
-    transition: opacity 0.4s;
-  }
-
-  .modal-backdrop {
-    background-color: var(--color-beige-dark);
-    position: absolute;
-    inset: 0;
-    opacity: 0.4;
-    --opacity: 0.4;
-    animation: fadein 0.4s;
-  }
-
-  .back-to-home-modal {
-    text-align: center;
-    position: absolute;
-    width: 75%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    animation: modal-appear 0.4s;
-
-    .modal-title {
-      padding-bottom: 16px;
-    }
-
-    p {
-      cursor: pointer;
     }
   }
 }

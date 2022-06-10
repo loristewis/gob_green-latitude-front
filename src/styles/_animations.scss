@@ -62,22 +62,6 @@
   }
 }
 
-@keyframes modal-appear {
-  0% {
-    opacity: 0;
-    top: 100%;
-  }
-  20% {
-    opacity: 0;
-  }
-  80% {
-    opacity: 1;
-  }
-  100% {
-    top: 50%;
-  }
-}
-
 @keyframes fadein {
   0% {
     opacity: 0;
