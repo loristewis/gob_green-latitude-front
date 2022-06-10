@@ -3,17 +3,20 @@
     <img class="prescription-background" :src="Background" />
 
     <div>
-      <BaseCard class="prescription-card">
+      <BaseCard class="prescription-card" title="Dr Tamalou">
         <Sticker theme="blue-pink" class="prescription-title" big>
           Ordonnance
         </Sticker>
 
-        <Title tag="h2" class="prescription-subtitle">Dr Tamalou</Title>
         <p class="prescription-intro">{{ prescription.intro }}</p>
+
         <div class="prescription-content">
           <img :src="icons.environment" />
+
           <p v-html="prescription.environment"></p>
+
           <img :src="icons.wish" />
+
           <p v-html="prescription.wish"></p>
         </div>
 
@@ -139,8 +142,8 @@ export default {
     transform: rotate(-3deg);
   }
 
-  &-subtitle {
-    padding-bottom: 12px;
+  .name {
+    margin-bottom: 16px !important;
   }
 
   &-intro {
