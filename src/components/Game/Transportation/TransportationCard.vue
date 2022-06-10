@@ -213,7 +213,7 @@ export default {
     top: 16px;
     left: -12px;
     max-width: 140px;
-    z-index: 1;
+    z-index: 2;
     transform: rotate(-6deg);
   }
 
