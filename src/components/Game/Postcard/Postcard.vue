@@ -14,7 +14,7 @@
         <img v-if="trip.transportation" :src="getImage(trip.transportation)" />
       </div>
       <div
-        class="postcard-grid-blank allo"
+        class="postcard-grid-blank"
         :style="{ backgroundColor: randomColor }"
       ></div>
     </div>
