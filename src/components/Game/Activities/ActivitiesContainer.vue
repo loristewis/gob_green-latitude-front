@@ -1,43 +1,25 @@
 <template>
   <GameLayout>
     <template #default>
-      <!--              <CardContainer class="activities-slots-container" :accent="false">
-                <div v-for="index in 3" :key="index">
-                  &lt;!&ndash; p à remplacer par l'image &ndash;&gt;
-                  <p
-                    v-if="store.trip.activities[index - 1]"
-                    :src="EmptySlot"
-                    alt=""
-                    class="slot"
-                  >
-                    {{ store.trip.activities[index - 1].title }}
-                  </p>
-                  <img v-else :src="EmptySlot" alt="" class="slot" />
-                </div>
-              </CardContainer>-->
-
       <ActivitiesSwiper :activities="availableActivities" />
 
-      <Button main :isDisabled="this.buttonDisabled" @click="selectActivity">
-        C'est décidé !
+      <Button
+        main
+        class="activities-main-button"
+        :class="this.store.activitiesCount < 3 ? 'hidden' : ''"
+        @click="finishStep"
+      >
+        Quel voyage !
       </Button>
     </template>
   </GameLayout>
-
-  <ActivitiesModalContainer
-    @validate-activity="validateActivity"
-    :open="isOpen"
-    :outcome="outcome"
-  />
 </template>
 
 <script>
 import { useStore } from '@/store'
-import { getRandomInt } from '@/helpers'
 
-import { Button, CardContainer } from '@/components/lib'
+import { Button } from '@/components/lib'
 import ActivitiesSwiper from '@/components/Game/Activities/ActivitiesSwiper.vue'
-import ActivitiesModalContainer from '@/components/Game/Activities/ActivitiesModalContainer.vue'
 import GameLayout from '@/components/GameLayout.vue'
 
 import EmptySlot from '@/assets/empty-slot.png'
@@ -51,10 +33,8 @@ export default {
     },
   },
   components: {
-    CardContainer,
     Button,
     ActivitiesSwiper,
-    ActivitiesModalContainer,
     GameLayout,
   },
   data() {
@@ -63,7 +43,7 @@ export default {
       isOpen: false,
       outcome: null,
       availableActivities: this.elements,
-      buttonDisabled: true,
+      buttonHidden: true,
     }
   },
   setup() {
@@ -73,91 +53,20 @@ export default {
     }
   },
   methods: {
-    setIsOpen(value) {
-      this.isOpen = value
-    },
-    selectActivity() {
-      let activity = { ...this.store.selected }
-
-      let outcome
-      if (activity.outcomes.length > 1) {
-        const goodOutcome = activity.outcomes[0]
-        const badOutcome = activity.outcomes[1]
-
-        const dice = getRandomInt(11)
-        outcome = dice > activity.risk ? goodOutcome : badOutcome
-      } else {
-        outcome = activity.outcomes[0]
-      }
-
-      activity.budget += outcome.budget
-      activity.wellness += outcome.wellness
-      activity.pollution += outcome.pollution
-      this.store.selected = activity
-      this.store.thought = this.store.selected.thoughts
-        ? this.store.selected.thoughts
-        : this.store.thought
-
-      this.outcome = outcome
-      this.setIsOpen(true)
-    },
-    validateActivity() {
-      this.store.trip.activities.push(this.store.selected)
-
-      const selectedIndex = this.availableActivities.findIndex(
-        (el) => el.attributes.createdAt === this.store.selected.createdAt
-      )
-
-      this.setIsOpen(false)
-      this.outcome = null
-      this.store.selected =
-        this.availableActivities[selectedIndex + 1].attributes
-      this.store.thought = this.store.selected.thoughts
-        ? this.store.selected.thoughts
-        : this.store.thought
-
-      this.availableActivities.splice(selectedIndex, 1)
-
-      if (this.store.activitiesCount === 3) {
-        this.store.selected = null
-        this.buttonDisabled = false
-        this.store.finishStep()
-      }
+    finishStep() {
+      this.store.moveToNextStep()
     },
   },
 }
 </script>
 
 <style lang="scss">
-.activities-modal-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 1s;
-  opacity: 0;
+.activities-main-button {
+  transition: opacity 0.2s;
 
-  &:not(.hidden) {
-    opacity: 1;
-  }
-
-  //&:hover {
-  //  opacity: 1;
-  //}
-
-  .backdrop {
-    background-color: var(--color-beige-dark);
-    position: absolute;
-    inset: 0;
-    opacity: 0.4;
-  }
-
-  position: absolute;
-  inset: 0;
-  z-index: 10;
-
-  .activities-modal-card-container {
-    min-width: 296px;
-    padding: 24px 20px;
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 }
 </style>

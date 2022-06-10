@@ -4,7 +4,7 @@
       <CardWithImageAndBudget
         v-if="flipped === false"
         class="activity-card"
-        :image="activity.image"
+        :image="getImage(activity)"
         :title="activity.title"
         :description="activity.description"
         :budget="activity.budget"
@@ -12,7 +12,12 @@
         :wellness="activity.wellness"
       >
         <template #cardFooter>
-          <Button simple @click="flipCard">Choisir</Button>
+          <Button
+            simple
+            :isDisabled="store.activitiesCount === 3"
+            @click="selectCard"
+            >Choisir</Button
+          >
         </template>
       </CardWithImageAndBudget>
 
@@ -37,6 +42,9 @@
 </template>
 
 <script>
+import { useStore } from '@/store'
+import { getRandomInt, getImage } from '@/helpers'
+
 import {
   BaseCard,
   CardWithImageAndBudget,
@@ -60,19 +68,42 @@ export default {
       type: Object,
       required: true,
     },
-    outcome: {
-      type: Object,
-      required: true,
-    },
+  },
+  setup() {
+    const store = useStore()
+    return {
+      store,
+    }
   },
   data() {
     return {
+      getImage,
       flipped: false,
+      processedActivity: { ...this.activity },
+      outcome: this.activity.outcomes[0],
     }
   },
+  mounted() {
+    if (this.activity.outcomes.length > 1) {
+      const goodOutcome = this.activity.outcomes[0]
+      const badOutcome = this.activity.outcomes[1]
+
+      const dice = getRandomInt(11)
+      this.outcome = dice > this.activity.risk ? goodOutcome : badOutcome
+    }
+
+    this.processedActivity.budget += this.outcome.budget
+    this.processedActivity.wellness += this.outcome.wellness
+    this.processedActivity.pollution += this.outcome.pollution
+  },
   methods: {
-    flipCard() {
+    selectCard() {
+      this.store.trip.activities.push(this.processedActivity)
+
       this.flipped = true
+      this.store.finishStep()
+
+      this.$emit('activity-selected')
     },
   },
 }

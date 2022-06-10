@@ -1,13 +1,22 @@
 <template>
   <div class="activities-counter-container">
-    <Tag color="green">Choisis encore 3 activités !</Tag>
+    <Tag
+      class="activities-counter-alert"
+      :class="!displayAlert ? 'hidden' : ''"
+      color="green"
+      >{{ alert }}</Tag
+    >
 
     <div class="counter-listing">
-      <div class="counter" :style="counterStyle">
+      <div
+        v-for="index in 3"
+        :key="index"
+        class="counter"
+        :class="index <= 3 - left ? 'checked' : ''"
+      >
         <CheckIcon class="hero-icon" />
+        <span class="count">{{ index }}</span>
       </div>
-      <div class="counter" :style="counterStyle">2</div>
-      <div class="counter" :style="counterStyle">3</div>
     </div>
   </div>
 </template>
@@ -19,12 +28,21 @@ import { CheckIcon } from '@heroicons/vue/solid'
 export default {
   name: 'ActivitiesCounter',
   components: { Tag, CheckIcon },
+  props: {
+    left: {
+      type: Number,
+      required: true,
+    },
+    displayAlert: {
+      type: Boolean,
+      required: true,
+    },
+  },
   computed: {
-    counterStyle() {
-      return {
-        // backgroundColor: 'var(--color-green-light)',
-        backgroundColor: 'var(--color-beige-dark)',
-      }
+    alert() {
+      return this.left > 1
+        ? `Choisis encore ${this.left} activités !`
+        : "Plus qu'une activité !"
     },
   },
 }
@@ -36,7 +54,15 @@ export default {
     display: flex;
     justify-content: center;
     gap: 8px;
-    margin: 8px 0;
+    margin: 8px 0 16px 0;
+  }
+
+  .activities-counter-alert {
+    transition: opacity 0.2s;
+
+    &.hidden {
+      opacity: 0;
+    }
   }
 
   .counter {
@@ -47,11 +73,32 @@ export default {
     width: 24px;
     border-radius: 50%;
     font-weight: 600;
+    background-color: var(--color-beige-dark);
+    display: grid;
 
     .hero-icon {
       color: var(--color-white);
       height: 20px;
       width: 20px;
+      opacity: 0;
+      grid-area: 1 / -1;
+    }
+
+    .count {
+      grid-area: 1 / -1;
+      text-align: center;
+    }
+
+    &.checked {
+      background-color: var(--color-green-light);
+
+      .hero-icon {
+        opacity: 1;
+      }
+
+      .count {
+        opacity: 0;
+      }
     }
   }
 }

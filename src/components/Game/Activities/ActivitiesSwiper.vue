@@ -5,29 +5,15 @@
     @slideChange="onSlideChange"
   >
     <template #carouselHeader>
-      <ActivitiesCounter />
+      <ActivitiesCounter
+        :left="3 - store.activitiesCount"
+        :displayAlert="store.activitiesCount < 3"
+      />
     </template>
 
     <template #default>
       <SwiperSlide v-for="activity in activities" :key="activity.id">
-        <!--          :is-flipped="isFlipped"-->
-        <ActivityCard
-          :activity="{
-            image: getImage(activity),
-            title: activity.attributes.title,
-            description: activity.attributes.description,
-            budget: activity.attributes.budget,
-            pollution: activity.attributes.pollution,
-            wellness: activity.attributes.wellness,
-          }"
-          :outcome="{
-            title: activity.attributes.outcomes[0].title,
-            description: activity.attributes.outcomes[0].description,
-            budget: activity.attributes.outcomes[0].budget,
-            pollution: activity.attributes.outcomes[0].pollution,
-            wellness: activity.attributes.outcomes[0].wellness,
-          }"
-        />
+        <ActivityCard :activity="activity.attributes" />
       </SwiperSlide>
     </template>
   </Carousel>
@@ -35,9 +21,8 @@
 
 <script>
 import { useStore } from '@/store'
-import { getImage } from '@/helpers'
 
-import { Carousel, BaseCard, Button } from '@/components/lib'
+import { Carousel } from '@/components/lib'
 import ActivitiesCounter from '@/components/Game/Activities/ActivitiesCounter.vue'
 import ActivityCard from '@/components/Game/Activities/ActivityCard.vue'
 
@@ -47,8 +32,6 @@ export default {
   name: 'ActivitiesSwiper',
   components: {
     Carousel,
-    BaseCard,
-    Button,
     ActivitiesCounter,
     ActivityCard,
     SwiperSlide,
@@ -58,12 +41,6 @@ export default {
       type: Array,
       required: true,
     },
-  },
-  data() {
-    return {
-      getImage,
-      isFlipped: true,
-    }
   },
   setup(props) {
     const store = useStore()
