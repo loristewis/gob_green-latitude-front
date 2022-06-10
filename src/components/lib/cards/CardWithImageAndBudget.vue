@@ -71,6 +71,7 @@ export default {
   max-width: 100%;
   margin: auto;
   padding: 24px;
+  padding-bottom: 32px;
 
   .image {
     flex-grow: 1;
@@ -91,6 +92,10 @@ export default {
     .title {
       margin-bottom: 8px;
     }
+  }
+
+  .card-footer {
+    margin-top: auto;
   }
 }
 </style>
