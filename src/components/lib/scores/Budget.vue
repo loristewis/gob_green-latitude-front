@@ -69,7 +69,7 @@ export default {
       if (this.animateDifference) clearTimeout(this.animateDifference)
 
       this.oldValue = oldVal
-      this.currentValue = Math.max(newVal)
+      this.currentValue = Math.max(newVal, 0)
       this.difference = Math.abs(newVal - oldVal)
 
       this.animation = newVal < oldVal
