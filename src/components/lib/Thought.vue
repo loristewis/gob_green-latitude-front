@@ -1,7 +1,9 @@
 <template>
   <CardContainer
     class="thought-container"
-    :class="store.activeThought ? '' : 'hidden'"
+    :class="
+      store.activeThought && store.currentStep != 'postcard' ? '' : 'hidden'
+    "
   >
     <div class="thought">
       <span :key="store.thought">
