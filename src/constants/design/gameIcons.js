@@ -8,6 +8,10 @@ import Luxe from '@/assets/wishes/luxe.svg'
 import Nature from '@/assets/wishes/nature.svg'
 import Sport from '@/assets/wishes/sport.svg'
 
+import Loin from '@/assets/destinations/loin.png'
+import Bof from '@/assets/destinations/bof.png'
+import Cher from '@/assets/destinations/cher.png'
+
 export const gameIcons = {
   mer: Mer,
   culture: Culture,
@@ -17,4 +21,7 @@ export const gameIcons = {
   luxe: Luxe,
   nature: Nature,
   sport: Sport,
+  loin: Loin,
+  bof: Bof,
+  cher: Cher,
 }
