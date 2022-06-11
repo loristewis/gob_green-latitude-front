@@ -5,8 +5,8 @@
         v-if="flipped === false"
         class="activity-card"
         :image="getImage(activity)"
-        :title="activity.title"
-        :description="activity.description"
+        :title="wording(activity.title)"
+        :description="wording(activity.description)"
         :budget="activity.budget"
         :pollution="activity.pollution"
         :wellness="activity.wellness"
@@ -24,8 +24,8 @@
       <BaseCard
         v-else
         class="activity-outcome-card"
-        :title="outcome.title"
-        :description="outcome.description"
+        :title="wording(outcome.title)"
+        :description="wording(outcome.description)"
       >
         <ScoreEvolutionGroup
           :budget="outcome.budget"
@@ -71,8 +71,11 @@ export default {
   },
   setup() {
     const store = useStore()
+    const wording = store.wording
+
     return {
       store,
+      wording,
     }
   },
   data() {

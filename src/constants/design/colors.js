@@ -14,5 +14,5 @@ export const colors = {
     'blue-cool',
     'blue-gray',
   ],
-  postcard: ['rose', 'rose-cool', 'blue-dark'],
+  postcard: ['rose', 'blue-dark'],
 }

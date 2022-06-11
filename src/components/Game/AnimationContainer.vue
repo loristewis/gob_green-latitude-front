@@ -61,7 +61,7 @@ export default {
     }
   },
   mounted() {
-    if (this.store.skipIntro) {
+    if (this.store.skipIntro && this.store.currentAnimation === 'intro') {
       this.store.moveToNextStep()
     } else {
       this.$refs.video.play()

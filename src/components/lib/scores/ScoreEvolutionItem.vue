@@ -45,6 +45,10 @@ export default {
     icon() {
       if (this.name === 'budget') {
         return Coin
+      } else if (this.name === 'pollution') {
+        return this.value < 0
+          ? gauges[this.name][0].icon
+          : gauges[this.name][1].icon
       } else {
         return this.value < 0
           ? gauges[this.name][0].icon
