@@ -11,7 +11,7 @@
     <div
       :class="`sticker sticker-${category}`"
       :style="{
-        backgroundImage: `url(/src/assets/destinations/${category}.png)`,
+        backgroundImage: `url(${gameIcons[category]})`,
       }"
     />
 
@@ -31,11 +31,8 @@
 
 <script>
 import { getRandomFromArray } from '@/helpers'
-import { colorCombos } from '@/constants'
+import { colorCombos, gameIcons } from '@/constants'
 import { CardContainer } from '@/components/lib'
-
-import Bof from '@/assets/destinations/bof.png'
-import Loin from '@/assets/destinations/loin.png'
 
 export default {
   name: 'DestinationCard',
@@ -62,8 +59,7 @@ export default {
     const combo = getRandomFromArray(colorCombos)
 
     return {
-      Bof,
-      Loin,
+      gameIcons,
       color: `var(--color-${combo.text})`,
       backgroundColor: `var(--color-${combo.background})`,
     }
