@@ -6,7 +6,7 @@
       <div class="sound-button-container">
         <IconButton
           @click="store.toggleSound"
-          :icon="store.soundon ? VolumeOffIcon : VolumeUpIcon"
+          :icon="store.soundon ? VolumeUpIcon : VolumeOffIcon"
           background-color="transparent"
           icon-color="#cebea8"
           size="40"
