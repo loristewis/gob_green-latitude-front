@@ -9,8 +9,12 @@ export const useStore = defineStore('main', {
   },
   getters: {
     currentStep: (state) => state.steps[state.progressionIndex],
-    currentComponent: (state) =>
-      state.steps[state.progressionIndex].split('-')[0] + '-container',
+    currentComponent: (state) => {
+      if (state.progressionIndex > state.steps.length - 1) {
+        state.progressionIndex = state.steps.length - 1
+      }
+      return state.steps[state.progressionIndex].split('-')[0] + '-container'
+    },
     currentAnimation: (state) =>
       state.steps[state.progressionIndex].split('-')[1],
     activitiesCount: (state) => state.trip.activities.length,
@@ -21,6 +25,12 @@ export const useStore = defineStore('main', {
             return null
           }
         }
+      }
+      if (state.currentStep === 'postcard') {
+        return null
+      }
+      if (state.currentComponent === 'animation-container') {
+        return null
       }
       return state.selected ? state.selected.thoughts : null
     },
