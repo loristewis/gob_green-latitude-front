@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     finishGame() {
-      this.store.moveToStep('animation-end')
+      this.store.moveToStep('postcard')
       this.store.modal = null
     },
   },

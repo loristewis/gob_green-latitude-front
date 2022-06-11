@@ -20,7 +20,6 @@ export const initialState = {
     'animation-travel',
     'incident',
     'activities',
-    'animation-end',
     'postcard',
   ],
   soundon: false,
