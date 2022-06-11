@@ -116,7 +116,7 @@ export default {
     },
     formatDestination(destination, hashtag = false) {
       let result = destination
-      if (hashtag) result = result.replace(' ', '')
+      if (hashtag) result = result.replaceAll(' ', '')
       return result.toLowerCase()
     },
   },
