@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 
-import { getRandomScore, getRandomFromArray, cleanString } from '@/helpers'
+import { getRandomFromArray, cleanString } from '@/helpers'
 import { scoreConstants, initialState, splashScreens, names } from '@/constants'
 
 export const useStore = defineStore('main', {
@@ -211,7 +211,7 @@ export const useStore = defineStore('main', {
 
         let wellness = activity.wellness
         if (!wellness) {
-          wellness = getRandomScore()
+          wellness = 0
         }
         if (this.trip.destination.category === 'bof') {
           wellness = wellness / 2
