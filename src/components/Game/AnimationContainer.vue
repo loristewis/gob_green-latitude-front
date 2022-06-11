@@ -61,9 +61,6 @@ export default {
     }
   },
   mounted() {
-    if (this.store.dev) this.store.moveToNextStep()
-
-    // si on rejoue
     if (this.store.skipIntro) {
       this.store.moveToNextStep()
     } else {
