@@ -7,10 +7,10 @@ export const instagramPost = {
           'au rythme du réchauffement climatique on aura peut-être le même climat d’ici quelques années 😉',
         ],
         bof: [
-          'super découverte de cette région ! des fois pas besoin de partir loin pour profiter de ses vacances ! 🤩',
+          'super découverte de cette région ! des fois pas besoin de partir loin pour profiter de ses vacances ! 🤩',
         ],
         cher: [
-          'des vacances comme je les aime, cocktails et soirées en bord de plage, la luxury life me réussit bien ! vivement les prochaines ! 🥳',
+          'des vacances comme je les aime, cocktails et soirées en bord de plage, la luxury life me réussit bien ! vivement les prochaines ! 🥳',
         ],
       },
     },

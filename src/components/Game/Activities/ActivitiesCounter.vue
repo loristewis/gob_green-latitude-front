@@ -41,8 +41,8 @@ export default {
   computed: {
     alert() {
       return this.left > 1
-        ? `Choisis encore ${this.left} activités !`
-        : "Plus qu'une activité !"
+        ? `Choisis encore ${this.left} activités !`
+        : "Plus qu'une activité !"
     },
   },
 }
