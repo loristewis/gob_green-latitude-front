@@ -1,6 +1,6 @@
 <template>
   <CardContainer class="base-card-container" :accent="true">
-    <Title tag="h2" class="name">
+    <Title v-if="title" tag="h2" class="name">
       {{ title }}
     </Title>
 
@@ -21,7 +21,7 @@ export default {
   props: {
     title: {
       type: String,
-      required: true,
+      required: false,
     },
     description: {
       type: String,
