@@ -92,11 +92,6 @@ export default {
   },
   methods: {
     acceptPrescription() {
-      // this.store.audio.swish.muted = true
-      // this.store.audio.swish.play()
-      // console.log('muted: ', this.store.audio.swish.muted)
-      // this.store.audio.swish.muted = false
-
       this.buttonDisabled = true
       setTimeout(() => {
         this.store.moveToNextStep()

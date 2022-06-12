@@ -36,7 +36,6 @@ import Background from '@/assets/doctor-bg.png'
 
 import Intro from '@/assets/animation/intro.mp4'
 import Travel from '@/assets/animation/travel.mp4'
-import End from '@/assets/animation/end.mp4'
 
 export default {
   name: 'AnimationContainer',
@@ -54,7 +53,6 @@ export default {
       animation: {
         intro: Intro,
         travel: Travel,
-        end: End,
       },
       Background,
       fadeOut: false,
