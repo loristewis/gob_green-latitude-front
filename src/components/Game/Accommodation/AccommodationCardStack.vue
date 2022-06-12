@@ -194,7 +194,7 @@ export default {
       height: 100%;
       max-width: 288px;
       margin: auto;
-      overflow: scroll;
+      overflow: hidden;
     }
   }
 
