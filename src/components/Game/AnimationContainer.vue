@@ -9,18 +9,22 @@
         <p>Passer l'introduction</p>
         <ChevronRightIcon class="hero-icon" />
       </div>
+
       <div
         v-if="store.currentAnimation === 'intro'"
         class="animation-intro-background"
       >
         <img :src="Background" alt="" />
       </div>
+
       <video
         ref="video"
         id="animation-video"
         @ended="videoEnded"
+        @click="$refs.video.play()"
         :class="fadeOut ? 'fading' : ''"
         muted
+        playsinline
       >
         <source :src="animation[store.currentAnimation]" type="video/mp4" />
       </video>
