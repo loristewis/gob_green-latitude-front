@@ -2,7 +2,7 @@
   <Container class="memories-container">
     <Menu />
 
-    <BaseCard class="memories-card">
+    <CardContainer class="memories-card">
       <Sticker theme="rose-yellow" class="memories-title" big>
         Souvenirs
       </Sticker>
@@ -10,20 +10,20 @@
       <p class="memories-intro">
         Section en construction... Revenez plus tard !
       </p>
-    </BaseCard>
+    </CardContainer>
   </Container>
 </template>
 
 <script>
-import { Container, Menu, BaseCard, Sticker } from '@/components/lib'
+import { Container, Menu, CardContainer, Sticker } from '@/components/lib'
 
 export default {
   name: 'Memories',
   components: {
     Container,
-    BaseCard,
-    Sticker,
     Menu,
+    CardContainer,
+    Sticker,
   },
 }
 </script>
@@ -32,6 +32,7 @@ export default {
 .memories-container {
   .memories-card {
     margin: 0 32px;
+    padding: 48px 32px 32px;
   }
 
   .memories-title {
