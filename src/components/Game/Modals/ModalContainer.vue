@@ -19,7 +19,6 @@ export default {
   props: {
     open: {
       type: Boolean,
-      required: true,
       default: false,
     },
   },
@@ -57,7 +56,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
   inset: 0;
   z-index: 10;
 

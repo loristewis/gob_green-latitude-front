@@ -12,7 +12,7 @@
     }"
   >
     <div>
-      <img :src="Suitcase" v-if="suitcase" />
+      <img :src="Suitcase" v-if="suitcase" alt="" />
 
       <p><slot /></p>
 

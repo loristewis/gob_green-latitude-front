@@ -2,26 +2,39 @@
   <div class="postcard" :class="result">
     <div class="postcard-grid">
       <div class="postcard-grid-destination">
-        <img v-if="trip.destination" :src="getImage(trip.destination)" />
+        <img v-if="trip.destination" :src="getImage(trip.destination)" alt="" />
       </div>
+
       <div class="postcard-grid-accommodation">
-        <img v-if="trip.accommodation" :src="getImage(trip.accommodation)" />
+        <img
+          v-if="trip.accommodation"
+          :src="getImage(trip.accommodation)"
+          alt=""
+        />
       </div>
+
       <div
         class="postcard-grid-transportation"
         :style="{ backgroundColor: transportColor }"
       >
-        <img v-if="trip.transportation" :src="getImage(trip.transportation)" />
+        <img
+          v-if="trip.transportation"
+          :src="getImage(trip.transportation)"
+          alt=""
+        />
       </div>
+
       <div
         class="postcard-grid-blank"
         :style="{ backgroundColor: randomColor }"
-      ></div>
+      />
     </div>
+
     <div class="postcard-destination-title">
       <img
         v-if="trip.destination"
         :src="getImage(trip.destination, titleFile)"
+        alt=""
       />
     </div>
   </div>
@@ -57,7 +70,7 @@ export default {
       const postcardColors = shuffleArray([...colors.postcard])
       console.log(postcardColors)
       const selectedColor = postcardColors.find(
-        (el) => el != this.trip.transportation.color
+        (el) => el !== this.trip.transportation.color
       )
       console.log(selectedColor)
       return `var(--color-${selectedColor})`

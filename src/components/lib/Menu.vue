@@ -51,7 +51,6 @@ export default {
           pollution: 0,
         }
       },
-      required: true,
     },
     displayScore: {
       type: Boolean,
@@ -78,7 +77,7 @@ export default {
   methods: {
     onClickHomeButton() {
       console.log('backtohome')
-      if (this.route.name === 'game' && this.store.currentStep != 'postcard') {
+      if (this.route.name === 'game' && this.store.currentStep !== 'postcard') {
         this.store.modal = 'home'
       } else {
         router.push('/')

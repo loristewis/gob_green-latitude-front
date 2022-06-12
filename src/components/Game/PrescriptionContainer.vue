@@ -1,6 +1,6 @@
 <template>
   <div class="prescription-container">
-    <img class="prescription-background" :src="Background" />
+    <img class="prescription-background" :src="Background" alt="" />
 
     <div>
       <BaseCard class="prescription-card" title="Dr Tamalou">
@@ -11,16 +11,16 @@
         <p class="prescription-intro">{{ prescription.intro }}</p>
 
         <div class="prescription-content">
-          <img :src="icons.environment" />
+          <img :src="icons.environment" alt="" />
 
           <p v-html="prescription.environment"></p>
 
-          <img :src="icons.wish" />
+          <img :src="icons.wish" alt="" />
 
           <p v-html="prescription.wish"></p>
         </div>
 
-        <img class="prescription-stamp" :src="Stamp" />
+        <img class="prescription-stamp" :src="Stamp" alt="" />
 
         <Button
           :isDisabled="this.buttonDisabled"
@@ -92,6 +92,11 @@ export default {
   },
   methods: {
     acceptPrescription() {
+      // this.store.audio.swish.muted = true
+      // this.store.audio.swish.play()
+      // console.log('muted: ', this.store.audio.swish.muted)
+      // this.store.audio.swish.muted = false
+
       this.buttonDisabled = true
       setTimeout(() => {
         this.store.moveToNextStep()

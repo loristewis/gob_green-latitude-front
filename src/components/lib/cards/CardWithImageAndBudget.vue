@@ -70,8 +70,7 @@ export default {
   width: 288px;
   max-width: 100%;
   margin: auto;
-  padding: 24px;
-  padding-bottom: 32px;
+  padding: 24px 24px 32px;
 
   .image {
     flex-grow: 1;

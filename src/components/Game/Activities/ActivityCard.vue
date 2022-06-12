@@ -119,12 +119,6 @@ export default {
 </script>
 
 <style lang="scss">
-//.flip-enter,
-//.flip-leave {
-//  transform: rotateY(180deg);
-//  opacity: 0;
-//}
-
 .flip-enter-active {
   transition: all 0.4s ease;
 }

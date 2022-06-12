@@ -31,14 +31,14 @@
 </template>
 
 <script>
-import { useStore } from '@/store/index'
-import { getRandomFromArray, getRandomInt } from '@/helpers'
-import { Title, Button, GradientOverlay } from '@/components/lib'
-
-import GameLayout from '@/components/GameLayout.vue'
 import IncidentCard from '@/components/Game/Incident/IncidentCard.vue'
 import IncidentChoiceCard from '@/components/Game/Incident/IncidentChoiceCard.vue'
 import IncidentOutcomeCard from '@/components/Game/Incident/IncidentOutcomeCard.vue'
+
+import GameLayout from '@/components/GameLayout.vue'
+import { Button, GradientOverlay, Title } from '@/components/lib'
+import { getRandomFromArray, getRandomInt } from '@/helpers'
+import { useStore } from '@/store/index'
 
 export default {
   name: 'IncidentContainer',
@@ -72,8 +72,8 @@ export default {
       const badOutcome = choice.outcomes[1]
 
       const dice = getRandomInt(11)
-      const outcome = dice > choice.risk ? goodOutcome : badOutcome
-      this.store.trip.incident.outcome = outcome
+      this.store.trip.incident.outcome =
+        dice > choice.risk ? goodOutcome : badOutcome
 
       this.store.finishStep({ next: false })
     },

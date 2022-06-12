@@ -13,7 +13,7 @@
         v-if="store.currentAnimation === 'intro'"
         class="animation-intro-background"
       >
-        <img :src="Background" />
+        <img :src="Background" alt="" />
       </div>
       <video
         ref="video"
@@ -122,12 +122,11 @@ export default {
     z-index: 1;
     color: var(--color-white);
     font-family: var(--font-title);
-    font-size: 1.1em;
+    font-size: 18px;
     font-weight: 600;
     display: flex;
     align-items: center;
     cursor: pointer;
-    font-size: 18px;
   }
 }
 </style>

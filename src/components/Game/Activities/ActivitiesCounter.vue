@@ -15,6 +15,7 @@
         :class="index <= 3 - left ? 'checked' : ''"
       >
         <CheckIcon class="hero-icon" />
+
         <span class="count">{{ index }}</span>
       </div>
     </div>
@@ -66,7 +67,7 @@ export default {
   }
 
   .counter {
-    display: flex;
+    display: grid;
     align-items: center;
     justify-content: center;
     height: 24px;
@@ -74,7 +75,6 @@ export default {
     border-radius: 50%;
     font-weight: 600;
     background-color: var(--color-beige-dark);
-    display: grid;
 
     .hero-icon {
       color: var(--color-white);

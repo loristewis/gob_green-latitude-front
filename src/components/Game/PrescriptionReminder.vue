@@ -2,10 +2,11 @@
   <div class="prescription-reminder-container">
     <div class="prescription-reminder">
       <div>
-        <img :src="environment" />
+        <img :src="environment" alt="" />
       </div>
+
       <div>
-        <img :src="wish" />
+        <img :src="wish" alt="" />
       </div>
     </div>
   </div>

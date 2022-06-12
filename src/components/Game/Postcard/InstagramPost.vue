@@ -1,20 +1,26 @@
 <template>
   <CardContainer class="instagram-post">
     <div class="post-header">
-      <img :src="GreenLatitude" />
+      <img :src="GreenLatitude" alt="" />
+
       <p class="account">{{ account }}</p>
     </div>
+
     <Postcard :trip="trip" :result="defeat ? 'defeat' : 'victory'" />
+
     <div class="post-content">
       <p class="post-caption">
         <span class="account">{{ account }}</span>
+
         <span class="caption">{{ caption }}</span>
       </p>
+
       <p class="post-hashtags">
         <span class="hashtag" v-for="(hashtag, i) in hashtags" :key="i">
           #{{ hashtag }}
         </span>
       </p>
+
       <ScoreContainer :small="true" :score="score" />
     </div>
   </CardContainer>

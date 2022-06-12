@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     defeatModal() {
-      return this.store.defeat != null && this.store.currentStep != 'postcard'
+      return this.store.defeat != null && this.store.currentStep !== 'postcard'
     },
     getWish() {
       this.store.trip.wish = this.wishes[getRandomInt(7)].attributes.title

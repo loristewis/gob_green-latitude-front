@@ -1,40 +1,48 @@
 <template>
-  <BaseCard class="presentation-card">
+  <CardContainer class="presentation-card">
     <div class="presentation-card-main">
       <div class="presentation-card-portrait">
-        <img :src="member.portrait" />
+        <img :src="member.portrait" alt="" />
       </div>
+
       <div class="presentation-card-infos">
         <div>
           <p>Nom</p>
+
           <p>{{ member.lastname }}</p>
         </div>
+
         <div>
           <p>Prénom</p>
+
           <p>{{ member.firstname }}</p>
         </div>
+
         <div>
           <p>Rôle</p>
+
           <p>{{ member.role }}</p>
         </div>
       </div>
     </div>
+
     <div class="presentation-card-tags">
       <span v-for="(tag, i) in member.tags" :key="i">#{{ tag }}</span>
     </div>
+
     <div class="presentation-card-stamp">
-      <img :src="member.stamp" />
+      <img :src="member.stamp" alt="" />
     </div>
-  </BaseCard>
+  </CardContainer>
 </template>
 
 <script>
-import { BaseCard } from '@/components/lib'
+import { CardContainer } from '@/components/lib'
 
 export default {
   name: 'PresentationCard',
   components: {
-    BaseCard,
+    CardContainer,
   },
   props: {
     member: {

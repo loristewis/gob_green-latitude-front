@@ -58,12 +58,12 @@
 </template>
 
 <script>
-import { useStore } from '@/store'
-import { getImage, shuffleArray } from '@/helpers'
+import { Button, CardContainer, Sticker, Title } from '@/components/lib'
 import { colorCombos } from '@/constants'
+import { getImage, shuffleArray } from '@/helpers'
+import { useStore } from '@/store'
 
 import TransportationOption from './TransportationOption.vue'
-import { CardContainer, Title, Sticker, Button } from '@/components/lib'
 
 export default {
   name: 'TransportationCard',
@@ -96,18 +96,6 @@ export default {
       type: String,
     },
   },
-  computed: {
-    transportColor() {
-      return `var(--color-${this.transport.color})`
-    },
-    stickerTheme() {
-      const combos = shuffleArray([...colorCombos])
-      const selectedCombo = combos.find(
-        (el) => el.background != this.transport.color
-      )
-      return selectedCombo.id
-    },
-  },
   data() {
     return {
       selectedOptionIndex: 0,
@@ -116,6 +104,18 @@ export default {
       processedDescription: this.wording(this.transport.description),
       getImage,
     }
+  },
+  computed: {
+    transportColor() {
+      return `var(--color-${this.transport.color})`
+    },
+    stickerTheme() {
+      const combos = shuffleArray([...colorCombos])
+      const selectedCombo = combos.find(
+        (el) => el.background !== this.transport.color
+      )
+      return selectedCombo.id
+    },
   },
   setup() {
     const store = useStore()
@@ -138,10 +138,9 @@ export default {
       }
     },
     sortOptions(array) {
-      const sorted = array.sort((a, b) => {
+      return array.sort((a, b) => {
         return a.attributes.budget - b.attributes.budget
       })
-      return sorted
     },
     selectOption(index) {
       this.selectedOptionIndex = index
