@@ -74,6 +74,7 @@ export const useStore = defineStore('main', {
     finishStep({ next: next } = { next: true }) {
       console.log('finishStep')
       this.calculateScore()
+
       if (!this.defeat) {
         if (next) {
           setTimeout(() => this.moveToNextStep(), 2500)
@@ -81,7 +82,7 @@ export const useStore = defineStore('main', {
       } else {
         setTimeout(() => {
           this.modal = 'defeat'
-        }, 500)
+        }, 1000)
       }
     },
     resetState() {
