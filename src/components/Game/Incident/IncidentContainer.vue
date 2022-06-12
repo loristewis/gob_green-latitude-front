@@ -25,13 +25,12 @@
         />
       </div>
 
-      <GradientOverlay v-if="isPhone" />
+      <GradientOverlay />
     </template>
   </GameLayout>
 </template>
 
 <script>
-import { screenSize } from '@/mixins/index.js'
 import { useStore } from '@/store/index'
 import { getRandomFromArray, getRandomInt } from '@/helpers'
 import { Title, Button, GradientOverlay } from '@/components/lib'
@@ -44,7 +43,6 @@ import IncidentOutcomeCard from '@/components/Game/Incident/IncidentOutcomeCard.
 export default {
   name: 'IncidentContainer',
   props: ['elements'],
-  mixins: [screenSize],
   components: {
     GameLayout,
     Title,

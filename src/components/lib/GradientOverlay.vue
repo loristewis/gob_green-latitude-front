@@ -1,10 +1,13 @@
 <template>
-  <div class="gradient-overlay" />
+  <div class="gradient-overlay" v-if="isPhone" />
 </template>
 
 <script>
+import { screenSize } from '@/mixins/index.js'
+
 export default {
   name: 'GradientOverlay',
+  mixins: [screenSize],
 }
 </script>
 

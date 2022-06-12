@@ -13,13 +13,12 @@
         />
       </div>
 
-      <GradientOverlay v-if="isPhone" />
+      <GradientOverlay />
     </template>
   </GameLayout>
 </template>
 
 <script>
-import { screenSize } from '@/mixins'
 import { useStore } from '@/store'
 import { shuffleArray, getRandomInt } from '@/helpers'
 import { transportTags } from '@/constants'
@@ -31,7 +30,6 @@ import TransportationCard from './TransportationCard.vue'
 export default {
   name: 'TransportationContainer',
   props: ['elements'],
-  mixins: [screenSize],
   components: {
     GradientOverlay,
     GameLayout,

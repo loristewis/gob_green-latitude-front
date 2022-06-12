@@ -36,8 +36,8 @@ import {
   Sticker,
   GradientOverlay,
 } from '@/components/lib'
-import InstagramPost from './InstagramPost.vue'
 
+import InstagramPost from './InstagramPost.vue'
 import GameLayout from '@/components/GameLayout.vue'
 
 export default {
