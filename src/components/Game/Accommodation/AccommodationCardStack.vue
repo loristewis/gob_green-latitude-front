@@ -113,6 +113,7 @@ export default {
       }
     },
     onSwipeLeft() {
+      if (this.store.soundon) this.store.audio.swipe.play()
       this.store.selected = this.elements[this.elements.length - 2]
       this.store.tought = this.store.selected.thought
 
@@ -121,6 +122,7 @@ export default {
       }, 300)
     },
     onSwipeRight() {
+      if (this.store.soundon) this.store.audio.swipe.play()
       this.accommodationSelected = true
       this.$emit('swipe-right')
     },

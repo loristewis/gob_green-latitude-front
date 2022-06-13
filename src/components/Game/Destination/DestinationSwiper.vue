@@ -22,6 +22,8 @@ import { getImage } from '@/helpers'
 import { Carousel } from '@/components/lib'
 import { SwiperSlide } from 'swiper/vue'
 
+import Swipe from '@/assets/audio/swipe.mp3'
+
 import DestinationCard from './DestinationCard.vue'
 
 export default {
@@ -54,7 +56,10 @@ export default {
     }
     const onSlideChange = (e) => {
       console.log('slide change')
-      if (store.soundon) store.audio.swish.play()
+
+      if (store.soundon) {
+        new Audio(Swipe).play()
+      }
       store.selected = props.destinations[e.realIndex].attributes
       store.thought = store.selected.thoughts
         ? store.selected.thoughts

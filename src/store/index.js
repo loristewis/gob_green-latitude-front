@@ -74,6 +74,7 @@ export const useStore = defineStore('main', {
     finishStep({ next: next } = { next: true }) {
       console.log('finishStep')
       this.calculateScore()
+      if (this.soundon) this.audio.scores.play()
 
       if (!this.defeat) {
         if (next) {
@@ -82,6 +83,9 @@ export const useStore = defineStore('main', {
       } else {
         setTimeout(() => {
           this.modal = 'defeat'
+          if (this.soundon) {
+            this.audio.modal.play()
+          }
         }, 1000)
       }
     },

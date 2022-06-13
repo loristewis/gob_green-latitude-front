@@ -5,7 +5,7 @@
     <div class="buttons-container">
       <div class="sound-button-container">
         <IconButton
-          @click="store.toggleSound"
+          @click="onClickToggleSound"
           :icon="store.soundon ? VolumeUpIcon : VolumeOffIcon"
           background-color="transparent"
           icon-color="#cebea8"
@@ -75,6 +75,12 @@ export default {
     }
   },
   methods: {
+    onClickToggleSound() {
+      this.store.toggleSound()
+      if (this.store.soundon) {
+        this.store.audio.click.play()
+      }
+    },
     onClickHomeButton() {
       console.log('backtohome')
       if (this.route.name === 'game' && this.store.currentStep !== 'postcard') {

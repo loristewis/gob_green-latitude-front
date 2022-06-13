@@ -26,6 +26,8 @@ import { Carousel } from '@/components/lib'
 import ActivitiesCounter from '@/components/Game/Activities/ActivitiesCounter.vue'
 import ActivityCard from '@/components/Game/Activities/ActivityCard.vue'
 
+import Swipe from '@/assets/audio/swipe.mp3'
+
 import { SwiperSlide } from 'swiper/vue'
 
 export default {
@@ -56,7 +58,10 @@ export default {
 
     const onSlideChange = (e) => {
       console.log('slide change')
-      if (store.soundon) store.audio.swish.play()
+
+      if (store.soundon) {
+        new Audio(Swipe).play()
+      }
       store.selected = props.activities[e.realIndex].attributes
       store.thought = store.selected.thoughts
         ? store.selected.thoughts

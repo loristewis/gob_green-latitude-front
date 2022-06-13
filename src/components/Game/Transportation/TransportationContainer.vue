@@ -62,6 +62,10 @@ export default {
         if (this.store.selected === element.attributes) {
           this.store.selected = null
           return
+        } else {
+          if (this.store.soundon) {
+            this.store.audio.click.play()
+          }
         }
       }
       this.store.selected = element.attributes

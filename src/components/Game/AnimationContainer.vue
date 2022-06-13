@@ -23,7 +23,6 @@
         @ended="videoEnded"
         @click="$refs.video.play()"
         :class="fadeOut ? 'fading' : ''"
-        muted
         playsinline
       >
         <source :src="animation[store.currentAnimation]" type="video/mp4" />
@@ -63,6 +62,11 @@ export default {
     }
   },
   mounted() {
+    if (this.store.currentAnimation === 'travel') {
+      if (this.store.soundon) {
+        this.store.audio.splash.play()
+      }
+    }
     if (this.store.skipIntro && this.store.currentAnimation === 'intro') {
       this.store.moveToNextStep()
     } else {

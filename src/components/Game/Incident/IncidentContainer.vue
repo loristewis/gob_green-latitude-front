@@ -66,6 +66,11 @@ export default {
       incident,
     }
   },
+  mounted() {
+    if (this.store.soundon) {
+      this.store.audio.incident.play()
+    }
+  },
   methods: {
     getOutcome(choice) {
       const goodOutcome = choice.outcomes[0]
