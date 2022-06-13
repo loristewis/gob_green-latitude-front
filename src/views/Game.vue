@@ -67,7 +67,6 @@ export default {
   },
   data() {
     return {
-      divider: false,
       wishes: [],
       elements: {
         destination: [],
