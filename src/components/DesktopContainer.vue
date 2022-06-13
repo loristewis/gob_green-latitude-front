@@ -111,7 +111,11 @@ export default {
   }
 
   .left {
+    min-width: 0;
+    max-width: 100%;
+
     img {
+      width: 100%;
       max-width: 400px;
     }
 
@@ -175,7 +179,9 @@ export default {
 
   @include screen-sm {
     height: 844px;
-    width: 480px;
+    width: 100%;
+    max-width: 480px;
+    min-width: 432px;
     max-height: 90vh;
     border: 16px solid var(--color-white);
     border-radius: 24px;
