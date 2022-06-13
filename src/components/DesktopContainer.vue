@@ -163,7 +163,7 @@ export default {
 .phone-container {
   position: relative;
   width: 100%;
-  height: calc(100% + 1px);
+  height: 100%;
   background-color: var(--color-beige-cool);
   flex-shrink: 0;
   overflow: hidden;
@@ -175,13 +175,10 @@ export default {
 
   @include screen-sm {
     height: 844px;
-    width: 414px;
+    width: 480px;
     max-height: 90vh;
-    //max-width: 90%;
     border: 16px solid var(--color-white);
     border-radius: 24px;
-    //max-width: 375px;
-    //max-height: 800px;
   }
 }
 </style>
