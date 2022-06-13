@@ -179,9 +179,7 @@ export default {
 
   @include screen-sm {
     height: 844px;
-    width: 100%;
-    max-width: 480px;
-    min-width: 432px;
+    width: 480px;
     max-height: 90vh;
     border: 16px solid var(--color-white);
     border-radius: 24px;
