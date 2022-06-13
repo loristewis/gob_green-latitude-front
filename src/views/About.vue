@@ -25,7 +25,7 @@ import { team } from '@/constants'
 
 import PresentationCard from '@/components/about/PresentationCard.vue'
 import { Container, Sticker, Menu } from '@/components/lib'
-import Gobelins from '@/assets/Logos_Gobelins_CCI.png'
+import Gobelins from '@/assets/Logos_Gobelins_CCI_beige.png'
 
 export default {
   name: 'About',
@@ -62,7 +62,7 @@ export default {
 
   .logo-gobelins {
     margin-top: 32px;
-    max-width: 100px;
+    max-width: 120px;
   }
 }
 </style>
