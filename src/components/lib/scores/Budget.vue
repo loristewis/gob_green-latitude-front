@@ -3,7 +3,7 @@
     class="budget-container"
     :style="{
       height:
-        currentValue < 12 ? calculateHeight(12) : calculateHeight(currentValue),
+        currentValue < 10 ? calculateHeight(10) : calculateHeight(currentValue),
     }"
   >
     <div class="content">{{ currentValue }}</div>
