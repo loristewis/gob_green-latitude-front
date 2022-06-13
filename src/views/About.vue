@@ -46,9 +46,11 @@ export default {
 
 <style lang="scss">
 .about-page {
+  #menu-container {
+    height: 32px;
+  }
+
   &-title {
-    position: absolute;
-    top: 72px;
     left: 8px;
     transform: rotate(-3deg);
     z-index: 1;

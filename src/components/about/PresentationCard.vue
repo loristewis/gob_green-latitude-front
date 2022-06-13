@@ -67,7 +67,14 @@ export default {
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr 2fr;
-    padding-bottom: 12px;
+    align-items: flex-end;
+  }
+
+  &-portrait {
+    img {
+      border-radius: 6px;
+      width: 100%;
+    }
   }
 
   &-infos {
@@ -84,6 +91,7 @@ export default {
 
   &-tags {
     > span {
+      font-size: 10px;
       padding-left: 8px;
       color: var(--color-hashtag);
     }
