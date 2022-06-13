@@ -141,7 +141,7 @@ export default {
 
   &.from-left {
     .gauge {
-      left: 26px;
+      left: 42px;
       padding-left: 0;
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;
@@ -156,7 +156,7 @@ export default {
     justify-content: right;
 
     .gauge {
-      right: 26px;
+      right: 42px;
       padding-right: 0;
       justify-content: right;
       flex-direction: row-reverse;
