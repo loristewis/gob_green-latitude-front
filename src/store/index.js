@@ -221,21 +221,29 @@ export const useStore = defineStore('main', {
           wellness = 0
         }
         if (this.trip.destination.category === 'bof') {
-          wellness = wellness / 2
+          if (wellness < 0) {
+            wellness = wellness * 2
+          } else {
+            wellness = wellness / 2
+          }
         }
         if (!wishes.includes(this.trip.wish)) {
-          wellness = wellness / 2
+          if (wellness < 0) {
+            wellness = wellness * 2
+          } else {
+            wellness = wellness / 2
+          }
         } else {
-          wellness = wellness * 2
+          if (wellness < 0) {
+            wellness = wellness / 2
+          } else {
+            wellness = wellness * 2
+          }
         }
 
-        this.score.wellness += this.divider ? wellness / 2 : wellness
-        this.score.pollution += this.divider
-          ? activity.pollution / 2
-          : activity.pollution
-        this.score.budget -= this.divider
-          ? activity.budget / 2
-          : activity.budget
+        this.score.wellness += wellness
+        this.score.pollution += activity.pollution
+        this.score.budget -= activity.budget
       }
     },
     wording(text) {
