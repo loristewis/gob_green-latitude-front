@@ -235,8 +235,6 @@ export default {
 
   &.selected {
     .transport-card-head {
-      cursor: default;
-
       .image-container {
         border-radius: 24px 0 0 0;
       }
