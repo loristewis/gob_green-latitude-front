@@ -1,7 +1,7 @@
 export const instagramPost = {
   victory: {
     caption: {
-      intro: ['des vacances de rêve à ::destination::... ☺️✨'],
+      intro: ['des vacances de rêve à ::destination::... ✨'],
       text: {
         loin: [
           'au rythme du réchauffement climatique on aura peut-être le même climat d’ici quelques années 😉',

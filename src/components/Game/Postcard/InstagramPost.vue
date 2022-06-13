@@ -105,7 +105,7 @@ export default {
 
       let caption = ''
 
-      let intro = 'enfin de retour de ::destination::...'
+      let intro = getRandomFromArray(wording.intro)
       intro = intro.replace(
         '::destination::',
         this.formatDestination(destination.title)

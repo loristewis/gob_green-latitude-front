@@ -10,6 +10,15 @@ export const names = {
     'Valentina',
     'Giulia',
   ],
-  es: ['Maria', 'Pablo', 'Diego', 'Jesus', 'Pedro'],
-  fr: ['Marie', 'Georges-Alain'],
+  es: ['Maria', 'Pablo', 'Diego', 'Pedro', 'Esteban', 'Carmen'],
+  fr: [
+    'Mathilde',
+    'Georges-Alain',
+    'Adèle',
+    'Justin',
+    'Monique',
+    'Nat',
+    'Mélanie',
+    'Robin',
+  ],
 }
