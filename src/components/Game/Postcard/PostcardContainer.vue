@@ -64,6 +64,7 @@ export default {
   },
   mounted() {
     if (this.store.soundon) {
+      this.store.audio.music.pause()
       if (this.store.defeat) {
         this.store.audio.defeat.play()
       } else {

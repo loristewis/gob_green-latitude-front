@@ -21,7 +21,7 @@ export const defeatPopup = {
     type: 'pollution',
     title: 'Crise de conscience',
     description:
-      'Votre conscience écologique vous rattrape… Des décisions un peu plus raisonnables vous auraient peut être permis de profiter davantage de ces vacances…',
+      'Votre conscience écologique vous rattrape… Des décisions un peu plus raisonnables vous auraient peut-être permis de profiter davantage de ces vacances…',
     image: PollutionBad,
   },
 }

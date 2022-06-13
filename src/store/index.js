@@ -39,6 +39,11 @@ export const useStore = defineStore('main', {
     toggleSound() {
       console.log('toggle sound')
       this.soundon = !this.soundon
+      if (this.soundon) {
+        this.audio.music.play()
+      } else {
+        this.audio.music.pause()
+      }
       console.log('sound: ', this.soundon)
     },
     incrementProgressionIndex() {
@@ -82,11 +87,8 @@ export const useStore = defineStore('main', {
         }
       } else {
         let delay = 1600
-        if (
-          this.currentStep === 'incident' ||
-          this.currentStep === 'activities'
-        ) {
-          delay = 3000
+        if (this.currentStep === 'activities') {
+          delay = 2600
         }
         setTimeout(() => {
           this.modal = 'defeat'

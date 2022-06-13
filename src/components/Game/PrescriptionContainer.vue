@@ -93,6 +93,14 @@ export default {
   methods: {
     acceptPrescription() {
       this.buttonDisabled = true
+
+      this.store.audio.music.volume = 0.2
+      this.store.audio.music.loop = true
+
+      if (this.store.soundon) {
+        this.store.audio.music.currentTime = 0
+        this.store.audio.music.play()
+      }
       setTimeout(() => {
         this.store.moveToNextStep()
       }, 2)

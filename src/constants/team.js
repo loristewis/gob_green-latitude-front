@@ -34,7 +34,7 @@ export const team = [
     lastname: 'Majou',
     firstname: 'Marie',
     role: 'Figmagicienne',
-    tags: ['design', 'ux', 'ui', 'portraits', 'portraits', 'jul', 'coucoumidi'],
+    tags: ['design', 'ux', 'ui', 'portraits', 'jul', 'coucoumidi'],
     stamp: Stamp,
     portrait: Marie,
   },
