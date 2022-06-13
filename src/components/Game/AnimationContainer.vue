@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="animation-container" @click="store.moveToNextStep">
+    <div class="animation-container" @click="skipAnimation">
       <div class="animation-skip">
         <p v-if="store.currentAnimation === 'intro'">Passer l'introduction</p>
 
@@ -86,7 +86,7 @@ export default {
       }
     }
     if (this.store.skipIntro && this.store.currentAnimation === 'intro') {
-      this.store.moveToNextStep()
+      this.store.moveToStep('prescription')
     } else {
       this.$refs.video.play()
     }
@@ -125,6 +125,13 @@ export default {
       setTimeout(() => {
         this.store.moveToNextStep()
       }, 1000)
+    },
+    skipAnimation() {
+      if (this.store.currentAnimation === 'intro') {
+        this.store.moveToStep('prescription')
+      } else if (this.store.currentAnimation === 'travel') {
+        this.store.moveToStep('incident')
+      }
     },
   },
 }
