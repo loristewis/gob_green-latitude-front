@@ -138,10 +138,12 @@ export const useStore = defineStore('main', {
       }
 
       if (this.score.budget <= scoreConstants.budget.limit) {
-        defeats.push({
-          type: 'budget',
-          score: Math.abs(scoreConstants.budget.limit - this.score.budget),
-        })
+        if (this.activitiesCount != 3) {
+          defeats.push({
+            type: 'budget',
+            score: Math.abs(scoreConstants.budget.limit - this.score.budget),
+          })
+        }
       }
 
       if (this.score.pollution >= scoreConstants.pollution.limit) {
