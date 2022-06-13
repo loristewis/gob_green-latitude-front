@@ -33,26 +33,26 @@
         <div class="punch" />
       </div>
 
-      <Transition name="slide-up">
-        <div v-if="isSelected(transport)" class="transport-card-body">
-          <TransportationOption
-            @select-option="selectOption(i)"
-            v-for="(option, i) in sortOptions(transport.options.data)"
-            :option="option"
-            :budget="transport.budget + option.attributes.budget"
-            :selected="this.selectedOptionIndex === i"
-            :key="i"
-          />
+      <!--      <Transition name="slide-up">-->
+      <div v-if="isSelected(transport)" class="transport-card-body">
+        <TransportationOption
+          @select-option="selectOption(i)"
+          v-for="(option, i) in sortOptions(transport.options.data)"
+          :option="option"
+          :budget="transport.budget + option.attributes.budget"
+          :selected="this.selectedOptionIndex === i"
+          :key="i"
+        />
 
-          <Button
-            :isDisabled="this.buttonDisabled"
-            @click="validateOption"
-            class="reservation-button"
-          >
-            On réserve !
-          </Button>
-        </div>
-      </Transition>
+        <Button
+          :isDisabled="this.buttonDisabled"
+          @click="validateOption"
+          class="reservation-button"
+        >
+          On réserve !
+        </Button>
+      </div>
+      <!--      </Transition>-->
     </div>
   </CardContainer>
 </template>
