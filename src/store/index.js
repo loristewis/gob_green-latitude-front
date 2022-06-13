@@ -81,12 +81,19 @@ export const useStore = defineStore('main', {
           setTimeout(() => this.moveToNextStep(), 2500)
         }
       } else {
+        let delay = 2000
+        if (
+          this.currentStep === 'incident' ||
+          this.currentStep === 'activities'
+        ) {
+          delay = 4000
+        }
         setTimeout(() => {
           this.modal = 'defeat'
           if (this.soundon) {
             this.audio.modal.play()
           }
-        }, 1000)
+        }, delay)
       }
     },
     resetState() {
@@ -220,6 +227,7 @@ export const useStore = defineStore('main', {
         if (!wellness) {
           wellness = 0
         }
+
         if (this.trip.destination.category === 'bof') {
           if (wellness < 0) {
             wellness = wellness * 2
@@ -228,10 +236,12 @@ export const useStore = defineStore('main', {
           }
         }
         if (!wishes.includes(this.trip.wish)) {
-          if (wellness < 0) {
-            wellness = wellness * 2
-          } else {
-            wellness = wellness / 2
+          if (this.trip.destination.category != 'bof') {
+            if (wellness < 0) {
+              wellness = wellness * 2
+            } else {
+              wellness = wellness / 2
+            }
           }
         } else {
           if (wellness < 0) {
