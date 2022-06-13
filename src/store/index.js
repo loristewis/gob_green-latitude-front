@@ -81,12 +81,12 @@ export const useStore = defineStore('main', {
           setTimeout(() => this.moveToNextStep(), 2500)
         }
       } else {
-        let delay = 2000
+        let delay = 1600
         if (
           this.currentStep === 'incident' ||
           this.currentStep === 'activities'
         ) {
-          delay = 4000
+          delay = 3000
         }
         setTimeout(() => {
           this.modal = 'defeat'

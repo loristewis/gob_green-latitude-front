@@ -9,7 +9,7 @@
       <Swipeable
         class="swipeable-card"
         ref="swipeable"
-        v-for="el in elements"
+        v-for="(el, i) in elements"
         :key="el.id"
         :allow-swipe-y="false"
         :allow-swipe-left="elements.length !== 1"
@@ -29,6 +29,7 @@
               : el.attributes.budget
           "
           :image="getImage(el)"
+          :sticker="this.displayStickers.includes(i) ? true : false"
         />
       </Swipeable>
     </div>
@@ -53,7 +54,7 @@
 
 <script>
 import { Swipeable, IconButton, CardWithImageAndBudget } from '@/components/lib'
-import { getImage } from '@/helpers'
+import { getImage, getRandomInt } from '@/helpers'
 import { useStore } from '@/store'
 
 import AccommodationGauge from './AccommodationGauge.vue'
@@ -89,6 +90,7 @@ export default {
       CheckIcon,
       trashIconStyle: {},
       checkIconStyle: {},
+      displayStickers: [],
     }
   },
   mounted() {
@@ -96,6 +98,11 @@ export default {
     this.store.thought = this.store.selected.thoughts
       ? this.store.selected.thoughts
       : this.store.thought
+
+    const gemsNumber = Math.random() > 0.5 ? 1 : 2
+    for (let i = 0; i < gemsNumber; i++) {
+      this.displayStickers.push(getRandomInt(this.elements.length - 1))
+    }
   },
   methods: {
     onSwipingLeft() {

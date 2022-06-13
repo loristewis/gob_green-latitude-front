@@ -1,6 +1,10 @@
 <template>
   <CardContainer class="card-with-image-and-budget-container">
-    <div class="image" :style="{ backgroundImage: `url(${image})` }" />
+    <div class="image" :style="{ backgroundImage: `url(${image})` }">
+      <div class="sticker-perle-rare" v-if="sticker">
+        <img :src="Sticker" />
+      </div>
+    </div>
 
     <div class="infos">
       <Price v-if="budget" :value="budget" />
@@ -21,6 +25,8 @@
 <script>
 import { CardContainer, Price, Title } from '@/components/lib'
 import { useStore } from '@/store/index.js'
+
+import Sticker from '@/assets/perle-rare.png'
 
 export default {
   name: 'CardWithImageAndBudget',
@@ -44,6 +50,10 @@ export default {
     budget: {
       type: Number,
     },
+    sticker: {
+      type: Boolean,
+      default: false,
+    },
   },
   setup() {
     const store = useStore()
@@ -57,6 +67,7 @@ export default {
     return {
       processedTitle: this.wording(this.title),
       processedDescription: this.wording(this.description),
+      Sticker,
     }
   },
 }
@@ -78,6 +89,19 @@ export default {
     width: 100%;
     background: no-repeat center;
     background-size: contain;
+  }
+
+  .sticker-perle-rare {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    max-height: 66%;
+    height: 86px;
+    transform: rotate(16deg);
+
+    img {
+      height: 100%;
+    }
   }
 
   .infos {
