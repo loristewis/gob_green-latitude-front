@@ -1,25 +1,41 @@
 <template>
   <transition name="fade">
-    <div id="animation-container">
-      <div
-        v-if="store.currentAnimation === 'intro'"
-        @click="store.moveToNextStep"
-        id="animation-skip"
-      >
-        <p>Passer l'introduction</p>
+    <div id="animation-container" @click="store.moveToNextStep">
+      <div id="animation-skip">
+        <p v-if="store.currentAnimation === 'intro'">Passer l'introduction</p>
+
+        <p v-else-if="store.currentAnimation === 'travel'">Passer à la suite</p>
+
         <ChevronRightIcon class="hero-icon" />
       </div>
 
-      <div
-        v-if="store.currentAnimation === 'intro'"
-        class="animation-intro-background"
-      >
-        <img :src="Background" alt="" />
+      <div class="animation-background" :style="backgroundStyle">
+        <img
+          v-if="backgroundImage && showBackgroundImage"
+          :src="backgroundImage"
+          alt=""
+        />
       </div>
 
       <video
+        v-if="isMobile"
         ref="video"
-        id="animation-video"
+        class="animation-video"
+        @play="videoStarted"
+        @ended="videoEnded"
+        @click="$refs.video.play()"
+        :class="fadeOut ? 'fading' : ''"
+        playsinline
+        muted
+      >
+        <source :src="animation[store.currentAnimation]" type="video/mp4" />
+      </video>
+
+      <video
+        v-else
+        ref="video"
+        class="animation-video"
+        @play="videoStarted"
         @ended="videoEnded"
         @click="$refs.video.play()"
         :class="fadeOut ? 'fading' : ''"
@@ -35,7 +51,8 @@
 import { useStore } from '@/store'
 import { ChevronRightIcon } from '@heroicons/vue/solid'
 
-import Background from '@/assets/doctor-bg.png'
+import BackgroundIntro from '@/assets/doctor-bg.png'
+import BackgroundTravel from '@/assets/depart27.jpeg'
 
 import Intro from '@/assets/animation/intro.mp4'
 import Travel from '@/assets/animation/travel.mp4'
@@ -57,8 +74,9 @@ export default {
         intro: Intro,
         travel: Travel,
       },
-      Background,
+      BackgroundIntro,
       fadeOut: false,
+      showBackgroundImage: false,
     }
   },
   mounted() {
@@ -73,9 +91,37 @@ export default {
       this.$refs.video.play()
     }
   },
+  computed: {
+    backgroundImage() {
+      if (this.store.currentAnimation === 'intro') return BackgroundIntro
+      // if (this.store.currentAnimation === 'travel') return BackgroundTravel
+      return null
+    },
+    backgroundStyle() {
+      if (this.store.currentAnimation === 'intro')
+        return {
+          backgroundColor: '#1F1F1F',
+        }
+
+      // if (this.store.currentAnimation === 'travel') return {}
+
+      return null
+    },
+  },
   methods: {
+    isMobile() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    },
+    videoStarted() {
+      setTimeout(() => {
+        this.showBackgroundImage = true
+      }, 2000)
+    },
     videoEnded() {
       this.fadeOut = true
+
       setTimeout(() => {
         this.store.moveToNextStep()
       }, 1000)
@@ -94,7 +140,7 @@ export default {
   font-size: 0;
   z-index: 10;
 
-  .animation-intro-background {
+  .animation-background {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -108,7 +154,7 @@ export default {
     }
   }
 
-  #animation-video {
+  .animation-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
