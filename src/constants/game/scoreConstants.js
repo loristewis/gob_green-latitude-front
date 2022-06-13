@@ -1,6 +1,6 @@
 export const scoreConstants = {
   wellness: {
-    initial: 2,
+    initial: 3,
     limit: 0,
   },
   budget: {
