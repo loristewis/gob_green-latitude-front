@@ -146,10 +146,6 @@ export default {
     margin-bottom: 16px !important;
   }
 
-  &-intro {
-    font-size: 14px;
-  }
-
   &-content {
     display: grid;
     grid-template-columns: 64px auto;
