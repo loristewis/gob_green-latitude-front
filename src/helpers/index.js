@@ -21,13 +21,13 @@ export const shuffleArray = (array) => {
 export const cleanString = (string) => {
   let result = string
 
-  result = string.replace('de le', 'du')
-  result = result.replace('de Le', 'du')
+  result = string.replace(' de le ', ' du ')
+  result = result.replace(' de Le ', ' du ')
 
-  result = result.replace('à le', 'au')
-  result = result.replace('à Le', 'au')
+  result = result.replace(' à le ', ' au ')
+  result = result.replace(' à Le ', ' au ')
 
-  result = result.replace(/de ([a, e, i, o, u, y])/, "d'$1")
+  result = result.replace(/ de ([a, e, i, o, u, y])/, " d'$1")
 
   return result
 }
