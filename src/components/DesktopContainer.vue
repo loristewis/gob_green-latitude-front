@@ -111,7 +111,11 @@ export default {
   }
 
   .left {
+    min-width: 0;
+    max-width: 100%;
+
     img {
+      width: 100%;
       max-width: 400px;
     }
 

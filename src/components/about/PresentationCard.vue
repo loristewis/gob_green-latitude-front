@@ -67,10 +67,11 @@ export default {
     display: grid;
     grid-gap: 16px;
     grid-template-columns: 1fr 2fr;
-    align-items: flex-end;
+    align-items: center;
   }
 
   &-portrait {
+    font-size: 0;
     img {
       border-radius: 6px;
       width: 100%;

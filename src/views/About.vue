@@ -52,6 +52,7 @@ export default {
 
   &-title {
     left: 8px;
+    margin-bottom: 8px;
     transform: rotate(-3deg);
     z-index: 1;
   }

@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
-    <div id="animation-container" @click="store.moveToNextStep">
-      <div id="animation-skip">
+    <div class="animation-container" @click="store.moveToNextStep">
+      <div class="animation-skip">
         <p v-if="store.currentAnimation === 'intro'">Passer l'introduction</p>
 
         <p v-else-if="store.currentAnimation === 'travel'">Passer à la suite</p>
@@ -131,7 +131,7 @@ export default {
 </script>
 
 <style lang="scss">
-#animation-container {
+.animation-container {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -166,7 +166,7 @@ export default {
     }
   }
 
-  #animation-skip {
+  .animation-skip {
     filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.7));
     position: absolute;
     top: 12px;
