@@ -23,7 +23,11 @@
           class="accommodation-card-container"
           :title="el.attributes.title"
           :description="el.attributes.description"
-          :budget="el.attributes.budget"
+          :budget="
+            store.trip.destination.category === 'cher'
+              ? el.attributes.budget * 2
+              : el.attributes.budget
+          "
           :image="getImage(el)"
         />
       </Swipeable>
