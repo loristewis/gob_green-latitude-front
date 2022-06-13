@@ -5,6 +5,7 @@
       backgroundImage: `url(${Pattern})`,
     }"
   >
+    <AnimatedBackground />
     <img class="main-logo" :src="Logo" alt="Green Latitude" />
 
     <div class="title-screen-buttons">
@@ -30,7 +31,7 @@
 <script>
 import router from '@/router'
 import { useStore } from '@/store'
-import { Button } from '@/components/lib'
+import { Button, AnimatedBackground } from '@/components/lib'
 
 import Pattern from '@/assets/splash/pattern-tile.jpg'
 import Logo from '@/assets/green-latitude.svg'
@@ -39,6 +40,7 @@ export default {
   name: 'TitleScreen',
   components: {
     Button,
+    AnimatedBackground,
   },
   data() {
     return {
