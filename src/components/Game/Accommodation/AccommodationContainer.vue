@@ -40,7 +40,7 @@ export default {
         return
       }
 
-      this.store.trip.accommodation = this.store.selected.attributes
+      this.store.trip.accommodation = this.store.selected
       this.store.selected = null
 
       console.log(this.store.trip.accommodation)

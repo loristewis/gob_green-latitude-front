@@ -99,7 +99,9 @@ export default {
 
       if (this.store.soundon) {
         this.store.audio.music.currentTime = 0
-        this.store.audio.music.play()
+        setTimeout(() => {
+          if (this.store.soundon) this.store.audio.music.play()
+        }, 2600)
       }
       setTimeout(() => {
         this.store.moveToNextStep()
