@@ -94,7 +94,7 @@ export default {
     }
   },
   mounted() {
-    this.store.selected = this.elements[this.elements.length - 1]
+    this.store.selected = this.elements[this.elements.length - 1].attributes
     this.store.thought = this.store.selected.thoughts
       ? this.store.selected.thoughts
       : this.store.thought
@@ -121,8 +121,10 @@ export default {
     },
     onSwipeLeft() {
       if (this.store.soundon) this.store.audio.swipe.play()
-      this.store.selected = this.elements[this.elements.length - 2]
-      this.store.tought = this.store.selected.thought
+      this.store.selected = this.elements[this.elements.length - 2].attributes
+      this.store.thought = this.store.selected.thoughts
+      console.log(this.store.selected)
+      console.log(this.store.thought)
 
       setTimeout(() => {
         this.elements.pop()
