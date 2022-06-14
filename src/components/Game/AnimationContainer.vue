@@ -18,21 +18,6 @@
       </div>
 
       <video
-        v-if="isMobile"
-        ref="video"
-        class="animation-video"
-        @play="videoStarted"
-        @ended="videoEnded"
-        @click="$refs.video.play()"
-        :class="fadeOut ? 'fading' : ''"
-        playsinline
-        muted
-      >
-        <source :src="animation[store.currentAnimation]" type="video/mp4" />
-      </video>
-
-      <video
-        v-else
         ref="video"
         class="animation-video"
         @play="videoStarted"
@@ -94,7 +79,7 @@ export default {
   computed: {
     backgroundImage() {
       if (this.store.currentAnimation === 'intro') return BackgroundIntro
-      // if (this.store.currentAnimation === 'travel') return BackgroundTravel
+
       return null
     },
     backgroundStyle() {
@@ -103,17 +88,10 @@ export default {
           backgroundColor: '#1F1F1F',
         }
 
-      // if (this.store.currentAnimation === 'travel') return {}
-
       return null
     },
   },
   methods: {
-    isMobile() {
-      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-        navigator.userAgent
-      )
-    },
     videoStarted() {
       setTimeout(() => {
         this.showBackgroundImage = true
