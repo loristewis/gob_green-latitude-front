@@ -29,4 +29,9 @@ export const colorCombos = [
     text: 'yellow',
     background: 'rose',
   },
+  {
+    id: 'blue-yellow',
+    text: 'yellow',
+    background: 'blue-light',
+  },
 ]

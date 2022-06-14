@@ -1,6 +1,6 @@
 export const prescriptionText = {
   intro:
-    'Suite à notre rendez-vous je vous préconise de changer d’air quelque jours... Voici ma recommandation pour vous remettre au plus vite :',
+    'Suite à notre rendez-vous je vous préconise de changer d’air quelques jours... Voici ma recommandation pour vous remettre au plus vite :',
   environment: {
     mer: [
       "<span>Voir l'océan</span> vous ferait le plus grand bien",
